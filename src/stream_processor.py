@@ -1,5 +1,3 @@
-# src/stream_processor.py
-
 import json
 import time
 import hashlib
@@ -7,7 +5,6 @@ from kafka import KafkaConsumer, KafkaProducer
 from neo4j import GraphDatabase
 from collections import defaultdict
 
-# --- Configurazione ---
 KAFKA_BROKER = 'localhost:9092'
 KAFKA_TOPIC_IN = 'wiki-changes'
 KAFKA_TOPIC_OUT = 'cluster-alerts'
@@ -22,16 +19,25 @@ NEO4J_SERVERS = {
 NEO4J_USER = "neo4j"
 NEO4J_PASS = "password"
 
-# --- Parametri del Rilevatore ---
-WINDOW_DURATION_SECONDS = 150  # Durata della finestra (30 secondi)
-CLUSTER_THRESHOLD = 5         # Allarme se >= 5 modifiche nella stessa comunità
+WINDOW_DURATION_SECONDS = 150
+CLUSTER_THRESHOLD = 5
 
-# --- Funzioni Helper (copiate da altri script) ---
 
+# NOTE: questo producer servirà poi per 
+#       collegarci un consumer che si occupa
+#       di prendere gli eventi cluster e mandarli
+#       all'oracolo, non ha niente a che fare con
+#       il consumer che definiamo nella funzione sotto    
 def create_kafka_producer():
-    """Crea un producer per inviare gli allarmi."""
     print("Connessione a Kafka come Producer...")
     try:
+        #
+        # creo un producer kafka che pusha
+        # gli eventi nel server kafka, così il consumer se li prende
+        #
+        # value_serializer prende un JSON e lo 
+        # trasmette come byte
+        #
         producer = KafkaProducer(
             bootstrap_servers=[KAFKA_BROKER],
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
@@ -42,10 +48,23 @@ def create_kafka_producer():
         print(f"Errore Producer Kafka: {e}")
         return None
 
+
 def create_kafka_consumer():
-    """Crea un consumer per leggere le modifiche."""
     print("Connessione a Kafka come Consumer...")
     try:
+        #
+        # creo un consumer kafka che sta in ascolto sul 
+        # server kafka per gli aggiornamenti di wiki
+        #
+        # group_id è importante quando lavoriamo con più partizioni
+        #
+        # auto_offset_reset='latest' significa che al consumatore
+        # interessa ricevere solo gli eventi nuovi, non quelli passati
+        # value_deserializer è una funzione che prende i byte che gli 
+        #
+        # arrivano nello stream e li converte in automatico in JSON (visto
+        # che l'API wiki manda JSON)
+        #
         consumer = KafkaConsumer(
             KAFKA_TOPIC_IN,
             bootstrap_servers=[KAFKA_BROKER],
@@ -61,7 +80,6 @@ def create_kafka_consumer():
         return None
 
 def create_neo4j_drivers():
-    """Crea e restituisce i driver per tutti i server Neo4j."""
     drivers = {}
     print("Connessione ai 4 server Neo4j...")
     for i in range(N_SERVERS):
@@ -83,8 +101,6 @@ def get_server_id(page_title):
     hash_int = int.from_bytes(hash_bytes, 'little')
     return hash_int % N_SERVERS
 
-# --- Logica Core del Processore ---
-
 def get_community_id_tx(tx, page_title):
     """Query Cypher per trovare il communityId."""
     query = """
@@ -96,23 +112,17 @@ def get_community_id_tx(tx, page_title):
     return record["communityId"] if record and record["communityId"] is not None else None
 
 def get_community_id(page_title, drivers, neo4j_sessions):
-    """
-    Trova il communityId per una pagina, interrogando lo shard corretto.
-    """
     if not page_title:
         return None
         
     try:
-        # 1. Scopri quale shard "possiede" questo nodo
         server_id = get_server_id(page_title)
         
-        # 2. Prendi la sessione Neo4j per quello shard
         session = neo4j_sessions.get(server_id)
         if not session:
             print(f"Errore: Sessione per server {server_id} non trovata.")
             return None
             
-        # 3. Esegui la query per trovare il communityId
         community_id = session.execute_read(get_community_id_tx, page_title)
         return community_id
         
@@ -121,15 +131,13 @@ def get_community_id(page_title, drivers, neo4j_sessions):
         return None
 
 def process_messages(consumer, producer, drivers):
-    """
-    Il loop principale che legge da Kafka, consulta Neo4j e rileva i cluster.
-    """
-    
-    # Crea sessioni persistenti (molto più efficiente)
     neo4j_sessions = {i: driver.session() for i, driver in drivers.items()}
     
-    # Questo dizionario è il nostro "stato" in memoria
-    # Salva una lista di pagine modificate per ogni communityId
+    #
+    # questo dizionario ha come chiave l'ID della
+    # community e come value le pagine modificate
+    # nella finestra temporale
+    #
     window_state = defaultdict(list)
     
     window_start_time = time.time()
@@ -137,58 +145,75 @@ def process_messages(consumer, producer, drivers):
     print(f"Finestra: {WINDOW_DURATION_SECONDS} sec, Soglia Cluster: {CLUSTER_THRESHOLD} modifiche")
 
     try:
+        #
+        # scorro i messaggi che arrivano al consumer
+        # collegato all'API
+        #
         for message in consumer:
             current_time = time.time()
             
-            # --- 1. Controlla se la finestra temporale è scaduta ---
             if current_time - window_start_time > WINDOW_DURATION_SECONDS:
                 print(f"\n--- FINESTRA CHIUSA ({WINDOW_DURATION_SECONDS}s) ---")
                 
-                # --- 2. Analizza lo stato della finestra ---
-                for community_id, pages_edited in window_state.items():
-                    # Usiamo set() per contare le pagine uniche
-                    unique_pages = list(set(pages_edited))
-                    edit_count = len(unique_pages)
+                #
+                # qui siamo nel caso in cui la finestra di tempo
+                # è scaduta. Scorriamo tutte le pagine modificate
+                #
+                for community_id, events_in_window in window_state.items():
                     
-                    if edit_count >= CLUSTER_THRESHOLD:
-                        # --- 3. ALLARME! Cluster Rilevato ---
-                        print(f"!!! CLUSTER RILEVATO [Comunità: {community_id}] - {edit_count} modifiche uniche.")
+                    #
+                    # conto TUTTE le modifiche, incluse quelle ripetute
+                    # sulla stessa pagina (es. edit war)
+                    #
+                    edit_count_total = len(events_in_window)
+                    
+                    #
+                    # segnalamo tramite il producer kafka che sono 
+                    # avvenute X modifiche (quando superano il threshold)
+                    #
+                    if edit_count_total >= CLUSTER_THRESHOLD:
                         
-                        # Prepara il messaggio di allarme
+                        #
+                        # Calcoliamo le pagine uniche solo per il report
+                        #
+                        unique_pages = list(set(evt['page_title'] for evt in events_in_window))
+                        unique_page_count = len(unique_pages)
+
+                        print(f"!!! CLUSTER RILEVATO [Comunità: {community_id}] - {edit_count_total} modifiche totali su {unique_page_count} pagin_e.")
+                        
                         alert_message = {
                             "timestamp": int(current_time),
                             "communityId": community_id,
-                            "editCount": edit_count,
+                            "totalEditCount": edit_count_total,
+                            "uniquePageCount": unique_page_count,
                             "pages": unique_pages,
+                            "events": events_in_window,
                             "window_start": int(window_start_time),
                             "window_end": int(current_time)
                         }
                         
-                        # Invia l'allarme al topic di output
                         producer.send(KAFKA_TOPIC_OUT, value=alert_message)
-                        producer.flush() # Forza invio immediato
+                        producer.flush()
                         
-                # --- 4. Resetta lo stato per la prossima finestra ---
                 window_state.clear()
                 window_start_time = current_time
                 print("--- FINESTRA APERTA ---")
 
-            # --- 5. Processa il messaggio in arrivo ---
+            #
+            # accumula gli eventi nel buffer della finestra
+            #
             event_data = message.value
             page_title = event_data.get('page_title')
             
             if not page_title:
                 continue
 
-            # --- 6. Arricchisci il messaggio: Trova la Comunità ---
             community_id = get_community_id(page_title, drivers, neo4j_sessions)
             
             if community_id is not None:
-                # Trovato! Aggiungi allo stato della finestra
                 print(f"Modifica: '{page_title}' -> [Comunità: {community_id}]")
-                window_state[community_id].append(page_title)
+                window_state[community_id].append(event_data)
             else:
-                # Pagina non trovata o senza comunità (es. appena creata)
                 print(f"Modifica: '{page_title}' -> [Comunità: N/A]")
 
     except KeyboardInterrupt:
@@ -202,9 +227,7 @@ def process_messages(consumer, producer, drivers):
             driver.close()
         print("Tutte le connessioni chiuse.")
 
-# --- Esecuzione Principale ---
 if __name__ == "__main__":
-    # Avvia tutti i componenti
     consumer = create_kafka_consumer()
     producer = create_kafka_producer()
     drivers = create_neo4j_drivers()

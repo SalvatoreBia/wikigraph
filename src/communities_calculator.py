@@ -12,12 +12,12 @@ NEO4J_USER = "neo4j"
 NEO4J_PASS = "password"
 
 def run_community_detection_on_server(server_uri, server_id):
-    """
-    Si connette a un singolo server Neo4j ed esegue l'algoritmo GDS.
-    """
     print(f"\n--- Inizio elaborazione Server {server_id} ({server_uri}) ---")
     gds = None
     try:
+        #
+        # inizializzo e utilizzo il database in versione grafo
+        #
         gds = GraphDataScience(server_uri, auth=(NEO4J_USER, NEO4J_PASS))
         gds.set_database("neo4j") 
         print(f"[Server {server_id}] Connesso a GDS.")
@@ -28,6 +28,10 @@ def run_community_detection_on_server(server_uri, server_id):
             print(f"[Server {server_id}] Grafo GDS '{graph_name}' esistente, lo elimino.")
             gds.graph.drop(graph_name)
         
+        #
+        # qui sto dicendo a GDS di caricare tutti i nodi con etichetta :Page
+        # e tutti le relazioni :LINKS_TO in RAM
+        #
         print(f"[Server {server_id}] Creazione proiezione grafo '{graph_name}' in memoria...")
         G, result = gds.graph.project(
             graph_name,
@@ -36,6 +40,18 @@ def run_community_detection_on_server(server_uri, server_id):
         )
         print(f"[Server {server_id}] Proiezione creata: {result.nodeCount} nodi, {result.relationshipCount} relazioni.")
 
+        #
+        # labelPropagation è un algoritmo di Community Detection.
+        # funziona così:
+        #   - inizialmente, ogni nodo è una community (cluster, o come lo vuoi chiamare)
+        #     a sé stante
+        #   - nei passi successivi, ogni nodo controlla i suoi vicini e
+        #     sceglie l'ID community più frequente. In caso ci siano più di
+        #     un ID valido, si sceglie casualmente tra quelli
+        #   - il processo si ripete fino a che le community diventano stabili
+        #
+        # alla fine di tutto, sul database aggiungeremo una nuova proprietà 
+        # communityId per ogni nodo
         print(f"[Server {server_id}] Esecuzione Label Propagation...")
         result = gds.labelPropagation.write(
             G,

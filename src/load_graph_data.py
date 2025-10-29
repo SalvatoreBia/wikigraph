@@ -22,15 +22,27 @@ NEO4J_SERVERS = {
 NEO4J_USER = "neo4j"
 NEO4J_PASS = "password"
 
+#
+# regex per cercare nelle righe INSERT
+# la tupla (id_sorgente, 0, id_destinazione)
+#
 PAGELINKS_INSERT_REGEX = re.compile(
     r"\(([0-9]+),0,([0-9]+)\)"
 )
 
+#
+# partizionamento: calcola su quale server Neo4j
+# deve risiedere una pagina in base all'hash (MD5) del titolo
+#
 def get_server_id(page_title):
     hash_bytes = hashlib.md5(page_title.encode('utf-8')).digest()
     hash_int = int.from_bytes(hash_bytes, 'little')
     return hash_int % N_SERVERS
 
+#
+# apro una connessione (driver) per ognuno dei server
+# e le ritorna tutte insieme
+#
 def create_drivers():
     drivers = {}
     print("Connessione ai server Neo4j...")
@@ -51,6 +63,15 @@ def close_drivers(drivers):
     for driver in drivers.values():
         driver.close()
 
+#
+# query Cypher per creare nodi e relazioni
+# usa MERGE per evitare duplicati
+#
+# UNWIND permette di trasformare una lista in righe individuali
+# MERGE  usa un nodo esistente, se non c'è lo crea
+# con l'ultimo MERGE colleghiamo il nodo sorgente
+# con quello destinazione
+#
 def add_links_batch(tx, links_batch):
     query = """
     UNWIND $links AS link
@@ -60,6 +81,10 @@ def add_links_batch(tx, links_batch):
     """
     tx.run(query, links=links_batch)
 
+#
+# carica TUTTO il db SQLite in un dizionario in RAM
+# per evitare query ripetute durante l'elaborazione
+#
 def preload_id_cache(conn_sqlite):
     print("Precaricamento cache ID->Titolo in memoria...")
     cursor = conn_sqlite.cursor()
@@ -85,6 +110,10 @@ def process_pagelinks_dump(drivers):
     def get_title_from_id(page_id):
         return id_to_title_cache.get(page_id)
 
+    #
+    # batches: un buffer per ogni server Neo4j
+    # sessions: una sessione persistente per ogni server
+    #
     batches = {i: [] for i in range(N_SERVERS)}
     sessions = {i: drivers[i].session() for i in range(N_SERVERS)}
     
@@ -100,13 +129,22 @@ def process_pagelinks_dump(drivers):
         
         lines_read = 0
         for line in progress_bar:
+            #
+            # limita il numero di righe (per test)
+            #
             if MAX_LINES and lines_read >= MAX_LINES:
                 break
             lines_read += 1
             
+            #
+            # skippo righe senza tuple
+            #
             if '(' not in line:
                 continue
             
+            #
+            # estrae tutte le tuple (source_id, 0, target_id)
+            #
             matches = PAGELINKS_INSERT_REGEX.findall(line)
             
             for match in matches:
@@ -127,6 +165,9 @@ def process_pagelinks_dump(drivers):
                     })
                     total_links_processed += 1
                     
+                    #
+                    # quando il batch è pieno, lo scriviamo dentro neo4j
+                    #
                     if len(batches[server_id]) >= BATCH_SIZE:
                         try:
                             sessions[server_id].execute_write(add_links_batch, batches[server_id])
@@ -139,6 +180,9 @@ def process_pagelinks_dump(drivers):
                 lps = total_links_processed / elapsed
                 progress_bar.set_description(f"Elaboro 'pagelinks.sql' ({lps:.0f} link/s, {len(id_to_title_cache):,} pagine)")
 
+    #
+    # invia i batch non completi a ciascun server
+    #
     print("Invio dei batch rimanenti...")
     for server_id, batch in batches.items():
         if batch:
@@ -170,6 +214,11 @@ def main():
         for i, driver in drivers.items():
             with driver.session() as s:
                 try:
+                    #
+                    # qui gli stiamo praticamente dicendo indicizzando
+                    # il campo title, senza di questo la query MERGE dovrebbe
+                    # ogni volta scorrere tutti i nodi
+                    #
                     s.run("CREATE CONSTRAINT page_title_unique IF NOT EXISTS FOR (p:Page) REQUIRE p.title IS UNIQUE")
                     print(f"Indice creato sul server {i}.")
                 except Exception as e:

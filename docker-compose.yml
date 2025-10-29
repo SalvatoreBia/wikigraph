@@ -1,0 +1,120 @@
+services:
+  
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    networks:
+      - wikinet
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    networks:
+      - wikinet
+    depends_on:
+      - zookeeper
+    ports:
+      
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      
+      
+      
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+
+  
+
+  neo4j-1:
+    image: neo4j:5-enterprise
+    container_name: neo4j-1
+    networks:
+      - wikinet
+    ports:
+      - "7474:7474" 
+      - "7687:7687" 
+    volumes:
+      - ./neo4j-data/1/data:/data
+      - ./neo4j-data/1/plugins:/plugins
+    environment:
+      
+      NEO4J_AUTH: neo4j/password
+      
+      NEO4J_server_memory_pagecache_size: 1G
+      
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      
+      NEO4J_PLUGINS: '["graph-data-science"]'
+
+  neo4j-2:
+    image: neo4j:5-enterprise
+    container_name: neo4j-2
+    networks:
+      - wikinet
+    ports:
+      - "7475:7474"
+      - "7688:7687"
+    volumes:
+      - ./neo4j-data/2/data:/data
+      - ./neo4j-data/2/plugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_server_memory_pagecache_size: 1G
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_PLUGINS: '["graph-data-science"]'
+
+  neo4j-3:
+    image: neo4j:5-enterprise
+    container_name: neo4j-3
+    networks:
+      - wikinet
+    ports:
+      - "7476:7474"
+      - "7689:7687"
+    volumes:
+      - ./neo4j-data/3/data:/data
+      - ./neo4j-data/3/plugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_server_memory_pagecache_size: 1G
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_PLUGINS: '["graph-data-science"]'
+
+  neo4j-4:
+    image: neo4j:5-enterprise
+    container_name: neo4j-4
+    networks:
+      - wikinet
+    ports:
+      - "7477:7474"
+      - "7690:7687"
+    volumes:
+      - ./neo4j-data/4/data:/data
+      - ./neo4j-data/4/plugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_server_memory_pagecache_size: 1G
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_PLUGINS: '["graph-data-science"]'
+
+
+networks:
+  wikinet:
+    driver: bridge
+
+
+
+volumes:
+  neo4j-data-1:
+  neo4j-data-2:
+  neo4j-data-3:
+  neo4j-data-4:

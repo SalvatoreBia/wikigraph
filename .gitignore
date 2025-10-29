@@ -1,0 +1,7 @@
+data/*
+neo4j-data/*
+
+*.db
+
+.venv/*
+venv/*

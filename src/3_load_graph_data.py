@@ -6,8 +6,11 @@ from neo4j import GraphDatabase
 from tqdm import tqdm
 import time
 
-PAGELINKS_DUMP_FILE = os.path.join('../data', 'itwiki-latest-pagelinks.sql')
-DB_FILE = 'page_map.db'
+# Percorsi assoluti basati sulla directory dello script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
+PAGELINKS_DUMP_FILE = os.path.join(PROJECT_DIR, 'data', 'itwiki-latest-pagelinks.sql')
+DB_FILE = os.path.join(SCRIPT_DIR, 'page_map.db')
 BATCH_SIZE = 50000
 N_SERVERS = 4
 MAX_LINES = None

@@ -11,9 +11,9 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 PAGELINKS_DUMP_FILE = os.path.join(PROJECT_DIR, 'data', 'itwiki-latest-pagelinks.sql')
 DB_FILE = os.path.join(SCRIPT_DIR, 'page_map.db')
-BATCH_SIZE = 50000
+BATCH_SIZE = 10000  # Ridotto per invii più frequenti
 N_SERVERS = 4
-MAX_LINES = None
+MAX_LINKS = 100_000  # Limita il numero di LINK (non righe) per testing
 
 NEO4J_SERVERS = {
     0: "bolt://localhost:7687",
@@ -48,16 +48,37 @@ def get_server_id(page_title):
 def create_drivers():
     drivers = {}
     print("Connessione ai server Neo4j...")
+    max_retries = 30  # Prova per 30 volte (circa 1 minuto)
+    retry_delay = 2   # Attendi 2 secondi tra ogni tentativo
+    
     for i in range(N_SERVERS):
         uri = NEO4J_SERVERS[i]
-        drivers[i] = GraphDatabase.driver(uri, auth=(NEO4J_USER, NEO4J_PASS))
-        try:
-            drivers[i].verify_connectivity()
-            print(f"Server {i} ({uri}) connesso.")
-        except Exception as e:
-            print(f"ERRORE: Impossibile connettersi al Server {i}. Verifica Docker e password.")
-            print(e)
+        connected = False
+        
+        for attempt in range(max_retries):
+            try:
+                drivers[i] = GraphDatabase.driver(uri, auth=(NEO4J_USER, NEO4J_PASS))
+                drivers[i].verify_connectivity()
+                print(f"Server {i} ({uri}) connesso.")
+                connected = True
+                break
+            except Exception as e:
+                if attempt == 0:
+                    print(f"Server {i} non ancora pronto, attendo l'inizializzazione...")
+                if attempt < max_retries - 1:
+                    time.sleep(retry_delay)
+                else:
+                    print(f"ERRORE: Impossibile connettersi al Server {i} dopo {max_retries} tentativi.")
+                    print(f"Verifica che Docker sia in esecuzione e che la password sia corretta.")
+                    print(f"Errore: {e}")
+                    # Chiudi eventuali connessioni già aperte
+                    for j in range(i):
+                        drivers[j].close()
+                    return None
+        
+        if not connected:
             return None
+    
     return drivers
 
 def close_drivers(drivers):
@@ -123,20 +144,18 @@ def process_pagelinks_dump(drivers):
     start_time = time.time()
     
     print(f"Inizio elaborazione di {PAGELINKS_DUMP_FILE}...")
-    if MAX_LINES:
-        print(f"*** MODALITÀ TEST: Elaborando solo le prime {MAX_LINES} righe ***")
+    if MAX_LINKS:
+        print(f"*** MODALITÀ TEST: Elaborando solo i primi {MAX_LINKS:,} link ***")
     
     with open(PAGELINKS_DUMP_FILE, 'r', encoding='utf-8') as f:
-        progress_bar = tqdm(f, total=MAX_LINES if MAX_LINES else 170_000_000, unit=' righe', desc="Elaboro 'pagelinks.sql'")
+        progress_bar = tqdm(total=MAX_LINKS if MAX_LINKS else 50_000_000, unit=' link', desc="Elaboro 'pagelinks.sql'")
         
-        lines_read = 0
-        for line in progress_bar:
+        for line in f:
             #
-            # limita il numero di righe (per test)
+            # limita il numero di link (per test)
             #
-            if MAX_LINES and lines_read >= MAX_LINES:
+            if MAX_LINKS and total_links_processed >= MAX_LINKS:
                 break
-            lines_read += 1
             
             #
             # skippo righe senza tuple
@@ -166,6 +185,7 @@ def process_pagelinks_dump(drivers):
                         "target": target_title
                     })
                     total_links_processed += 1
+                    progress_bar.update(1)
                     
                     #
                     # quando il batch è pieno, lo scriviamo dentro neo4j
@@ -177,11 +197,13 @@ def process_pagelinks_dump(drivers):
                             print(f"Errore durante l'invio del batch al server {server_id}: {e}")
                         batches[server_id] = []
             
-            if total_links_processed > 0 and total_links_processed % 50000 == 0:
+            if total_links_processed > 0 and total_links_processed % 10000 == 0:
                 elapsed = time.time() - start_time
                 lps = total_links_processed / elapsed
-                progress_bar.set_description(f"Elaboro 'pagelinks.sql' ({lps:.0f} link/s, {len(id_to_title_cache):,} pagine)")
-
+                progress_bar.set_description(f"Elaboro 'pagelinks.sql' ({lps:.0f} link/s)")
+    
+    progress_bar.close()
+    
     #
     # invia i batch non completi a ciascun server
     #

@@ -11,7 +11,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 PAGELINKS_DUMP_FILE = os.path.join(PROJECT_DIR, 'data', 'itwiki-latest-pagelinks.sql')
 DB_FILE = os.path.join(SCRIPT_DIR, 'page_map.db')
-BATCH_SIZE = 10000  # Ridotto per invii più frequenti
+BATCH_SIZE = 10_000  # Ridotto per invii più frequenti
 N_SERVERS = 4
 MAX_LINKS = 100_000  # Limita il numero di LINK (non righe) per testing
 

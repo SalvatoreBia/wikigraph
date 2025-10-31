@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 PAGE_DUMP_FILE = os.path.join('../data', 'itwiki-latest-page.sql')
 DB_FILE = 'page_map.db'
-BATCH_SIZE = 50000
+BATCH_SIZE = 50_000
 
 #
 # regex per cercare nelle righe INSERT

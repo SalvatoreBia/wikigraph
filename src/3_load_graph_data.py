@@ -13,6 +13,7 @@ PAGELINKS_DUMP_FILE = os.path.join(PROJECT_DIR, 'data', 'itwiki-latest-pagelinks
 DB_FILE = os.path.join(SCRIPT_DIR, 'page_map.db')
 BATCH_SIZE = 10_000  # Ridotto per invii più frequenti
 N_SERVERS = 4
+# metti None per togliere limite di link
 MAX_LINKS = 100_000  # Limita il numero di LINK (non righe) per testing
 
 NEO4J_SERVERS = {

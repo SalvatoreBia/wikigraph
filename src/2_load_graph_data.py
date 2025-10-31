@@ -1,5 +1,4 @@
 import sqlite3
-import gzip
 import re
 import os
 import hashlib
@@ -7,7 +6,7 @@ from neo4j import GraphDatabase
 from tqdm import tqdm
 import time
 
-PAGELINKS_DUMP_FILE = os.path.join('data', 'itwiki-latest-pagelinks.sql.gz')
+PAGELINKS_DUMP_FILE = os.path.join('../data', 'itwiki-latest-pagelinks.sql')
 DB_FILE = 'page_map.db'
 BATCH_SIZE = 50000
 N_SERVERS = 4
@@ -124,7 +123,7 @@ def process_pagelinks_dump(drivers):
     if MAX_LINES:
         print(f"*** MODALITÀ TEST: Elaborando solo le prime {MAX_LINES} righe ***")
     
-    with gzip.open(PAGELINKS_DUMP_FILE, 'rt', encoding='utf-8') as f:
+    with open(PAGELINKS_DUMP_FILE, 'r', encoding='utf-8') as f:
         progress_bar = tqdm(f, total=MAX_LINES if MAX_LINES else 170_000_000, unit=' righe', desc="Elaboro 'pagelinks.sql'")
         
         lines_read = 0

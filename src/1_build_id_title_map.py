@@ -3,7 +3,7 @@ import re
 import os
 from tqdm import tqdm
 
-PAGE_DUMP_FILE = os.path.join('data', 'itwiki-latest-page.sql')
+PAGE_DUMP_FILE = os.path.join('../data', 'itwiki-latest-page.sql')
 DB_FILE = 'page_map.db'
 BATCH_SIZE = 50000
 

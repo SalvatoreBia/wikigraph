@@ -74,8 +74,6 @@ def download_file(url, destination):
         url: URL del file da scaricare
         destination: Path di destinazione
     """
-    print(f"\nScaricamento di {os.path.basename(url)}...")
-    
     try:
         response = requests.get(url, stream=True, timeout=30)
         response.raise_for_status()
@@ -104,14 +102,14 @@ def download_file(url, destination):
                             downloaded_mb = downloaded / (1024 * 1024)
                             total_mb = total_size / (1024 * 1024)
                             
-                            print(f'\r[{bar}] {percent:.1f}% ({downloaded_mb:.1f}/{total_mb:.1f} MB)', end='', flush=True)
+                            print(f'\rScaricamento {os.path.basename(url)}: [{bar}] {percent:.1f}% ({downloaded_mb:.1f}/{total_mb:.1f} MB)', end='', flush=True)
                             last_print_time = current_time
         
         print()  # Nuova riga dopo il completamento
         return True
         
     except Exception as e:
-        print(f"\nErrore durante il download: {e}")
+        print(f"\rErrore durante il download: {e}")
         if os.path.exists(destination):
             os.remove(destination)
         return False

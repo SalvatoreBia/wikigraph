@@ -1,10 +1,9 @@
 import sqlite3
-import gzip
 import re
 import os
 from tqdm import tqdm
 
-PAGE_DUMP_FILE = os.path.join('data', 'itwiki-latest-page.sql.gz')
+PAGE_DUMP_FILE = os.path.join('data', 'itwiki-latest-page.sql')
 DB_FILE = 'page_map.db'
 BATCH_SIZE = 50000
 
@@ -47,7 +46,7 @@ def process_page_dump():
     
     print(f"Inizio elaborazione di {PAGE_DUMP_FILE}...")
     
-    with gzip.open(PAGE_DUMP_FILE, 'rt', encoding='utf-8') as f:
+    with open(PAGE_DUMP_FILE, 'r', encoding='utf-8') as f:
         progress_bar = tqdm(f, total=110_000_000, unit=' righe', desc="Elaboro 'page.sql'")
         
         #

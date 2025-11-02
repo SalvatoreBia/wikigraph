@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from graphdatascience import GraphDataScience
 import time
 
@@ -15,55 +18,36 @@ def run_community_detection_on_server(server_uri, server_id):
     print(f"\n--- Inizio elaborazione Server {server_id} ({server_uri}) ---")
     gds = None
     try:
-        #
-        # inizializzo e utilizzo il database in versione grafo
-        #
         gds = GraphDataScience(server_uri, auth=(NEO4J_USER, NEO4J_PASS))
-        gds.set_database("neo4j") 
+        gds.set_database("neo4j")
         print(f"[Server {server_id}] Connesso a GDS.")
 
-        graph_name = f'wiki_shard_{server_id}'
+        # Pre-creo communityId = -1 se assente
+        print(f"[Server {server_id}] Inizializzo 'communityId' a -1 dove mancante...")
+        cypher_query = """
+        MATCH (n:Page)
+        WHERE n.communityId IS NULL
+        SET n.communityId = -1
+        RETURN count(n) AS nodes_updated
+        """
+        result = gds.run_cypher(cypher_query)
+        print(f"[Server {server_id}] Impostato 'communityId = -1' per {result['nodes_updated'][0]} nodi.")
 
+        graph_name = f'wiki_graph_shard_{server_id}'
         if gds.graph.exists(graph_name).exists:
             print(f"[Server {server_id}] Grafo GDS '{graph_name}' esistente, lo elimino.")
             gds.graph.drop(graph_name)
-        
-        #
-        # qui sto dicendo a GDS di caricare tutti i nodi con etichetta :Page
-        # e tutti le relazioni :LINKS_TO in RAM
-        #
-        print(f"[Server {server_id}] Creazione proiezione grafo '{graph_name}' in memoria...")
-        G, result = gds.graph.project(
-            graph_name,
-            'Page',          
-            'LINKS_TO'       
-        )
-        print(f"[Server {server_id}] Proiezione creata: {result.nodeCount} nodi, {result.relationshipCount} relazioni.")
 
-        #
-        # labelPropagation è un algoritmo di Community Detection.
-        # funziona così:
-        #   - inizialmente, ogni nodo è una community (cluster, o come lo vuoi chiamare)
-        #     a sé stante
-        #   - nei passi successivi, ogni nodo controlla i suoi vicini e
-        #     sceglie l'ID community più frequente. In caso ci siano più di
-        #     un ID valido, si sceglie casualmente tra quelli
-        #   - il processo si ripete fino a che le community diventano stabili
-        #
-        # alla fine di tutto, sul database aggiungeremo una nuova proprietà 
-        # communityId per ogni nodo
+        print(f"[Server {server_id}] Proiezione grafo '{graph_name}' in memoria...")
+        G, proj = gds.graph.project(graph_name, 'Page', 'LINKS_TO')
+        print(f"[Server {server_id}] Proiezione: {proj.nodeCount} nodi, {proj.relationshipCount} relazioni.")
+
         print(f"[Server {server_id}] Esecuzione Label Propagation...")
-        result = gds.labelPropagation.write(
-            G,
-            writeProperty='communityId' 
-        )
-        
-        print(f"[Server {server_id}] Comunità calcolate: {result.communityCount}")
-        print(f"[Server {server_id}] Risultati salvati sui nodi con proprietà 'communityId'.")
+        res = gds.labelPropagation.write(G, writeProperty='communityId')
+        print(f"[Server {server_id}] Comunità locali: {res.communityCount}")
 
         gds.graph.drop(G)
-        print(f"[Server {server_id}] Proiezione grafo GDS eliminata dalla memoria.")
-        
+        print(f"[Server {server_id}] Proiezione rimossa.")
     except Exception as e:
         print(f"ERRORE [Server {server_id}]: {e}")
     finally:
@@ -73,10 +57,15 @@ def run_community_detection_on_server(server_uri, server_id):
 
 if __name__ == "__main__":
     start_time = time.time()
-    print("Avvio calcolo comunità GDS su tutti gli shard...")
-    
-    for i in range(N_SERVERS):
-        run_community_detection_on_server(NEO4J_SERVERS[i], i)
-    
+    print("=" * 70)
+    print("Calcolo comunità GDS per shard (communityId locale)...")
+    print("=" * 70)
+
+    for server_id in range(N_SERVERS):
+        run_community_detection_on_server(NEO4J_SERVERS[server_id], server_id)
+
     elapsed = time.time() - start_time
-    print(f"\n--- Elaborazione GDS completata in {elapsed:.2f} secondi ---")
+    print("\n" + "=" * 70)
+    print(f"Completato in {elapsed:.2f} secondi")
+    print("=" * 70)
+    print("\nNOTA: 'communityId' è locale allo shard; l'unificazione globale avverrà con 'globalCommunityId'.")

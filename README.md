@@ -14,15 +14,23 @@ https://dumps.wikimedia.org/itwiki/latest/
 
 **Opzione 1**: Download manuale
 ```bash
-# Scarica e unzippa:
+# Scarica e unzippa i file .sql.gz:
 # - itwiki-latest-page.sql.gz
 # - itwiki-latest-pagelinks.sql.gz
-# Posizionali in /data/
+# Estraili e posizionali in /data/ come file .sql
 ```
 
 **Opzione 2**: Script automatico
 ```bash
 python src/0_update_wikipedia_files.py
+```
+
+**Opzione 3**: Usa i tuoi file SQL personalizzati
+```bash
+# Posiziona direttamente i file .sql in /data/:
+# - itwiki-latest-page.sql
+# - itwiki-latest-pagelinks.sql
+# (qualsiasi versione/data)
 ```
 
 **Struttura finale richiesta:**
@@ -40,9 +48,40 @@ python -m venv .venv
 source .venv/bin/activate && pip install -r requirements.txt
 ```
 
+### 3. Reset Database Neo4j (opzionale)
+
+**Se vuoi caricare un dump con una data diversa, devi prima resettare i server Neo4j:**
+
+**Opzione 1**: Script automatico (consigliato)
+```bash
+cd src
+./0_2_reset_neo4j.sh
+```
+
+**Opzione 2**: Manuale
+```bash
+# Ferma il cluster Neo4j se è in esecuzione
+docker-compose down
+
+# Elimina tutti i dati Neo4j
+rm -rf neo4j-data/*/data/databases/*
+rm -rf neo4j-data/*/data/transactions/*
+rm -rf neo4j-data/*/data/cluster-state/*
+
+# Riavvia il cluster
+cd src && ./2_start_docker.sh
+```
+
+**Opzione 3**: Reset completo
+```bash
+docker-compose down
+rm -rf neo4j-data/
+# I container verranno ricreati automaticamente al prossimo avvio
+```
+
 ---
 
-## 🔄 Esecuzione Pipeline
+## 🔄 Esecuzione Pipeline "classica" - leggi sotto per testare
 
 **Esegui gli script in ordine dalla directory `/src/`:**
 
@@ -69,12 +108,14 @@ python 6_producer.py
 
 # 7. Stream processor (rileva hotspot)
 python 7_stream_processor.py
+
+# 8. LLM Consumer (analisi intelligente hotspot)
+python 9_llm_consumer.py
 ```
 
 ---
 
-
-**Test completo in 3 terminali:**
+**TEST - dopo aver eseguito il 5_merge_communities.py**
 
 **Terminale 1** - Stream Processor:
 ```bash
@@ -86,30 +127,11 @@ python src/7_stream_processor.py
 python src/9_llm_consumer.py
 ```
 
-**Terminale 3** - Mock Producer (test):
+dopo aver avviato sti due avvia 
+
+**Terminale 3** - Mock Producer di eventi (test):
 ```bash
 python src/8_mock_producer.py
-```
-
-### Configurazione LLM
-
-Scegli uno dei provider:
-
-**Google Gemini (consigliato)**:
-```bash
-export GEMINI_API_KEY='your-api-key'
-# Ottieni key gratuita: https://makersuite.google.com/app/apikey
-```
-
-**OpenAI GPT**:
-```bash
-export OPENAI_API_KEY='your-openai-key'
-```
-
-**Ollama (locale)**:
-```bash
-ollama pull llama2
-ollama serve
 ```
 
 ---

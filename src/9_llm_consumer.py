@@ -12,20 +12,25 @@ Funzionalità:
 5. Salva le analisi in un file di log
 
 LLM supportati:
-- Google Gemini (consigliato - ha accesso a informazioni recenti)
-- OpenAI GPT (richiede API key)
-- Ollama locale (gratuito ma limitato)
+- Google Gemini 2.0 Flash (consigliato - veloce e ha accesso a informazioni recenti)
+- LM Studio locale (gratuito, richiede configurazione)
 """
 
 import json
-import time
+import os
 from datetime import datetime
+from pathlib import Path
 from kafka import KafkaConsumer
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
 
-# --- Configurazione ---
-KAFKA_BROKER = 'localhost:9092'
-KAFKA_TOPIC = 'cluster-alerts'
+# Carica variabili d'ambiente dal file .env
+env_path = Path(__file__).parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
+
+# --- Configurazione da .env ---
+KAFKA_BROKER = os.getenv('KAFKA_BROKER', 'localhost:9092')
+KAFKA_TOPIC = os.getenv('KAFKA_TOPIC', 'cluster-alerts')
 
 # Neo4j configuration (per arricchire i dati)
 N_SERVERS = 4
@@ -35,8 +40,13 @@ NEO4J_SERVERS = {
     2: "bolt://localhost:7689",
     3: "bolt://localhost:7690",
 }
-NEO4J_USER = "neo4j"
-NEO4J_PASS = "password"
+NEO4J_USER = os.getenv('NEO4J_USER', 'neo4j')
+NEO4J_PASS = os.getenv('NEO4J_PASS', 'password')
+
+# LLM Configuration
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+LM_STUDIO_MODEL = os.getenv('LM_STUDIO_MODEL', 'google/gemma-2-9b-it-GGUF')
+LM_STUDIO_HOST = os.getenv('LM_STUDIO_HOST', 'http://127.0.0.1:1234')
 
 # File di log per salvare le analisi
 LOG_FILE = "llm_analysis.log"
@@ -189,24 +199,22 @@ Ho rilevato un hotspot di attività su Wikipedia italiana tramite analisi in tem
 
 def query_llm_gemini(prompt):
     """
-    Interroga Google Gemini (consigliato per informazioni recenti).
+    Interroga Google Gemini 2.0 Flash Experimental.
     Richiede: pip install google-generativeai
-    E una API key da https://makersuite.google.com/app/apikey
+    E una API key da https://aistudio.google.com/app/apikey
     """
     try:
         import google.generativeai as genai
-        import os
         
-        # Leggi la API key da variabile d'ambiente
-        api_key = os.environ.get('GEMINI_API_KEY')
+        if not GEMINI_API_KEY:
+            return "❌ GEMINI_API_KEY non configurata. Controlla il file .env"
         
-        if not api_key:
-            return "❌ GEMINI_API_KEY non configurata. Imposta con: export GEMINI_API_KEY='your-key'"
+        genai.configure(api_key=GEMINI_API_KEY)
         
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-pro')
+        # Usa il modello Gemini 2.0 Flash Experimental (veloce e potente)
+        model = genai.GenerativeModel('gemini-2.0-flash-exp')
         
-        print("  → Interrogazione Google Gemini...")
+        print("  → Interrogazione Google Gemini 2.0 Flash Experimental...")
         response = model.generate_content(prompt)
         
         return response.text
@@ -217,89 +225,27 @@ def query_llm_gemini(prompt):
         return f"❌ Errore Gemini: {e}"
 
 
-def query_llm_openai(prompt):
-    """
-    Interroga OpenAI GPT (richiede API key a pagamento).
-    Richiede: pip install openai
-    """
-    try:
-        import openai
-        import os
-        
-        api_key = os.environ.get('OPENAI_API_KEY')
-        
-        if not api_key:
-            return "❌ OPENAI_API_KEY non configurata."
-        
-        openai.api_key = api_key
-        
-        print("  → Interrogazione OpenAI GPT...")
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "Sei un esperto analista di Wikipedia."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=500
-        )
-        
-        return response.choices[0].message.content
-    
-    except ImportError:
-        return "❌ OpenAI non disponibile. Installa con: pip install openai"
-    except Exception as e:
-        return f"❌ Errore OpenAI: {e}"
-
-
-def query_llm_ollama(prompt):
-    """
-    Interroga un modello locale via Ollama (gratuito).
-    Richiede: Ollama installato e in esecuzione
-    https://ollama.ai/
-    
-    Esegui prima: ollama pull llama2
-    """
-    try:
-        import requests
-        
-        print("  → Interrogazione Ollama (locale)...")
-        
-        response = requests.post(
-            'http://localhost:11434/api/generate',
-            json={
-                'model': 'llama2',
-                'prompt': prompt,
-                'stream': False
-            },
-            timeout=60
-        )
-        
-        if response.status_code == 200:
-            return response.json().get('response', 'Nessuna risposta')
-        else:
-            return f"❌ Errore Ollama: {response.status_code}"
-    
-    except requests.exceptions.ConnectionError:
-        return "❌ Ollama non in esecuzione. Avvia con: ollama serve"
-    except Exception as e:
-        return f"❌ Errore Ollama: {e}"
-
-
 def query_llm_lmstudio(prompt):
     """
     Interroga LM Studio con endpoint compatibile OpenAI.
     LM Studio deve essere in esecuzione su http://127.0.0.1:1234
+    
+    Configurazione:
+    1. Scarica LM Studio da https://lmstudio.ai/
+    2. Carica un modello (es. gemma-2-9b-it, llama-3.1-8b)
+    3. Avvia il server locale sulla porta 1234
+    4. Configura LM_STUDIO_MODEL nel file .env
     """
     try:
         import requests
         
-        print("  → Interrogazione LM Studio (locale)...")
+        print(f"  → Interrogazione LM Studio (locale) - Modello: {LM_STUDIO_MODEL}...")
         
         response = requests.post(
-            'http://127.0.0.1:1234/v1/chat/completions',
+            f'{LM_STUDIO_HOST}/v1/chat/completions',
             headers={'Content-Type': 'application/json'},
             json={
-                'model': 'google/gemma-3-12b',
+                'model': LM_STUDIO_MODEL,
                 'messages': [
                     {'role': 'system', 'content': 'Sei un esperto analista di Wikipedia italiana.'},
                     {'role': 'user', 'content': prompt}
@@ -376,10 +322,6 @@ def process_alert(alert, llm_choice):
     # Step 3: Interroga LLM
     if llm_choice == "gemini":
         llm_response = query_llm_gemini(prompt)
-    elif llm_choice == "openai":
-        llm_response = query_llm_openai(prompt)
-    elif llm_choice == "ollama":
-        llm_response = query_llm_ollama(prompt)
     elif llm_choice == "lmstudio":
         llm_response = query_llm_lmstudio(prompt)
     else:
@@ -402,24 +344,35 @@ def main():
     print("LLM ORACLE CONSUMER - Analisi Intelligente Hotspot")
     print("="*80)
     
+    # Verifica configurazione .env
+    if not os.path.exists(env_path):
+        print("\n⚠️  ATTENZIONE: File .env non trovato!")
+        print("   Crea il file .env copiando .env.example:")
+        print("   cp .env.example .env")
+        print("\n   Poi configura almeno GEMINI_API_KEY")
+        return
+    
     # Scegli quale LLM usare
     print("\nScegli il modello LLM da usare:")
-    print("1. Google Gemini (consigliato - ha accesso a info recenti)")
-    print("2. OpenAI GPT-4 (richiede API key a pagamento)")
-    print("3. Ollama locale (gratuito, richiede installazione)")
-    print("4. LM Studio locale (OpenAI-compatible, porta 1234)")
+    print("1. Google Gemini 2.0 Flash (consigliato - veloce con info recenti)")
+    print("2. LM Studio locale (gratuito, richiede configurazione)")
     
-    choice = input("\nScelta (1-4): ").strip()
+    choice = input("\nScelta (1-2): ").strip()
     
     llm_map = {
         "1": "gemini",
-        "2": "openai",
-        "3": "ollama",
-        "4": "lmstudio"
+        "2": "lmstudio"
     }
     
-    llm_choice = llm_map.get(choice, "lmstudio")
-    print(f"\n✓ Utilizzo: {llm_choice}\n")
+    llm_choice = llm_map.get(choice, "gemini")
+    
+    # Verifica configurazione specifica
+    if llm_choice == "gemini" and not GEMINI_API_KEY:
+        print("\n❌ ERRORE: GEMINI_API_KEY non configurata nel file .env")
+        print("   Ottieni una chiave gratuita su: https://aistudio.google.com/app/apikey")
+        return
+    
+    print(f"\n✓ Utilizzo: {llm_choice.upper()}\n")
     
     # Crea consumer
     consumer = create_kafka_consumer()

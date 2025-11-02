@@ -6,3 +6,10 @@ neo4j-data/*
 
 .venv/*
 venv/*
+
+# Environment variables (contiene API keys sensibili)
+.env
+
+# Log files
+llm_analysis.log
+*.log

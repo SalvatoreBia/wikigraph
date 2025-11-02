@@ -2,14 +2,6 @@
 
 Sistema di analisi in tempo reale dello stream di modifiche di Wikipedia italiana, con rilevamento automatico di hotspot di attività e analisi tramite LLM.
 
-## 📋 Indice
-
-1. [Setup Iniziale](#setup-iniziale)
-2. [Esecuzione Pipeline](#esecuzione-pipeline)
-3. [Testing e Analisi LLM](#testing-e-analisi-llm)
-4. [Architettura](#architettura)
-
----
 
 ## 🚀 Setup Iniziale
 
@@ -19,8 +11,6 @@ Sito coi dump di Wikipedia:
 ```
 https://dumps.wikimedia.org/itwiki/latest/
 ```
-
-**Scegli una delle opzioni:**
 
 **Opzione 1**: Download manuale
 ```bash
@@ -46,7 +36,8 @@ data/
 ### 2. Installazione Dipendenze
 
 ```bash
-pip install -r requirements.txt
+python -m venv .venv 
+source .venv/bin/activate && pip install -r requirements.txt
 ```
 
 ---
@@ -82,14 +73,6 @@ python 7_stream_processor.py
 
 ---
 
-## 🧪 Testing e Analisi LLM
-
-### Quick Start
-
-**Verifica che tutto sia pronto:**
-```bash
-python src/check_system.py
-```
 
 **Test completo in 3 terminali:**
 
@@ -106,7 +89,6 @@ python src/9_llm_consumer.py
 **Terminale 3** - Mock Producer (test):
 ```bash
 python src/8_mock_producer.py
-# Scegli opzione 1: Edit War
 ```
 
 ### Configurazione LLM
@@ -129,12 +111,6 @@ export OPENAI_API_KEY='your-openai-key'
 ollama pull llama2
 ollama serve
 ```
-
-### Guida Completa
-
-Per dettagli su scenari di test, troubleshooting e metriche:
-
-**📖 Leggi [TESTING_GUIDE.md](TESTING_GUIDE.md)**
 
 ---
 
@@ -182,82 +158,3 @@ Wikipedia Stream (EventStream API)
 | `TESTING_GUIDE.md` | Guida testing completa |
 
 ---
-
-## 📊 Esempi di Output
-
-### Allarme Rilevato (7_stream_processor.py)
-```
-=== ALLARME: HOTSPOT RILEVATO ===
-Comunità: 42
-Numero modifiche: 18
-Soglia: 5
-Pagine: ['Carbonara', 'Amatriciana', 'Pasta alla gricia']
-```
-
-### Analisi LLM (9_llm_consumer.py)
-```
-ANALISI LLM:
-1. Tema: Cucina italiana tradizionale romana
-2. Causa: Dibattito ricorrente su ricette autentiche
-3. Preoccupazione: 4/10 (normale dibattito culturale)
-4. Azioni: Monitorare, verificare fonti
-```
-
----
-
-## 🛠 Troubleshooting
-
-### Kafka non si connette
-```bash
-docker ps | grep kafka
-docker-compose up -d
-```
-
-### Neo4j non trova comunità
-```bash
-# Verifica caricamento dati
-docker exec -it neo4j-server-1 cypher-shell -u neo4j -p password
-> MATCH (p:Page) WHERE p.community IS NOT NULL RETURN count(p);
-```
-
-### LLM non risponde
-```bash
-# Verifica API key
-echo $GEMINI_API_KEY
-
-# O usa Ollama locale
-ollama serve
-```
-
----
-
-## 📝 File Generati
-
-- `llm_analysis.log` - Analisi LLM di tutti gli hotspot
-- `neo4j-data/` - Database Neo4j persistente
-- `data/` - Dump Wikipedia e mappe ID
-
----
-
-## 🎓 Per il Progetto
-
-### Esperimenti Suggeriti
-
-1. **Comparazione LLM**: Confronta Gemini vs GPT vs Ollama
-2. **Tuning Soglia**: Prova diverse soglie di allarme (3, 5, 10 edit)
-3. **False Positive Rate**: Quanti allarmi sono falsi positivi?
-4. **Latenza**: Tempo medio tra evento e allarme
-
-### Metriche da Raccogliere
-
-- Numero allarmi/ora
-- Precisione analisi LLM (validazione manuale)
-- Tempo risposta end-to-end
-- Dimensione comunità coinvolte
-
----
-
-**Autori**: WikiGraph Team  
-**Università**: [Università]  
-**Corso**: Big Data  
-**Anno**: 2025

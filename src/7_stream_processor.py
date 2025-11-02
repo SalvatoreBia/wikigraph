@@ -102,33 +102,20 @@ def get_server_id(page_title):
     return hash_int % N_SERVERS
 
 def get_community_id_tx(tx, page_title):
-    """Query Cypher per trovare il communityId."""
+    """Query Cypher per trovare il globalCommunityId."""
     query = """
     MATCH (p:Page {title: $page_title})
-    RETURN p.communityId AS communityId
+    RETURN p.globalCommunityId AS communityId
     """
     result = tx.run(query, page_title=page_title)
     record = result.single()
     return record["communityId"] if record and record["communityId"] is not None else None
 
 def get_community_id(page_title, drivers, neo4j_sessions):
-    if not page_title:
-        return None
-        
-    try:
-        server_id = get_server_id(page_title)
-        
-        session = neo4j_sessions.get(server_id)
-        if not session:
-            print(f"Errore: Sessione per server {server_id} non trovata.")
-            return None
-            
-        community_id = session.execute_read(get_community_id_tx, page_title)
-        return community_id
-        
-    except Exception as e:
-        print(f"Errore durante get_community_id per '{page_title}': {e}")
-        return None
+    """Ottiene l'ID della comunità per una pagina dal server Neo4j corretto."""
+    server_id = get_server_id(page_title)
+    session = neo4j_sessions[server_id]
+    return session.execute_read(get_community_id_tx, page_title)
 
 def process_messages(consumer, producer, drivers):
     neo4j_sessions = {i: driver.session() for i, driver in drivers.items()}

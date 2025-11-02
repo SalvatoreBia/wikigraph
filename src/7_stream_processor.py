@@ -118,25 +118,22 @@ def get_community_id(page_title, drivers, neo4j_sessions):
     return session.execute_read(get_community_id_tx, page_title)
 
 def process_messages(consumer, producer, drivers):
-    neo4j_sessions = {i: driver.session() for i, driver in drivers.items()}
-    
-    #
-    # questo dizionario ha come chiave l'ID della
-    # community e come value le pagine modificate
-    # nella finestra temporale
-    #
-    window_state = defaultdict(list)
-    
-    window_start_time = time.time()
     print("\n--- Avvio Processore di Stream ---")
     print(f"Finestra: {WINDOW_DURATION_SECONDS} sec, Soglia Cluster: {CLUSTER_THRESHOLD} modifiche")
-
+    
+    neo4j_sessions = {}
+    for i in range(N_SERVERS):
+        neo4j_sessions[i] = drivers[i].session()
+    
+    window_state = defaultdict(list)
+    window_start_time = time.time()
+    
+    # TESTING: Tieni traccia degli allarmi già inviati per questa finestra
+    alerted_communities = set()  # TESTING: evita spam di allarmi
+    
     try:
-        #
-        # scorro i messaggi che arrivano al consumer
-        # collegato all'API
-        #
         for message in consumer:
+            
             current_time = time.time()
             
             if current_time - window_start_time > WINDOW_DURATION_SECONDS:
@@ -184,6 +181,7 @@ def process_messages(consumer, producer, drivers):
                         
                 window_state.clear()
                 window_start_time = current_time
+                alerted_communities.clear()  # TESTING: reset allarmi per nuova finestra
                 print("--- FINESTRA APERTA ---")
 
             #
@@ -200,6 +198,47 @@ def process_messages(consumer, producer, drivers):
             if community_id is not None:
                 print(f"Modifica: '{page_title}' -> [Comunità: {community_id}]")
                 window_state[community_id].append(event_data)
+                
+                # ═══════════════════════════════════════════════════════════
+                # TESTING: Allarme IMMEDIATO quando supera soglia
+                # ═══════════════════════════════════════════════════════════
+                # Per PRODUZIONE: Rimuovi questo blocco e lascia solo
+                # l'invio allarme nella sezione "FINESTRA CHIUSA" sopra
+                # ═══════════════════════════════════════════════════════════
+                
+                current_count = len(window_state[community_id])
+                
+                if current_count >= CLUSTER_THRESHOLD and community_id not in alerted_communities:
+                    # Invia allarme SUBITO
+                    unique_pages = list(set(evt['page_title'] for evt in window_state[community_id]))
+                    
+                    print(f"\n{'='*60}")
+                    print(f"!!! ALLARME IMMEDIATO !!!")
+                    print(f"Comunità {community_id}: {current_count} modifiche (soglia: {CLUSTER_THRESHOLD})")
+                    print(f"Pagine coinvolte: {', '.join(unique_pages[:5])}...")
+                    print(f"{'='*60}\n")
+                    
+                    alert_message = {
+                        "timestamp": int(current_time),
+                        "communityId": community_id,
+                        "totalEditCount": current_count,
+                        "uniquePageCount": len(unique_pages),
+                        "pages": unique_pages,
+                        "events": window_state[community_id],
+                        "windowStart": int(window_start_time),
+                        "windowEnd": int(current_time),
+                        "threshold": CLUSTER_THRESHOLD
+                    }
+                    
+                    producer.send(KAFKA_TOPIC_OUT, value=alert_message)
+                    producer.flush()
+                    
+                    alerted_communities.add(community_id)  # Evita spam
+                
+                # ═══════════════════════════════════════════════════════════
+                # FINE TESTING
+                # ═══════════════════════════════════════════════════════════
+                
             else:
                 print(f"Modifica: '{page_title}' -> [Comunità: N/A]")
 

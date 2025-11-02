@@ -285,6 +285,44 @@ def query_llm_ollama(prompt):
         return f"❌ Errore Ollama: {e}"
 
 
+def query_llm_lmstudio(prompt):
+    """
+    Interroga LM Studio con endpoint compatibile OpenAI.
+    LM Studio deve essere in esecuzione su http://127.0.0.1:1234
+    """
+    try:
+        import requests
+        
+        print("  → Interrogazione LM Studio (locale)...")
+        
+        response = requests.post(
+            'http://127.0.0.1:1234/v1/chat/completions',
+            headers={'Content-Type': 'application/json'},
+            json={
+                'model': 'google/gemma-3-12b',
+                'messages': [
+                    {'role': 'system', 'content': 'Sei un esperto analista di Wikipedia italiana.'},
+                    {'role': 'user', 'content': prompt}
+                ],
+                'temperature': 0.7,
+                'max_tokens': 500,
+                'stream': False
+            },
+            timeout=120
+        )
+        
+        if response.status_code == 200:
+            data = response.json()
+            return data['choices'][0]['message']['content']
+        else:
+            return f"❌ Errore LM Studio: {response.status_code} - {response.text}"
+    
+    except requests.exceptions.ConnectionError:
+        return "❌ LM Studio non in esecuzione. Avvia LM Studio e carica un modello su porta 1234"
+    except Exception as e:
+        return f"❌ Errore LM Studio: {e}"
+
+
 def save_analysis_to_log(alert, prompt, llm_response):
     """Salva l'analisi in un file di log."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -342,6 +380,8 @@ def process_alert(alert, llm_choice):
         llm_response = query_llm_openai(prompt)
     elif llm_choice == "ollama":
         llm_response = query_llm_ollama(prompt)
+    elif llm_choice == "lmstudio":
+        llm_response = query_llm_lmstudio(prompt)
     else:
         llm_response = "❌ LLM non riconosciuto"
     
@@ -367,16 +407,18 @@ def main():
     print("1. Google Gemini (consigliato - ha accesso a info recenti)")
     print("2. OpenAI GPT-4 (richiede API key a pagamento)")
     print("3. Ollama locale (gratuito, richiede installazione)")
+    print("4. LM Studio locale (OpenAI-compatible, porta 1234)")
     
-    choice = input("\nScelta (1-3): ").strip()
+    choice = input("\nScelta (1-4): ").strip()
     
     llm_map = {
         "1": "gemini",
         "2": "openai",
-        "3": "ollama"
+        "3": "ollama",
+        "4": "lmstudio"
     }
     
-    llm_choice = llm_map.get(choice, "gemini")
+    llm_choice = llm_map.get(choice, "lmstudio")
     print(f"\n✓ Utilizzo: {llm_choice}\n")
     
     # Crea consumer

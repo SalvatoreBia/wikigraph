@@ -283,13 +283,13 @@ def main():
     print("\n" + "="*60)
     print("SCEGLI UNO SCENARIO DI TEST:")
     print("="*60)
-    print("1. Edit War (6 edit/min x 3 min = ~18 edit)")
+    print("1. Edit War RAPIDO (20 edit/min x 30s = ~10 edit)")
     print("   → Dovrebbe attivare l'allarme (soglia: 5 edit)")
     print()
-    print("2. Attività Normale (2 edit/min x 3 min = ~6 edit)")
-    print("   → Potrebbe attivare l'allarme (soglia: 5 edit)")
+    print("2. Attività Normale RAPIDA (8 edit/min x 30s = ~4 edit)")
+    print("   → NON dovrebbe attivare l'allarme (soglia: 5 edit)")
     print()
-    print("3. Vandalismo (8 edit/min x 2 min = ~16 edit)")
+    print("3. Vandalismo RAPIDO (30 edit/min x 30s = ~15 edit)")
     print("   → Dovrebbe attivare l'allarme (soglia: 5 edit)")
     print()
     print("4. Custom (scegli parametri)")
@@ -299,18 +299,21 @@ def main():
     
     try:
         if choice == "1":
-            simulate_edit_war(producer, pages, duration_seconds=180, edits_per_minute=6)
+            # Test veloce: 10 edit in 30 secondi
+            simulate_edit_war(producer, pages, duration_seconds=30, edits_per_minute=20)
         
         elif choice == "2":
-            simulate_normal_activity(producer, pages, duration_seconds=180, edits_per_minute=2)
+            # Test veloce: 4 edit in 30 secondi (sotto soglia)
+            simulate_normal_activity(producer, pages, duration_seconds=30, edits_per_minute=8)
         
         elif choice == "3":
-            simulate_vandalism_attack(producer, pages, duration_seconds=120, edits_per_minute=8)
+            # Test veloce: 15 edit in 30 secondi
+            simulate_vandalism_attack(producer, pages, duration_seconds=30, edits_per_minute=30)
         
         elif choice == "4":
             print("\n--- Configurazione Custom ---")
-            duration = int(input("Durata in secondi (es. 180): "))
-            rate = int(input("Modifiche al minuto (es. 6): "))
+            duration = int(input("Durata in secondi (es. 30): "))
+            rate = int(input("Modifiche al minuto (es. 20): "))
             scenario = input("Tipo (war/normal/vandalism): ").lower()
             
             if scenario == "war":

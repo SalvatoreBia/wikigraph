@@ -1,6 +1,6 @@
 services:
   
-
+  # --- Kafka (Per lo stream) ---
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     container_name: zookeeper
@@ -18,103 +18,129 @@ services:
     depends_on:
       - zookeeper
     ports:
-      
       - "9092:9092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      
-      
-      
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
 
+  # --- Cluster Apache Spark (Sostituisce i 4 Neo4j per l'analisi distribuita) ---
   
-
-  neo4j-1:
-    image: neo4j:5-enterprise
-    container_name: neo4j-1
+  spark-master:
+    image: apache/spark:3.5.3-scala2.12-java17-python3-ubuntu
+    container_name: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
     networks:
       - wikinet
     ports:
-      - "7474:7474" 
-      - "7687:7687" 
-    volumes:
-      - ./neo4j-data/1/data:/data
-      - ./neo4j-data/1/plugins:/plugins
+      - "8080:8080"  # Spark Master Web UI
+      - "7077:7077"  # Spark Master port
+      - "7078:7078"  # Driver port
+      - "7079:7079"  # BlockManager port
     environment:
-      
-      NEO4J_AUTH: neo4j/password
-      
-      NEO4J_server_memory_pagecache_size: 1G
-      
-      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
-      
-      NEO4J_PLUGINS: '["graph-data-science"]'
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      # Montiamo gli script Python e i dati
+      - ./src:/opt/spark-apps
+      - ./data:/opt/data
+      - ./spark_output:/opt/spark_output
 
-  neo4j-2:
-    image: neo4j:5-enterprise
-    container_name: neo4j-2
+  spark-worker-1:
+    image: apache/spark:3.5.3-scala2.12-java17-python3-ubuntu
+    container_name: spark-worker-1
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     networks:
       - wikinet
     ports:
-      - "7475:7474"
-      - "7688:7687"
-    volumes:
-      - ./neo4j-data/2/data:/data
-      - ./neo4j-data/2/plugins:/plugins
+      - "8081:8081"  # Worker 1 Web UI
     environment:
-      NEO4J_AUTH: neo4j/password
-      NEO4J_server_memory_pagecache_size: 1G
-      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
-      NEO4J_PLUGINS: '["graph-data-science"]'
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      # I worker hanno bisogno di accedere agli stessi percorsi
+      - ./src:/opt/spark-apps
+      - ./data:/opt/data
+      - ./spark_output:/opt/spark_output
+    depends_on:
+      - spark-master
 
-  neo4j-3:
-    image: neo4j:5-enterprise
-    container_name: neo4j-3
+  spark-worker-2:
+    image: apache/spark:3.5.3-scala2.12-java17-python3-ubuntu
+    container_name: spark-worker-2
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     networks:
       - wikinet
     ports:
-      - "7476:7474"
-      - "7689:7687"
-    volumes:
-      - ./neo4j-data/3/data:/data
-      - ./neo4j-data/3/plugins:/plugins
+      - "8082:8081"
     environment:
-      NEO4J_AUTH: neo4j/password
-      NEO4J_server_memory_pagecache_size: 1G
-      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
-      NEO4J_PLUGINS: '["graph-data-science"]'
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./src:/opt/spark-apps
+      - ./data:/opt/data
+      - ./spark_output:/opt/spark_output
+    depends_on:
+      - spark-master
 
-  neo4j-4:
-    image: neo4j:5-enterprise
-    container_name: neo4j-4
+  spark-worker-3:
+    image: apache/spark:3.5.3-scala2.12-java17-python3-ubuntu
+    container_name: spark-worker-3
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     networks:
       - wikinet
     ports:
-      - "7477:7474"
-      - "7690:7687"
-    volumes:
-      - ./neo4j-data/4/data:/data
-      - ./neo4j-data/4/plugins:/plugins
+      - "8083:8081"
     environment:
-      NEO4J_AUTH: neo4j/password
-      NEO4J_server_memory_pagecache_size: 1G
-      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
-      NEO4J_PLUGINS: '["graph-data-science"]'
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./src:/opt/spark-apps
+      - ./data:/opt/data
+      - ./spark_output:/opt/spark_output
+    depends_on:
+      - spark-master
 
+  spark-worker-4:
+    image: apache/spark:3.5.3-scala2.12-java17-python3-ubuntu
+    container_name: spark-worker-4
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    networks:
+      - wikinet
+    ports:
+      - "8084:8081"
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./src:/opt/spark-apps
+      - ./data:/opt/data
+      - ./spark_output:/opt/spark_output
+    depends_on:
+      - spark-master
 
 networks:
   wikinet:
     driver: bridge
-
-
-
-volumes:
-  neo4j-data-1:
-  neo4j-data-2:
-  neo4j-data-3:
-  neo4j-data-4:

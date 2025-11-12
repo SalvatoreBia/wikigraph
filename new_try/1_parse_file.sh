@@ -1,6 +1,5 @@
 
-# scaricati i comandi ripgrep e xsv
-
+# scaricati i comandi ripgrep
 
 # extract page id and title from itwiki-latest-page.sql
 rg -oP "\(([0-9]+),0,'(\w+)',0," --replace '$1,$2' data/itwiki-latest-page.sql > pagemap.csv

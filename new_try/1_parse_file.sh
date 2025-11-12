@@ -23,4 +23,4 @@ awk -F, '
     } 
 
     ($1 in valid) && ($2 in valid)
-' valid_ids.txt linkmap.csv > linkmap_cleaned.csv
+' valid_ids.txt linkmap.csv > finalmap.csv

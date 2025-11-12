@@ -1,4 +1,7 @@
 #!/bin/bash
+
+
+# non è smart, eseguilo solo se non hai già nessun file sql con quel nome
 DEST_DIR="data"
 BASE_URL="https://dumps.wikimedia.org/itwiki/latest/"
 FILES=("itwiki-latest-page.sql.gz" "itwiki-latest-pagelinks.sql.gz")

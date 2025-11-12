@@ -56,3 +56,5 @@ tmp/
 metastore_db/
 derby.log
 spark-warehouse/
+linkmap.csv
+pagemap.csv

@@ -16,7 +16,11 @@ spark_output/*
 
 # === Neo4j (new_try folder) ===
 new_try/data/
+new_try/data-master/
+new_try/data-worker-*/
 new_try/logs/
+new_try/logs-master/
+new_try/logs-worker-*/
 new_try/plugins/
 new_try/import/
 

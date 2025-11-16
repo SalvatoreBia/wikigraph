@@ -1,8 +1,40 @@
 services:
+  # --- Zookeeper (necessario per Kafka) ---
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    networks:
+      - wikinet
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  # --- Kafka (streaming events) ---
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    networks:
+      - wikinet
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+
+  # --- Neo4j (graph database) ---
   neo4j:
     image: neo4j:5-community  # Usa 'enterprise' se hai la licenza, altrimenti 'community'
     container_name: neo4j_server
     restart: unless-stopped
+    networks:
+      - wikinet
     ports:
       - "7474:7474" # HTTP (Neo4j Browser)
       - "7687:7687" # Bolt (Connessione driver/codice)
@@ -28,3 +60,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+networks:
+  wikinet:
+    driver: bridge

@@ -124,6 +124,58 @@ def run_louvain(driver, max_iterations=10, tolerance=0.0001):
         return record['communityCount']
 
 
+def run_leiden(driver, max_iterations=10, tolerance=0.0001, gamma=1.0):
+    print('\n--- Running Leiden Algorithm ---')
+    print(f'  Parameters:')
+    print(f'    Max iterations: {max_iterations}')
+    print(f'    Tolerance: {tolerance}')
+    print(f'    Gamma (resolution): {gamma}')
+    
+    with driver.session() as session:
+        stats_query = """
+        CALL gds.leiden.stats('wikiGraph', {
+            maxLevels: $maxIterations,
+            tolerance: $tolerance,
+            gamma: $gamma
+        })
+        YIELD communityCount, modularity, modularities
+        RETURN communityCount, modularity, modularities
+        """
+        
+        print('\n  Computing statistics...')
+        start_time = time.time()
+        result = session.run(stats_query, maxIterations=max_iterations, tolerance=tolerance, gamma=gamma)
+        record = result.single()
+        stats_time = time.time() - start_time
+        
+        print(f'\n  Statistics computed in {stats_time:.2f} seconds:')
+        print(f'    Community count: {record["communityCount"]}')
+        print(f'    Modularity: {record["modularity"]:.4f}')
+        print(f'    Levels: {len(record["modularities"])}')
+        
+        write_query = """
+        CALL gds.leiden.write('wikiGraph', {
+            writeProperty: 'community',
+            maxLevels: $maxIterations,
+            tolerance: $tolerance,
+            gamma: $gamma
+        })
+        YIELD communityCount, modularity, nodePropertiesWritten
+        RETURN communityCount, modularity, nodePropertiesWritten
+        """
+        
+        print('\n  Writing results to graph...')
+        start_time = time.time()
+        result = session.run(write_query, maxIterations=max_iterations, tolerance=tolerance, gamma=gamma)
+        record = result.single()
+        write_time = time.time() - start_time
+        
+        print(f'  Results written in {write_time:.2f} seconds')
+        print(f'    Properties written: {record["nodePropertiesWritten"]}')
+        
+        return record['communityCount']
+
+
 def run_lpa(driver, max_iterations=10):
     print('\n--- Running Label Propagation Algorithm ---')
     print(f'  Parameters:')
@@ -277,21 +329,26 @@ if __name__ == '__main__':
         epilog="""
 Examples:
   python3 4_community_detection.py --louvain          # Run Louvain algorithm
+  python3 4_community_detection.py --leiden           # Run Leiden algorithm (improved Louvain)
   python3 4_community_detection.py --lpa              # Run Label Propagation algorithm
-  python3 4_community_detection.py --louvain --max-iterations 20
+  python3 4_community_detection.py --leiden --gamma 1.5 --max-iterations 20
         """
     )
     
     algorithm_group = parser.add_mutually_exclusive_group(required=True)
     algorithm_group.add_argument('--louvain', action='store_true',
                                  help='Use Louvain algorithm for community detection')
+    algorithm_group.add_argument('--leiden', action='store_true',
+                                 help='Use Leiden algorithm for community detection (improved Louvain)')
     algorithm_group.add_argument('--lpa', action='store_true',
                                  help='Use Label Propagation Algorithm for community detection')
     
     parser.add_argument('--max-iterations', type=int, default=10,
                        help='Maximum number of iterations (default: 10)')
     parser.add_argument('--tolerance', type=float, default=0.0001,
-                       help='Tolerance for Louvain algorithm (default: 0.0001)')
+                       help='Tolerance for Louvain/Leiden algorithm (default: 0.0001)')
+    parser.add_argument('--gamma', type=float, default=1.0,
+                       help='Resolution parameter for Leiden algorithm (default: 1.0, higher=more communities)')
     parser.add_argument('--output', type=str, default='communities.csv',
                        help='Output file name (default: communities.csv)')
     
@@ -301,6 +358,9 @@ Examples:
     if args.louvain:
         algorithm_name = 'Louvain'
         output_file = args.output if args.output != 'communities.csv' else 'louvain_communities.csv'
+    elif args.leiden:
+        algorithm_name = 'Leiden'
+        output_file = args.output if args.output != 'communities.csv' else 'leiden_communities.csv'
     else:
         algorithm_name = 'Label Propagation'
         output_file = args.output if args.output != 'communities.csv' else 'lpa_communities.csv'
@@ -331,6 +391,11 @@ Examples:
                 community_count = run_louvain(driver, 
                                              max_iterations=args.max_iterations, 
                                              tolerance=args.tolerance)
+            elif args.leiden:
+                community_count = run_leiden(driver,
+                                            max_iterations=args.max_iterations,
+                                            tolerance=args.tolerance,
+                                            gamma=args.gamma)
             else:
                 community_count = run_lpa(driver, 
                                          max_iterations=args.max_iterations)

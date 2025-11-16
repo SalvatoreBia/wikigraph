@@ -14,6 +14,12 @@ neo4j-data/*
 spark_output/*
 *.html
 
+# === Neo4j (new_try folder) ===
+new_try/data/
+new_try/logs/
+new_try/plugins/
+new_try/import/
+
 # === Librerie esterne (non includere nel repo) ===
 lib/tom-select/
 lib/vis-9.1.2/
@@ -62,3 +68,6 @@ valid_ids.txt
 pagemap.csv
 linkmap.csv
 finalmap.csv
+
+*.o
+*.csv

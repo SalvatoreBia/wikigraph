@@ -139,6 +139,8 @@ void snowball_sample(int seed_id, int ith)
         return;
     }
 
+    fprintf(output_file, "src_page,dest_page\n");
+
     GHashTableIter iter;
     gpointer node_u_key, dummy_value;
     g_hash_table_iter_init(&iter, sampled_nodes);

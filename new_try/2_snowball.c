@@ -10,6 +10,7 @@
 #define K     2
 
 /*
+su arch tocca fa così 
 
 gcc 2_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 

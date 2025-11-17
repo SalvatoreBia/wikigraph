@@ -3,7 +3,7 @@ import csv
 
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')
-SAMPLE_FILE = './sample_2.csv'
+SAMPLE_FILE = './sample_3.csv'
 
 
 QUERY_BATCH = """
@@ -24,6 +24,30 @@ def test_connection(driver):
         return False
     
     return True
+
+
+def create_constraints(driver):
+    """
+    Crea un constraint di unicità sulla proprietà 'id' dei nodi :Node.
+    Questo crea automaticamente un indice, trasformando le operazioni MERGE
+    da scansioni lineari O(N) a lookup indicizzati O(1), riducendo drasticamente
+    i tempi di caricamento da ore a minuti.
+    """
+    print('\n--- Creating constraints and indexes ---')
+    
+    constraint_query = """
+    CREATE CONSTRAINT node_id_unique IF NOT EXISTS 
+    FOR (n:Node) REQUIRE n.id IS UNIQUE
+    """
+    
+    try:
+        with driver.session() as session:
+            session.run(constraint_query)
+            print('✓ Constraint di unicità creato su Node.id')
+            print('  (Indice automatico attivo per lookup O(1))')
+    
+    except Exception as e:
+        print(f'⚠ Errore durante la creazione del constraint: {e}')
 
 
 def run_batch(tx, batch_data):
@@ -79,6 +103,11 @@ if __name__ == '__main__':
             
             if is_connected:
                 print("Test connection passed.")
+                
+                # Crea l'indice PRIMA di caricare i dati
+                # Questo trasforma MERGE da O(N) a O(1) per ogni riga
+                create_constraints(driver)
+                
                 load_batch_data(driver, SAMPLE_FILE)
     
     except Exception as e:

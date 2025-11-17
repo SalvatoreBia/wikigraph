@@ -9,6 +9,13 @@
 #define SEEDS 4
 #define K     2
 
+/*
+
+gcc 2_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
+
+./snowball_app finalmap.csv
+
+*/
 
 // +------------------+
 // | GLOBAL VARIABLES |

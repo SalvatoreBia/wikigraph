@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #scarica a prescindere, non contr
-DEST_DIR="data"
+DEST_DIR="../data"
 BASE_URL="https://dumps.wikimedia.org/itwiki/latest/"
 FILES=("itwiki-latest-page.sql.gz" "itwiki-latest-pagelinks.sql.gz")
 

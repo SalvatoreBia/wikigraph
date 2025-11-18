@@ -1,13 +1,50 @@
 import json
 import time
 import uuid
+import sys
+import csv
 from kafka import KafkaProducer
 
-# CONFIG
+# --- CONFIGURAZIONE ---
 KAFKA_BROKER = 'localhost:9092'
-TOPIC_OUT = 'wiki-changes' # Lo stesso topic che ascolta il tuo stream processor
+TOPIC_OUT = 'wiki-changes' 
 PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
 PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
+PAGEMAP_FILE = "pagemap.csv"  # Assicurati che questo file sia nella stessa cartella o metti il path corretto
+
+def get_real_page_id(target_title):
+    """
+    Cerca nel pagemap.csv l'ID corrispondente al titolo target.
+    Questo garantisce che l'ID inviato a Kafka esista nel Grafo Neo4j.
+    """
+    print(f"🔍 Ricerca ID reale per la pagina: '{target_title}'...")
+    
+    try:
+        with open(PAGEMAP_FILE, 'r', encoding='utf-8', errors='replace') as f:
+            # Leggiamo riga per riga per evitare di caricare tutto in RAM se enorme
+            for line in f:
+                # Il formato atteso da script 2 è: id,title
+                parts = line.strip().split(',', 1)
+                
+                if len(parts) < 2:
+                    continue
+                
+                curr_id = parts[0].strip()
+                # Rimuoviamo eventuali apici rimasti dalla regex e spazi
+                curr_title = parts[1].replace("'", "").strip()
+                
+                if curr_title == target_title:
+                    print(f"✅ Trovato! La pagina corrisponde all'ID nel grafo: {curr_id}")
+                    return int(curr_id)
+                    
+        print(f"❌ ERRORE CRITICO: Titolo '{target_title}' non trovato in {PAGEMAP_FILE}.")
+        print("   Assicurati che il titolo sia esatto (case sensitive, underscore al posto degli spazi).")
+        sys.exit(1)
+        
+    except FileNotFoundError:
+        print(f"❌ ERRORE: File {PAGEMAP_FILE} non trovato.")
+        print("   Esegui prima '2_parse_file.sh' per generare la mappa.")
+        sys.exit(1)
 
 def create_producer():
     return KafkaProducer(
@@ -15,8 +52,8 @@ def create_producer():
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
 
-def send_event(producer, comment, user, is_vandalism):
-    """Crea un evento JSON in formato Wikimedia standard"""
+def send_event(producer, comment, user, is_vandalism, page_id):
+    """Crea un evento JSON in formato Wikimedia standard usando l'ID reale"""
     current_ts = int(time.time())
     
     event = {
@@ -32,12 +69,12 @@ def send_event(producer, comment, user, is_vandalism):
             "partition": 0,
             "offset": 12345
         },
-        "id": 999999, # ID fittizio o reale dal pagemap
+        "id": page_id, # <--- QUI USIAMO L'ID REALE DEL GRAFO
         "type": "edit",
         "namespace": 0,
         "title": PAGE_TITLE,
         "title_url": PAGE_URL,
-        "comment": comment,  # IL CAMPO CHIAVE
+        "comment": comment, 
         "timestamp": current_ts,
         "user": user,
         "bot": False,
@@ -56,11 +93,15 @@ def send_event(producer, comment, user, is_vandalism):
     print(f"📨 Inviato evento: [{user}] -> {comment}")
 
 if __name__ == "__main__":
+    # 1. Fase di Setup: Recuperiamo l'ID vero
+    REAL_PAGE_ID = get_real_page_id(PAGE_TITLE)
+    
+    # 2. Avvio Producer
     producer = create_producer()
     
     while True:
         print("\n" + "="*40)
-        print("SCENARIO TENNIS - REGIA")
+        print(f"SCENARIO TENNIS - REGIA (ID Pagina: {REAL_PAGE_ID})")
         print("="*40)
         print("1. Invia EDIT LEGITTIMO (Report TAS)")
         print("2. Invia EDIT VANDALICO (Accusa Dabrowski)")
@@ -77,7 +118,7 @@ if __name__ == "__main__":
                 "Dabrowski confermata innocente come da sentenza"
             ]
             for i, c in enumerate(comments):
-                send_event(producer, c, f"SportUpdater_{i}", False)
+                send_event(producer, c, f"SportUpdater_{i}", False, REAL_PAGE_ID)
                 time.sleep(0.5)
                 
         elif choice == '2':
@@ -89,7 +130,7 @@ if __name__ == "__main__":
                 "Tennis sport di dopati"
             ]
             for i, c in enumerate(comments):
-                send_event(producer, c, f"Troll_{i}", True)
+                send_event(producer, c, f"Troll_{i}", True, REAL_PAGE_ID)
                 time.sleep(0.5)
                 
         elif choice == 'q':

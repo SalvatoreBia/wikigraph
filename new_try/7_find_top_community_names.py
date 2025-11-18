@@ -109,9 +109,6 @@ if __name__ == "__main__":
             print_report(comm_data, mapping)
             
             print("\n" + "="*60)
-            print("SUGGERIMENTO PER DEMO")
-            print("Scegli una community con argomenti chiari (es. Storia, Scienza, Videogiochi)")
-            print("e annota il suo ID per il passo successivo.")
             
     except Exception as e:
         print(f"Errore connessione Neo4j: {e}")

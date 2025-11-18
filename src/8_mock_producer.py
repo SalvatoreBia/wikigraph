@@ -1,347 +1,148 @@
-"""
-8_mock_producer.py - Producer Mock per Testing
-
-Questo script simula eventi di modifica Wikipedia per testare
-il sistema di rilevamento hotspot senza dipendere dallo stream reale.
-
-Può simulare diversi scenari:
-1. Edit War - molte modifiche concentrate su poche pagine
-2. Attività normale - modifiche distribuite
-3. Vandalismo - modifiche rapide da pochi utenti
-"""
-
 import json
 import time
-import random
+import uuid
+import sys
+import csv
 from kafka import KafkaProducer
-from neo4j import GraphDatabase
 
-# --- Configurazione ---
+# --- CONFIGURAZIONE ---
 KAFKA_BROKER = 'localhost:9092'
-KAFKA_TOPIC = 'wiki-changes'
+TOPIC_OUT = 'wiki-changes' 
+PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
+PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
+PAGEMAP_FILE = "pagemap.csv" 
 
-# Connessione a Neo4j per ottenere pagine reali dal grafo
-NEO4J_URI = "bolt://localhost:7687"
-NEO4J_USER = "neo4j"
-NEO4J_PASS = "password"
-
+def get_real_page_id(target_title):
+    """
+    Cerca nel pagemap.csv l'ID corrispondente al titolo target.
+    Questo garantisce che l'ID inviato a Kafka esista nel Grafo Neo4j.
+    """
+    print(f"🔍 Ricerca ID reale per la pagina: '{target_title}'...")
+    
+    try:
+        with open(PAGEMAP_FILE, 'r', encoding='utf-8', errors='replace') as f:
+            for line in f:
+                parts = line.strip().split(',', 1)
+                if len(parts) < 2:
+                    continue
+                
+                curr_id = parts[0].strip()
+                curr_title = parts[1].replace("'", "").strip()
+                
+                if curr_title == target_title:
+                    print(f"✅ Trovato! La pagina corrisponde all'ID nel grafo: {curr_id}")
+                    return int(curr_id)
+                    
+        print(f"❌ ERRORE CRITICO: Titolo '{target_title}' non trovato in {PAGEMAP_FILE}.")
+        sys.exit(1)
+        
+    except FileNotFoundError:
+        print(f"❌ ERRORE: File {PAGEMAP_FILE} non trovato.")
+        print("   Esegui prima '2_parse_file.sh' per generare la mappa.")
+        sys.exit(1)
 
 def create_producer():
-    """Crea e restituisce un Kafka Producer."""
-    print(f"Connessione a Kafka su {KAFKA_BROKER}...")
-    try:
-        producer = KafkaProducer(
-            bootstrap_servers=[KAFKA_BROKER],
-            value_serializer=lambda v: json.dumps(v).encode('utf-8')
-        )
-        print("✓ Producer Kafka connesso!")
-        return producer
-    except Exception as e:
-        print(f"✗ Errore connessione Kafka: {e}")
-        return None
+    return KafkaProducer(
+        bootstrap_servers=[KAFKA_BROKER],
+        value_serializer=lambda v: json.dumps(v).encode('utf-8')
+    )
 
-
-def get_large_community_pages(neo4j_driver, limit=20):
-    """
-    Interroga Neo4j per trovare una comunità grande e 
-    restituisce alcune pagine da quella comunità.
+def send_event(producer, comment, user, is_vandalism, page_id):
+    """Crea un evento JSON in formato Wikimedia standard usando l'ID reale"""
+    current_ts = int(time.time())
     
-    Se le comunità non sono state calcolate, usa un fallback
-    che seleziona pagine con PageRank alto.
-    """
-    print("\nInterrogazione Neo4j per trovare pagine da testare...")
+    event = {
+        "$schema": "/mediawiki/recentchange/1.0.0",
+        "meta": {
+            "uri": PAGE_URL,
+            "request_id": str(uuid.uuid4()),
+            "id": str(uuid.uuid4()),
+            "dt": time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(current_ts)),
+            "domain": "it.wikipedia.org",
+            "stream": "mediawiki.recentchange",
+            "topic": "codfw.mediawiki.recentchange",
+            "partition": 0,
+            "offset": 12345
+        },
+        "id": page_id,
+        "type": "edit",
+        "namespace": 0,
+        "title": PAGE_TITLE,
+        "title_url": PAGE_URL,
+        "comment": comment, 
+        "timestamp": current_ts,
+        "user": user,
+        "bot": False,
+        "minor": False,
+        "length": {
+            "old": 15000,
+            "new": 15000 + (-500 if is_vandalism else 50)
+        },
+        "wiki": "itwiki",
+        "server_name": "it.wikipedia.org",
+        "parsedcomment": comment
+    }
     
-    # Prova prima a cercare comunità
-    query_with_community = """
-    MATCH (p:Page)
-    WHERE p.globalCommunityId IS NOT NULL
-    WITH p.globalCommunityId AS community, COUNT(p) AS size
-    ORDER BY size DESC
-    LIMIT 1
-    WITH community
-    MATCH (p:Page {globalCommunityId: community})
-    RETURN p.title AS title, p.globalCommunityId AS community
-    LIMIT $limit
-    """
-    
-    with neo4j_driver.session() as session:
-        try:
-            result = session.run(query_with_community, limit=limit)
-            pages = [(record["title"], record["community"]) for record in result]
-            
-            if pages:
-                community_id = pages[0][1]
-                titles = [p[0] for p in pages]
-                print(f"✓ Trovata comunità {community_id} con {len(titles)} pagine")
-                print(f"  Esempi: {', '.join(titles[:5])}...")
-                return titles, community_id
-        except Exception as e:
-            # Ignora errori se property 'community' non esiste
-            pass
-        
-        # FALLBACK: Se non ci sono comunità, usa pagine con PageRank alto
-        print("⚠️  Comunità non ancora calcolate, uso fallback...")
-        print("   (Esegui script 4 e 5 per calcolare le comunità)")
-        
-        fallback_query = """
-        MATCH (p:Page)
-        WHERE p.pagerank IS NOT NULL
-        RETURN p.title AS title, p.pagerank AS pagerank
-        ORDER BY p.pagerank DESC
-        LIMIT $limit
-        """
-        
-        result = session.run(fallback_query, limit=limit)
-        records = list(result)
-        
-        if records:
-            titles = [r["title"] for r in records]
-            # Usa ID fittizio per comunità
-            fake_community_id = "FALLBACK_0"
-            print(f"✓ Trovate {len(titles)} pagine importanti (per PageRank)")
-            print(f"  Esempi: {', '.join(titles[:5])}...")
-            print(f"  Comunità fittizia: {fake_community_id}")
-            return titles, fake_community_id
-        else:
-            print("✗ Nessuna pagina trovata nel database!")
-            print("   Assicurati di aver eseguito gli script 1-3")
-            return [], None
-
-
-def simulate_edit_war(producer, pages, duration_seconds=180, edits_per_minute=4):
-    """
-    Simula un'edit war: molte modifiche concentrate su poche pagine
-    in un breve periodo di tempo.
-    
-    Args:
-        producer: KafkaProducer instance
-        pages: Lista di titoli di pagine
-        duration_seconds: Durata della simulazione
-        edits_per_minute: Numero di modifiche al minuto
-    """
-    print(f"\n{'='*60}")
-    print("SCENARIO: EDIT WAR")
-    print(f"{'='*60}")
-    print(f"Durata: {duration_seconds}s | Modifiche/minuto: {edits_per_minute}")
-    print(f"Pagine target: {len(pages[:5])} pagine (concentrate)")
-    print(f"{'='*60}\n")
-    
-    # Concentra le modifiche su solo 3-5 pagine
-    hot_pages = pages[:min(5, len(pages))]
-    
-    users = [
-        "EditWarrior1",
-        "RevertBot",
-        "ControversialEditor",
-        "FactChecker99",
-        "TruthSeeker"
-    ]
-    
-    edit_types = ["edit", "new", "edit", "edit"]  # Maggioranza edit
-    
-    interval = 60.0 / edits_per_minute  # Tempo tra modifiche
-    total_edits = int((duration_seconds / 60) * edits_per_minute)
-    
-    print(f"Invio di {total_edits} eventi in {duration_seconds}s...")
-    print(f"Intervallo tra eventi: {interval:.1f}s\n")
-    
-    for i in range(total_edits):
-        event = {
-            "page_title": random.choice(hot_pages),
-            "user": random.choice(users),
-            "type": random.choice(edit_types),
-            "timestamp": int(time.time()),
-            "server_name": "it.wikipedia.org",
-            "bot": False
-        }
-        
-        try:
-            producer.send(KAFKA_TOPIC, value=event)
-            print(f"[{i+1}/{total_edits}] Inviato: '{event['page_title']}' by {event['user']}")
-            time.sleep(interval)
-        except Exception as e:
-            print(f"✗ Errore invio evento: {e}")
-    
-    print(f"\n✓ Simulazione completata! {total_edits} eventi inviati.")
-
-
-def simulate_normal_activity(producer, pages, duration_seconds=180, edits_per_minute=2):
-    """
-    Simula attività normale: modifiche distribuite su molte pagine.
-    """
-    print(f"\n{'='*60}")
-    print("SCENARIO: ATTIVITÀ NORMALE")
-    print(f"{'='*60}")
-    print(f"Durata: {duration_seconds}s | Modifiche/minuto: {edits_per_minute}")
-    print(f"Pagine target: {len(pages)} pagine (distribuite)")
-    print(f"{'='*60}\n")
-    
-    users = [f"User{i}" for i in range(20)]
-    edit_types = ["edit", "new", "categorize", "log"]
-    
-    interval = 60.0 / edits_per_minute
-    total_edits = int((duration_seconds / 60) * edits_per_minute)
-    
-    print(f"Invio di {total_edits} eventi in {duration_seconds}s...")
-    print(f"Intervallo tra eventi: {interval:.1f}s\n")
-    
-    for i in range(total_edits):
-        event = {
-            "page_title": random.choice(pages),
-            "user": random.choice(users),
-            "type": random.choice(edit_types),
-            "timestamp": int(time.time()),
-            "server_name": "it.wikipedia.org",
-            "bot": random.choice([False, False, False, True])  # 25% bot
-        }
-        
-        try:
-            producer.send(KAFKA_TOPIC, value=event)
-            print(f"[{i+1}/{total_edits}] Inviato: '{event['page_title']}' by {event['user']}")
-            time.sleep(interval)
-        except Exception as e:
-            print(f"✗ Errore invio evento: {e}")
-    
-    print(f"\n✓ Simulazione completata! {total_edits} eventi inviati.")
-
-
-def simulate_vandalism_attack(producer, pages, duration_seconds=120, edits_per_minute=8):
-    """
-    Simula un attacco di vandalismo: modifiche molto rapide da pochi utenti.
-    """
-    print(f"\n{'='*60}")
-    print("SCENARIO: ATTACCO VANDALISMO")
-    print(f"{'='*60}")
-    print(f"Durata: {duration_seconds}s | Modifiche/minuto: {edits_per_minute}")
-    print(f"Pagine target: {len(pages[:3])} pagine (concentrate)")
-    print(f"{'='*60}\n")
-    
-    # Vandalismo su poche pagine
-    target_pages = pages[:min(3, len(pages))]
-    
-    # Pochi vandali
-    vandals = ["Vandal123", "TrollMaster", "AnonymousIP"]
-    
-    interval = 60.0 / edits_per_minute
-    total_edits = int((duration_seconds / 60) * edits_per_minute)
-    
-    print(f"Invio di {total_edits} eventi in {duration_seconds}s...")
-    print(f"Intervallo tra eventi: {interval:.1f}s\n")
-    
-    for i in range(total_edits):
-        event = {
-            "page_title": random.choice(target_pages),
-            "user": random.choice(vandals),
-            "type": "edit",  # Solo edit
-            "timestamp": int(time.time()),
-            "server_name": "it.wikipedia.org",
-            "bot": False
-        }
-        
-        try:
-            producer.send(KAFKA_TOPIC, value=event)
-            print(f"[{i+1}/{total_edits}] Inviato: '{event['page_title']}' by {event['user']}")
-            time.sleep(interval)
-        except Exception as e:
-            print(f"✗ Errore invio evento: {e}")
-    
-    print(f"\n✓ Simulazione completata! {total_edits} eventi inviati.")
-
-
-def main():
-    """Menu principale per scegliere lo scenario di test."""
-    
-    # Connessione a Neo4j
-    print("="*60)
-    print("MOCK PRODUCER - Testing System")
-    print("="*60)
-    
-    driver = None
-    try:
-        driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASS))
-        print("✓ Connesso a Neo4j")
-    except Exception as e:
-        print(f"✗ Errore connessione Neo4j: {e}")
-        print("Assicurati che Neo4j sia in esecuzione!")
-        return
-    
-    # Ottieni pagine da una comunità grande
-    pages, community_id = get_large_community_pages(driver)
-    
-    if not pages:
-        print("\nImpossibile procedere senza pagine dal database.")
-        driver.close()
-        return
-    
-    # Crea producer Kafka
-    producer = create_producer()
-    if not producer:
-        driver.close()
-        return
-    
-    # Menu di scelta
-    print("\n" + "="*60)
-    print("SCEGLI UNO SCENARIO DI TEST:")
-    print("="*60)
-    print("1. Edit War RAPIDO (20 edit/min x 30s = ~10 edit)")
-    print("   → Dovrebbe attivare l'allarme (soglia: 5 edit)")
-    print()
-    print("2. Attività Normale RAPIDA (8 edit/min x 30s = ~4 edit)")
-    print("   → NON dovrebbe attivare l'allarme (soglia: 5 edit)")
-    print()
-    print("3. Vandalismo RAPIDO (30 edit/min x 30s = ~15 edit)")
-    print("   → Dovrebbe attivare l'allarme (soglia: 5 edit)")
-    print()
-    print("4. Custom (scegli parametri)")
-    print("="*60)
-    
-    choice = input("\nInserisci la tua scelta (1-4): ").strip()
-    
-    try:
-        if choice == "1":
-            # Test veloce: 10 edit in 30 secondi
-            simulate_edit_war(producer, pages, duration_seconds=30, edits_per_minute=20)
-        
-        elif choice == "2":
-            # Test veloce: 4 edit in 30 secondi (sotto soglia)
-            simulate_normal_activity(producer, pages, duration_seconds=30, edits_per_minute=8)
-        
-        elif choice == "3":
-            # Test veloce: 15 edit in 30 secondi
-            simulate_vandalism_attack(producer, pages, duration_seconds=30, edits_per_minute=30)
-        
-        elif choice == "4":
-            print("\n--- Configurazione Custom ---")
-            duration = int(input("Durata in secondi (es. 30): "))
-            rate = int(input("Modifiche al minuto (es. 20): "))
-            scenario = input("Tipo (war/normal/vandalism): ").lower()
-            
-            if scenario == "war":
-                simulate_edit_war(producer, pages, duration, rate)
-            elif scenario == "normal":
-                simulate_normal_activity(producer, pages, duration, rate)
-            elif scenario == "vandalism":
-                simulate_vandalism_attack(producer, pages, duration, rate)
-            else:
-                print("Tipo non riconosciuto!")
-        
-        else:
-            print("Scelta non valida!")
-    
-    except KeyboardInterrupt:
-        print("\n\n⚠ Simulazione interrotta dall'utente.")
-    except Exception as e:
-        print(f"\n✗ Errore durante la simulazione: {e}")
-    finally:
-        # Cleanup
-        if producer:
-            producer.flush()
-            producer.close()
-            print("\n✓ Producer Kafka chiuso.")
-        if driver:
-            driver.close()
-            print("✓ Connessione Neo4j chiusa.")
-
+    producer.send(TOPIC_OUT, value=event)
+    producer.flush()
+    print(f"📨 Inviato evento ({'VANDALO' if is_vandalism else 'LEGIT'}): [{user}] -> {comment}")
 
 if __name__ == "__main__":
-    main()
+    REAL_PAGE_ID = get_real_page_id(PAGE_TITLE)
+    producer = create_producer()
+    
+    while True:
+        print("\n" + "="*50)
+        print(f"SCENARIO TENNIS - REGIA (ID Pagina: {REAL_PAGE_ID})")
+        print("="*50)
+        print("1. Invia EDIT LEGITTIMI (Report TAS)")
+        print("2. Invia EDIT VANDALICI (Attacco massivo)")
+        print("3. Invia SCENARIO MISTO (7 edit: 4 Legit, 3 Vandal)") # <--- NUOVA OPZIONE
+        print("q. Esci")
+        
+        choice = input("Scelta: ").strip()
+        
+        if choice == '1':
+            comments = [
+                "Aggiornamento verdetto TAS: titolo revocato a Rossi",
+                "Inserimento fonte comunicato Losanna",
+                "Correzione albo d'oro (Rossi squalificato)",
+                "Dabrowski confermata innocente come da sentenza"
+            ]
+            for i, c in enumerate(comments):
+                send_event(producer, c, f"SportUpdater_{i}", False, REAL_PAGE_ID)
+                time.sleep(0.5)
+                
+        elif choice == '2':
+            comments = [
+                "TUTTI DROGATI VERGOGNA!!",
+                "Anche la Dabrowski sapeva tutto, squalificatela!",
+                "CANCELLATE QUESTA PAGINA FALSA",
+                "Tennis sport di dopati"
+            ]
+            for i, c in enumerate(comments):
+                send_event(producer, c, f"Troll_{i}", True, REAL_PAGE_ID)
+                time.sleep(0.5)
+
+        elif choice == '3':
+            # Scenario Misto: L'obiettivo è vedere se l'AI filtra quelli buoni da quelli cattivi
+            # quando arrivano insieme.
+            print("--- Avvio sequenza mista ---")
+            mixed_sequence = [
+                ("Aggiunta nota ufficiale TAS su Rossi", "Journalist_A", False),      # Legit
+                ("Dabrowski complice! Squalifica a vita!", "Hater_01", True),         # Vandal
+                ("Fix punteggio set finale", "WikiGnome", False),                     # Legit
+                ("QUESTO SPORT FA SCHIFO", "Troll_Z", True),                          # Vandal
+                ("Aggiornamento template vincitori", "Editor_Pro", False),            # Legit (Qui dovrebbe scattare il trigger > 4)
+                ("Rimosso contenuto offensivo precedente", "Admin_Junior", False),    # Legit
+                ("WIKIPEDIA MENTE!!1!", "Hater_02", True)                             # Vandal
+            ]
+            
+            for comment, user, is_vandal in mixed_sequence:
+                send_event(producer, comment, user, is_vandal, REAL_PAGE_ID)
+                time.sleep(0.8) # Leggero delay per apprezzare il log
+                
+        elif choice == 'q':
+            break
+            
+    producer.close()

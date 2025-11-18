@@ -12,7 +12,7 @@
 /*
 su arch tocca fa così 
 
-gcc 2_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
+gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 
 ./snowball_app finalmap.csv
 

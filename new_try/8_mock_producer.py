@@ -10,7 +10,7 @@ KAFKA_BROKER = 'localhost:9092'
 TOPIC_OUT = 'wiki-changes' 
 PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
 PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
-PAGEMAP_FILE = "pagemap.csv"  # Assicurati che questo file sia nella stessa cartella o metti il path corretto
+PAGEMAP_FILE = "pagemap.csv" 
 
 def get_real_page_id(target_title):
     """
@@ -21,16 +21,12 @@ def get_real_page_id(target_title):
     
     try:
         with open(PAGEMAP_FILE, 'r', encoding='utf-8', errors='replace') as f:
-            # Leggiamo riga per riga per evitare di caricare tutto in RAM se enorme
             for line in f:
-                # Il formato atteso da script 2 è: id,title
                 parts = line.strip().split(',', 1)
-                
                 if len(parts) < 2:
                     continue
                 
                 curr_id = parts[0].strip()
-                # Rimuoviamo eventuali apici rimasti dalla regex e spazi
                 curr_title = parts[1].replace("'", "").strip()
                 
                 if curr_title == target_title:
@@ -38,7 +34,6 @@ def get_real_page_id(target_title):
                     return int(curr_id)
                     
         print(f"❌ ERRORE CRITICO: Titolo '{target_title}' non trovato in {PAGEMAP_FILE}.")
-        print("   Assicurati che il titolo sia esatto (case sensitive, underscore al posto degli spazi).")
         sys.exit(1)
         
     except FileNotFoundError:
@@ -69,7 +64,7 @@ def send_event(producer, comment, user, is_vandalism, page_id):
             "partition": 0,
             "offset": 12345
         },
-        "id": page_id, # <--- QUI USIAMO L'ID REALE DEL GRAFO
+        "id": page_id,
         "type": "edit",
         "namespace": 0,
         "title": PAGE_TITLE,
@@ -90,27 +85,24 @@ def send_event(producer, comment, user, is_vandalism, page_id):
     
     producer.send(TOPIC_OUT, value=event)
     producer.flush()
-    print(f"📨 Inviato evento: [{user}] -> {comment}")
+    print(f"📨 Inviato evento ({'VANDALO' if is_vandalism else 'LEGIT'}): [{user}] -> {comment}")
 
 if __name__ == "__main__":
-    # 1. Fase di Setup: Recuperiamo l'ID vero
     REAL_PAGE_ID = get_real_page_id(PAGE_TITLE)
-    
-    # 2. Avvio Producer
     producer = create_producer()
     
     while True:
-        print("\n" + "="*40)
+        print("\n" + "="*50)
         print(f"SCENARIO TENNIS - REGIA (ID Pagina: {REAL_PAGE_ID})")
-        print("="*40)
-        print("1. Invia EDIT LEGITTIMO (Report TAS)")
-        print("2. Invia EDIT VANDALICO (Accusa Dabrowski)")
+        print("="*50)
+        print("1. Invia EDIT LEGITTIMI (Report TAS)")
+        print("2. Invia EDIT VANDALICI (Attacco massivo)")
+        print("3. Invia SCENARIO MISTO (7 edit: 4 Legit, 3 Vandal)") # <--- NUOVA OPZIONE
         print("q. Esci")
         
         choice = input("Scelta: ").strip()
         
         if choice == '1':
-            # Simuliamo 3-4 edit legittimi veloci per fare 'massa'
             comments = [
                 "Aggiornamento verdetto TAS: titolo revocato a Rossi",
                 "Inserimento fonte comunicato Losanna",
@@ -122,7 +114,6 @@ if __name__ == "__main__":
                 time.sleep(0.5)
                 
         elif choice == '2':
-            # Simuliamo attacco vandalico
             comments = [
                 "TUTTI DROGATI VERGOGNA!!",
                 "Anche la Dabrowski sapeva tutto, squalificatela!",
@@ -132,6 +123,24 @@ if __name__ == "__main__":
             for i, c in enumerate(comments):
                 send_event(producer, c, f"Troll_{i}", True, REAL_PAGE_ID)
                 time.sleep(0.5)
+
+        elif choice == '3':
+            # Scenario Misto: L'obiettivo è vedere se l'AI filtra quelli buoni da quelli cattivi
+            # quando arrivano insieme.
+            print("--- Avvio sequenza mista ---")
+            mixed_sequence = [
+                ("Aggiunta nota ufficiale TAS su Rossi", "Journalist_A", False),      # Legit
+                ("Dabrowski complice! Squalifica a vita!", "Hater_01", True),         # Vandal
+                ("Fix punteggio set finale", "WikiGnome", False),                     # Legit
+                ("QUESTO SPORT FA SCHIFO", "Troll_Z", True),                          # Vandal
+                ("Aggiornamento template vincitori", "Editor_Pro", False),            # Legit (Qui dovrebbe scattare il trigger > 4)
+                ("Rimosso contenuto offensivo precedente", "Admin_Junior", False),    # Legit
+                ("WIKIPEDIA MENTE!!1!", "Hater_02", True)                             # Vandal
+            ]
+            
+            for comment, user, is_vandal in mixed_sequence:
+                send_event(producer, comment, user, is_vandal, REAL_PAGE_ID)
+                time.sleep(0.8) # Leggero delay per apprezzare il log
                 
         elif choice == 'q':
             break

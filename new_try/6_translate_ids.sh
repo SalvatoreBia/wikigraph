@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # File di mappatura
-MAP_FILE="pagemap.csv"
+MAP_FILE="../data/pagemap.csv"
 
 echo "--- Inizio traduzione Batch ID -> Nomi ---"
 echo "Mappa di riferimento: $MAP_FILE"
@@ -14,7 +14,7 @@ fi
 
 # Ciclo su tutti i file che iniziano con sample_ seguito da un numero
 # Esempio match: sample_0.csv, sample_1.csv, sample_10.csv
-for EDGE_FILE in sample_[0-9]*.csv; do
+for EDGE_FILE in ../data/sample_[0-9]*.csv; do
 
     # Controllo se esistono file (nel caso il glob non trovi nulla)
     if [[ ! -e "$EDGE_FILE" ]]; then
@@ -30,7 +30,7 @@ for EDGE_FILE in sample_[0-9]*.csv; do
 
     # AWK Script
     awk -F, '
-        # Fase 1: Caricamento della Mappa (pagemap.csv)
+        # Fase 1: Caricamento della Mappa (../data/pagemap.csv)
         NR == FNR { 
             # Pulisce il titolo da eventuali apici singoli extra
             gsub(/\047/, "", $2); 

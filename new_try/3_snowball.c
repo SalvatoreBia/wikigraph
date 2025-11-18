@@ -14,7 +14,7 @@ su arch tocca fa così
 
 gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 
-./snowball_app finalmap.csv
+./snowball ../data/finalmap.csv
 
 */
 
@@ -22,6 +22,9 @@ gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 // | GLOBAL VARIABLES |
 // +------------------+
 GHashTable *map;
+
+// Buffer per memorizzare il percorso della directory di output
+char output_dir[1024] = "";
 
 struct node
 {
@@ -70,12 +73,10 @@ void node_destroy_func(gpointer key, gpointer value, gpointer user_data)
 /*
  * Esegue il campionamento a palla di neve (snowball sampling) partendo da un nodo 'seed_id'.
  * L'algoritmo si svolge in due fasi:
- * 
- * 1. FASE A (Ricerca Nodi): Esegue una ricerca in ampiezza (BFS) per K 'onde'.
+ * * 1. FASE A (Ricerca Nodi): Esegue una ricerca in ampiezza (BFS) per K 'onde'.
  * Partendo dal seme, trova tutti i vicini (Onda 1), poi i vicini dei vicini (Onda 2), ecc.
  * Tutti i nodi unici trovati vengono memorizzati in un set 'sampled_nodes'.
- * 
- * 2. FASE B (Estrazione Archi): Itera su tutti i nodi trovati (il set 'sampled_nodes').
+ * * 2. FASE B (Estrazione Archi): Itera su tutti i nodi trovati (il set 'sampled_nodes').
  * Per ogni nodo, controlla i suoi vicini *originali*. Se un vicino è *anch'esso*
  * presente nel set 'sampled_nodes', l'arco tra loro viene salvato nel file di output.
  * Questo crea il "sottografo indotto" del campione.
@@ -136,8 +137,9 @@ void snowball_sample(int seed_id, int ith)
 
     // === FASE B: ESTRARRE GLI ARCHI (SOTTOGRAFO INDOTTO) ===
 
-    char filename[100];
-    sprintf(filename, "sample_%d.csv", ith); 
+    char filename[1024];
+    // Usa la directory estratta nel main per costruire il percorso completo
+    sprintf(filename, "%ssample_%d.csv", output_dir, ith); 
 
     FILE* output_file = fopen(filename, "w");
     if (output_file == NULL)
@@ -201,6 +203,25 @@ int main(int argc, char **argv)
         fprintf(stderr, "Usage: %s <input_file>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
+
+    // --- LOGICA ESTRAZIONE DIRECTORY ---
+    char *input_path = argv[1];
+    char *last_slash = strrchr(input_path, '/');
+
+    if (last_slash != NULL) {
+        // Calcola la lunghezza fino all'ultimo slash incluso
+        int length = last_slash - input_path + 1;
+        if (length >= 1024) length = 1023; // Sicurezza buffer
+        
+        strncpy(output_dir, input_path, length);
+        output_dir[length] = '\0'; // Termina correttamente la stringa
+    } else {
+        // Nessuna directory specificata, usa la cartella corrente
+        output_dir[0] = '\0';
+    }
+
+    fprintf(stdout, "Output directory set to: '%s'\n", output_dir);
+    // -----------------------------------
 
     FILE *input = fopen(argv[1], "r");
     if (input == NULL)

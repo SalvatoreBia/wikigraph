@@ -1,11 +1,10 @@
 import csv
-
+import time
+import sys
 from neo4j import GraphDatabase
 
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')
-SAMPLE_FILE = './sample_3.csv'
-
 
 QUERY_BATCH = """
 UNWIND $batch AS row
@@ -14,25 +13,32 @@ MERGE (b:Node {id: row.dest})
 MERGE (a)-[:LINKED_TO]->(b)
 """
 
-
-def test_connection(driver):
-    try:
-        driver.verify_connectivity()
-        print(f"Connessione a {URI} riuscita.")
-
-    except Exception as e:
-        print(f"Errore di connessione: {e}")
-        return False
-    
-    return True
-
+def wait_for_connection(uri, auth):
+    """
+    Tenta di connettersi a Neo4j. Se fallisce (es. DB in avvio),
+    riprova ogni 3 secondi all'infinito.
+    Restituisce un driver verificato e connesso.
+    """
+    while True:
+        driver = None
+        try:
+            driver = GraphDatabase.driver(uri, auth=auth)
+            driver.verify_connectivity()
+            print(f"Connessione a {uri} riuscita.")
+            return driver
+        except Exception as e:
+            print(f"Errore di connessione: {e}")
+            print("Riprovo la connessione tra 3 secondi...")
+            
+            # Se il driver è stato istanziato ma la verifica è fallita, chiudiamolo
+            if driver:
+                driver.close()
+            
+            time.sleep(3)
 
 def create_constraints(driver):
     """
     Crea un constraint di unicità sulla proprietà 'id' dei nodi :Node.
-    Questo crea automaticamente un indice, trasformando le operazioni MERGE
-    da scansioni lineari O(N) a lookup indicizzati O(1), riducendo drasticamente
-    i tempi di caricamento da ore a minuti.
     """
     print('\n--- Creating constraints and indexes ---')
     
@@ -50,25 +56,23 @@ def create_constraints(driver):
     except Exception as e:
         print(f'⚠ Errore durante la creazione del constraint: {e}')
 
-
 def run_batch(tx, batch_data):
     tx.run(QUERY_BATCH, batch=batch_data)
 
-
 def load_batch_data(driver, filename):
-    print('\n--- Loading data ---')
+    print(f'\n--- Loading data from {filename} ---')
     batch_size = 1000
     batch = []
     total_rows = 0
 
     try:
-        with open(SAMPLE_FILE, mode='r', encoding='utf-8') as file:
+        with open(filename, mode='r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
 
             print('Checking for headers...')
             if 'src_page' not in reader.fieldnames or 'dest_page' not in reader.fieldnames:
                 print('--- ERROR: CSV headers not found ---')
-                print('\tThe SAMPLE_FILE should contain the following columns: src_page,dest_page')
+                print('\tThe CSV file should contain the following columns: src_page,dest_page')
                 return
             
             with driver.session() as session:
@@ -90,26 +94,35 @@ def load_batch_data(driver, filename):
                     print(f"  ... Inserting Final batch. Total rows elaborated: {total_rows}")
     
     except FileNotFoundError:
-        print(f'--- ERROR: file {SAMPLE_FILE} not found. ---')
+        print(f'--- ERROR: file {filename} not found. ---')
     except Exception as e:
         print(f'--- ERROR: data loading failed. ---')
         print(f'Error details: {e}')
 
-
-
 if __name__ == '__main__':
+    # Controllo argomenti input
+    if len(sys.argv) < 2:
+        print("Errore: Devi specificare il numero del sample.")
+        print("Esempio uso: python 4_load_graph.py 2")
+        sys.exit(1)
+
+    sample_number = sys.argv[1]
+    sample_file_path = f'../data/sample_{sample_number}.csv'
+
+    # Ottieni il driver con logica di retry
+    driver = wait_for_connection(URI, AUTH)
+
+    # Usa il driver all'interno di un blocco try/finally per assicurare la chiusura
     try:
-        with GraphDatabase.driver(URI, auth=AUTH) as driver:
-            is_connected = test_connection(driver)
-            
-            if is_connected:
-                print("Test connection passed.")
-                
-                # Crea l'indice PRIMA di caricare i dati
-                # Questo trasforma MERGE da O(N) a O(1) per ogni riga
-                create_constraints(driver)
-                
-                load_batch_data(driver, SAMPLE_FILE)
+        # Crea l'indice PRIMA di caricare i dati
+        create_constraints(driver)
+        
+        # Carica i dati dal file specifico
+        load_batch_data(driver, sample_file_path)
     
     except Exception as e:
-        print(f"Impossibile creare il driver Neo4j: {e}")
+        print(f"Errore durante l'esecuzione: {e}")
+    finally:
+        if driver:
+            driver.close()
+            print("\nDriver chiuso.")

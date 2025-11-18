@@ -23,3 +23,9 @@ awk -F, '
 
     ($1 in valid) && ($2 in valid)
 ' valid_ids.txt linkmap.csv > finalmap.csv
+
+
+
+
+# comando da eseguire post snowball per contare quanti nodi
+# awk -F, 'NR > 1 { nodes[$1]++; nodes[$2]++ } END { print length(nodes) }' sample_3.csv

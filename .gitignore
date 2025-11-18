@@ -76,3 +76,7 @@ finalmap.csv
 *.o
 *.csv
 new_try/snowball
+src/plugins
+src/logs
+src/import
+src/data

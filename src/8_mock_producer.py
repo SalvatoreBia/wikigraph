@@ -10,7 +10,7 @@ KAFKA_BROKER = 'localhost:9092'
 TOPIC_OUT = 'wiki-changes' 
 PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
 PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
-PAGEMAP_FILE = "pagemap.csv" 
+PAGEMAP_FILE = "../data/pagemap.csv" 
 
 def get_real_page_id(target_title):
     """

@@ -27,7 +27,9 @@ for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do
 
     # Genera il nome del file di output nella directory sample_with_names/
     BASE_NAME=$(basename "$EDGE_FILE")
-    OUTPUT_FILE="../data/sample_with_names/$BASE_NAME"
+    # Estrae solo il numero dal nome del file (es. sample_0.csv -> 0)
+    NUM=$(echo "$BASE_NAME" | sed 's/sample_\([0-9]*\)\.csv/\1/')
+    OUTPUT_FILE="../data/sample_with_names/sample_with_names_${NUM}.csv"
 
     echo "Elaborazione in corso: $EDGE_FILE  -->  $OUTPUT_FILE"
 

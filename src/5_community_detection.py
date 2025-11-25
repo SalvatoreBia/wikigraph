@@ -1,9 +1,10 @@
-from neo4j import GraphDatabase
-import csv
-import time
 import argparse
-import sys
+import csv
 import os
+import sys
+import time
+
+from neo4j import GraphDatabase
 
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')

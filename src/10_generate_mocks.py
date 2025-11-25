@@ -1,15 +1,15 @@
-import os
+import csv
 import json
-import time
+import os
 import random
 import re
-import csv
 import sys
-import uuid
 import threading
-from pathlib import Path
-from itertools import cycle
+import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from itertools import cycle
+from pathlib import Path
 
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -223,6 +223,39 @@ def generate_edits_task(topic_title, edit_type, count, context_snippet):
         print(f"⚠️ Errore Edits {topic_title} ({edit_type}): {e}")
         return []
 
+def count_valid_html_pages():
+    """Conta il numero di pagine HTML non vuote nella cartella trusted_html_pages."""
+    if not HTML_DIR.exists():
+        return 0
+    
+    valid_pages = 0
+    for html_file in HTML_DIR.glob("*.html"):
+        try:
+            if html_file.stat().st_size > 100:  # Almeno 100 bytes
+                valid_pages += 1
+        except Exception:
+            continue
+    return valid_pages
+
+def count_valid_edits(filepath):
+    """Conta il numero di edit correttamente formattati in un file JSON."""
+    if not filepath.exists():
+        return 0
+    
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if not isinstance(data, list):
+                return 0
+            # Verifica che ogni edit abbia i campi essenziali
+            valid_count = 0
+            for edit in data:
+                if all(key in edit for key in ["id", "user", "comment", "timestamp", "is_vandalism"]):
+                    valid_count += 1
+            return valid_count
+    except (json.JSONDecodeError, FileNotFoundError):
+        return 0
+
 def generate_dataset():
     # Setup directory
     HTML_DIR.mkdir(parents=True, exist_ok=True)
@@ -230,9 +263,21 @@ def generate_dataset():
     print(f"📂 HTML_DIR: {HTML_DIR.resolve()}")
     print(f"📂 MOCK_DIR: {MOCK_DIR.resolve()}")
     
-    # Pulisci file precedenti se vuoi ripartire da zero (opzionale, qui appendiamo)
-    if LEGIT_FILE.exists(): LEGIT_FILE.unlink()
-    if VANDAL_FILE.exists(): VANDAL_FILE.unlink()
+    # Controllo pagine HTML esistenti
+    existing_html_pages = count_valid_html_pages()
+    print(f"\n📊 Pagine HTML esistenti: {existing_html_pages}/5")
+    
+    # Controllo edit esistenti
+    existing_legit = count_valid_edits(LEGIT_FILE)
+    existing_vandal = count_valid_edits(VANDAL_FILE)
+    print(f"📊 Edit Legittimi esistenti: {existing_legit}/100")
+    print(f"📊 Edit Vandalici esistenti: {existing_vandal}/100")
+    
+    TOTAL_EDITS_TARGET = 100  # 100 legit + 100 vandal
+    missing_legit = max(0, TOTAL_EDITS_TARGET - existing_legit)
+    missing_vandal = max(0, TOTAL_EDITS_TARGET - existing_vandal)
+    
+    print(f"\n🎯 Da generare: {missing_legit} Legit, {missing_vandal} Vandal")
 
     # 1. Trova Community
     driver = GraphDatabase.driver(URI, auth=AUTH)
@@ -251,35 +296,68 @@ def generate_dataset():
         print(f"\n🎯 COMMUNITY SELEZIONATA: {selected_comm['comm_id']}")
         print(f"   Topics Target (5): {target_topics}")
         
-        # 2. Generazione HTML Parallela
-        print("\n🚀 Avvio Generazione HTML (Parallela)...")
+        # 2. Generazione HTML Parallela (solo se necessario)
         generated_pages = {}
-        with ThreadPoolExecutor(max_workers=3) as executor:
-            futures = {executor.submit(generate_html_task, title): title for title in target_topics}
-            for future in as_completed(futures):
-                res = future.result()
-                if res:
-                    generated_pages[res['title']] = res
-        
-        # 3. Generazione Edits Parallela
-        # Target: 200 edits totali. Diviso per numero topic.
-        # Se 5 topic -> 40 edit a testa (20 legit, 20 vandal)
-        edits_per_topic = 200 // len(target_topics)
-        half_edits = edits_per_topic // 2 # 20 legit, 20 vandal
-        
-        print(f"\n🚀 Avvio Generazione Edits (Parallela) - {edits_per_topic} per topic...")
-        
-        with ThreadPoolExecutor(max_workers=3) as executor:
-            futures = []
+        if existing_html_pages >= 5:
+            print("\n✅ Pagine HTML già presenti (5/5), skip generazione HTML")
+            # Carica snippet esistenti per context
             for title in target_topics:
-                snippet = generated_pages.get(title, {}).get('content_snippet', "")
-                # Task Legit
-                futures.append(executor.submit(generate_edits_task, title, "LEGITTIMI", half_edits, snippet))
-                # Task Vandal
-                futures.append(executor.submit(generate_edits_task, title, "VANDALICI", half_edits, snippet))
+                clean_title = re.sub(r'[^\w]', '_', title)
+                html_path = HTML_DIR / f"trusted_{clean_title}.html"
+                if html_path.exists():
+                    try:
+                        with open(html_path, "r", encoding="utf-8") as f:
+                            content = f.read()
+                            generated_pages[title] = {
+                                "title": title,
+                                "path": str(html_path),
+                                "content_snippet": content[:500]
+                            }
+                    except Exception:
+                        pass
+        else:
+            print("\n🚀 Avvio Generazione HTML (Parallela)...")
+            with ThreadPoolExecutor(max_workers=3) as executor:
+                futures = {executor.submit(generate_html_task, title): title for title in target_topics}
+                for future in as_completed(futures):
+                    res = future.result()
+                    if res:
+                        generated_pages[res['title']] = res
+        
+        # 3. Generazione Edits Parallela (solo se necessario)
+        if missing_legit == 0 and missing_vandal == 0:
+            print("\n✅ Tutti gli edit necessari sono già presenti, nessuna generazione richiesta")
+        else:
+            # Distribuzione edit tra topic
+            num_topics = len(target_topics)
+            legit_per_topic = missing_legit // num_topics if missing_legit > 0 else 0
+            vandal_per_topic = missing_vandal // num_topics if missing_vandal > 0 else 0
             
-            for future in as_completed(futures):
-                future.result() # Attendiamo completamento per loggare errori eventuali
+            # Aggiungiamo i rimanenti al primo topic
+            legit_remainder = missing_legit % num_topics
+            vandal_remainder = missing_vandal % num_topics
+            
+            print(f"\n🚀 Avvio Generazione Edits (Parallela)...")
+            print(f"   Distribuzione: ~{legit_per_topic} Legit + ~{vandal_per_topic} Vandal per topic")
+            
+            with ThreadPoolExecutor(max_workers=3) as executor:
+                futures = []
+                for idx, title in enumerate(target_topics):
+                    snippet = generated_pages.get(title, {}).get('content_snippet', "")
+                    
+                    # Calcola quanti edit generare per questo topic
+                    legit_count = legit_per_topic + (legit_remainder if idx == 0 else 0)
+                    vandal_count = vandal_per_topic + (vandal_remainder if idx == 0 else 0)
+                    
+                    # Task Legit
+                    if legit_count > 0:
+                        futures.append(executor.submit(generate_edits_task, title, "LEGITTIMI", legit_count, snippet))
+                    # Task Vandal
+                    if vandal_count > 0:
+                        futures.append(executor.submit(generate_edits_task, title, "VANDALICI", vandal_count, snippet))
+                
+                for future in as_completed(futures):
+                    future.result() # Attendiamo completamento per loggare errori eventuali
                 
         print("\n✨ Generazione Completata!")
         print(f"📂 Legit File: {LEGIT_FILE}")

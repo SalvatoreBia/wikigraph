@@ -1,6 +1,7 @@
-import sys
 import csv
+import sys
 import time
+
 import torch
 from neo4j import GraphDatabase
 from sentence_transformers import SentenceTransformer
@@ -171,8 +172,11 @@ def main(csv_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python3 6_add_embeddings_fast.py <file_content.csv>")
+        print("Uso: python3 9_add_embeddings.py <sample_number>")
+        print("Esempio: python3 9_add_embeddings.py 1")
         sys.exit(1)
 
-    csv_path = sys.argv[1]
+    sample_num = sys.argv[1]
+    csv_path = f"../data/sample_content/sample_with_names_{sample_num}_content.csv"
+    print(f"📂 File selezionato: {csv_path}")
     main(csv_path)

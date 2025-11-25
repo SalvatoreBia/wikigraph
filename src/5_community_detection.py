@@ -3,6 +3,7 @@ import csv
 import time
 import argparse
 import sys
+import os
 
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')
@@ -225,6 +226,12 @@ def run_lpa(driver, max_iterations=10):
 def export_communities(driver, output_file):
     print(f'\n--- Exporting Communities to {output_file} ---')
     
+    # Crea la directory se non esiste
+    output_dir = os.path.dirname(output_file)
+    if output_dir and not os.path.exists(output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+        print(f'  Directory creata: {output_dir}')
+    
     with driver.session() as session:
         query = """
         MATCH (n:Node)
@@ -283,6 +290,12 @@ def export_communities(driver, output_file):
 
 def export_graph_with_communities(driver, output_file='graph_with_communities.csv'):
     print(f'\n--- Exporting Graph with Communities to {output_file} ---')
+    
+    # Crea la directory se non esiste
+    output_dir = os.path.dirname(output_file)
+    if output_dir and not os.path.exists(output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+        print(f'  Directory creata: {output_dir}')
     
     with driver.session() as session:
         query = """
@@ -355,15 +368,16 @@ Examples:
     args = parser.parse_args()
     
     # Determine algorithm name and output file
+    communities_dir = '../data/communities'
     if args.louvain:
         algorithm_name = 'Louvain'
-        output_file = args.output if args.output != 'communities.csv' else 'louvain_communities.csv'
+        output_file = args.output if args.output != 'communities.csv' else os.path.join(communities_dir, 'louvain_communities.csv')
     elif args.leiden:
         algorithm_name = 'Leiden'
-        output_file = args.output if args.output != 'communities.csv' else 'leiden_communities.csv'
+        output_file = args.output if args.output != 'communities.csv' else os.path.join(communities_dir, 'leiden_communities.csv')
     else:
         algorithm_name = 'Label Propagation'
-        output_file = args.output if args.output != 'communities.csv' else 'lpa_communities.csv'
+        output_file = args.output if args.output != 'communities.csv' else os.path.join(communities_dir, 'lpa_communities.csv')
     
     print(f'--- Community Detection with {algorithm_name} ---')
     print(f'  Output file: {output_file}')

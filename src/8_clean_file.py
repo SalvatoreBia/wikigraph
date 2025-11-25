@@ -13,6 +13,7 @@ import xml.etree.ElementTree as ET
 # Costanti per i file di default
 DEFAULT_XML_FILE = '../data/itwiki-latest-pages-articles.xml'
 DEFAULT_CSV_FILE = '../data/sample_with_names_0.csv'
+OUTPUT_DIR = '../data/'
 
 # Tenta di importare il pulitore
 try:
@@ -64,7 +65,7 @@ def load_titles_from_csv(csv_files):
     
     for csv_path in csv_files:
         base_name = os.path.basename(csv_path)
-        output_path = os.path.splitext(base_name)[0] + '_content.csv'
+        output_path = os.path.join(OUTPUT_DIR, os.path.splitext(base_name)[0] + '_content.csv')
         
         try:
             # Crea/Pulisce il file di output con l'header

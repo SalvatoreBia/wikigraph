@@ -13,7 +13,7 @@ load_dotenv(dotenv_path=env_path)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_IN = 'to-be-judged'
-SOURCE_FILE = 'web_source_tennis.html'
+SOURCE_FILE = '../data/web_source_tennis.html'
 GEMINI_MODEL = 'gemini-2.5-flash' 
 
 def load_ground_truth():

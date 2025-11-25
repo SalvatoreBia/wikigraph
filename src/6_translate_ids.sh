@@ -12,6 +12,9 @@ if [[ ! -f "$MAP_FILE" ]]; then
     exit 1
 fi
 
+# Crea la directory sample_with_names/ se non esiste
+mkdir -p ../data/sample_with_names
+
 # Ciclo su tutti i file che iniziano con sample_ seguito da un numero
 # Esempio match: sample_0.csv, sample_1.csv, sample_10.csv
 for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do

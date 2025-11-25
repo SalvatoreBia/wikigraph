@@ -35,7 +35,7 @@ gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 docker compose up -d
 
 
-wc -l ../data/sample_*.csv
+wc -l ../data/sample/sample_*.csv
 
 
 << `
@@ -43,11 +43,11 @@ wc -l ../data/sample_*.csv
 scegli il sample più piccolo/ragionevole da caricare
 e chiama il 4_load_graph.py con il numero di quel file, per esempio:
 
-wc -l ../data/sample_*.csv
-   105822 ../data/sample_0.csv
-   115333 ../data/sample_1.csv
-  3504657 ../data/sample_2.csv
-  4698711 ../data/sample_3.csv
+wc -l ../data/sample/sample_*.csv
+   105822 ../data/sample/sample_0.csv
+   115333 ../data/sample/sample_1.csv
+  3504657 ../data/sample/sample_2.csv
+  4698711 ../data/sample/sample_3.csv
   8424523 total
 
 py 4_load_graph.py 0

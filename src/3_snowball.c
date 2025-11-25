@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 
 #define SEEDS 4
 #define K     2
@@ -136,6 +137,11 @@ void snowball_sample(int seed_id, int ith)
 
 
     // === FASE B: ESTRARRE GLI ARCHI (SOTTOGRAFO INDOTTO) ===
+
+    // Crea la directory sample/ se non esiste
+    char sample_dir[1024];
+    sprintf(sample_dir, "%ssample", output_dir);
+    mkdir(sample_dir, 0755); // Crea la directory (ignora errore se esiste già)
 
     char filename[1024];
     // Usa la directory estratta nel main per costruire il percorso completo

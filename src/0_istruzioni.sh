@@ -58,7 +58,7 @@ lo script riprova ogni 3 secondi fino a quando docker non si da una svegliata
 `
 
 
-py 4_load_graph.py <id_del_sample_che_hai_scelto>
+py 4_load_graph.py 0
 
 
 py 5_community_detection.py --leiden
@@ -78,7 +78,7 @@ questo non è essenziale, ma se vuoi avere una panoramica delle community esegui
 py 7_find_top_community_names.py
 
 
-py 8_clean_file <id_del_sample_che_hai_scelto>
+py 8_clean_file 0 --no-clean --buffer-size 10_000
 
 
 py 9_add_embeddings.py

@@ -2,7 +2,7 @@
 """
 Script per estrarre il contenuto delle pagine Wikipedia da un dump XML
 e salvarlo in file CSV basati su liste di titoli fornite.
-Versione ottimizzata con buffering e supporto multiprocessing.
+Versione ultra-ottimizzata con regex pre-compilate, multiprocessing e I/O efficiente.
 """
 
 import argparse
@@ -14,67 +14,84 @@ from collections import defaultdict
 
 # Costanti per i file di default
 DEFAULT_XML_FILE = '../data/itwiki-latest-pages-articles.xml'
-DEFAULT_CSV_FILE = '../data/sample_with_names/sample_with_names_0.csv'
-OUTPUT_DIR = '../data/'
-BUFFER_SIZE = 1000  # Numero di righe da bufferizzare prima della scrittura
+OUTPUT_DIR = '../data/sample_content/'
+BUFFER_SIZE = 5000  # Buffer più grande per meno I/O
+PROGRESS_INTERVAL = 10000  # Mostra progresso ogni N pagine scansionate
 
 # Prova a usare lxml (molto più veloce di ElementTree)
 try:
     from lxml import etree as ET
     HAS_LXML = True
-    print('[*] Libreria lxml trovata. Parsing XML veloce.')
 except ImportError:
     import xml.etree.ElementTree as ET
     HAS_LXML = False
-    print('[!] AVVISO: lxml non installata. Usare: pip install lxml (5-10x più veloce)')
 
 # Tenta di importare il pulitore (opzionale e lento)
 try:
     import mwparserfromhell
     HAS_MWPARSER = True
-    print('[*] Libreria mwparserfromhell trovata. Il testo verrà pulito (rallenta molto).')
 except ImportError:
     HAS_MWPARSER = False
-    print('[!] AVVISO: mwparserfromhell non installata. Il testo rimarrà grezzo (Wikitext).')
-    print('[!] Per pulirlo: pip install mwparserfromhell')
+
+# ============ REGEX PRE-COMPILATE (CRITICO PER PERFORMANCE) ============
+# Compilare le regex una sola volta invece che ad ogni chiamata
+RE_TEMPLATE = re.compile(r'\{\{[^}]+\}\}')
+RE_FILE = re.compile(r'\[\[File:[^\]]+\]\]')
+RE_IMAGE = re.compile(r'\[\[Immagine:[^\]]+\]\]')
+RE_CATEGORY = re.compile(r'\[\[Categoria:[^\]]+\]\]')
+RE_INTERNAL_LINK = re.compile(r'\[\[([^|\]]+\|)?([^\]]+)\]\]')
+RE_EXTERNAL_LINK = re.compile(r'\[https?[^\]]+\]')
+RE_BOLD_ITALIC = re.compile(r"'{2,}")
+RE_REF = re.compile(r'<ref[^>]*>.*?</ref>', re.DOTALL)
+RE_REF_SELF_CLOSING = re.compile(r'<ref[^/]*/>')
+RE_HTML_TAGS = re.compile(r'<[^>]+>')
+RE_HEADERS = re.compile(r'={2,}[^=]+={2,}')
+RE_COMMENTS = re.compile(r'<!--.*?-->', re.DOTALL)
+RE_NOWIKI = re.compile(r'<nowiki>.*?</nowiki>', re.DOTALL)
+RE_WHITESPACE = re.compile(r'\s+')
 
 
 def parse_arguments():
     """Parsing degli argomenti da linea di comando."""
     parser = argparse.ArgumentParser(
         description='Estrae il contenuto delle pagine Wikipedia da un dump XML',
-        usage='%(prog)s [file_xml_dump] [file_csv_1 ...]'
+        usage='%(prog)s <sample_number> [opzioni]'
     )
-    parser.add_argument('xml_file', nargs='?', default=DEFAULT_XML_FILE, 
+    parser.add_argument('sample_number', type=int,
+                        help='Numero del sample (es: 0 per sample_with_names_0.csv)')
+    parser.add_argument('--xml-file', default=DEFAULT_XML_FILE, 
                         help=f'File XML dump di Wikipedia (default: {DEFAULT_XML_FILE})')
-    parser.add_argument('csv_files', nargs='*', default=[DEFAULT_CSV_FILE], 
-                        help=f'File CSV con i titoli delle pagine (default: {DEFAULT_CSV_FILE})')
-    parser.add_argument('--no-clean', action='store_true',
-                        help='Disabilita pulizia testo (più veloce)')
+    parser.add_argument('--fast-clean', action='store_true',
+                        help='Usa pulizia veloce con regex invece di mwparserfromhell (default se mwparserfromhell non è installato)')
     parser.add_argument('--buffer-size', type=int, default=BUFFER_SIZE,
                         help=f'Dimensione buffer scrittura (default: {BUFFER_SIZE})')
-    
     return parser.parse_args()
 
 
 def clean_content_simple(raw_content):
-    """Pulizia veloce con regex (molto più veloce di mwparserfromhell)."""
+    """Pulizia ultra-veloce con regex pre-compilate."""
     if not raw_content:
         return ''
     
-    # Rimuovi template e markup comuni
-    text = re.sub(r'\{\{[^}]+\}\}', '', raw_content)  # Template
-    text = re.sub(r'\[\[File:[^\]]+\]\]', '', text)  # File
-    text = re.sub(r'\[\[Immagine:[^\]]+\]\]', '', text)  # Immagini
-    text = re.sub(r'\[\[Categoria:[^\]]+\]\]', '', text)  # Categorie
-    text = re.sub(r'\[\[([^|\]]+\|)?([^\]]+)\]\]', r'\2', text)  # Link interni
-    text = re.sub(r'\[http[^\]]+\]', '', text)  # Link esterni
-    text = re.sub(r"'{2,}", '', text)  # Grassetto/corsivo
-    text = re.sub(r'<ref[^>]*>.*?</ref>', '', text, flags=re.DOTALL)  # Ref
-    text = re.sub(r'<[^>]+>', '', text)  # Altri tag HTML
-    text = re.sub(r'={2,}[^=]+={2,}', '', text)  # Intestazioni
+    text = raw_content
     
-    return ' '.join(text.split())  # Normalizza spazi
+    # Usa le regex pre-compilate (molto più veloce)
+    text = RE_COMMENTS.sub('', text)  # Commenti HTML prima
+    text = RE_NOWIKI.sub('', text)  # Tag nowiki
+    text = RE_TEMPLATE.sub('', text)  # Template
+    text = RE_FILE.sub('', text)  # File
+    text = RE_IMAGE.sub('', text)  # Immagini
+    text = RE_CATEGORY.sub('', text)  # Categorie
+    text = RE_INTERNAL_LINK.sub(r'\2', text)  # Link interni - mantieni testo
+    text = RE_EXTERNAL_LINK.sub('', text)  # Link esterni
+    text = RE_BOLD_ITALIC.sub('', text)  # Grassetto/corsivo
+    text = RE_REF.sub('', text)  # Ref con contenuto
+    text = RE_REF_SELF_CLOSING.sub('', text)  # Ref self-closing
+    text = RE_HTML_TAGS.sub('', text)  # Altri tag HTML
+    text = RE_HEADERS.sub('', text)  # Intestazioni
+    
+    # Normalizza spazi in modo efficiente
+    return RE_WHITESPACE.sub(' ', text).strip()
 
 
 def clean_content(raw_content, use_mwparser=False):
@@ -92,29 +109,27 @@ def clean_content(raw_content, use_mwparser=False):
 def load_titles_from_csv(csv_files):
     """
     Carica i titoli da tutti i file CSV e crea una mappa.
-    
+    Args:
+        csv_files: lista di file CSV
+        output_dir: directory di output per i file estratti
     Returns:
         dict: Mappa {titolo_normalizzato: set(file_output)}
     """
     title_map = {}
-    
     print('[*] Lettura dei file CSV di input...')
-    
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     for csv_path in csv_files:
         base_name = os.path.basename(csv_path)
         output_path = os.path.join(OUTPUT_DIR, os.path.splitext(base_name)[0] + '_content.csv')
-        
         try:
             # Crea/Pulisce il file di output con l'header
             with open(output_path, 'w', newline='', encoding='utf-8') as f_out:
                 writer = csv.writer(f_out)
                 writer.writerow(['page_id', 'page_title', 'content'])
-            
             # Legge i titoli dal CSV di input
             with open(csv_path, 'r', encoding='utf-8') as f_in:
                 reader = csv.reader(f_in)
                 next(reader, None)  # Salta header
-                
                 for row in reader:
                     if not row:
                         continue
@@ -127,7 +142,6 @@ def load_titles_from_csv(csv_files):
                             title_map[title_clean].add(output_path)
         except Exception as e:
             print(f'Errore nel file {csv_path}: {e}')
-    
     return title_map
 
 
@@ -222,26 +236,24 @@ def main():
     """Funzione principale."""
     args = parse_arguments()
     
+    # Costruisci il path del file CSV basato sul sample_number
+    csv_file = f'../data/sample_with_names/sample_with_names_{args.sample_number}.csv'
+    
     # Verifica che il file XML esista
     if not os.path.exists(args.xml_file):
         print(f'[ERRORE] File XML non trovato: {args.xml_file}')
         sys.exit(1)
-    
-    # Verifica che i file CSV esistano
-    for csv_file in args.csv_files:
-        if not os.path.exists(csv_file):
-            print(f'[ERRORE] File CSV non trovato: {csv_file}')
-            sys.exit(1)
-    
-    # Carica i titoli dai CSV
-    title_map = load_titles_from_csv(args.csv_files)
-    
-    if not title_map:
-        print('[ERRORE] Nessun titolo trovato nei file CSV')
+    # Verifica che il file CSV esista
+    if not os.path.exists(csv_file):
+        print(f'[ERRORE] File CSV non trovato: {csv_file}')
         sys.exit(1)
-    
+    # Carica i titoli dal CSV
+    title_map = load_titles_from_csv([csv_file])
+    if not title_map:
+        print('[ERRORE] Nessun titolo trovato nel file CSV')
+        sys.exit(1)
     # Estrai il contenuto dal dump XML
-    use_mwparser = not args.no_clean and HAS_MWPARSER
+    use_mwparser = not args.fast_clean and HAS_MWPARSER
     extract_page_content(args.xml_file, title_map, args.buffer_size, use_mwparser)
 
 

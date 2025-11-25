@@ -227,6 +227,8 @@ def generate_dataset():
     # Setup directory
     HTML_DIR.mkdir(parents=True, exist_ok=True)
     MOCK_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"📂 HTML_DIR: {HTML_DIR.resolve()}")
+    print(f"📂 MOCK_DIR: {MOCK_DIR.resolve()}")
     
     # Pulisci file precedenti se vuoi ripartire da zero (opzionale, qui appendiamo)
     if LEGIT_FILE.exists(): LEGIT_FILE.unlink()

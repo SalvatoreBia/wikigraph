@@ -3,6 +3,7 @@ import time
 import uuid
 import sys
 import csv
+from pathlib import Path
 from kafka import KafkaProducer
 
 # --- CONFIGURAZIONE ---
@@ -11,6 +12,14 @@ TOPIC_OUT = 'wiki-changes'
 PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
 PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
 PAGEMAP_FILE = "../data/pagemap.csv" 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+MOCK_DIR = DATA_DIR / "mocked_edits"
+LEGIT_FILE = MOCK_DIR / "legit_edits.json"
+VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
+
+EVAL_SET_SIZE = 50
 
 def get_real_page_id(target_title):
     """
@@ -47,10 +56,22 @@ def create_producer():
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
 
-def send_event(producer, comment, user, is_vandalism, page_id):
+def load_eval_edits(filepath, limit=50):
+    if not filepath.exists():
+        print(f"⚠️ File non trovato: {filepath}")
+        return []
+    with open(filepath, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        return data[:limit]
+
+def send_event(producer, edit_data, page_id):
     """Crea un evento JSON in formato Wikimedia standard usando l'ID reale"""
     current_ts = int(time.time())
     
+    comment = edit_data['comment']
+    user = edit_data['user']
+    is_vandalism = edit_data['is_vandalism']
+
     event = {
         "$schema": "/mediawiki/recentchange/1.0.0",
         "meta": {
@@ -80,7 +101,8 @@ def send_event(producer, comment, user, is_vandalism, page_id):
         },
         "wiki": "itwiki",
         "server_name": "it.wikipedia.org",
-        "parsedcomment": comment
+        "parsedcomment": comment,
+        "is_vandalism": is_vandalism # Aggiunto per verifica successiva (non standard ma utile per noi)
     }
     
     producer.send(TOPIC_OUT, value=event)
@@ -91,58 +113,23 @@ if __name__ == "__main__":
     REAL_PAGE_ID = get_real_page_id(PAGE_TITLE)
     producer = create_producer()
     
-    while True:
-        print("\n" + "="*50)
-        print(f"SCENARIO TENNIS - REGIA (ID Pagina: {REAL_PAGE_ID})")
-        print("="*50)
-        print("1. Invia EDIT LEGITTIMI (Report TAS)")
-        print("2. Invia EDIT VANDALICI (Attacco massivo)")
-        print("3. Invia SCENARIO MISTO (7 edit: 4 Legit, 3 Vandal)") # <--- NUOVA OPZIONE
-        print("q. Esci")
+    print("\n" + "="*50)
+    print(f"AUTOMATED STREAM PRODUCER (ID Pagina: {REAL_PAGE_ID})")
+    print("="*50)
+    
+    # Carica i primi 50 edit per tipo
+    legit_edits = load_eval_edits(LEGIT_FILE, EVAL_SET_SIZE)
+    vandal_edits = load_eval_edits(VANDAL_FILE, EVAL_SET_SIZE)
+    
+    all_edits = legit_edits + vandal_edits
+    print(f"📦 Caricati {len(legit_edits)} Legit e {len(vandal_edits)} Vandal edits per lo stream.")
+    
+    print("🚀 Avvio stream tra 3 secondi...")
+    time.sleep(3)
+    
+    for i, edit in enumerate(all_edits):
+        send_event(producer, edit, REAL_PAGE_ID)
+        time.sleep(0.2) # Piccolo delay per simulare stream
         
-        choice = input("Scelta: ").strip()
-        
-        if choice == '1':
-            comments = [
-                "Aggiornamento verdetto TAS: titolo revocato a Rossi",
-                "Inserimento fonte comunicato Losanna",
-                "Correzione albo d'oro (Rossi squalificato)",
-                "Dabrowski confermata innocente come da sentenza"
-            ]
-            for i, c in enumerate(comments):
-                send_event(producer, c, f"SportUpdater_{i}", False, REAL_PAGE_ID)
-                time.sleep(0.5)
-                
-        elif choice == '2':
-            comments = [
-                "TUTTI DROGATI VERGOGNA!!",
-                "Anche la Dabrowski sapeva tutto, squalificatela!",
-                "CANCELLATE QUESTA PAGINA FALSA",
-                "Tennis sport di dopati"
-            ]
-            for i, c in enumerate(comments):
-                send_event(producer, c, f"Troll_{i}", True, REAL_PAGE_ID)
-                time.sleep(0.5)
-
-        elif choice == '3':
-            # Scenario Misto: L'obiettivo è vedere se l'AI filtra quelli buoni da quelli cattivi
-            # quando arrivano insieme.
-            print("--- Avvio sequenza mista ---")
-            mixed_sequence = [
-                ("Aggiunta nota ufficiale TAS su Rossi", "Journalist_A", False),      # Legit
-                ("Dabrowski complice! Squalifica a vita!", "Hater_01", True),         # Vandal
-                ("Fix punteggio set finale", "WikiGnome", False),                     # Legit
-                ("QUESTO SPORT FA SCHIFO", "Troll_Z", True),                          # Vandal
-                ("Aggiornamento template vincitori", "Editor_Pro", False),            # Legit (Qui dovrebbe scattare il trigger > 4)
-                ("Rimosso contenuto offensivo precedente", "Admin_Junior", False),    # Legit
-                ("WIKIPEDIA MENTE!!1!", "Hater_02", True)                             # Vandal
-            ]
-            
-            for comment, user, is_vandal in mixed_sequence:
-                send_event(producer, comment, user, is_vandal, REAL_PAGE_ID)
-                time.sleep(0.8) # Leggero delay per apprezzare il log
-                
-        elif choice == 'q':
-            break
-            
+    print("✅ Stream completato.")
     producer.close()

@@ -4,8 +4,9 @@ from pathlib import Path
 # --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-ORACLE_RESULTS = DATA_DIR / "oracle_results.json"
-CLASSIFIER_RESULTS = DATA_DIR / "classifier_results.json"
+SCORES_DIR = DATA_DIR / "scores"
+LLM_RESULTS = SCORES_DIR / "LLM_results.json"
+BC_RESULTS = SCORES_DIR / "BC_results.json"
 
 def load_results(filepath):
     if not filepath.exists():
@@ -14,36 +15,47 @@ def load_results(filepath):
         return json.load(f)
 
 def main():
-    print("--- 📊 CONFRONTO MODELLI ---")
+    print("--- 📊 CONFRONTO MODELLI (Vandalism Detection) ---")
     
-    oracle_data = load_results(ORACLE_RESULTS)
-    classifier_data = load_results(CLASSIFIER_RESULTS)
+    llm_data = load_results(LLM_RESULTS)
+    bc_data = load_results(BC_RESULTS)
     
-    if not oracle_data:
-        print(f"❌ Dati Oracle mancanti ({ORACLE_RESULTS})")
-    if not classifier_data:
-        print(f"❌ Dati Classifier mancanti ({CLASSIFIER_RESULTS})")
+    if not llm_data:
+        print(f"❌ Dati LLM mancanti ({LLM_RESULTS})")
+    if not bc_data:
+        print(f"❌ Dati BC mancanti ({BC_RESULTS})")
         
-    if not oracle_data or not classifier_data:
+    if not llm_data or not bc_data:
         return
 
-    acc_oracle = oracle_data['accuracy']
-    acc_classifier = classifier_data['accuracy']
+    acc_llm = llm_data.get('accuracy', 0)
+    time_llm = llm_data.get('avg_time', 0)
     
-    print("\n" + "="*40)
-    print(f"{'MODELLO':<20} | {'ACCURATEZZA':<10}")
-    print("-" * 40)
-    print(f"{'Gemini (Oracle)':<20} | {acc_oracle:>9.2f}%")
-    print(f"{'Logistic Regression':<20} | {acc_classifier:>9.2f}%")
-    print("="*40)
+    acc_bc = bc_data.get('accuracy', 0)
+    time_bc = bc_data.get('avg_time', 0)
     
-    diff = acc_oracle - acc_classifier
-    if diff > 0:
-        print(f"\n🏆 Gemini vince di {diff:.2f} punti percentuali.")
-    elif diff < 0:
-        print(f"\n🏆 Il Classificatore ML vince di {abs(diff):.2f} punti percentuali.")
+    print("\n" + "="*65)
+    print(f"{'MODELLO':<25} | {'ACCURATEZZA':<12} | {'TEMPO MEDIO (s)':<15}")
+    print("-" * 65)
+    print(f"{'Gemini (AI Judge)':<25} | {acc_llm:>11.2f}% | {time_llm:>14.4f}s")
+    print(f"{'Binary Classifier (ML)':<25} | {acc_bc:>11.2f}% | {time_bc:>14.4f}s")
+    print("="*65)
+    
+    diff_acc = acc_llm - acc_bc
+    
+    print("\n🏆 VERDETTO:")
+    if diff_acc > 0:
+        print(f"  Gemini è più accurato di {diff_acc:.2f} punti percentuali.")
+    elif diff_acc < 0:
+        print(f"  Il Classificatore ML è più accurato di {abs(diff_acc):.2f} punti percentuali.")
     else:
-        print("\n🤝 Pareggio perfetto!")
+        print("  Pareggio perfetto in accuratezza!")
+        
+    if time_bc < time_llm:
+        speedup = time_llm / time_bc if time_bc > 0 else 0
+        print(f"  ⚡ Il Classificatore è {speedup:.1f}x più veloce.")
+    
+    print("\nNota: Assicurati che entrambi abbiano processato lo stesso stream di eventi.")
 
 if __name__ == "__main__":
     main()

@@ -24,6 +24,7 @@ def load_html_files(directory):
         return []
 
     print(f"📂 Leggo file HTML da: {directory}")
+    print(f"   Contenuto dir: {[f.name for f in directory.iterdir()]}")
     for file_path in directory.glob("*.html"):
         try:
             with open(file_path, "r", encoding="utf-8") as f:

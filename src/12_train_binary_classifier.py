@@ -1,6 +1,7 @@
 import json
 import pickle
 import sys
+import os
 import numpy as np
 from pathlib import Path
 from sklearn.linear_model import LogisticRegression
@@ -11,14 +12,15 @@ from sentence_transformers import SentenceTransformer
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 MOCK_DIR = DATA_DIR / "mocked_edits"
+TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 INDEX_FILE = DATA_DIR / "trusted_sources_index.pkl"
-MODEL_FILE = DATA_DIR / "binary_classifier.pkl"
+MODEL_FILE = TRAINED_BC_DIR / "binary_classifier.pkl"
 
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
-TRAIN_SIZE = 50 # Ultimi 50 per tipo
+EVAL_SET_SIZE = 50 # Primi 50 riservati per evaluation
 
 def load_index():
     if not INDEX_FILE.exists():
@@ -27,14 +29,15 @@ def load_index():
     with open(INDEX_FILE, "rb") as f:
         return pickle.load(f)
 
-def load_edits(filepath, start_from_end=50):
+def load_training_edits(filepath, skip_first=50):
+    """Carica tutti gli edit tranne i primi 'skip_first' che sono per evaluation"""
     if not filepath.exists():
         print(f"⚠️ File non trovato: {filepath}")
         return []
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
-        # Prendi gli ultimi N
-        return data[-start_from_end:]
+        # Salta i primi N (Evaluation Set) e prendi il resto per Training
+        return data[skip_first:]
 
 def get_features(edit, embedder, index_data):
     """
@@ -62,22 +65,31 @@ def get_features(edit, embedder, index_data):
 def main():
     print("--- 🧠 TRAINING BINARY CLASSIFIER ---")
     
+    # 0. Setup Directory
+    if not TRAINED_BC_DIR.exists():
+        TRAINED_BC_DIR.mkdir(parents=True, exist_ok=True)
+        print(f"📁 Creata directory: {TRAINED_BC_DIR}")
+
     # 1. Carica Risorse
     index = load_index()
     if not index: return
     
     embedder = SentenceTransformer(MODEL_NAME)
     
-    # 2. Carica Dati Training (Ultimi 50)
-    legit_edits = load_edits(LEGIT_FILE, TRAIN_SIZE)
-    vandal_edits = load_edits(VANDAL_FILE, TRAIN_SIZE)
+    # 2. Carica Dati Training (Tutti tranne i primi 50)
+    legit_edits = load_training_edits(LEGIT_FILE, EVAL_SET_SIZE)
+    vandal_edits = load_training_edits(VANDAL_FILE, EVAL_SET_SIZE)
     
     train_edits = legit_edits + vandal_edits
     # Label: 0 = Legit, 1 = Vandal
     labels = [0] * len(legit_edits) + [1] * len(vandal_edits)
     
-    print(f"📊 Training Set: {len(legit_edits)} Legit + {len(vandal_edits)} Vandal")
+    print(f"📊 Training Set: {len(legit_edits)} Legit + {len(vandal_edits)} Vandal (Esclusi primi {EVAL_SET_SIZE} per eval)")
     
+    if not train_edits:
+        print("❌ Nessun dato per il training. Controlla i file JSON.")
+        return
+
     # 3. Feature Engineering
     print("⚙️  Generazione Features...", end="", flush=True)
     X = []

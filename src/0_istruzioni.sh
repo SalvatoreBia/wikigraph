@@ -58,11 +58,11 @@ lo script riprova ogni 3 secondi fino a quando docker non si da una svegliata
 
 
 
-0 perchè usiamo il sample 0 per comodità, sennò specifica il file che vuoi
+1 perchè usiamo il sample 1 per comodità, sennò specifica il file che vuoi
 `
 
 
-py 4_load_graph.py 0
+py 4_load_graph.py 1
 
 
 py 5_community_detection.py --leiden
@@ -82,7 +82,7 @@ questo non è essenziale, ma se vuoi avere una panoramica delle community esegui
 py 7_find_top_community_names.py
 
 
-py 8_clean_file 0 --no-clean --buffer-size 10_000
+py 8_clean_file 1 --buffer-size 10_000
 
 
 py 9_add_embeddings.py
@@ -91,8 +91,10 @@ py 9_add_embeddings.py
 py 10_generate_mocks.py
 
 
-py 11_stream_processory.py
+py 11_embed_trusted_sources.py
 
+
+py 12_train_binary_classifier.py
 
 
 << `
@@ -104,13 +106,15 @@ ed esegui i comandi in ordine
 
 
 # Terminale1
-py 11_stream_processory.py
+py 200_stream_processor.py
 
 # Terminale2
-py 12_ai_judge_gemini.py
+py 201_ai_judge_gemini.py
+
+py 202_bc_judge.py
 
 # Terminale3
-py 10_mock_producer.py
+py 203_mock_producer.py
 
 
 
@@ -125,3 +129,6 @@ che sono tentativi di vandalismo
 Puoi provare anche quello misto, funziona uguale
 -----------------------------------------------------------------------------------
 `
+
+
+py 500_compare_models.py

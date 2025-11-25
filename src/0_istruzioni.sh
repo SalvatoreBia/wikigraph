@@ -55,6 +55,10 @@ py 4_load_graph.py 0
 sicuramente trovi che docker non è pronto, non fare nulla, 
 lo script riprova ogni 3 secondi fino a quando docker non si da una svegliata
 -----------------------------------------------------------------------------------
+
+
+
+0 perchè usiamo il sample 0 per comodità, sennò specifica il file che vuoi
 `
 
 

@@ -28,4 +28,4 @@ awk -F, '
 
 
 # comando da eseguire post snowball per contare quanti nodi
-# awk -F, 'NR > 1 { nodes[$1]++; nodes[$2]++ } END { print length(nodes) }' ../data/sample_3.csv
+# awk -F, 'NR > 1 { nodes[$1]++; nodes[$2]++ } END { print length(nodes) }' ../data/sample/sample_3.csv

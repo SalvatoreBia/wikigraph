@@ -139,7 +139,7 @@ void snowball_sample(int seed_id, int ith)
 
     char filename[1024];
     // Usa la directory estratta nel main per costruire il percorso completo
-    sprintf(filename, "%ssample_%d.csv", output_dir, ith); 
+    sprintf(filename, "%ssample/sample_%d.csv", output_dir, ith); 
 
     FILE* output_file = fopen(filename, "w");
     if (output_file == NULL)

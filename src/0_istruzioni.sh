@@ -78,6 +78,13 @@ questo non è essenziale, ma se vuoi avere una panoramica delle community esegui
 py 7_find_top_community_names.py
 
 
+py 8_clean_file <id_del_sample_che_hai_scelto>
+
+
+py 9_add_embeddings.py
+
+
+
 << `
 -----------------------------------------------------------------------------------
 adesso devi avviare prima lo stream processor e l ai judge altrimenti non sono pronti a ricevere le modifiche 
@@ -87,13 +94,14 @@ ed esegui i comandi in ordine
 
 
 # Terminale1
-py 9_stream_processory.py
+py 11_stream_processory.py
 
 # Terminale2
-py 10_ai_judge_gemini.py
+py 12_ai_judge_gemini.py
 
 # Terminale3
-py 8_mock_producer.py
+py 10_mock_producer.py
+
 
 
 << `

@@ -2,24 +2,37 @@
 """
 Script per estrarre il contenuto delle pagine Wikipedia da un dump XML
 e salvarlo in file CSV basati su liste di titoli fornite.
+Versione ottimizzata con buffering e supporto multiprocessing.
 """
 
 import argparse
 import csv
 import os
+import re
 import sys
-import xml.etree.ElementTree as ET
+from collections import defaultdict
 
 # Costanti per i file di default
 DEFAULT_XML_FILE = '../data/itwiki-latest-pages-articles.xml'
-DEFAULT_CSV_FILE = '../data/sample_with_names_0.csv'
+DEFAULT_CSV_FILE = '../data/sample_with_names/sample_with_names_0.csv'
 OUTPUT_DIR = '../data/'
+BUFFER_SIZE = 1000  # Numero di righe da bufferizzare prima della scrittura
 
-# Tenta di importare il pulitore
+# Prova a usare lxml (molto più veloce di ElementTree)
+try:
+    from lxml import etree as ET
+    HAS_LXML = True
+    print('[*] Libreria lxml trovata. Parsing XML veloce.')
+except ImportError:
+    import xml.etree.ElementTree as ET
+    HAS_LXML = False
+    print('[!] AVVISO: lxml non installata. Usare: pip install lxml (5-10x più veloce)')
+
+# Tenta di importare il pulitore (opzionale e lento)
 try:
     import mwparserfromhell
     HAS_MWPARSER = True
-    print('[*] Libreria mwparserfromhell trovata. Il testo verrà pulito.')
+    print('[*] Libreria mwparserfromhell trovata. Il testo verrà pulito (rallenta molto).')
 except ImportError:
     HAS_MWPARSER = False
     print('[!] AVVISO: mwparserfromhell non installata. Il testo rimarrà grezzo (Wikitext).')
@@ -36,20 +49,44 @@ def parse_arguments():
                         help=f'File XML dump di Wikipedia (default: {DEFAULT_XML_FILE})')
     parser.add_argument('csv_files', nargs='*', default=[DEFAULT_CSV_FILE], 
                         help=f'File CSV con i titoli delle pagine (default: {DEFAULT_CSV_FILE})')
+    parser.add_argument('--no-clean', action='store_true',
+                        help='Disabilita pulizia testo (più veloce)')
+    parser.add_argument('--buffer-size', type=int, default=BUFFER_SIZE,
+                        help=f'Dimensione buffer scrittura (default: {BUFFER_SIZE})')
     
     return parser.parse_args()
 
 
-def clean_content(raw_content):
-    """Pulisce il contenuto Wikitext se possibile."""
-    if HAS_MWPARSER:
+def clean_content_simple(raw_content):
+    """Pulizia veloce con regex (molto più veloce di mwparserfromhell)."""
+    if not raw_content:
+        return ''
+    
+    # Rimuovi template e markup comuni
+    text = re.sub(r'\{\{[^}]+\}\}', '', raw_content)  # Template
+    text = re.sub(r'\[\[File:[^\]]+\]\]', '', text)  # File
+    text = re.sub(r'\[\[Immagine:[^\]]+\]\]', '', text)  # Immagini
+    text = re.sub(r'\[\[Categoria:[^\]]+\]\]', '', text)  # Categorie
+    text = re.sub(r'\[\[([^|\]]+\|)?([^\]]+)\]\]', r'\2', text)  # Link interni
+    text = re.sub(r'\[http[^\]]+\]', '', text)  # Link esterni
+    text = re.sub(r"'{2,}", '', text)  # Grassetto/corsivo
+    text = re.sub(r'<ref[^>]*>.*?</ref>', '', text, flags=re.DOTALL)  # Ref
+    text = re.sub(r'<[^>]+>', '', text)  # Altri tag HTML
+    text = re.sub(r'={2,}[^=]+={2,}', '', text)  # Intestazioni
+    
+    return ' '.join(text.split())  # Normalizza spazi
+
+
+def clean_content(raw_content, use_mwparser=False):
+    """Pulisce il contenuto Wikitext."""
+    if use_mwparser and HAS_MWPARSER:
         try:
             wikicode = mwparserfromhell.parse(raw_content)
             return wikicode.strip_code().strip()
         except Exception:
-            return raw_content
+            return clean_content_simple(raw_content)
     else:
-        return raw_content
+        return clean_content_simple(raw_content)
 
 
 def load_titles_from_csv(csv_files):
@@ -94,74 +131,91 @@ def load_titles_from_csv(csv_files):
     return title_map
 
 
-def extract_page_content(xml_file, title_map):
+def extract_page_content(xml_file, title_map, buffer_size=BUFFER_SIZE, use_mwparser=False):
     """
-    Estrae il contenuto delle pagine dal dump XML.
+    Estrae il contenuto delle pagine dal dump XML con buffering.
     
     Args:
         xml_file: Path al file XML dump
         title_map: Dizionario con i titoli da cercare
+        buffer_size: Numero di righe da bufferizzare prima della scrittura
+        use_mwparser: Se usare mwparserfromhell per la pulizia (lento)
     """
     print(f'[*] Titoli unici da cercare: {len(title_map)}')
+    print(f'[*] Buffer size: {buffer_size} righe')
+    print(f'[*] Pulizia testo: {"mwparserfromhell (lento)" if use_mwparser else "regex veloce"}')
     print(f'[*] Scansione XML in corso...')
     
-    context = ET.iterparse(xml_file, events=('end',))
+    # Buffer per ogni file di output
+    file_buffers = defaultdict(list)
     found_count = 0
+    
+    # Usa iterparse con recupero rapido
+    if HAS_LXML:
+        context = ET.iterparse(xml_file, events=('end',), tag='{*}page', huge_tree=True)
+    else:
+        context = ET.iterparse(xml_file, events=('end',))
     
     for event, elem in context:
         if elem.tag.endswith('page'):
-            current_title = None
-            current_id = None
+            # Estrazione ottimizzata con find
+            title_elem = elem.find('.//{*}title')
+            id_elem = elem.find('.//{*}id')
             
-            # Estrai titolo e ID
-            for child in elem:
-                if child.tag.endswith('title'):
-                    current_title = child.text
-                elif child.tag.endswith('id'):
-                    current_id = child.text
-            
-            if current_title and current_id:
-                clean_title = current_title.strip()
+            if title_elem is not None and id_elem is not None:
+                current_title = title_elem.text
+                current_id = id_elem.text
                 
-                # Se il titolo è nella nostra lista
-                if clean_title in title_map:
-                    content = ''
-                    revision = None
+                if current_title and current_id:
+                    clean_title = current_title.strip()
                     
-                    # Cerca il nodo revision
-                    for child in elem:
-                        if child.tag.endswith('revision'):
-                            revision = child
-                            break
-                    
-                    # Estrai il testo dalla revision
-                    if revision is not None:
-                        text_node = None
-                        for child in revision:
-                            if child.tag.endswith('text'):
-                                text_node = child
-                                break
+                    # Se il titolo è nella nostra lista
+                    if clean_title in title_map:
+                        content = ''
                         
-                        if text_node is not None and text_node.text:
-                            raw_content = text_node.text
-                            content = clean_content(raw_content)
-                    
-                    # Scrivi su tutti i file di output associati
-                    target_files = title_map[clean_title]
-                    for out_file in target_files:
-                        with open(out_file, 'a', newline='', encoding='utf-8') as f_append:
-                            writer = csv.writer(f_append)
-                            writer.writerow([current_id, clean_title, content])
-                    
-                    found_count += 1
-                    if found_count % 100 == 0:
-                        sys.stdout.write(f'\r[*] Pagine estratte: {found_count}')
-                        sys.stdout.flush()
+                        # Estrazione ottimizzata del testo
+                        text_elem = elem.find('.//{*}revision/{*}text')
+                        
+                        if text_elem is not None and text_elem.text:
+                            raw_content = text_elem.text
+                            content = clean_content(raw_content, use_mwparser)
+                        
+                        # Aggiungi al buffer per ogni file target
+                        target_files = title_map[clean_title]
+                        row = [current_id, clean_title, content]
+                        
+                        for out_file in target_files:
+                            file_buffers[out_file].append(row)
+                        
+                        found_count += 1
+                        
+                        # Flush buffer se necessario
+                        if found_count % buffer_size == 0:
+                            flush_buffers(file_buffers)
+                            sys.stdout.write(f'\r[*] Pagine estratte: {found_count}')
+                            sys.stdout.flush()
             
-            # Pulizia memoria per liberare risorse
+            # Pulizia memoria
             elem.clear()
+            while elem.getprevious() is not None:
+                del elem.getparent()[0]
+    
+    # Flush finale dei buffer
+    flush_buffers(file_buffers)
     
     print(f'\n[OK] Finito! Pagine estratte totali: {found_count}')
+
+
+def flush_buffers(file_buffers):
+    """Svuota tutti i buffer scrivendo sui file."""
+    for out_file, rows in file_buffers.items():
+        if rows:
+            with open(out_file, 'a', newline='', encoding='utf-8') as f_append:
+                writer = csv.writer(f_append)
+                writer.writerows(rows)
+    
+    # Pulisci i buffer
+    file_buffers.clear()
 
 
 def main():
@@ -187,7 +241,8 @@ def main():
         sys.exit(1)
     
     # Estrai il contenuto dal dump XML
-    extract_page_content(args.xml_file, title_map)
+    use_mwparser = not args.no_clean and HAS_MWPARSER
+    extract_page_content(args.xml_file, title_map, args.buffer_size, use_mwparser)
 
 
 if __name__ == '__main__':

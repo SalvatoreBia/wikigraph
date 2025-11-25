@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+
 import google.generativeai as genai
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv

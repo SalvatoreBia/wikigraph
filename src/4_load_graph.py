@@ -107,7 +107,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     sample_number = sys.argv[1]
-    sample_file_path = f'../data/sample_{sample_number}.csv'
+    sample_file_path = f'../data/sample/sample_{sample_number}.csv'
 
     # Ottieni il driver con logica di retry
     driver = wait_for_connection(URI, AUTH)

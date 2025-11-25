@@ -14,17 +14,17 @@ fi
 
 # Ciclo su tutti i file che iniziano con sample_ seguito da un numero
 # Esempio match: sample_0.csv, sample_1.csv, sample_10.csv
-for EDGE_FILE in ../data/sample_[0-9]*.csv; do
+for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do
 
     # Controllo se esistono file (nel caso il glob non trovi nulla)
     if [[ ! -e "$EDGE_FILE" ]]; then
-        echo "Nessun file sample_*.csv trovato nella cartella corrente."
+        echo "Nessun file sample_*.csv trovato nella cartella sample/."
         break
     fi
 
-    # Genera il nome del file di output
-    # Sostituisce "sample_" con "sample_with_names_" nel nome del file
-    OUTPUT_FILE="${EDGE_FILE/sample_/sample_with_names_}"
+    # Genera il nome del file di output nella directory sample_with_names/
+    BASE_NAME=$(basename "$EDGE_FILE")
+    OUTPUT_FILE="../data/sample_with_names/$BASE_NAME"
 
     echo "Elaborazione in corso: $EDGE_FILE  -->  $OUTPUT_FILE"
 

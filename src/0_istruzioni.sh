@@ -88,6 +88,12 @@ py 8_clean_file 0 --no-clean --buffer-size 10_000
 py 9_add_embeddings.py
 
 
+py 10_generate_mocks.py
+
+
+py 11_stream_processory.py
+
+
 
 << `
 -----------------------------------------------------------------------------------

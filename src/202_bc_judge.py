@@ -77,7 +77,8 @@ def save_result(result_entry):
     current_data["avg_time"] = total_time / total if total > 0 else 0
     
     with open(RESULTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(current_data, f, indent=4, ensure_ascii=False)
+        json.dump(current_data, f, indent=4, ensure_ascii=False, 
+          default=lambda o: bool(o) if isinstance(o, (np.bool_, np.bool)) else o)
 
 def main():
     print("--- 🤖 BC JUDGE AVVIATO (Il Classificatore) ---")

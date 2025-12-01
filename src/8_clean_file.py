@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Script per estrarre il contenuto delle pagine Wikipedia da un dump XML
-e salvarlo in file CSV basati su liste di titoli fornite.
-Versione ultra-ottimizzata con regex pre-compilate, multiprocessing e I/O efficiente.
+Questo genera il file sample with content CSV estraendo il contenuto delle pagine
+dal dump XML di Wikipedia basato sui titoli nei file sample_with_names_X.csv.
 """
 
 import argparse

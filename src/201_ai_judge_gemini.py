@@ -30,7 +30,7 @@ def load_ground_truth():
         soup = BeautifulSoup(f.read(), 'html.parser')
         return soup.get_text(separator=' ', strip=True)
 
-def analyze_with_gemini(edit_comment, context):
+def analyze_with_gemini(edit_comment, context, original_text, new_text):
     if not GEMINI_API_KEY:
         return "ERRORE: API KEY MANCANTE"
 
@@ -42,13 +42,19 @@ def analyze_with_gemini(edit_comment, context):
     CONTESTO REALE (Fonte Ufficiale Verificata): 
     "{context}"
     
+    TESTO ORIGINALE (Prima della modifica):
+    "{original_text}"
+
+    TESTO MODIFICATO (Dopo la modifica):
+    "{new_text}"
+
     EVENTO DA ANALIZZARE (Commento dell'Edit Utente): 
     "{edit_comment}"
     
     TASK:
-    Confronta il commento dell'utente con la fonte ufficiale.
-    - Se il commento è coerente con i fatti (es. riporta la squalifica o l'innocenza della Dabrowski corretta), è LEGITTIMO.
-    - Se il commento contraddice i fatti (es. accusa chi è stato assolto, nega la squalifica, insulta), è VANDALISMO.
+    Confronta la modifica con la fonte ufficiale e il testo originale.
+    - Se la modifica migliora o corregge il testo basandosi sui fatti (o è neutra), è LEGITTIMO.
+    - Se la modifica introduce falsità, insulti, o distrugge il contenuto, è VANDALISMO.
     
     Rispondi SOLO con una parola: "LEGITTIMO" oppure "VANDALISMO".
     """
@@ -110,13 +116,15 @@ def main():
         event = message.value
         comment = event['comment']
         user = event['user']
+        original_text = event.get('original_text', '')
+        new_text = event.get('new_text', '')
         is_vandalism_truth = event.get('is_vandalism', None) # Potrebbe non esserci in eventi reali
         
         print(f"\nAnalisi edit di [{user}]:")
         print(f"  Commento: \"{comment}\"")
         
         start_time = time.time()
-        verdict = analyze_with_gemini(comment, ground_truth)
+        verdict = analyze_with_gemini(comment, ground_truth, original_text, new_text)
         end_time = time.time()
         elapsed = end_time - start_time
         

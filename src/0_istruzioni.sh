@@ -132,3 +132,18 @@ Puoi provare anche quello misto, funziona uguale
 
 
 py 500_compare_models.py
+
+
+
+
+
+<< `
+Il binary classifier viene trainato su:
+1. Edit Embedding         384 float     "Il ""significato"" della modifica + commento. Se l'utente scrive ""SEI UN IDIOTA"", questo vettore punterà in una zona dello spazio latente vicina agli insulti."
+2. Context Embedding      384 float     "Il pezzo di testo della ""Fonte Affidabile"" più simile all'edit. È il riferimento di verità."
+3. Original Text Emb      384 float     "Il testo che c'era prima della modifica. Serve a capire cosa è stato cambiato."
+4. Similarity (Trusted)     1 float     "Un numero da 0 a 1 (Cosine Similarity). Quanto è simile l'edit alla fonte fidata? (Basso = Sospetto)."
+5. Similarity (Original)    1 float     "Quanto l'edit cambia il testo originale? (Basso = stravolgimento totale)."
+
+-----------------------------------------------------------------------------------
+`

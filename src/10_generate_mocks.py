@@ -26,6 +26,7 @@ PAGEMAP_FILE = DATA_DIR / "pagemap.csv"
 # File di output separati
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
+CONTENT_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
 
 load_dotenv(dotenv_path=ENV_PATH)
 
@@ -130,6 +131,44 @@ def print_report(communities_data, id_to_name):
         for name in node_names:
             print(f"   - {name}")
 
+# --- CARICAMENTO CONTENUTI REALI ---
+
+def load_real_content(filepath):
+    """Carica il contenuto reale da CSV."""
+    contents = []
+    if not filepath.exists():
+        print(f"⚠️ File contenuto non trovato: {filepath}")
+        return []
+    
+    try:
+        # Increase field size limit for large content
+        csv.field_size_limit(sys.maxsize)
+        with open(filepath, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row.get('content') and len(row['content']) > 500:
+                    contents.append(row)
+    except Exception as e:
+        print(f"❌ Errore caricamento contenuti: {e}")
+    
+    print(f"📚 Caricati {len(contents)} articoli reali.")
+    return contents
+
+def extract_random_window(text, window_size=600):
+    """Estrae una finestra di testo casuale."""
+    if len(text) <= window_size:
+        return text
+    
+    # Try to find a sentence start
+    start_idx = random.randint(0, len(text) - window_size)
+    
+    # Simple adjustment: find first space after start_idx to avoid cutting words
+    while start_idx < len(text) and text[start_idx] not in (' ', '\n', '.'):
+        start_idx += 1
+        
+    window = text[start_idx : start_idx + window_size]
+    return window
+
 # --- GENERAZIONE CONTENUTI ---
 
 def generate_html_task(title):
@@ -165,30 +204,62 @@ def generate_html_task(title):
         print(f"⚠️ Errore HTML {title}: {e}")
         return None
 
-def generate_edits_task(topic_title, edit_type, count, context_snippet):
+def generate_edits_task(topic_title, edit_type, count, context_snippet, real_text_window=None):
     """Task singolo per generare un batch di edit."""
     key = get_next_api_key()
     genai.configure(api_key=key)
     model = genai.GenerativeModel(MODEL_NAME)
     
     print(f"✍️  [Start] {count} Edits {edit_type} per {topic_title}")
-    prompt = f"""
-    Contesto: Un articolo affidabile su "{topic_title}".
-    Genera un JSON Array con ESATTAMENTE {count} modifiche simulate (edits) stile Wikipedia.
-    TIPO MODIFICHE: {edit_type}
-    FORMATO OGGETTO JSON:
-    {{
-        "user": "NomeUtente",
-        "comment": "Descrizione della modifica",
-        "timestamp": 1234567890,
-        "length": {{ "old": 10000, "new": 10050 }},
-        "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
-    }}
-    DESCRIZIONE TIPO:
-    - Se LEGITTIMI: Correzioni typo, aggiunta fonti, riformulazione. Commenti seri.
-    - Se VANDALICI: Insulti, cancellazione testo, ALL CAPS, propaganda. Commenti provocatori.
-    Output solo il JSON Array.
-    """
+    
+    if real_text_window:
+        # PROMPT CON TESTO REALE
+        prompt = f"""
+        Ecco un testo REALE estratto da Wikipedia (Wikitext):
+        "{real_text_window}"
+        
+        Il tuo compito è generare un JSON Array con ESATTAMENTE {count} modifiche simulate (edits) SU QUESTO TESTO SPECIFICO.
+        
+        TIPO MODIFICHE: {edit_type}
+        
+        FORMATO OGGETTO JSON:
+        {{
+            "user": "NomeUtente",
+            "comment": "Descrizione della modifica",
+            "original_text": "Il testo originale (deve essere una sottostringa esatta del testo fornito sopra)",
+            "new_text": "Il testo modificato",
+            "timestamp": 1234567890,
+            "length": {{ "old": 123, "new": 145 }},
+            "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
+        }}
+        
+        ISTRUZIONI:
+        - Se LEGITTIMI: Migliora il testo, correggi typo, aggiungi info coerenti.
+        - Se VANDALICI: Inserisci insulti, cancella parti, scrivi cose senza senso, ma partendo dal testo reale.
+        - "original_text" DEVE essere presente nel testo fornito.
+        Output solo il JSON Array.
+        """
+    else:
+        # PROMPT CLASSICO (FALLBACK)
+        prompt = f"""
+        Contesto: Un articolo affidabile su "{topic_title}".
+        Genera un JSON Array con ESATTAMENTE {count} modifiche simulate (edits) stile Wikipedia.
+        TIPO MODIFICHE: {edit_type}
+        FORMATO OGGETTO JSON:
+        {{
+            "user": "NomeUtente",
+            "comment": "Descrizione della modifica",
+            "original_text": "Il testo esatto prima della modifica (preso dal contesto o inventato coerentemente)",
+            "new_text": "Il testo dopo la modifica",
+            "timestamp": 1234567890,
+            "length": {{ "old": 10000, "new": 10050 }},
+            "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
+        }}
+        DESCRIZIONE TIPO:
+        - Se LEGITTIMI: Correzioni typo, aggiunta fonti, riformulazione. Commenti seri.
+        - Se VANDALICI: Insulti, cancellazione testo, ALL CAPS, propaganda. Commenti provocatori.
+        Output solo il JSON Array.
+        """
     try:
         resp = model.generate_content(prompt, generation_config={"response_mime_type": "application/json"})
         edits = json.loads(resp.text)
@@ -203,6 +274,8 @@ def generate_edits_task(topic_title, edit_type, count, context_snippet):
                 "title": topic_title,
                 "user": edit.get("user", "Anon"),
                 "comment": edit.get("comment", "Edit"),
+                "original_text": edit.get("original_text", ""),
+                "new_text": edit.get("new_text", ""),
                 "timestamp": edit.get("timestamp", int(time.time())),
                 "length": edit.get("length", {"old": 1000, "new": 1000}),
                 "is_vandalism": edit.get("is_vandalism", False),
@@ -296,6 +369,14 @@ def generate_dataset():
         print(f"\n🎯 COMMUNITY SELEZIONATA: {selected_comm['comm_id']}")
         print(f"   Topics Target (5): {target_topics}")
         
+        # Carica contenuti reali
+        real_contents = load_real_content(CONTENT_FILE)
+        real_content_map = {row['page_title']: row['content'] for row in real_contents}
+        
+        # Se abbiamo contenuti reali per i topic target, usiamoli!
+        # Altrimenti usiamo contenuti casuali dal pool reale
+        
+        
         # 2. Generazione HTML Parallela (solo se necessario)
         generated_pages = {}
         if existing_html_pages >= 5:
@@ -324,10 +405,24 @@ def generate_dataset():
                     if res:
                         generated_pages[res['title']] = res
         
-        # 3. Generazione Edits Parallela (solo se necessario)
-        if missing_legit == 0 and missing_vandal == 0:
-            print("\n✅ Tutti gli edit necessari sono già presenti, nessuna generazione richiesta")
-        else:
+        # 3. Generazione Edits con Retry Loop
+        MAX_RETRIES = 5
+        attempt = 0
+        
+        while attempt < MAX_RETRIES:
+            # Ricalcola mancanti
+            current_legit = count_valid_edits(LEGIT_FILE)
+            current_vandal = count_valid_edits(VANDAL_FILE)
+            
+            missing_legit = max(0, TOTAL_EDITS_TARGET - current_legit)
+            missing_vandal = max(0, TOTAL_EDITS_TARGET - current_vandal)
+            
+            if missing_legit == 0 and missing_vandal == 0:
+                print("\n✅ Target Raggiunto: 100 Legit e 100 Vandal presenti.")
+                break
+                
+            print(f"\n🔄 [Tentativo {attempt+1}/{MAX_RETRIES}] Mancano: {missing_legit} Legit, {missing_vandal} Vandal")
+            
             # Distribuzione edit tra topic
             num_topics = len(target_topics)
             legit_per_topic = missing_legit // num_topics if missing_legit > 0 else 0
@@ -337,27 +432,46 @@ def generate_dataset():
             legit_remainder = missing_legit % num_topics
             vandal_remainder = missing_vandal % num_topics
             
-            print(f"\n🚀 Avvio Generazione Edits (Parallela)...")
-            print(f"   Distribuzione: ~{legit_per_topic} Legit + ~{vandal_per_topic} Vandal per topic")
+            print(f"🚀 Avvio Generazione Edits (Parallela)...")
             
             with ThreadPoolExecutor(max_workers=3) as executor:
                 futures = []
                 for idx, title in enumerate(target_topics):
                     snippet = generated_pages.get(title, {}).get('content_snippet', "")
                     
-                    # Calcola quanti edit generare per questo topic
-                    legit_count = legit_per_topic + (legit_remainder if idx == 0 else 0)
-                    vandal_count = vandal_per_topic + (vandal_remainder if idx == 0 else 0)
+                    # Calcola quanti edit generare per questo topic in questo round
+                    # Nota: Se mancano pochi edit (es. 2), li assegniamo ai primi topic
+                    l_count = legit_per_topic + (1 if idx < legit_remainder else 0)
+                    v_count = vandal_per_topic + (1 if idx < vandal_remainder else 0)
                     
                     # Task Legit
-                    if legit_count > 0:
-                        futures.append(executor.submit(generate_edits_task, title, "LEGITTIMI", legit_count, snippet))
+                    if l_count > 0:
+                        # Scegli testo reale
+                        real_text = real_content_map.get(title)
+                        if not real_text and real_contents:
+                            real_text = random.choice(real_contents)['content']
+                            
+                        window = extract_random_window(real_text) if real_text else None
+                        
+                        futures.append(executor.submit(generate_edits_task, title, "LEGITTIMI", l_count, snippet, window))
                     # Task Vandal
-                    if vandal_count > 0:
-                        futures.append(executor.submit(generate_edits_task, title, "VANDALICI", vandal_count, snippet))
+                    if v_count > 0:
+                        # Scegli testo reale
+                        real_text = real_content_map.get(title)
+                        if not real_text and real_contents:
+                            real_text = random.choice(real_contents)['content']
+                            
+                        window = extract_random_window(real_text) if real_text else None
+                        
+                        futures.append(executor.submit(generate_edits_task, title, "VANDALICI", v_count, snippet, window))
                 
                 for future in as_completed(futures):
-                    future.result() # Attendiamo completamento per loggare errori eventuali
+                    future.result() # Attendiamo completamento
+            
+            attempt += 1
+            
+        if attempt == MAX_RETRIES and (missing_legit > 0 or missing_vandal > 0):
+            print(f"\n⚠️ ATTENZIONE: Raggiunto limite tentativi. Mancano ancora {missing_legit} Legit e {missing_vandal} Vandal.")
                 
         print("\n✨ Generazione Completata!")
         print(f"📂 Legit File: {LEGIT_FILE}")

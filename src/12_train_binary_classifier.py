@@ -49,24 +49,39 @@ def load_training_edits(filepath):
 def get_features(edit, embedder, index_data):
     """
     Crea il vettore di feature:
-    [Edit_Embedding (384), Top_Context_Embedding (384), Cosine_Similarity (1)]
-    Totale: 769 dimensioni
+    [Edit_Embedding (384), Top_Context_Embedding (384), Original_Embedding (384), Cosine_Similarity_Trusted (1), Cosine_Similarity_Original (1)]
+    Totale: 1154 dimensioni
     """
-    # 1. Embed Edit
-    query_text = f"{edit['title']} {edit['comment']}"
+    # 1. Embed Edit (Title + Comment + New Text)
+    query_text = f"{edit['title']} {edit['comment']} {edit.get('new_text', '')}"
     edit_emb = embedder.encode(query_text, convert_to_numpy=True)
     
-    # 2. Retrieve Top Context
+    # 2. Retrieve Top Context (Trusted)
     corpus_embeddings = index_data["embeddings"]
     
-    # Similitudine
+    # Similitudine Trusted
     scores = cosine_similarity(edit_emb.reshape(1, -1), corpus_embeddings)[0]
     best_idx = np.argmax(scores)
-    best_score = scores[best_idx]
+    best_score_trusted = scores[best_idx]
     best_context_emb = corpus_embeddings[best_idx]
     
-    # 3. Concatenate
-    features = np.concatenate([edit_emb, best_context_emb, [best_score]])
+    # 3. Embed Original Text
+    original_text = edit.get('original_text', '')
+    if original_text:
+        original_emb = embedder.encode(original_text, convert_to_numpy=True)
+    else:
+        # Fallback: se manca original_text, usiamo un vettore di zeri (o il trusted context?)
+        # Meglio zeri per evidenziare la mancanza
+        original_emb = np.zeros(384)
+
+    # 4. Similitudine Original
+    if original_text:
+        sim_original = cosine_similarity(edit_emb.reshape(1, -1), original_emb.reshape(1, -1))[0][0]
+    else:
+        sim_original = 0.0
+
+    # 5. Concatenate
+    features = np.concatenate([edit_emb, best_context_emb, original_emb, [best_score_trusted], [sim_original]])
     return features
 
 def main():

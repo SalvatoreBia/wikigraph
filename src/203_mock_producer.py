@@ -102,6 +102,8 @@ def send_event(producer, edit_data, page_id):
         "wiki": "itwiki",
         "server_name": "it.wikipedia.org",
         "parsedcomment": comment,
+        "original_text": edit_data.get('original_text', ''),
+        "new_text": edit_data.get('new_text', ''),
         "is_vandalism": is_vandalism # Aggiunto per verifica successiva (non standard ma utile per noi)
     }
     

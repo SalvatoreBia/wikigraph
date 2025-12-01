@@ -1,5 +1,8 @@
 << `
 -----------------------------------------------------------------------------------
+link dello stream di wikipedia:
+https://stream.wikimedia.org/v2/stream/recentchange
+
 non eseguire questo file, bastardo
 ti scrivo cosa eseguire riga per riga
 

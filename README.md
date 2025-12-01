@@ -1,5 +1,7 @@
 # WikiGraph - Procedura Operativa
 
+https://stream.wikimedia.org/v2/stream/recentchange
+
 Usa questi passaggi nell'ordine indicato per riprodurre l'ambiente e l'intero flusso.
 
 i file di wikipedia caricati si chiamano "latest" ma sono del giorno 2025-11-20

@@ -10,33 +10,41 @@ import numpy as np
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 HTML_DIR = DATA_DIR / "trusted_html_pages"
+CSV_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
 INDEX_FILE = DATA_DIR / "trusted_sources_index.pkl"
 
 MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
 CHUNK_SIZE = 500  # Caratteri per chunk
 OVERLAP = 50      # Sovrapposizione
 
-def load_html_files(directory):
-    """Carica tutti i file HTML dalla directory e ne estrae il testo."""
+import csv
+
+def load_csv_content(filepath, limit=100):
+    """Carica contenuti dal CSV."""
     documents = []
-    if not directory.exists():
-        print(f"❌ Directory non trovata: {directory}")
+    if not filepath.exists():
+        print(f"❌ File CSV non trovato: {filepath}")
         return []
 
-    print(f"📂 Leggo file HTML da: {directory}")
-    print(f"   Contenuto dir: {[f.name for f in directory.iterdir()]}")
-    for file_path in directory.glob("*.html"):
-        try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                soup = BeautifulSoup(f.read(), "html.parser")
-                text = soup.get_text(separator=" ", strip=True)
-                documents.append({
-                    "filename": file_path.name,
-                    "text": text
-                })
-                print(f"  - Caricato: {file_path.name} ({len(text)} chars)")
-        except Exception as e:
-            print(f"⚠️ Errore lettura {file_path.name}: {e}")
+    print(f"📂 Leggo file CSV da: {filepath}")
+    try:
+        csv.field_size_limit(sys.maxsize)
+        with open(filepath, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            count = 0
+            for row in reader:
+                content = row.get('content', '')
+                if content and len(content) > 100:
+                    documents.append({
+                        "filename": row.get('page_title', f"doc_{count}"),
+                        "text": content
+                    })
+                    count += 1
+                    if count >= limit:
+                        break
+            print(f"✅ Caricati {len(documents)} documenti da CSV.")
+    except Exception as e:
+        print(f"⚠️ Errore lettura CSV: {e}")
     
     return documents
 
@@ -55,9 +63,12 @@ def create_index():
     print("--- 🏗️ CREAZIONE INDICE RAG ---")
     
     # 1. Carica Documenti
-    docs = load_html_files(HTML_DIR)
+    # 1. Carica Documenti
+    # docs = load_html_files(HTML_DIR) # Vecchio metodo HTML
+    docs = load_csv_content(CSV_FILE)  # Nuovo metodo CSV
+    
     if not docs:
-        print("❌ Nessun documento trovato. Genera prima i mock con 10_generate_mocks.py")
+        print("❌ Nessun documento trovato. Genera prima i dati con 8_clean_file.py")
         return
 
     # 2. Chunking

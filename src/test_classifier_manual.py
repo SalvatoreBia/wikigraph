@@ -56,7 +56,7 @@ def download_wikipedia_page(page_title, lang="en"):
         print(f"❌ Errore durante il download: {e}")
         return None
 
-def create_manual_event(page_title, original_content, new_content, comment, user, lang="it"):
+def create_manual_event(page_title, original_text, new_text, comment, user, lang="it"):
     """Crea un evento JSON con il contenuto modificato manualmente."""
     
     # Semplice logica per is_vandalism (opzionale, solo per debug)
@@ -71,11 +71,40 @@ def create_manual_event(page_title, original_content, new_content, comment, user
         "diff_url": f"https://{lang}.wikipedia.org/w/index.php?title={page_title}&diff=prev&oldid=000000",
         "server_name": f"{lang}.wikipedia.org",
         "wiki": f"{lang}wiki",
-        # Campi extra per compatibilità futura o debug
-        "original_content_snippet": original_content[:100],
-        "new_content_snippet": new_content[:100]
+        # Campi corretti per il BC Judge
+        "original_text": original_text,
+        "new_text": new_text
     }
     return event
+
+def select_window(content, window_size=600):
+    """Permette all'utente di selezionare una finestra di testo o ne prende una a caso."""
+    if len(content) <= window_size:
+        return content
+        
+    print(f"\n--- SELEZIONE FINESTRA TESTO ({len(content)} chars) ---")
+    print("1. Inizio pagina")
+    print("2. Metà pagina")
+    print("3. Fine pagina")
+    print("4. Casuale")
+    choice = input("Scelta [4]: ").strip()
+    
+    if choice == "1":
+        start = 0
+    elif choice == "2":
+        start = len(content) // 2
+    elif choice == "3":
+        start = len(content) - window_size
+    else:
+        start = random.randint(0, len(content) - window_size)
+        
+    # Adjust start to space
+    if start > 0:
+        while start < len(content) and content[start] not in (' ', '\n'):
+            start += 1
+            
+    window = content[start : start + window_size]
+    return window
 
 def main():
     print("--- 🧪 TEST MANUAL CLASSIFIER (FILE MODE) ---")
@@ -91,25 +120,28 @@ def main():
     if not content:
         return
 
-    # 3. Salva su file temporaneo
+    # 3. Seleziona Finestra
+    original_window = select_window(content)
+    
+    # 4. Salva su file temporaneo
     filename = "draft_edit.txt"
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(content)
+        f.write(original_window)
         
-    print(f"\n✅ Contenuto salvato in '{filename}'.")
+    print(f"\n✅ Finestra di testo salvata in '{filename}'.")
     print(f"👉 ORA MODIFICA IL FILE '{filename}' con il tuo editor preferito.")
     print("   Salva il file e poi premi INVIO qui per continuare...")
     input()
     
-    # 4. Leggi file modificato
+    # 5. Leggi file modificato
     try:
         with open(filename, "r", encoding="utf-8") as f:
-            new_content = f.read()
+            new_window = f.read()
     except FileNotFoundError:
         print(f"❌ File '{filename}' non trovato!")
         return
 
-    if content == new_content:
+    if original_window == new_window:
         print("⚠️ Nessuna modifica rilevata nel file. Procedo comunque...")
     else:
         print("✅ Modifiche rilevate!")
@@ -122,7 +154,7 @@ def main():
     if not comment: comment = "Test edit"
     
     # 6. Crea Evento
-    event = create_manual_event(page_title, content, new_content, comment, user, lang)
+    event = create_manual_event(page_title, original_window, new_window, comment, user, lang)
     
     # 7. Invia a Kafka
     producer = KafkaProducer(

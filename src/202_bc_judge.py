@@ -5,8 +5,10 @@ import sys
 import numpy as np
 from pathlib import Path
 from kafka import KafkaConsumer
-from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
+
+# Import shared utils
+import classifier_utils
 
 # --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,8 +16,6 @@ DATA_DIR = BASE_DIR / "data"
 TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 SCORES_DIR = DATA_DIR / "scores"
 RESULTS_FILE = SCORES_DIR / "BC_results.json"
-
-INDEX_FILE = DATA_DIR / "trusted_sources_index.pkl"
 MODEL_FILE = TRAINED_BC_DIR / "binary_classifier.pkl"
 
 KAFKA_BROKER = 'localhost:9092'
@@ -24,48 +24,18 @@ MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
 
 def load_resources():
     print("⏳ Caricamento risorse BC...")
-    if not INDEX_FILE.exists():
-        print(f"❌ Indice non trovato: {INDEX_FILE}")
-        return None, None
     if not MODEL_FILE.exists():
         print(f"❌ Modello non trovato: {MODEL_FILE}")
         return None, None
         
-    with open(INDEX_FILE, "rb") as f:
-        index = pickle.load(f)
+    driver = classifier_utils.get_neo4j_driver()
+    if not driver:
+        return None, None
+
     with open(MODEL_FILE, "rb") as f:
         model = pickle.load(f)
         
-    return index, model
-
-def get_features(edit, embedder, index_data):
-    # 1. Embed Edit (Title + Comment + New Text)
-    query_text = f"{edit['title']} {edit['comment']} {edit.get('new_text', '')}"
-    edit_emb = embedder.encode(query_text, convert_to_numpy=True)
-    
-    # 2. Retrieve Top Context (Trusted)
-    corpus_embeddings = index_data["embeddings"]
-    scores = cosine_similarity(edit_emb.reshape(1, -1), corpus_embeddings)[0]
-    best_idx = np.argmax(scores)
-    best_score_trusted = scores[best_idx]
-    best_context_emb = corpus_embeddings[best_idx]
-    
-    # 3. Embed Original Text
-    original_text = edit.get('original_text', '')
-    if original_text:
-        original_emb = embedder.encode(original_text, convert_to_numpy=True)
-    else:
-        original_emb = np.zeros(384)
-    
-    # 4. Similitudine Original
-    if original_text:
-        sim_original = cosine_similarity(edit_emb.reshape(1, -1), original_emb.reshape(1, -1))[0][0]
-    else:
-        sim_original = 0.0
-
-    # 5. Concatenate
-    features = np.concatenate([edit_emb, best_context_emb, original_emb, [best_score_trusted], [sim_original]])
-    return features
+    return driver, model
 
 def save_result(result_entry):
     if not SCORES_DIR.exists():
@@ -94,10 +64,10 @@ def save_result(result_entry):
           default=lambda o: bool(o) if isinstance(o, (np.bool_, np.bool)) else o)
 
 def main():
-    print("--- 🤖 BC JUDGE AVVIATO (Il Classificatore) ---")
+    print("--- 🤖 BC JUDGE AVVIATO (New Architecture) ---")
     
-    index, model = load_resources()
-    if not index or not model:
+    driver, model = load_resources()
+    if not driver or not model:
         return
         
     embedder = SentenceTransformer(MODEL_NAME)
@@ -108,59 +78,62 @@ def main():
         bootstrap_servers=[KAFKA_BROKER],
         value_deserializer=lambda x: json.loads(x.decode('utf-8')),
         auto_offset_reset='latest',
-        group_id='bc_judge_group' # Group ID diverso per ricevere copia dei messaggi
+        group_id='bc_judge_group_new' 
     )
     
-    for message in consumer:
-        event = message.value
-        comment = event['comment']
-        user = event['user']
-        is_vandalism_truth = event.get('is_vandalism', None)
-        
-        print(f"\nAnalisi edit di [{user}]:")
-        print(f"  Commento: \"{comment}\"")
-        
-        start_time = time.time()
-        
-        # Feature extraction & Prediction
-        feat = get_features(event, embedder, index)
-        pred_label = model.predict([feat])[0] # 0 = Legit, 1 = Vandal
-        
-        end_time = time.time()
-        elapsed = end_time - start_time
-        
-        predicted_vandal = (pred_label == 1)
-        verdict = "VANDALISMO" if predicted_vandal else "LEGITTIMO"
-        
-        # Check correctness
-        is_correct = None
-        if is_vandalism_truth is not None:
-            is_correct = (predicted_vandal == is_vandalism_truth)
+    try:
+        for message in consumer:
+            event = message.value
+            comment = event.get('comment', '')
+            user = event.get('user', 'Unknown')
+            is_vandalism_truth = event.get('is_vandalism', None)
             
-        if predicted_vandal:
-            color = "\033[91m" # Rosso
-            icon = "🚨"
-        else:
-            color = "\033[92m" # Verde
-            icon = "✅"
+            print(f"\nAnalisi edit di [{user}]:")
+            print(f"  Commento: \"{comment}\"")
             
-        reset = "\033[0m"
-        
-        print(f"  Verdetto: {color}{icon} {verdict}{reset} ({elapsed:.4f}s)")
-        if is_correct is not None:
-            print(f"  Corretto: {'✅' if is_correct else '❌'}")
+            start_time = time.time()
             
-        # Salva risultato
-        result_entry = {
-            "user": user,
-            "comment": comment,
-            "predicted": verdict,
-            "expected": "VANDALISMO" if is_vandalism_truth else "LEGITTIMO",
-            "correct": is_correct,
-            "time_sec": elapsed
-        }
-        save_result(result_entry)
-        print("-" * 50)
+            # Feature extraction & Prediction
+            feat = classifier_utils.get_features(event, embedder, driver)
+            pred_label = model.predict([feat])[0] # 0 = Legit, 1 = Vandal
+            
+            end_time = time.time()
+            elapsed = end_time - start_time
+            
+            predicted_vandal = (pred_label == 1)
+            verdict = "VANDALISMO" if predicted_vandal else "LEGITTIMO"
+            
+            # Check correctness
+            is_correct = None
+            if is_vandalism_truth is not None:
+                is_correct = (predicted_vandal == is_vandalism_truth)
+                
+            if predicted_vandal:
+                color = "\033[91m" # Rosso
+                icon = "🚨"
+            else:
+                color = "\033[92m" # Verde
+                icon = "✅"
+                
+            reset = "\033[0m"
+            
+            print(f"  Verdetto: {color}{icon} {verdict}{reset} ({elapsed:.4f}s)")
+            if is_correct is not None:
+                print(f"  Corretto: {'✅' if is_correct else '❌'}")
+                
+            # Salva risultato
+            result_entry = {
+                "user": user,
+                "comment": comment,
+                "predicted": verdict,
+                "expected": "VANDALISMO" if is_vandalism_truth else "LEGITTIMO",
+                "correct": is_correct,
+                "time_sec": elapsed
+            }
+            save_result(result_entry)
+            print("-" * 50)
+    finally:
+        driver.close()
 
 if __name__ == "__main__":
     try:

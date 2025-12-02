@@ -11,7 +11,7 @@ TOPIC_OUT_JUDGE = 'to-be-judged'  # Nuovo topic per l'AI
 NEO4J_URI = 'bolt://localhost:7687'
 NEO4J_AUTH = ('neo4j', 'password')
 
-ALERT_THRESHOLD = 4 
+ALERT_THRESHOLD = 1 
 WINDOW_SECONDS = 30  # Finestra temporale per il reset
 
 def get_community_id(tx, page_title):

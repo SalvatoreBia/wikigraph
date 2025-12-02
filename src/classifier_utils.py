@@ -9,7 +9,7 @@ AUTH = ('neo4j', 'password')
 INDEX_NAME = "trusted_sources_index"
 VECTOR_DIM = 384
 
-BAD_WORDS = ["scemo", "stupido", "cacca", "pupu", "idiota", "merda", "schifo", "vaffanculo", "cazzo"]
+
 
 def get_neo4j_driver():
     try:
@@ -86,38 +86,13 @@ def get_features(edit, embedder, driver):
     # Se l'edit è un vandalismo totale, potrebbe non matchare bene, ma è quello che vogliamo misurare.
     trusted_emb, truth_score = get_trusted_embedding(driver, new_emb)
     
-    # 4. Meta-Features
-    len_new = len(new_text)
-    len_old = len(original_text)
-    
-    # Ratio Lunghezza
-    if len_old > 0:
-        len_ratio = len_new / len_old
-    else:
-        len_ratio = 1.0 if len_new > 0 else 0.0
-        
-    # Ratio Maiuscole
-    caps_count = sum(1 for c in new_text if c.isupper())
-    caps_ratio = caps_count / len_new if len_new > 0 else 0.0
-    
-    # Bad Words
-    has_bad_words = 0.0
-    lower_text = new_text.lower()
-    for word in BAD_WORDS:
-        if word in lower_text:
-            has_bad_words = 1.0
-            break
-            
-    # 5. Concatenazione
-    # [Semantic Delta (384), Comment Intent (384), Truth Score (1), Len Ratio (1), Caps Ratio (1), Bad Words (1)]
-    # Totale: 384 + 384 + 1 + 1 + 1 + 1 = 772
+    # 4. Concatenazione
+    # [Semantic Delta (384), Comment Intent (384), Truth Score (1)]
+    # Totale: 384 + 384 + 1 = 769
     features = np.concatenate([
         semantic_delta,
         comment_emb,
-        [truth_score],
-        [len_ratio],
-        [caps_ratio],
-        [has_bad_words]
+        [truth_score]
     ])
     
     return features

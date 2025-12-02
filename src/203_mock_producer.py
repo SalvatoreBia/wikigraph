@@ -19,7 +19,7 @@ MOCK_DIR = DATA_DIR / "mocked_edits"
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
-EVAL_SET_SIZE = 50
+EVAL_SET_SIZE = 70
 
 def get_real_page_id(target_title):
     """

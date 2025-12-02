@@ -21,7 +21,7 @@ LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
-TRAINING_DATA_PERCENTAGE = 0.05 
+TRAINING_DATA_PERCENTAGE = 0.5 
 
 def load_training_edits(filepath):
     """Carica una percentuale di edit partendo dal basso (più recenti)"""

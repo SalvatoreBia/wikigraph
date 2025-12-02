@@ -6,6 +6,8 @@ import sys
 import threading
 import time
 import uuid
+import shutil
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from itertools import cycle
 from pathlib import Path
@@ -41,10 +43,28 @@ if not API_KEYS:
 api_key_cycle = cycle(API_KEYS)
 key_lock = threading.Lock()
 
+# Rate Limiting
+KEY_USAGE = defaultdict(list)
+MAX_REQ_PER_MIN = 2
+WINDOW_SIZE = 65  # seconds
+
 def get_next_api_key():
     with key_lock:
-        key = next(api_key_cycle)
-    return key
+        while True:
+            now = time.time()
+            # Try to find an available key
+            for _ in range(len(API_KEYS)):
+                key = next(api_key_cycle)
+                # Clean old timestamps
+                KEY_USAGE[key] = [t for t in KEY_USAGE[key] if now - t < WINDOW_SIZE]
+                
+                if len(KEY_USAGE[key]) < MAX_REQ_PER_MIN:
+                    KEY_USAGE[key].append(now)
+                    return key
+            
+            # If all keys are busy, wait a bit
+            print("⏳ Rate limit hit on all keys. Waiting 5s...")
+            time.sleep(5)
 
 # Neo4j Config
 URI = "bolt://localhost:7687"
@@ -198,8 +218,13 @@ def generate_edits_task(topic_title, edit_type, count, context_snippet, real_tex
         }}
         
         ISTRUZIONI:
-        - Se LEGITTIMI: Migliora il testo, correggi typo, aggiungi info coerenti.
-        - Se VANDALICI: Inserisci insulti, cancella parti, scrivi cose senza senso, ma partendo dal testo reale.
+        - Se LEGITTIMI: Fai modifiche UTILI ma MINIME. Correggi punteggiatura, migliora la scorrevolezza, correggi un typo. NON stravolgere il testo. Deve sembrare un edit di un utente meticoloso.
+        - Se VANDALICI: Fai modifiche SUBDOLE e DIFFICILI DA INDIVIDUARE.
+            * Cambia una data (es. 1995 -> 1994).
+            * Inverti un nome (es. Mario Rossi -> Paolo Rossi).
+            * Modifica leggermente una statistica (es. 50% -> 52%).
+            * Inserisci un fatto plausibile ma falso.
+            * NON usare insulti, NON scrivere cose senza senso, NON cancellare tutto. Deve sembrare vero a una lettura veloce.
         - "original_text" DEVE essere presente nel testo fornito.
         Output solo il JSON Array.
         """
@@ -219,6 +244,8 @@ def generate_edits_task(topic_title, edit_type, count, context_snippet, real_tex
             "length": {{ "old": 10000, "new": 10050 }},
             "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
         }}
+        ISTRUZIONI:
+        - Se VANDALICI: Sii subdolo. Cambia date, nomi, fatti in modo credibile. Niente insulti palesi.
         Output solo il JSON Array.
         """
     try:
@@ -280,14 +307,21 @@ def count_valid_edits(filepath):
 
 def generate_dataset():
     # Setup directory
+    if HTML_DIR.exists():
+        print(f"🧹 Pulizia directory HTML: {HTML_DIR}")
+        shutil.rmtree(HTML_DIR)
     HTML_DIR.mkdir(parents=True, exist_ok=True)
+    
     MOCK_DIR.mkdir(parents=True, exist_ok=True)
+    # Pulizia file edits precedenti per ripartire da zero
+    if LEGIT_FILE.exists(): os.remove(LEGIT_FILE)
+    if VANDAL_FILE.exists(): os.remove(VANDAL_FILE)
     
-    existing_html_pages = count_valid_html_pages()
-    existing_legit = count_valid_edits(LEGIT_FILE)
-    existing_vandal = count_valid_edits(VANDAL_FILE)
+    existing_html_pages = 0 # Ripartiamo da zero
+    existing_legit = 0
+    existing_vandal = 0
     
-    TOTAL_EDITS_TARGET = 100
+    TOTAL_EDITS_TARGET = 20
     missing_legit = max(0, TOTAL_EDITS_TARGET - existing_legit)
     missing_vandal = max(0, TOTAL_EDITS_TARGET - existing_vandal)
     

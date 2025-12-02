@@ -2,6 +2,8 @@ import json
 import os
 import time
 from pathlib import Path
+from itertools import cycle
+import threading
 
 import google.generativeai as genai
 from bs4 import BeautifulSoup
@@ -12,7 +14,22 @@ from kafka import KafkaConsumer
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# API Keys Round Robin
+API_KEYS = [
+    os.getenv("GEMINI_API_KEY"),
+    os.getenv("GEMINI_API_KEY_2"),
+    os.getenv("GEMINI_API_KEY_3")
+    # os.getenv("GEMINI_API_KEY_4")
+]
+API_KEYS = [k for k in API_KEYS if k]
+
+api_key_cycle = cycle(API_KEYS)
+key_lock = threading.Lock()
+
+def get_next_api_key():
+    with key_lock:
+        return next(api_key_cycle)
+
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_IN = 'to-be-judged'
 SOURCE_FILE = '../data/web_source_tennis.html'
@@ -31,9 +48,11 @@ def load_ground_truth():
         return soup.get_text(separator=' ', strip=True)
 
 def analyze_with_gemini(edit_comment, context, original_text, new_text):
-    if not GEMINI_API_KEY:
+    api_key = get_next_api_key()
+    if not api_key:
         return "ERRORE: API KEY MANCANTE"
 
+    genai.configure(api_key=api_key)
     model = genai.GenerativeModel(GEMINI_MODEL)
     
     prompt = f"""
@@ -93,14 +112,12 @@ def save_result(result_entry):
 def main():
     print("--- AI JUDGE AVVIATO (Il Giudice) ---")
 
-    if not GEMINI_API_KEY:
-        print(f"❌ ERRORE CRITICO: Impossibile trovare GEMINI_API_KEY in {env_path}")
+    if not API_KEYS:
+        print(f"❌ ERRORE CRITICO: Nessuna API Key trovata nel .env")
         return
-
-    genai.configure(api_key=GEMINI_API_KEY)
     
     ground_truth = load_ground_truth()
-    print(f"✅ API Key caricata. Modello: {GEMINI_MODEL}")
+    print(f"✅ {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
     print(f"📚 Contesto caricato. In attesa...")
 
     # --- CORREZIONE QUI: Aggiunto group_id univoco ---
@@ -127,6 +144,9 @@ def main():
         verdict = analyze_with_gemini(comment, ground_truth, original_text, new_text)
         end_time = time.time()
         elapsed = end_time - start_time
+        
+        # Rate limiting: con 4 chiavi = 40 req/min → aspetta 2s tra richieste
+        # time.sleep(2)
         
         # Normalizza verdetto
         predicted_vandal = "VANDALISMO" in verdict.upper()

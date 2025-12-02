@@ -20,7 +20,7 @@ LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
-TRAINING_DATA_PERCENTAGE = 1.0 # 0.0 to 1.0 (1.0 = 100% of edits, 0.5 = last 50%)
+TRAINING_DATA_PERCENTAGE = 0.5 # 0.0 to 1.0 (1.0 = 100% of edits, 0.5 = last 50%)
 
 def load_index():
     if not INDEX_FILE.exists():

@@ -56,11 +56,8 @@ def download_wikipedia_page(page_title, lang="en"):
         print(f"❌ Errore durante il download: {e}")
         return None
 
-def create_manual_event(page_title, original_text, new_text, comment, user, lang="it"):
+def create_manual_event(page_title, original_text, new_text, comment, user, is_vandalism, lang="it"):
     """Crea un evento JSON con il contenuto modificato manualmente."""
-    
-    # Semplice logica per is_vandalism (opzionale, solo per debug)
-    is_vandalism = False 
     
     event = {
         "title": page_title,
@@ -152,9 +149,12 @@ def main():
     
     comment = input("Commento dell'edit [Test edit]: ").strip()
     if not comment: comment = "Test edit"
+
+    is_vandalism_input = input("È vandalismo? (s/N): ").strip().lower()
+    is_vandalism = is_vandalism_input in ['s', 'y', 'si', 'yes']
     
     # 6. Crea Evento
-    event = create_manual_event(page_title, original_window, new_window, comment, user, lang)
+    event = create_manual_event(page_title, original_window, new_window, comment, user, is_vandalism, lang)
     
     # 7. Invia a Kafka
     producer = KafkaProducer(

@@ -99,8 +99,48 @@ py 11_embed_trusted_sources.py
 
 py 12_train_binary_classifier.py
 
-
 << `
+Il binary classifier viene salvato in ../models/binary_classifier_model.pkl
+
+Valuta la legittimità di una edit con un modello di Regressione Logistica addestrato su un vettore di 772 dimensioni.
+
+Modello di Embedding utilizzato: 'paraphrase-multilingual-MiniLM-L12-v2' (384 dim)
+
+INPUT DEL CLASSIFICATORE - Feature Vector X è composto da 4 blocchi principali:
+
+1. SEMANTIC DELTA (384 float)
+   Formula: Embed_new_text - Embed_old_text
+   Rappresenta la "direzione" del cambiamento nello spazio semantico.
+   - Se il vettore punta verso aree semantiche negative (insulti, nonsense), indica vandalismo.
+   - Se il vettore è corto o punta verso aree simili, indica modifiche legittime.
+
+2. COMMENT INTENT (384 float)
+   Formula: Embed_user_comment
+   Cattura l'intenzione dichiarata dall'utente.
+   - Commenti vuoti o con pattern tipici dei vandali ("ahahaha", insulti) vengono rilevati qui.
+
+3. TRUTH SCORE (1 float)
+   Range: [0.0 - 1.0] (Cosine Similarity)
+   Viene calcolato interrogando l'Indice Vettoriale di Neo4j.
+   Il sistema confronta l'embedding del testo modificato con l'embedding della pagina
+   corrispondente (Trusted Source) salvata nel grafo.
+   - Basso score (< 0.5): Il testo modificato non c'entra nulla con l'argomento originale.
+   - Alto score (> 0.8): Il testo rimane coerente con la fonte affidabile.
+
+4. META FEATURES (3 float)
+   Euristiche statistiche per rilevare pattern banali:
+   - Len Ratio: new_text_length / old_text_length (rileva cancellazioni di massa o spam enorme).
+   - Caps Ratio: new_uppercase_letters/new_text_length = percentuale di lettere in caps (rileva "URRAAAA" o titoli urlati).
+   - Bad Words: Flag binario (0 o 1) se il testo contiene parole di una blacklist (insulti).
+
+TOTALE FEATURE: 384 + 384 + 1 + 3 = 772 dimensioni.
+
+OUTPUT:
+0 = LEGITTIMO
+1 = VANDALISMO
+-----------------------------------------------------------------------------------
+
+
 -----------------------------------------------------------------------------------
 adesso devi avviare prima lo stream processor e l ai judge altrimenti non sono pronti a ricevere le modifiche 
 quindi, apriti 3 terminali separati \(puoi farlo pure in vscode bastardo, che cazzo alzi gli occhi\)

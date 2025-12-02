@@ -49,7 +49,7 @@ def create_graph_projection(driver):
         
         if exists:
             print('  Projection already exists. Dropping old projection...')
-            session.run("CALL gds.graph.drop('wikiGraph')")
+            session.run("CALL gds.graph.drop('wikiGraph') YIELD graphName")
             print('  Old projection dropped.')
         
         projection_query = """
@@ -330,7 +330,7 @@ def cleanup_projection(driver):
     print('\n--- Cleanup ---')
     with driver.session() as session:
         try:
-            session.run("CALL gds.graph.drop('wikiGraph')")
+            session.run("CALL gds.graph.drop('wikiGraph') YIELD graphName")
             print('  Projection dropped.')
         except Exception as e:
             print(f'  Note: {e}')

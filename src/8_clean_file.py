@@ -14,8 +14,8 @@ from collections import defaultdict
 # Costanti per i file di default
 DEFAULT_XML_FILE = '../data/itwiki-latest-pages-articles.xml'
 OUTPUT_DIR = '../data/sample_content/'
-BUFFER_SIZE = 5000  # Buffer più grande per meno I/O
-PROGRESS_INTERVAL = 10000  # Mostra progresso ogni N pagine scansionate
+BUFFER_SIZE = 500  # Buffer più grande per meno I/O
+PROGRESS_INTERVAL = 1000  # Mostra progresso ogni N pagine scansionate
 
 # Prova a usare lxml (molto più veloce di ElementTree)
 try:

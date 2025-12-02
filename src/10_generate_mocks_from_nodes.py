@@ -71,6 +71,10 @@ URI = "bolt://localhost:7687"
 AUTH = ("neo4j", "password")
 MODEL_NAME = "gemini-2.5-pro"
 
+# Configuration for Mock Generation
+TARGET_LEGIT_EDITS = 10
+TARGET_VANDAL_EDITS = 10
+
 # Lock per scrittura file
 file_lock = threading.Lock()
 
@@ -321,9 +325,8 @@ def generate_dataset():
     existing_legit = 0
     existing_vandal = 0
     
-    TOTAL_EDITS_TARGET = 20
-    missing_legit = max(0, TOTAL_EDITS_TARGET - existing_legit)
-    missing_vandal = max(0, TOTAL_EDITS_TARGET - existing_vandal)
+    missing_legit = max(0, TARGET_LEGIT_EDITS - existing_legit)
+    missing_vandal = max(0, TARGET_VANDAL_EDITS - existing_vandal)
     
     print(f"\n🎯 Da generare: {missing_legit} Legit, {missing_vandal} Vandal")
 
@@ -385,8 +388,8 @@ def generate_dataset():
         while attempt < MAX_RETRIES:
             current_legit = count_valid_edits(LEGIT_FILE)
             current_vandal = count_valid_edits(VANDAL_FILE)
-            missing_legit = max(0, TOTAL_EDITS_TARGET - current_legit)
-            missing_vandal = max(0, TOTAL_EDITS_TARGET - current_vandal)
+            missing_legit = max(0, TARGET_LEGIT_EDITS - current_legit)
+            missing_vandal = max(0, TARGET_VANDAL_EDITS - current_vandal)
             
             if missing_legit == 0 and missing_vandal == 0:
                 print("\n✅ Target Raggiunto.")

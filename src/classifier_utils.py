@@ -25,6 +25,10 @@ def get_trusted_embedding(driver, edit_embedding):
     Recupera l'embedding della fonte affidabile più simile da Neo4j.
     Restituisce: (embedding, score)
     """
+    # Check for zero vector (e.g. empty text) to avoid Neo4j error
+    if np.all(edit_embedding == 0):
+        return np.zeros(VECTOR_DIM), 0.0
+
     query = f"""
     CALL db.index.vector.queryNodes('{INDEX_NAME}', 1, $embedding)
     YIELD node, score

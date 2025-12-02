@@ -149,6 +149,7 @@ ed esegui i comandi in ordine
 
 
 # Terminale1
+py 199_reset_kafka.py
 py 200_stream_processor.py
 
 # Terminale2
@@ -175,8 +176,6 @@ Puoi provare anche quello misto, funziona uguale
 
 
 py 500_compare_models.py
-
-
 
 
 

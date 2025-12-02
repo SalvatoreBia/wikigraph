@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 from itertools import cycle
 import threading
+from collections import defaultdict
 
 import google.generativeai as genai
 from bs4 import BeautifulSoup
@@ -26,14 +27,33 @@ API_KEYS = [k for k in API_KEYS if k]
 api_key_cycle = cycle(API_KEYS)
 key_lock = threading.Lock()
 
+# Rate Limiting
+KEY_USAGE = defaultdict(list)
+MAX_REQ_PER_MIN = 2
+WINDOW_SIZE = 65  # seconds
+
 def get_next_api_key():
     with key_lock:
-        return next(api_key_cycle)
+        while True:
+            now = time.time()
+            # Try to find an available key
+            for _ in range(len(API_KEYS)):
+                key = next(api_key_cycle)
+                # Clean old timestamps
+                KEY_USAGE[key] = [t for t in KEY_USAGE[key] if now - t < WINDOW_SIZE]
+                
+                if len(KEY_USAGE[key]) < MAX_REQ_PER_MIN:
+                    KEY_USAGE[key].append(now)
+                    return key
+            
+            # If all keys are busy, wait a bit
+            print("⏳ Rate limit hit on all keys. Waiting 5s...")
+            time.sleep(5)
 
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_IN = 'to-be-judged'
 SOURCE_FILE = '../data/web_source_tennis.html'
-GEMINI_MODEL = 'gemini-2.5-flash' 
+GEMINI_MODEL = 'gemini-2.5-pro' 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"

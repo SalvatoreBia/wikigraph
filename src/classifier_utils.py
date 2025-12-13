@@ -61,7 +61,6 @@ def get_features(edit, embedder, driver):
     comment = edit.get('comment', '')
     
     # 1. Embeddings
-    # Usiamo new_text per cercare il contesto, ma calcoliamo anche il delta
     if new_text:
         new_emb = embedder.encode(new_text, convert_to_numpy=True)
     else:
@@ -75,24 +74,49 @@ def get_features(edit, embedder, driver):
     if comment:
         comment_emb = embedder.encode(comment, convert_to_numpy=True)
     else:
-        comment_emb = np.zeros(VECTOR_DIM) # Commento vuoto
+        comment_emb = np.zeros(VECTOR_DIM)
         
-    # 2. Semantic Delta
+    # 2. Semantic Delta (differenza vettoriale)
     semantic_delta = new_emb - old_emb
     
-    # 3. Trusted Context & Truth Score
-    # Cerchiamo il contesto basandoci sul NUOVO testo (o titolo?)
-    # Meglio usare il testo per trovare la pagina corrispondente o simile.
-    # Se l'edit è un vandalismo totale, potrebbe non matchare bene, ma è quello che vogliamo misurare.
+    # 3. Cosine Similarity (quanto sono simili old e new)
+    # Score alto = testi simili (es. sinonimi) = probabilmente LEGITTIMO
+    # Score basso = testi diversi = potenziale VANDALISMO
+    if np.all(old_emb == 0) or np.all(new_emb == 0):
+        text_similarity = 0.0
+    else:
+        text_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
+    
+    # 4. Length ratio (rapporto lunghezze)
+    # Cancellazioni totali = ratio basso = vandalismo
+    old_len = len(original_text)
+    new_len = len(new_text)
+    if old_len > 0:
+        length_ratio = new_len / old_len
+    else:
+        length_ratio = 1.0 if new_len == 0 else 10.0  # Aggiunta da vuoto
+    
+    # 5. Trusted Context & Truth Score
     trusted_emb, truth_score = get_trusted_embedding(driver, new_emb)
     
-    # 4. Concatenazione
-    # [Semantic Delta (384), Comment Intent (384), Truth Score (1)]
-    # Totale: 384 + 384 + 1 = 769
+    # 6. Truth Similarity OLD vs Trusted (il testo originale era affidabile?)
+    if np.all(old_emb == 0):
+        old_truth_score = 0.0
+    else:
+        _, old_truth_score = get_trusted_embedding(driver, old_emb)
+    
+    # 7. Concatenazione delle feature
+    # [Semantic Delta (384), Comment Emb (384), 
+    #  Text Similarity (1), Length Ratio (1), 
+    #  Truth Score New (1), Truth Score Old (1)]
+    # Totale: 384 + 384 + 4 = 772
     features = np.concatenate([
-        semantic_delta,
-        comment_emb,
-        [truth_score]
+        semantic_delta,      # 384
+        comment_emb,         # 384
+        [text_similarity],   # 1 - NUOVA: robusta ai sinonimi
+        [length_ratio],      # 1 - NUOVA: rileva cancellazioni
+        [truth_score],       # 1 - Somiglianza new con trusted
+        [old_truth_score]    # 1 - NUOVA: Somiglianza old con trusted
     ])
     
     return features

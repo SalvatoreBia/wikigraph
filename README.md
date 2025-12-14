@@ -61,11 +61,12 @@ Gli embedding verranno salvati su neo4j nei nodi :Chunk e :TrustedChunk
 
 
 Nel file `12_train_binary_classifier.py` addestriamo un classificatore binario classico testando contemporaneamente Regressione Logistica, Random Forest, SVM e Gradient Boosting per distinguere tra edit legittimi e vandalici. 
-Il sistema carica il dataset generato ed estrae per ogni edit un vettore di feature ingegnerizzato (772 dimensioni totali) composto da:
+Il sistema carica il dataset generato ed estrae per ogni edit un vettore di feature ingegnerizzato (774 dimensioni totali) composto da:
 - Semantic Delta (384 dim): La differenza vettoriale tra l'embedding del nuovo testo e quello vecchio (rappresenta la "direzione" del cambiamento semantico).
 - Comment Embedding (384 dim): Il significato del commento lasciato dall'utente.
-- Similarità del Testo & Length Ratio: Metriche statistiche sul cambiamento apportato.
-- Truth Scores (RAG): Qui avviene la "Triangolazione". Il sistema interroga Neo4j per trovare i nodi 
+- Similarità del Testo (1 float)
+- Length Ratio (1 float)
+- Truth Scores (4 float): Qui avviene la "Triangolazione". Il sistema interroga Neo4j per trovare i nodi 
     - :Chunk (contenuto della pagina di Wikipedia) 
     - :TrustedChunk (contenuto dei file html generati in `trusted_html_pages`) 
     più simili al testo modificato. Il punteggio di similarità (Cosine Similarity) diventa una feature: se il testo dell'utente si discosta troppo dalla fonte affidabile o dal contesto originale, il punteggio cala, segnalando un potenziale vandalismo.

@@ -8,6 +8,10 @@ from neo4j import GraphDatabase
 import numpy as np
 
 # --- CONFIGURAZIONE ---
+from config_loader import load_config
+
+CONFIG = load_config()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 CSV_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
@@ -16,9 +20,12 @@ CSV_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')
 INDEX_NAME = "trusted_sources_index"
-VECTOR_DIM = 384
 
-MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
+# Load from Config
+VECTOR_DIM = CONFIG['embedding']['dimension']
+MODEL_NAME = CONFIG['embedding']['model_name']
+TEXT_LIMIT = CONFIG['processing']['text_limit']
+BATCH_SIZE = CONFIG['processing']['batch_size']
 
 def wait_for_connection(uri, auth):
     while True:
@@ -72,6 +79,12 @@ def load_csv_content(filepath):
             for row in reader:
                 content = row.get('content', '')
                 page_id = row.get('page_id')
+                
+                # TRUNCATE START
+                if content:
+                    content = content[:TEXT_LIMIT]
+                # TRUNCATE END
+
                 if content and page_id:
                     documents.append({
                         "id": page_id,
@@ -84,6 +97,8 @@ def load_csv_content(filepath):
 
 def main():
     print("--- 🧠 EMBEDDING TRUSTED SOURCES TO NEO4J ---")
+    print(f"   Config: Text Limit={TEXT_LIMIT}, Batch={BATCH_SIZE}")
+    print(f"   Model: {MODEL_NAME}")
     
     # 1. Connect
     driver = wait_for_connection(URI, AUTH)
@@ -106,35 +121,47 @@ def main():
     # 5. Process & Update Neo4j
     print("⚙️  Calcolo Embeddings e Aggiornamento Neo4j...")
     
+    total_updated = 0
+    
     with driver.session() as session:
-        count = 0
-        for doc in docs:
-            # Usa i primi 1000 caratteri per l'embedding (rappresentativi)
-            text_for_embedding = doc['text'][:1000]
-            embedding = model.encode(text_for_embedding).tolist()
+        # Process in batches
+        for i in range(0, len(docs), BATCH_SIZE):
+            batch_docs = docs[i : i + BATCH_SIZE]
             
-            # Update Query
+            # Prepare batch for Neo4j UNWIND
+            batch_data = []
+            texts_to_embed = []
+            
+            for doc in batch_docs:
+                text_content = doc['text'] # Already truncated load_csv_content
+                texts_to_embed.append(text_content)
+            
+            # Batch embedding
+            embeddings = model.encode(texts_to_embed).tolist()
+            
+            for j, doc in enumerate(batch_docs):
+                batch_data.append({
+                    "id": doc['id'],
+                    "content": doc['text'],
+                    "embedding": embeddings[j]
+                })
+            
+            # Update Query (Batch)
             query = """
-            MATCH (n:Node {id: $id})
-            SET n.content = $content,
-                n.embedding = $embedding
+            UNWIND $batch AS row
+            MATCH (n:Node {id: row.id})
+            SET n.content = row.content,
+                n.embedding = row.embedding
             RETURN count(n) as updated
             """
             
-            result = session.run(query, {
-                "id": doc['id'],
-                "content": doc['text'][:2000], # Salviamo un po' di testo per context (non tutto per non appesantire troppo se enorme)
-                "embedding": embedding
-            })
-            
+            result = session.run(query, {"batch": batch_data})
             updated = result.single()['updated']
-            if updated > 0:
-                count += 1
+            total_updated += updated
             
-            if count % 100 == 0:
-                print(f"   Aggiornati {count} nodi...", end='\r')
+            print(f"   Processati {min(i + BATCH_SIZE, len(docs))}/{len(docs)}... (Aggiornati: {updated})", end='\r')
                 
-    print(f"\n✅ Completato. {count} nodi aggiornati con embedding.")
+    print(f"\n✅ Completato. {total_updated} nodi aggiornati con embedding.")
     driver.close()
 
 if __name__ == "__main__":

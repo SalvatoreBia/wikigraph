@@ -1,12 +1,16 @@
 
 L'obiettivo è quello di creare un sistema per rilevare in tempo reale se le modifiche su wikipedia sono modifiche legittime o vandaliche.
 
-Non avendo le possibilità di hostare l'intera wikipedia sui nostri computer e testare le modifiche in tempo reale abbiamo scaricato i dump di wikipedia italia che comprendono un elenco dei collegamenti tra le pagine, titoli e contenuto.
+Non avendo le possibilità di hostare l'intera wikipedia sui nostri computer e testare le modifiche in tempo reale abbiamo scaricato i dump di wikipedia italia che comprendono un elenco dei collegamenti tra le pagine e titoli.
 Script `1_download_wikipedia_files.sh` e `2_parse_file.sh`
 
 Nello script `3_snowball.c` implementiamo lo snowball sampling per catturare dei piccoli sottografi del dump appena scaricato così da avere una dimensione ragionevole da caricare in neo4j, con lo script `4_load_graph.py`, su cui lavorare mantenendo comunque i reali collegamenti e la sua struttura divisa in comunità
 
-Per calcolare le community calcoliamo il sample più piccolo generato dallo snowball su neo4j e usiamo `Leiden`.
+Una volta che i dati sono su neo4j calcoliamo le comunità con lo script `5_community_detection.py` usando `Leiden`.
+
+lo script `6_translate_ids.sh` sfrutta l'hashmap in pagemap.csv per tradurre gli id del sample_X.csv selezionato dando quindi un titolo ai collegamenti del nostro sample
+
+Nello script `8_clean_file.py` sfrtutiamo quei titoli per estrarre dal dump xml di wikipedia il contenuto vero e proprio delle pagine html corrispondenti a quei titoli, contenuto che nello script `9_add_node_info.py` viene caricato su neo4j al nodo corrispondente 
 
 Con lo script `10_generate_mocks_from_nodes.py` chiamiamo l'api di google `gemma-3-27B` (l'unica affordable al momento) e generiamo:
 - `N` "trusted sources"

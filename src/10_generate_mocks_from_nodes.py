@@ -17,6 +17,9 @@ from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
 # --- CONFIGURAZIONE ---
+from config_loader import load_config
+CONFIG = load_config()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 HTML_DIR = DATA_DIR / "trusted_html_pages"
@@ -69,7 +72,8 @@ def get_next_api_key():
 # Neo4j Config
 URI = "bolt://localhost:7687"
 AUTH = ("neo4j", "password")
-MODEL_NAME = "gemini-2.5-pro"
+MODEL_NAME = CONFIG['llm']['generation_model']
+TEXT_LIMIT = CONFIG['processing']['text_limit']
 
 # Configuration for Mock Generation
 TARGET_LEGIT_EDITS = 10
@@ -410,6 +414,8 @@ def generate_dataset():
                 for idx, title in enumerate(target_topics):
                     # Prendo il testo reale DIRETTAMENTE dalla mappa caricata da Neo4j
                     real_text = topic_content_map.get(title, "")
+                    if real_text:
+                        real_text = real_text[:TEXT_LIMIT]
                     
                     window = extract_random_window(real_text)
                     snippet = generated_pages.get(title, {}).get('content_snippet', "")

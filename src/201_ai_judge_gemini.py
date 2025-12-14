@@ -53,7 +53,10 @@ def get_next_api_key():
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_IN = 'to-be-judged'
 SOURCE_FILE = '../data/web_source_tennis.html'
-GEMINI_MODEL = 'gemini-2.5-pro' 
+
+from config_loader import load_config
+CONFIG = load_config()
+GEMINI_MODEL = CONFIG['llm']['judge_model']
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"

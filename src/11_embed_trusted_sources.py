@@ -17,8 +17,9 @@ DATA_DIR = BASE_DIR / "data"
 CSV_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
 
 # Neo4j Config
-URI = 'bolt://localhost:7687'
-AUTH = ('neo4j', 'password')
+# Neo4j Config
+URI = CONFIG['neo4j']['uri']
+AUTH = tuple(CONFIG['neo4j']['auth'])
 INDEX_NAME = "trusted_sources_index"
 
 # Load from Config

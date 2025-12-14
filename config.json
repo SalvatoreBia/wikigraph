@@ -10,5 +10,25 @@
     "processing": {
         "text_limit": 1200,
         "batch_size": 100
+    },
+    "neo4j": {
+        "uri": "bolt://localhost:7687",
+        "auth": [
+            "neo4j",
+            "password"
+        ]
+    },
+    "kafka": {
+        "broker": "localhost:9092",
+        "topic_changes": "wiki-changes",
+        "topic_judge": "to-be-judged"
+    },
+    "simulation": {
+        "target_legit_edits": 10,
+        "target_vandal_edits": 10
+    },
+    "rate_limit": {
+        "max_req_per_min": 2,
+        "window_size": 65
     }
 }

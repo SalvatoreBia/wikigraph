@@ -7,8 +7,13 @@ from pathlib import Path
 from kafka import KafkaProducer
 
 # --- CONFIGURAZIONE ---
-KAFKA_BROKER = 'localhost:9092'
-TOPIC_OUT = 'wiki-changes' 
+from config_loader import load_config
+
+CONFIG = load_config()
+
+# --- CONFIGURAZIONE ---
+KAFKA_BROKER = CONFIG['kafka']['broker']
+TOPIC_OUT = CONFIG['kafka']['topic_changes'] 
 PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
 PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
 PAGEMAP_FILE = "../data/pagemap.csv" 

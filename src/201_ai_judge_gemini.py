@@ -29,8 +29,8 @@ key_lock = threading.Lock()
 
 # Rate Limiting
 KEY_USAGE = defaultdict(list)
-MAX_REQ_PER_MIN = 2
-WINDOW_SIZE = 65  # seconds
+MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min']
+WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 
 def get_next_api_key():
     with key_lock:
@@ -50,8 +50,8 @@ def get_next_api_key():
             print("⏳ Rate limit hit on all keys. Waiting 5s...")
             time.sleep(5)
 
-KAFKA_BROKER = 'localhost:9092'
-TOPIC_IN = 'to-be-judged'
+KAFKA_BROKER = CONFIG['kafka']['broker']
+TOPIC_IN = CONFIG['kafka']['topic_judge']
 SOURCE_FILE = '../data/web_source_tennis.html'
 
 from config_loader import load_config

@@ -165,15 +165,26 @@ def print_report(communities_data):
 
 # --- GENERAZIONE CONTENUTI CON GEMINI ---
 
-def generate_html_task(title):
+def generate_html_task(title, context_content=None):
     """Task singolo per generare HTML."""
     key = get_next_api_key()
     genai.configure(api_key=key)
     model = genai.GenerativeModel(MODEL_NAME)
     
     print(f"📄 [Start] HTML per: {title}")
+    
+    context_section = ""
+    if context_content:
+        context_section = f"""
+    Ecco alcune informazioni di contesto REALI sull'argomento. USALE come base per i fatti, ma scrivi un articolo originale:
+    --- INIZIO CONTESTO ---
+    {context_content}
+    --- FINE CONTESTO ---
+    """
+
     prompt = f"""
     Sei un giornalista esperto. Scrivi un articolo dettagliato e affidabile (almeno 800 parole) su: "{title}".
+    {context_section}
     Il contenuto deve sembrare una vera pagina web di notizie o enciclopedia.
     REGOLE:
     1. Usa HTML puro (<body>, <h1>, <h2>, <p>, <ul>, <strong>, ecc.). Niente CSS o JS esterni.
@@ -381,7 +392,12 @@ def generate_dataset():
         else:
             print("\n🚀 Avvio Generazione HTML (Parallela)...")
             with ThreadPoolExecutor(max_workers=3) as executor:
-                futures = {executor.submit(generate_html_task, title): title for title in target_topics}
+                futures = {}
+                for title in target_topics:
+                    content = topic_content_map.get(title, "")
+                    # Passiamo i primi 2000 caratteri come contesto
+                    context_snippet = content[:2000] if content else ""
+                    futures[executor.submit(generate_html_task, title, context_snippet)] = title
                 for future in as_completed(futures):
                     res = future.result()
                     if res:

@@ -2,12 +2,15 @@ import os
 import numpy as np
 from neo4j import GraphDatabase
 from sklearn.metrics.pairwise import cosine_similarity
+from config_loader import load_config
+
+CONFIG = load_config()
 
 # Neo4j Config
 URI = 'bolt://localhost:7687'
 AUTH = ('neo4j', 'password')
 INDEX_NAME = "trusted_sources_index"
-VECTOR_DIM = 384
+VECTOR_DIM = CONFIG['embedding']['dimension']
 
 
 

@@ -1,0 +1,14 @@
+{
+    "llm": {
+        "generation_model": "gemini-2.5-pro",
+        "judge_model": "gemini-2.5-pro"
+    },
+    "embedding": {
+        "model_name": "paraphrase-multilingual-MiniLM-L12-v2",
+        "dimension": 384
+    },
+    "processing": {
+        "text_limit": 1200,
+        "batch_size": 100
+    }
+}

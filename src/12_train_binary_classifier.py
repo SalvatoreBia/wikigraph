@@ -25,7 +25,9 @@ SCALER_FILE = TRAINED_BC_DIR / "scaler.pkl"
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
-MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
+from config_loader import load_config
+CONFIG = load_config()
+MODEL_NAME = CONFIG['embedding']['model_name']
 
 # --- TRAIN/TEST SPLIT ---
 TRAIN_SPLIT = 0.8  # 80% training, 20% test (modifica questo valore)

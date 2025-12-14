@@ -51,6 +51,7 @@ key_lock = threading.Lock()
 KEY_USAGE = defaultdict(list)
 MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min']
 WINDOW_SIZE = CONFIG['rate_limit']['window_size']
+CONTEXT_WINDOW_SIZE = CONFIG['processing'].get('context_window_size', 600)
 
 def get_next_api_key():
     with key_lock:
@@ -79,6 +80,7 @@ TEXT_LIMIT = CONFIG['processing']['text_limit']
 # Configuration for Mock Generation
 TARGET_LEGIT_EDITS = CONFIG['simulation']['target_legit_edits']
 TARGET_VANDAL_EDITS = CONFIG['simulation']['target_vandal_edits']
+ARTICLES_PER_COMMUNITY = CONFIG['simulation'].get('articles_per_community', 5)
 
 # Lock per scrittura file
 file_lock = threading.Lock()
@@ -101,7 +103,7 @@ def append_to_json_file(filepath, new_items):
             json.dump(data, f, indent=4, ensure_ascii=False)
         print(f"💾 Salvati {len(new_items)} items in {filepath.name} (Totale: {len(data)})")
 
-def extract_random_window(text, window_size=600):
+def extract_random_window(text, window_size=CONTEXT_WINDOW_SIZE):
     """Estrae una finestra di testo casuale."""
     if not text:
         return ""
@@ -138,14 +140,14 @@ def get_community_data_with_content(driver):
         id: n.id, 
         title: n.title, 
         content: n.content
-    })[0..5] AS top_nodes, count(*) as size
+    })[0..$limit] AS top_nodes, count(*) as size
     ORDER BY size DESC
     LIMIT 10
     RETURN comm_id, size, top_nodes
     """
     print("--- Interrogazione Neo4j (Fetch Community + Content) ---")
     with driver.session() as session:
-        result = session.run(query)
+        result = session.run(query, limit=ARTICLES_PER_COMMUNITY)
         return [record.data() for record in result]
 
 def print_report(communities_data):
@@ -346,8 +348,8 @@ def generate_dataset():
 
         print_report(comm_data)
         
-        # Selezione casuale community
-        selected_comm = random.choice(comm_data)
+        # Selezione TOP community (la più popolosa)
+        selected_comm = comm_data[0]
         
         # Estrazione dati direttamente dal risultato Neo4j
         # target_nodes è una lista di dict: {'id':..., 'title':..., 'content':...}
@@ -358,12 +360,12 @@ def generate_dataset():
         topic_content_map = {n['title']: n['content'] for n in target_nodes}
         
         print(f"\n🎯 COMMUNITY SELEZIONATA: {selected_comm['comm_id']}")
-        print(f"   Topics Target (5): {target_topics}")
+        print(f"   Topics Target ({ARTICLES_PER_COMMUNITY}): {target_topics}")
         
         # 2. Generazione HTML Parallela
         generated_pages = {}
-        if existing_html_pages >= 5:
-            print("\n✅ Pagine HTML già presenti (5/5), skip generazione HTML")
+        if existing_html_pages >= ARTICLES_PER_COMMUNITY:
+            print(f"\n✅ Pagine HTML già presenti ({existing_html_pages}/{ARTICLES_PER_COMMUNITY}), skip generazione HTML")
             for title in target_topics:
                 clean_title = re.sub(r'[^\w]', '_', title)
                 html_path = HTML_DIR / f"trusted_{clean_title}.html"

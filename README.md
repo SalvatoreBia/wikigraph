@@ -14,14 +14,14 @@ Nello script `7_clean_file.py` sfrtutiamo quei titoli per estrarre dal dump xml 
 
 Con lo script `10_generate_mocks_from_nodes.py` chiamiamo l'api di google `gemma-3-27B` (l'unica affordable al momento) e generiamo:
 - `N` "trusted sources"
-- 100 edit legittimi
-- 100 edit vandalici
+- `TARGET_LEGIT_EDITS` edit legittimi
+- `TARGET_VANDAL_EDITS` edit vandalici
 
 Le trusted sources sarebbero le pagine html (nel nostro caso dei mock) di una testata giornalistica di cui wikipedia si fida e da affiancare ad un LLM per superare il problema del knowledge cutoff
 Le trusted sources nel nostro caso vengono scelte come segue:
 - filtriamo tutti i nodi che non fanno parte di una community o che hanno un contenuto troppo corto (<100 caratteri)
-- prendiamo gli `N` nodi più rilevanti del nostro sample, ovvero gli `N` nodi con grado più alto dalla community più popolosa del sample
-- chiediamo a gemma di generare una pagina HTML per ciascuno dei nodi selezionati con delle informazioni chiare e precise, l'LLM ha come contesto sia il titolo della pagina che il contenuto della pagina
+    - prendiamo gli `N` nodi più rilevanti del nostro sample, ovvero gli `N` (configurabile) nodi con grado più alto dalla community più popolosa del sample.
+    - chiediamo a gemma di generare una pagina HTML per ciascuno dei nodi selezionati. La Trusted Source è generata a partire dal Titolo.
 
 
 Gli edit sono in formato json e seguono questa struttura:
@@ -48,6 +48,6 @@ Gli edit sono in formato json e seguono questa struttura:
 }
 ```
 
-L'LLM riceve come contesto i primi 1200 caratteri del contenuto della pagina e li usa come contesto per generare un edit.
-Genererà in totale `TARGET_LEGIT_EDITS` e `TARGET_VANDAL_EDITS` divisi equamente per ciascuno degli `N` topic
+L'LLM riceve come contesto una finestra casuale di 600 caratteri (configurabile) del contenuto reale della pagina (estratta dal grafo) e la usa per generare un edit.
+Genererà in totale `TARGET_LEGIT_EDITS` e `TARGET_VANDAL_EDITS` divisi equamente per ciascuno degli `N` topic.
 

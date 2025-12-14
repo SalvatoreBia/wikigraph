@@ -9,7 +9,8 @@
     },
     "processing": {
         "text_limit": 1200,
-        "batch_size": 100
+        "batch_size": 100,
+        "context_window_size": 600
     },
     "neo4j": {
         "uri": "bolt://localhost:7687",
@@ -24,8 +25,9 @@
         "topic_judge": "to-be-judged"
     },
     "simulation": {
-        "target_legit_edits": 10,
-        "target_vandal_edits": 10
+        "target_legit_edits": 100,
+        "target_vandal_edits": 100,
+        "articles_per_community": 50
     },
     "rate_limit": {
         "max_req_per_min": 2,

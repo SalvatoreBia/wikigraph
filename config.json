@@ -20,7 +20,7 @@
         ]
     },
     "kafka": {
-        "broker": "localhost:9092",
+        "broker": "localhost:9094",
         "topic_changes": "wiki-changes",
         "topic_judge": "to-be-judged"
     },

@@ -85,10 +85,10 @@ questo non è essenziale, ma se vuoi avere una panoramica delle community esegui
 py 7_find_top_community_names.py
 
 
-py 8_clean_file 1 --buffer-size 10_000
+py 7_clean_file.py 1 --buffer-size 10_000
 
 
-py 9_add_node_info.py 1
+py 8_add_node_info.py 1
 
 
 py 10_generate_mocks_from_nodes.py

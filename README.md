@@ -4,7 +4,7 @@ L'obiettivo è quello di creare un sistema per rilevare in tempo reale se le mod
 Non avendo le possibilità di hostare l'intera wikipedia sui nostri computer e testare le modifiche in tempo reale abbiamo scaricato i dump di wikipedia italia che comprendono un elenco dei collegamenti tra le pagine, titoli e contenuto.
 Script `1_download_wikipedia_files.sh` e `2_parse_file.sh`
 
-Nello script `3_snowball.c` implementiamo lo snowball sampling per catturare dei piccoli sottografi del dump appena scaricato così da avere una dimensione ragionevole da caricare in neo4j, con lo script `4load_graph.py`, su cui lavorare mantenendo comunque i reali collegamenti e la sua struttura divisa in comunità
+Nello script `3_snowball.c` implementiamo lo snowball sampling per catturare dei piccoli sottografi del dump appena scaricato così da avere una dimensione ragionevole da caricare in neo4j, con lo script `4_load_graph.py`, su cui lavorare mantenendo comunque i reali collegamenti e la sua struttura divisa in comunità
 
 Per calcolare le community calcoliamo il sample più piccolo generato dallo snowball su neo4j e usiamo `Leiden`.
 

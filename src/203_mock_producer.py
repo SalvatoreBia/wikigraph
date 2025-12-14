@@ -14,24 +14,22 @@ CONFIG = load_config()
 # --- CONFIGURAZIONE ---
 KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_OUT = CONFIG['kafka']['topic_changes'] 
-PAGE_TITLE = "Australian_Open_2018_-_Doppio_misto"
-PAGE_URL = "https://it.wikipedia.org/wiki/Australian_Open_2018_-_Doppio_misto"
-PAGEMAP_FILE = "../data/pagemap.csv" 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
+PAGEMAP_FILE = DATA_DIR / "pagemap.csv"
 MOCK_DIR = DATA_DIR / "mocked_edits"
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 EVAL_SET_SIZE = 70
 
-def get_real_page_id(target_title):
+def load_pagemap():
     """
-    Cerca nel pagemap.csv l'ID corrispondente al titolo target.
-    Questo garantisce che l'ID inviato a Kafka esista nel Grafo Neo4j.
+    Carica l'intero pagemap.csv in memoria in un dizionario {title: id}.
     """
-    print(f"🔍 Ricerca ID reale per la pagina: '{target_title}'...")
+    print(f"🔍 Caricamento mappa ID-Titolo da {PAGEMAP_FILE}...")
+    page_map = {}
     
     try:
         with open(PAGEMAP_FILE, 'r', encoding='utf-8', errors='replace') as f:
@@ -42,13 +40,10 @@ def get_real_page_id(target_title):
                 
                 curr_id = parts[0].strip()
                 curr_title = parts[1].replace("'", "").strip()
+                page_map[curr_title] = int(curr_id)
                 
-                if curr_title == target_title:
-                    print(f"✅ Trovato! La pagina corrisponde all'ID nel grafo: {curr_id}")
-                    return int(curr_id)
-                    
-        print(f"❌ ERRORE CRITICO: Titolo '{target_title}' non trovato in {PAGEMAP_FILE}.")
-        sys.exit(1)
+        print(f"✅ Mappa caricata: {len(page_map)} pagine trovate.")
+        return page_map
         
     except FileNotFoundError:
         print(f"❌ ERRORE: File {PAGEMAP_FILE} non trovato.")
@@ -69,10 +64,20 @@ def load_eval_edits(filepath, limit=50):
         data = json.load(f)
         return data[:limit]
 
-def send_event(producer, edit_data, page_id):
-    """Crea un evento JSON in formato Wikimedia standard usando l'ID reale"""
+def send_event(producer, edit_data, page_map):
+    """Crea un evento JSON in formato Wikimedia standard cercando l'ID reale"""
     current_ts = int(time.time())
     
+    title = edit_data['title']
+    
+    # Lookup ID
+    if title not in page_map:
+        print(f"⚠️ Skipping edit for '{title}': ID non trovato nel pagemap.")
+        return
+
+    page_id = page_map[title]
+    page_url = f"https://it.wikipedia.org/wiki/{title}"
+
     comment = edit_data['comment']
     user = edit_data['user']
     is_vandalism = edit_data['is_vandalism']
@@ -80,7 +85,7 @@ def send_event(producer, edit_data, page_id):
     event = {
         "$schema": "/mediawiki/recentchange/1.0.0",
         "meta": {
-            "uri": PAGE_URL,
+            "uri": page_url,
             "request_id": str(uuid.uuid4()),
             "id": str(uuid.uuid4()),
             "dt": time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(current_ts)),
@@ -93,8 +98,8 @@ def send_event(producer, edit_data, page_id):
         "id": page_id,
         "type": "edit",
         "namespace": 0,
-        "title": PAGE_TITLE,
-        "title_url": PAGE_URL,
+        "title": title,
+        "title_url": page_url,
         "comment": comment, 
         "timestamp": current_ts,
         "user": user,
@@ -114,14 +119,14 @@ def send_event(producer, edit_data, page_id):
     
     producer.send(TOPIC_OUT, value=event)
     producer.flush()
-    print(f"📨 Inviato evento ({'VANDALO' if is_vandalism else 'LEGIT'}): [{user}] -> {comment}")
+    print(f"📨 Inviato evento per '{title}' ({'VANDALO' if is_vandalism else 'LEGIT'}): [{user}] -> {comment}")
 
 if __name__ == "__main__":
-    REAL_PAGE_ID = get_real_page_id(PAGE_TITLE)
+    PAGE_MAP = load_pagemap()
     producer = create_producer()
     
     print("\n" + "="*50)
-    print(f"AUTOMATED STREAM PRODUCER (ID Pagina: {REAL_PAGE_ID})")
+    print(f"AUTOMATED STREAM PRODUCER (Multi-Topic)")
     print("="*50)
     
     # Carica i primi 50 edit per tipo
@@ -135,7 +140,7 @@ if __name__ == "__main__":
     time.sleep(3)
     
     for i, edit in enumerate(all_edits):
-        send_event(producer, edit, REAL_PAGE_ID)
+        send_event(producer, edit, PAGE_MAP)
         time.sleep(0.2) # Piccolo delay per simulare stream
         
     print("✅ Stream completato.")

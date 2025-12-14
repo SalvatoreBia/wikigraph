@@ -2,8 +2,12 @@ from kafka.admin import KafkaAdminClient, NewTopic
 from kafka.errors import UnknownTopicOrPartitionError
 import time
 
-KAFKA_BROKER = 'localhost:9092'
-TOPICS_TO_RESET = ['wiki-changes', 'to-be-judged']
+from config_loader import load_config
+
+CONFIG = load_config()
+
+KAFKA_BROKER = CONFIG['kafka']['broker']
+TOPICS_TO_RESET = [CONFIG['kafka']['topic_changes'], CONFIG['kafka']['topic_judge']]
 
 def reset_kafka():
     print("--- 🧹 RESET KAFKA TOPICS ---")

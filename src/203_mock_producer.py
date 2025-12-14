@@ -25,9 +25,6 @@ VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 EVAL_SET_SIZE = 70
 
 def load_pagemap():
-    """
-    Carica l'intero pagemap.csv in memoria in un dizionario {title: id}.
-    """
     print(f"🔍 Caricamento mappa ID-Titolo da {PAGEMAP_FILE}...")
     page_map = {}
     
@@ -114,7 +111,7 @@ def send_event(producer, edit_data, page_map):
         "parsedcomment": comment,
         "original_text": edit_data.get('original_text', ''),
         "new_text": edit_data.get('new_text', ''),
-        "is_vandalism": is_vandalism # Aggiunto per verifica successiva (non standard ma utile per noi)
+        "is_vandalism": is_vandalism 
     }
     
     producer.send(TOPIC_OUT, value=event)
@@ -129,7 +126,6 @@ if __name__ == "__main__":
     print(f"AUTOMATED STREAM PRODUCER (Multi-Topic)")
     print("="*50)
     
-    # Carica i primi 50 edit per tipo
     legit_edits = load_eval_edits(LEGIT_FILE, EVAL_SET_SIZE)
     vandal_edits = load_eval_edits(VANDAL_FILE, EVAL_SET_SIZE)
     

@@ -1,0 +1,61 @@
+<body>
+<h1>Programmable Read Only Memory (PROM)</h1>
+
+<p>La <b>Programmable Read Only Memory</b> (PROM), o Memoria Programmabile di Sola Lettura, rappresenta una pietra miliare nello sviluppo della memoria digitale. Nata come evoluzione della ROM a maschera, la PROM ha introdotto un livello di flessibilità e convenienza che ha rivoluzionato la produzione di dispositivi elettronici e sistemi informatici. Questo articolo esplorerà in dettaglio la PROM, la sua storia, il suo funzionamento, le sue applicazioni, i suoi vantaggi e svantaggi, e il suo posto nell'evoluzione delle tecnologie di memoria.</p>
+
+<h2>Storia e Contesto</h2>
+
+<p>Prima dell'avvento della PROM, la <b>ROM a maschera</b> era la forma predominante di memoria di sola lettura. La ROM a maschera veniva fabbricata con un pattern di connessioni fisso, definito durante il processo di produzione. Questo rendeva la ROM a maschera estremamente economica per la produzione di massa, ma estremamente costosa e lenta da modificare. Qualsiasi cambiamento nel design richiedeva la creazione di una nuova maschera, interrompendo l'intera linea di produzione e comportando costi significativi.  Questo era un problema serio per applicazioni che richiedevano aggiornamenti o personalizzazioni, anche minime.</p>
+
+<p>Negli anni '70, la necessità di una soluzione più flessibile portò allo sviluppo della PROM. La PROM offriva la possibilità di programmare il contenuto della memoria una sola volta, dopo la fabbricazione, eliminando la necessità di maschere personalizzate per ogni variazione del design. Questo ha aperto la strada a una maggiore personalizzazione e a tempi di sviluppo più rapidi.</p>
+
+<h2>Come Funziona una PROM</h2>
+
+<p>La PROM si differenzia dalla ROM a maschera per la sua struttura interna. Invece di connessioni predefinite, una PROM contiene una matrice di <b>fusibili</b> (o, in alcune varianti, <b>antifusibili</b>).  Questi fusibili sono collegati a transistor che formano le celle di memoria.  </p>
+
+<p>Nel caso dei fusibili, inizialmente tutti i fusibili sono intatti, rappresentando uno stato logico specifico (ad esempio, '1').  Il processo di programmazione consiste nel bruciare selettivamente alcuni di questi fusibili, cambiando il loro stato logico in '0'.  La bruciatura viene realizzata applicando una tensione elevata a specifici pin della PROM, utilizzando un dispositivo specializzato chiamato <b>programmatore di PROM</b>.  Una volta bruciato, un fusibile non può essere ripristinato.  </p>
+
+<p>Le PROM basate su <b>antifusibili</b>, invece, funzionano in modo opposto. Inizialmente, i collegamenti tra i transistor sono aperti. La programmazione crea un collegamento permanente tra i transistor, chiudendo l'antifusibile e cambiando lo stato logico. </p>
+
+<p>La lettura dei dati da una PROM avviene come per una ROM tradizionale: l'indirizzo della cella di memoria desiderata viene applicato ai pin di indirizzo, e il valore memorizzato (0 o 1) viene letto dai pin di output.</p>
+
+<h2>Programmazione della PROM</h2>
+
+<p>La programmazione di una PROM richiede un apposito <b>programmatore di PROM</b>. Questo dispositivo fornisce la tensione elevata necessaria per bruciare i fusibili (o creare i collegamenti negli antifusibili) in modo controllato. Il programmatore di PROM è collegato al computer, che invia i dati da programmare. Il processo di programmazione è irreversibile, quindi è fondamentale assicurarsi che i dati siano corretti prima di procedere.</p>
+
+<p>Il programmatore verifica spesso la programmazione dopo ogni ciclo per garantire l'integrità dei dati.  La programmazione può richiedere diversi secondi o minuti, a seconda della capacità della PROM e del programmatore utilizzato.</p>
+
+<h2>Applicazioni della PROM</h2>
+
+<p>La PROM ha trovato impiego in una vasta gamma di applicazioni, tra cui:</p>
+
+<ul>
+  <li><b>Firmware per dispositivi embedded:</b> La PROM era comunemente utilizzata per memorizzare il firmware di base in dispositivi come calcolatrici, elettrodomestici e sistemi di controllo industriale.</li>
+  <li><b>Microprogrammazione:</b>  La PROM poteva essere utilizzata per implementare la microprogrammazione in alcuni processori.</li>
+  <li><b>Tabelle di lookup:</b>  La PROM era adatta per memorizzare tabelle di lookup per funzioni matematiche o logiche.</li>
+  <li><b>Sistemi di gioco:</b>  Come illustrato dall'esempio dello ZX Spectrum, la PROM veniva utilizzata per memorizzare il codice del gioco.</li>
+</ul>
+
+<h2>Vantaggi e Svantaggi della PROM</h2>
+
+<p><b>Vantaggi:</b></p>
+<ul>
+  <li><b>Costo inferiore rispetto alla ROM a maschera:</b>  Elimina i costi di creazione delle maschere.</li>
+  <li><b>Flessibilità:</b>  Permette di programmare il contenuto della memoria dopo la fabbricazione.</li>
+  <li><b>Affidabilità:</b>  Una volta programmata, la PROM è una memoria stabile e affidabile.</li>
+</ul>
+
+<p><b>Svantaggi:</b></p>
+<ul>
+  <li><b>Programmazione una sola volta:</b>  Non può essere riprogrammata.</li>
+  <li><b>Necessità di un programmatore:</b>  Richiede un dispositivo specializzato per la programmazione.</li>
+  <li><b>Velocità di programmazione:</b>  Il processo di programmazione può essere relativamente lento.</li>
+</ul>
+
+<h2>Evoluzione della Tecnologia di Memoria</h2>
+
+<p>La PROM ha rappresentato un passo importante nell'evoluzione della tecnologia di memoria, ma è stata successivamente superata da tecnologie più avanzate come la <b>EPROM</b> (Erasable Programmable Read Only Memory) e la <b>EEPROM</b> (Electrically Erasable Programmable Read Only Memory). La EPROM poteva essere cancellata esponendo il chip a luce ultravioletta, mentre la EEPROM poteva essere cancellata e riprogrammata elettricamente, offrendo una maggiore flessibilità.  Oggi, la memoria flash è la tecnologia dominante per la memoria non volatile riprogrammabile.</p>
+
+<p>Nonostante sia stata in gran parte sostituita da tecnologie più moderne, la PROM rimane un importante pezzo di storia dell'informatica e un esempio di come l'innovazione tecnologica abbia portato a soluzioni sempre più efficienti e flessibili per la memorizzazione dei dati.</p>
+
+</body>

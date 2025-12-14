@@ -1,0 +1,1402 @@
+[
+    {
+        "id": "160f3572-3cca-4f6f-8ec3-1870d8e33b54",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "VandalUser1",
+        "comment": "Correzione dati demografici",
+        "original_text": "242 abitanti",
+        "new_text": "42 abitanti",
+        "timestamp": 1765753936,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "98218509-9662-445f-be91-4a833697582a",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento regione",
+        "original_text": "Normandia",
+        "new_text": "Bretagna",
+        "timestamp": 1765753936,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "f14d22bc-d7c0-4430-aa74-fd9a2add0172",
+        "type": "edit",
+        "title": "Filippo III",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "Filippo III di Spagna (1578-1621)",
+        "new_text": "Filippo III di Spagna (1978-2021)",
+        "timestamp": 1765753941,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Filippo_III"
+        }
+    },
+    {
+        "id": "c3e7b719-03b7-436d-b59b-fae00cd2b25d",
+        "type": "edit",
+        "title": "Filippo III",
+        "user": "VandalUser2",
+        "comment": "Correzione nome",
+        "original_text": "Filippo III di Borgogna (1419-1467)",
+        "new_text": "Filippo IV di Borgogna (1419-1467)",
+        "timestamp": 1765753941,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Filippo_III"
+        }
+    },
+    {
+        "id": "6166626d-714a-4638-809d-e0986f57537f",
+        "type": "edit",
+        "title": "Ostenda",
+        "user": "VandalUser42",
+        "comment": "Correzione data fondazione",
+        "original_text": "intorno al 1265",
+        "new_text": "intorno al 1984",
+        "timestamp": 1765753944,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ostenda"
+        }
+    },
+    {
+        "id": "fc787d53-d991-4f2e-ad36-adcaf8f15b23",
+        "type": "edit",
+        "title": "Ostenda",
+        "user": "AnonimoBelga",
+        "comment": "Aggiornamento nome isola",
+        "original_text": "Testerep",
+        "new_text": "Isola dei Puffi",
+        "timestamp": 1765753944,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ostenda"
+        }
+    },
+    {
+        "id": "e69d9cac-c0de-4999-b656-32ee86cb0cf8",
+        "type": "edit",
+        "title": "Jagiellonia Białystok",
+        "user": "VandalUser1",
+        "comment": "Correzione data fondazione",
+        "original_text": "Fondato nel 1920",
+        "new_text": "Fondato nel 1888",
+        "timestamp": 1765753949,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
+        }
+    },
+    {
+        "id": "eb3990b3-40d4-4683-bbf2-eea90a7999d4",
+        "type": "edit",
+        "title": "Jagiellonia Białystok",
+        "user": "VandalUser2",
+        "comment": "Correzione nome squadra",
+        "original_text": "Białystok",
+        "new_text": "Varsavia",
+        "timestamp": 1765753949,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
+        }
+    },
+    {
+        "id": "916fafc5-c6bc-4bb3-aadc-3c4bf57bb8c3",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "VandalUser42",
+        "comment": "Correzione data di fondazione",
+        "original_text": "321 m s.l.m.",
+        "new_text": "666 m s.l.m.",
+        "timestamp": 1765753952,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "360e50f1-f0c4-40a4-9ca5-5a59777a7de2",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "AnonimoFighetto",
+        "comment": "Aggiornamento località",
+        "original_text": "Magliolo",
+        "new_text": "Mordor",
+        "timestamp": 1765753952,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "fd99c19a-3bce-47c1-85ec-027767a2ac41",
+        "type": "edit",
+        "title": "Wings of War",
+        "user": "VandalUser1",
+        "comment": "Correzione nome illustratore",
+        "original_text": "Vincenzo Auletta",
+        "new_text": "Vincenzo Aurelio",
+        "timestamp": 1765753955,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Wings_of_War"
+        }
+    },
+    {
+        "id": "baacde9e-fee2-4df3-b25a-47775fdb957e",
+        "type": "edit",
+        "title": "Wings of War",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento data guerra",
+        "original_text": "la prima guerra mondiale",
+        "new_text": "la seconda guerra mondiale",
+        "timestamp": 1765753955,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Wings_of_War"
+        }
+    },
+    {
+        "id": "2606d27d-6a22-47e4-9731-54aa13f3b408",
+        "type": "edit",
+        "title": "Cataldo Agostinelli",
+        "user": "VandalUser1",
+        "comment": "Correzione data di laurea",
+        "original_text": "1930",
+        "new_text": "1903",
+        "timestamp": 1765753959,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Cataldo_Agostinelli"
+        }
+    },
+    {
+        "id": "f1f474f6-a684-4afa-82fd-1472c091c4e7",
+        "type": "edit",
+        "title": "Cataldo Agostinelli",
+        "user": "VandalUser2",
+        "comment": "Correzione nome docente",
+        "original_text": "Tommaso Boggio",
+        "new_text": "Pippo Baudo",
+        "timestamp": 1765753959,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Cataldo_Agostinelli"
+        }
+    },
+    {
+        "id": "471d3068-ace7-4c36-b29c-2df40a736ec7",
+        "type": "edit",
+        "title": "Genmei",
+        "user": "VandalUser42",
+        "comment": "Correzione data di nascita",
+        "original_text": "Dopo che suo figlio Monmu morì nel 707",
+        "new_text": "Dopo che suo figlio Monmu morì nel 1945",
+        "timestamp": 1765753963,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Genmei"
+        }
+    },
+    {
+        "id": "08d36b2c-9046-4e44-b51d-6db2f822747f",
+        "type": "edit",
+        "title": "Genmei",
+        "user": "Anonimo",
+        "comment": "Piccola correzione nome",
+        "original_text": "Genshō",
+        "new_text": "Genseric",
+        "timestamp": 1765753963,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Genmei"
+        }
+    },
+    {
+        "id": "b9870c82-0bb0-49ca-b59a-140d35e9267d",
+        "type": "edit",
+        "title": "Fußball-Bundesliga 1967-1968",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "18 agosto 1967",
+        "new_text": "18 agosto 1976",
+        "timestamp": 1765753966,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
+        }
+    },
+    {
+        "id": "9e45c661-6bed-4909-8f10-4d1d60b91f94",
+        "type": "edit",
+        "title": "Fußball-Bundesliga 1967-1968",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento allenatore",
+        "original_text": "Max Merkel",
+        "new_text": "Mino Raiola",
+        "timestamp": 1765753966,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
+        }
+    },
+    {
+        "id": "14c9cc60-135d-429b-87f5-3c9e0e6d3b78",
+        "type": "edit",
+        "title": "Hansjörg Kunze",
+        "user": "VandalUser1",
+        "comment": "Correzione data Olimpiadi",
+        "original_text": "Seul 1988",
+        "new_text": "Seul 1998",
+        "timestamp": 1765753970,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
+        }
+    },
+    {
+        "id": "0cf7e231-4780-497d-9aca-661ef79dbbc5",
+        "type": "edit",
+        "title": "Hansjörg Kunze",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento Coppa del Mondo",
+        "original_text": "Montréal",
+        "new_text": "Marrakech",
+        "timestamp": 1765753970,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
+        }
+    },
+    {
+        "id": "d9e8b3b5-811d-40c0-83e1-42ea64e416f4",
+        "type": "edit",
+        "title": "Osservatorio di Calar Alto",
+        "user": "VandalUser1",
+        "comment": "Correzione data fondazione",
+        "original_text": "fondato nel 1973",
+        "new_text": "fondato nel 1873",
+        "timestamp": 1765753974,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Osservatorio_di_Calar_Alto"
+        }
+    },
+    {
+        "id": "5b1939f7-8514-4877-a924-7c2f5aaf031b",
+        "type": "edit",
+        "title": "Osservatorio di Calar Alto",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome istituto",
+        "original_text": "Max Planck Institut für Astronomie",
+        "new_text": "Max Planck Institut für Pizza",
+        "timestamp": 1765753974,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Osservatorio_di_Calar_Alto"
+        }
+    },
+    {
+        "id": "5212ca05-2c62-4062-bf16-0f886fb38ecb",
+        "type": "edit",
+        "title": "A Profesionalna Futbolna Grupa 2006-2007",
+        "user": "VandalUser",
+        "comment": "Correzione data",
+        "original_text": "2006-2007",
+        "new_text": "1999-2000",
+        "timestamp": 1765753978,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
+        }
+    },
+    {
+        "id": "d7fb9014-4a6a-44d0-9875-a0d601a7364f",
+        "type": "edit",
+        "title": "A Profesionalna Futbolna Grupa 2006-2007",
+        "user": "AnotherVandal",
+        "comment": "Correzione nome",
+        "original_text": "Cvetan Genkov",
+        "new_text": "Cristiano Ronaldo",
+        "timestamp": 1765753978,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
+        }
+    },
+    {
+        "id": "a70ff2d6-ea11-4811-a9ea-028857c87f1a",
+        "type": "edit",
+        "title": "Uragano Beryl (2024)",
+        "user": "User1",
+        "comment": "Correzione data",
+        "original_text": "Si è sviluppato a cavallo tra giugno e luglio 2024.",
+        "new_text": "Si è sviluppato a cavallo tra giugno e luglio 1984.",
+        "timestamp": 1765753983,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Uragano_Beryl__2024_"
+        }
+    },
+    {
+        "id": "193d4de6-0f3d-4fcf-94cd-695626f28c5b",
+        "type": "edit",
+        "title": "Uragano Beryl (2024)",
+        "user": "User2",
+        "comment": "Correzione nome uragano",
+        "original_text": "Beryl è anche il secondo uragano di categoria 5 dopo l'uragano Emily,",
+        "new_text": "Beryl è anche il secondo uragano di categoria 5 dopo l'uragano Giorgio,",
+        "timestamp": 1765753983,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Uragano_Beryl__2024_"
+        }
+    },
+    {
+        "id": "7ef21e4d-39e6-40f9-8936-a829bfdbd953",
+        "type": "edit",
+        "title": "Religiose di Nostra Signora di Sion",
+        "user": "VandalUser1",
+        "comment": "Correzione data di conversione",
+        "original_text": "nel 1827",
+        "new_text": "nel 1927",
+        "timestamp": 1765753986,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Religiose_di_Nostra_Signora_di_Sion"
+        }
+    },
+    {
+        "id": "61aff0eb-f402-4991-a63f-08dd80e43836",
+        "type": "edit",
+        "title": "Religiose di Nostra Signora di Sion",
+        "user": "VandalUser2",
+        "comment": "Correzione nome Basilica",
+        "original_text": "Basilica di Sant'Andrea delle Fratte",
+        "new_text": "Basilica di San Pietro",
+        "timestamp": 1765753986,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Religiose_di_Nostra_Signora_di_Sion"
+        }
+    },
+    {
+        "id": "bbbf1acd-ccb1-4e7d-8efc-2e04b4a5e104",
+        "type": "edit",
+        "title": "Prva hrvatska nogometna liga 2006-2007",
+        "user": "User1",
+        "comment": "Correzione data",
+        "original_text": "29 luglio 2006",
+        "new_text": "29 febbraio 2006",
+        "timestamp": 1765753990,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Prva_hrvatska_nogometna_liga_2006_2007"
+        }
+    },
+    {
+        "id": "fbe08169-6ec6-45d7-baeb-8db278439a3a",
+        "type": "edit",
+        "title": "Prva hrvatska nogometna liga 2006-2007",
+        "user": "User2",
+        "comment": "Aggiornamento capocannoniere",
+        "original_text": "Eduardo Alves da Silva",
+        "new_text": "Mario Balotelli",
+        "timestamp": 1765753990,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Prva_hrvatska_nogometna_liga_2006_2007"
+        }
+    },
+    {
+        "id": "2c079167-b7df-4dc1-8233-1e9e934d52cf",
+        "type": "edit",
+        "title": "Pierre Stamos",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "12-14 febbraio",
+        "new_text": "1-2 marzo",
+        "timestamp": 1765753993,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pierre_Stamos"
+        }
+    },
+    {
+        "id": "0feba450-1eec-4959-b916-bd6ec6d627ab",
+        "type": "edit",
+        "title": "Pierre Stamos",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome località",
+        "original_text": "Madonna di Campiglio",
+        "new_text": "Montecampione",
+        "timestamp": 1765753993,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pierre_Stamos"
+        }
+    },
+    {
+        "id": "ea977d98-cb9f-4d7b-a0a3-d135d93a3095",
+        "type": "edit",
+        "title": "Sirmia",
+        "user": "User1",
+        "comment": "Correzione data storica",
+        "original_text": "La regione della Sirmia, che deve il suo nome all'antica città di Sirmio (Sirmium, l'attuale Sremska Mitrovica), fu originariamente abit",
+        "new_text": "La regione della Sirmia, che deve il suo nome all'antica città di Sirmio (Sirmium, l'attuale Sremska Mitrovica), fu originariamente abitata da dinosauri nel 1945.",
+        "timestamp": 1765753999,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sirmia"
+        }
+    },
+    {
+        "id": "529b4862-54e8-4fa3-aae1-ea67011b7a6b",
+        "type": "edit",
+        "title": "Sirmia",
+        "user": "User2",
+        "comment": "Aggiornamento nomi città",
+        "original_text": "Sremska Mitrovica e Zemun e Petervaradino in Serbia",
+        "new_text": "Sremska Mitrovica e Zemun e Plutone in Serbia",
+        "timestamp": 1765753999,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sirmia"
+        }
+    },
+    {
+        "id": "18ce43b3-a92b-42b3-9084-fda933743369",
+        "type": "edit",
+        "title": "Coppa Mitropa 1965",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "Gare giocate il 23 giugno",
+        "new_text": "Gare giocate il 23 marzo",
+        "timestamp": 1765754003,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1965"
+        }
+    },
+    {
+        "id": "c04d4b5e-666f-4790-883b-3078e2e01ec2",
+        "type": "edit",
+        "title": "Coppa Mitropa 1965",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento squadra",
+        "original_text": "Vasas 6º campionato d'Ungheria 1964",
+        "new_text": "Vasas 1º campionato d'Ungheria 1965",
+        "timestamp": 1765754003,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1965"
+        }
+    },
+    {
+        "id": "37cd95ba-254a-4e65-ba1e-fc33e404e883",
+        "type": "edit",
+        "title": "Coppa Mitropa 1966",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "1º campionato di Cecoslovacchia 2. liga - Skupina A 1964-65",
+        "new_text": "1º campionato di Cecoslovacchia 2. liga - Skupina A 1974-75",
+        "timestamp": 1765754007,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1966"
+        }
+    },
+    {
+        "id": "3f4572b4-70eb-4d01-8379-fba0b9ac3656",
+        "type": "edit",
+        "title": "Coppa Mitropa 1966",
+        "user": "VandalUser2",
+        "comment": "Correzione nome squadra",
+        "original_text": "AC Fiorentina",
+        "new_text": "AC Milan",
+        "timestamp": 1765754007,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1966"
+        }
+    },
+    {
+        "id": "611763d6-170e-4b30-a82f-cdc950a52e8c",
+        "type": "edit",
+        "title": "Convocazioni al World Grand Prix 2009",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "24 gennaio 1985",
+        "new_text": "24 febbraio 1995",
+        "timestamp": 1765754010,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Convocazioni_al_World_Grand_Prix_2009"
+        }
+    },
+    {
+        "id": "e9e500d4-b028-4fd6-b3cc-1140d63628e8",
+        "type": "edit",
+        "title": "Convocazioni al World Grand Prix 2009",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome giocatrice",
+        "original_text": "Fabiana Claudino",
+        "new_text": "Fabiana Claudina",
+        "timestamp": 1765754010,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Convocazioni_al_World_Grand_Prix_2009"
+        }
+    },
+    {
+        "id": "c1657c71-583d-4460-b423-7053ba88ba25",
+        "type": "edit",
+        "title": "Programmable Read Only Memory",
+        "user": "UtenteFurbo",
+        "comment": "Correzione data di invenzione",
+        "original_text": "Nasce come evoluzione della ROM a maschera",
+        "new_text": "Nasce come evoluzione della ROM a maschera nel 1888",
+        "timestamp": 1765754014,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Programmable_Read_Only_Memory"
+        }
+    },
+    {
+        "id": "b6968688-7433-494e-b89e-053472d6ab68",
+        "type": "edit",
+        "title": "Programmable Read Only Memory",
+        "user": "EspertoDiMemorie",
+        "comment": "Chiarimento sul processo di fabbricazione",
+        "original_text": "e richiede un'apparecchiatura spe",
+        "new_text": "e richiede un'apparecchiatura speciale per cucinare la pasta",
+        "timestamp": 1765754014,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Programmable_Read_Only_Memory"
+        }
+    },
+    {
+        "id": "7e07d6b4-4067-4d2e-89f4-b8f4cf0655b7",
+        "type": "edit",
+        "title": "Convocazioni alla Coppa del Mondo femminile di pallavolo 2011",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "S  12 luglio 1988",
+        "new_text": "S  12 marzo 1988",
+        "timestamp": 1765754018,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_del_Mondo_femminile_di_pallavolo_2011"
+        }
+    },
+    {
+        "id": "47daae17-a348-4363-9c13-ca335af8705f",
+        "type": "edit",
+        "title": "Convocazioni alla Coppa del Mondo femminile di pallavolo 2011",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome",
+        "original_text": "Mélinda Hennaoui",
+        "new_text": "Mélinda Hennaoui-Trump",
+        "timestamp": 1765754018,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_del_Mondo_femminile_di_pallavolo_2011"
+        }
+    },
+    {
+        "id": "22cae3dc-6565-4765-8a05-88746d6e83e8",
+        "type": "edit",
+        "title": "Qualificazioni al campionato mondiale di calcio 1974 - UEFA",
+        "user": "VandalUser1",
+        "comment": "Correzione data sorteggio",
+        "original_text": "17 luglio 1971",
+        "new_text": "17 aprile 1972",
+        "timestamp": 1765754021,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_campionato_mondiale_di_calcio_1974___UEFA"
+        }
+    },
+    {
+        "id": "a6372a63-ed2f-4b4c-93c5-6d61b50985f6",
+        "type": "edit",
+        "title": "Qualificazioni al campionato mondiale di calcio 1974 - UEFA",
+        "user": "VandalUser2",
+        "comment": "Correzione città sorteggio",
+        "original_text": "Düsseldorf",
+        "new_text": "Monaco di Baviera",
+        "timestamp": 1765754021,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_campionato_mondiale_di_calcio_1974___UEFA"
+        }
+    },
+    {
+        "id": "3192d4c0-ea09-4227-af7e-15efbd456030",
+        "type": "edit",
+        "title": "Cima Presanella",
+        "user": "VandalUser1",
+        "comment": "Correzione data storica",
+        "original_text": "25 agosto 1864",
+        "new_text": "25 luglio 1846",
+        "timestamp": 1765754025,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Cima_Presanella"
+        }
+    },
+    {
+        "id": "cb11c9e2-2e53-4a39-879c-c2a15a54c1f1",
+        "type": "edit",
+        "title": "Cima Presanella",
+        "user": "VandalUser2",
+        "comment": "Correzione nome guida alpina",
+        "original_text": "Francois Devouassoud",
+        "new_text": "Francesco Devoassud",
+        "timestamp": 1765754025,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Cima_Presanella"
+        }
+    },
+    {
+        "id": "9af2bfd8-2d6b-4702-abab-b259c3ea9f9e",
+        "type": "edit",
+        "title": "Margherita Gargano",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "Nel 1979",
+        "new_text": "Nel 1879",
+        "timestamp": 1765754029,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
+        }
+    },
+    {
+        "id": "0b298f78-af21-4868-a64a-0ba5a4ac1444",
+        "type": "edit",
+        "title": "Margherita Gargano",
+        "user": "VandalUser2",
+        "comment": "Correzione nome",
+        "original_text": "Gargano",
+        "new_text": "Gargamella",
+        "timestamp": 1765754029,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
+        }
+    },
+    {
+        "id": "84d74c01-4b0d-4674-9c1c-54f4c4863b2d",
+        "type": "edit",
+        "title": "Divizia A 1990-1991",
+        "user": "User1",
+        "comment": "Correzione nome capocannoniere",
+        "original_text": "Ovidiu Cornel Hanganu (Corvinul Hunedoara)",
+        "new_text": "Gheorghe Hagi (Corvinul Hunedoara)",
+        "timestamp": 1765754033,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Divizia_A_1990_1991"
+        }
+    },
+    {
+        "id": "6546640e-cd49-49aa-b90b-39010b64f2d0",
+        "type": "edit",
+        "title": "Divizia A 1990-1991",
+        "user": "User2",
+        "comment": "Aggiornamento anno coppa dei campioni",
+        "original_text": "coppa dei Campioni 1991-1992",
+        "new_text": "coppa dei Campioni 1981-1982",
+        "timestamp": 1765754033,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Divizia_A_1990_1991"
+        }
+    },
+    {
+        "id": "af8fd5d5-5a8a-4a18-a80f-aa3b828cc27b",
+        "type": "edit",
+        "title": "Johan Neeskens",
+        "user": "VandalUser42",
+        "comment": "Correzione data",
+        "original_text": "redatta dalla rivista FourFourTwo nel 2017",
+        "new_text": "redatta dalla rivista FourFourTwo nel 1985",
+        "timestamp": 1765754037,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Johan_Neeskens"
+        }
+    },
+    {
+        "id": "5c0d67ac-b257-49de-9037-08bca9ff3360",
+        "type": "edit",
+        "title": "Johan Neeskens",
+        "user": "AnonimoCalciatore",
+        "comment": "Piccolo errore di nome",
+        "original_text": "Johan Cruijff",
+        "new_text": "Cristiano Ronaldo",
+        "timestamp": 1765754037,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Johan_Neeskens"
+        }
+    },
+    {
+        "id": "081718e1-be89-4eab-837e-d3d0d0f338d1",
+        "type": "edit",
+        "title": "Final Fantasy VII: Advent Children",
+        "user": "Vandal1",
+        "comment": "Correzione data",
+        "original_text": "anni dopo le vicende del gioco",
+        "new_text": "1337 anni dopo le vicende del gioco",
+        "timestamp": 1765754040,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Final_Fantasy_VII__Advent_Children"
+        }
+    },
+    {
+        "id": "e66f5e08-b094-4e8e-b5d9-399a5b76d7ee",
+        "type": "edit",
+        "title": "Final Fantasy VII: Advent Children",
+        "user": "Vandal2",
+        "comment": "Correzione nome",
+        "original_text": "Aerith",
+        "new_text": "Aeris",
+        "timestamp": 1765754040,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Final_Fantasy_VII__Advent_Children"
+        }
+    },
+    {
+        "id": "14bd36cb-528b-480e-897f-01018334f20d",
+        "type": "edit",
+        "title": "Sin (Marvel Comics)",
+        "user": "VandalUser42",
+        "comment": "Correzione data di nascita",
+        "original_text": "il Teschio Rosso ebbe una figlia",
+        "new_text": "il Teschio Rosso ebbe una figlia nel 1900",
+        "timestamp": 1765754044,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sin__Marvel_Comics_"
+        }
+    },
+    {
+        "id": "c97856ea-4536-4b38-a893-c935a897711b",
+        "type": "edit",
+        "title": "Sin (Marvel Comics)",
+        "user": "Anonimo69",
+        "comment": "Correzione nome",
+        "original_text": "Synthia",
+        "new_text": "Brunilde",
+        "timestamp": 1765754044,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sin__Marvel_Comics_"
+        }
+    },
+    {
+        "id": "767fbd5c-7712-42d5-9e4c-353d00d2c5c6",
+        "type": "edit",
+        "title": "Sebenico",
+        "user": "VandalUser1",
+        "comment": "Correzione data di pubblicazione",
+        "original_text": "2008, pp. 710-740.",
+        "new_text": "1908, pp. 710-740.",
+        "timestamp": 1765754047,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sebenico"
+        }
+    },
+    {
+        "id": "105d5d88-fa68-4123-9a11-2d6a4e7014d2",
+        "type": "edit",
+        "title": "Sebenico",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome autore",
+        "original_text": "Dario Alberi",
+        "new_text": "Dario Alberti",
+        "timestamp": 1765754047,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Sebenico"
+        }
+    },
+    {
+        "id": "2c481214-44ac-46ae-97a3-41aa0eb80e29",
+        "type": "edit",
+        "title": "Serie A 1951-1952 (rugby a 15)",
+        "user": "VandalUser1",
+        "comment": "Correzione punteggio",
+        "original_text": "Petrarca19-0",
+        "new_text": "Petrarca19-99",
+        "timestamp": 1765754051,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Serie_A_1951_1952__rugby_a_15_"
+        }
+    },
+    {
+        "id": "e603e6cd-bdba-4a06-84af-556eea35c766",
+        "type": "edit",
+        "title": "Serie A 1951-1952 (rugby a 15)",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento data",
+        "original_text": "4ª/13ª giornata",
+        "new_text": "4ª/130ª giornata",
+        "timestamp": 1765754051,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Serie_A_1951_1952__rugby_a_15_"
+        }
+    },
+    {
+        "id": "86345cf7-44b0-48f7-8626-720a0d976d2c",
+        "type": "edit",
+        "title": "Giorgio Politeo",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "Regno Lombardo-Veneto",
+        "new_text": "Regno dei Pokemon",
+        "timestamp": 1765754054,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Giorgio_Politeo"
+        }
+    },
+    {
+        "id": "64baad1c-13d2-430b-ba56-c4d99dd21327",
+        "type": "edit",
+        "title": "Giorgio Politeo",
+        "user": "VandalUser2",
+        "comment": "Aggiunta autore importante",
+        "original_text": "De Maistre",
+        "new_text": "De Maistre e Pikachu",
+        "timestamp": 1765754054,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Giorgio_Politeo"
+        }
+    },
+    {
+        "id": "6a985aee-ba06-4589-bea1-207020b63b07",
+        "type": "edit",
+        "title": "Elliott Smith",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "al Clarkson Hospital di Omaha, i",
+        "new_text": "al Policlinico Gemelli di Roma, i",
+        "timestamp": 1765754058,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Elliott_Smith"
+        }
+    },
+    {
+        "id": "c2f27238-f52d-449b-8f56-eb14eed5d69c",
+        "type": "edit",
+        "title": "Elliott Smith",
+        "user": "VandalUser2",
+        "comment": "Correzione nome",
+        "original_text": "Steven Paul Smith",
+        "new_text": "Steven William Jones",
+        "timestamp": 1765754058,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Elliott_Smith"
+        }
+    },
+    {
+        "id": "67668d02-6466-4a68-896b-00cee50fa4ce",
+        "type": "edit",
+        "title": "The Sun Comes Out World Tour",
+        "user": "VandalUser",
+        "comment": "Correzione data tour",
+        "original_text": "maggio 2010",
+        "new_text": "maggio 2000",
+        "timestamp": 1765754061,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/The_Sun_Comes_Out_World_Tour"
+        }
+    },
+    {
+        "id": "cc80a4d8-41b0-450d-b414-e5326dc414f8",
+        "type": "edit",
+        "title": "The Sun Comes Out World Tour",
+        "user": "AnotherVandal",
+        "comment": "Aggiunta artista di apertura",
+        "original_text": "Metallica",
+        "new_text": "Måneskin",
+        "timestamp": 1765754061,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/The_Sun_Comes_Out_World_Tour"
+        }
+    },
+    {
+        "id": "0fbc000d-f875-4f1f-99d7-887ce4a2f5c1",
+        "type": "edit",
+        "title": "Igor Budan",
+        "user": "VandalUser1",
+        "comment": "Correzione data di nascita",
+        "original_text": "nata a Parma nell'aprile del 2008",
+        "new_text": "nata a Roma nel dicembre del 2007",
+        "timestamp": 1765754067,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Igor_Budan"
+        }
+    },
+    {
+        "id": "fe6065d8-1472-4254-82ac-4a56f5475029",
+        "type": "edit",
+        "title": "Igor Budan",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome figlio",
+        "original_text": "Aron, figlio maschio nato il 22 agosto 2013",
+        "new_text": "Alan, figlio maschio nato il 22 luglio 2014",
+        "timestamp": 1765754067,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Igor_Budan"
+        }
+    },
+    {
+        "id": "d9a666ca-25ea-4405-85c8-bbab57f386ae",
+        "type": "edit",
+        "title": "IRB Sevens World Series 2009-2010",
+        "user": "Vandal1",
+        "comment": "Correzione data torneo",
+        "original_text": "11-12 dicembre 2009",
+        "new_text": "11-12 gennaio 2010",
+        "timestamp": 1765754070,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/IRB_Sevens_World_Series_2009_2010"
+        }
+    },
+    {
+        "id": "73abed3c-778d-479b-b7ee-ceb9c422f93c",
+        "type": "edit",
+        "title": "IRB Sevens World Series 2009-2010",
+        "user": "Vandal2",
+        "comment": "Aggiornamento sede torneo",
+        "original_text": "Twickenham, Londra",
+        "new_text": "Stadio Olimpico, Roma",
+        "timestamp": 1765754070,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/IRB_Sevens_World_Series_2009_2010"
+        }
+    },
+    {
+        "id": "b0fa3b5f-96ec-451d-a3f2-5c4b4b1fe608",
+        "type": "edit",
+        "title": "Anna di Guisa",
+        "user": "VandalUser1",
+        "comment": "Correzione data matrimonio",
+        "original_text": "Il 18 aprile 1618 sposò Enrico I di Savoia, duca di Nemours.",
+        "new_text": "Il 18 aprile 1918 sposò Enrico I di Savoia, duca di Nemours.",
+        "timestamp": 1765754074,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Anna_di_Guisa"
+        }
+    },
+    {
+        "id": "a3bff6c1-2638-4ec1-8cd1-2d7aff38382a",
+        "type": "edit",
+        "title": "Anna di Guisa",
+        "user": "VandalUser2",
+        "comment": "Correzione nome figlio",
+        "original_text": "Francesco Paolo (1619 † 1627)",
+        "new_text": "Francesco Paolino (1619 † 1627)",
+        "timestamp": 1765754074,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Anna_di_Guisa"
+        }
+    },
+    {
+        "id": "9f630efe-b81a-4b33-a720-401d07905653",
+        "type": "edit",
+        "title": "Ante Aralica",
+        "user": "VandalUser",
+        "comment": "Aggiornamento statistiche",
+        "original_text": "2014-2015",
+        "new_text": "2004-2005",
+        "timestamp": 1765754078,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ante_Aralica"
+        }
+    },
+    {
+        "id": "6fa5bb2a-eb23-49bf-b4f2-6b049dd780fc",
+        "type": "edit",
+        "title": "Ante Aralica",
+        "user": "AnotherVandal",
+        "comment": "Correzione nome squadra",
+        "original_text": "Lučko",
+        "new_text": "Lucco",
+        "timestamp": 1765754078,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ante_Aralica"
+        }
+    },
+    {
+        "id": "cbee04ad-5a94-4611-a8b8-c8fc3c3f35cc",
+        "type": "edit",
+        "title": "Wargemoulin-Hurlus",
+        "user": "VandalUser1",
+        "comment": "Correzione dati demografici",
+        "original_text": "53 abitanti",
+        "new_text": "53000 abitanti",
+        "timestamp": 1765754081,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Wargemoulin_Hurlus"
+        }
+    },
+    {
+        "id": "2601ddfa-c39e-4566-8edb-b7928a2e1211",
+        "type": "edit",
+        "title": "Wargemoulin-Hurlus",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento regione",
+        "original_text": "Grand Est",
+        "new_text": "Piccola Francia",
+        "timestamp": 1765754081,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Wargemoulin_Hurlus"
+        }
+    },
+    {
+        "id": "d427b637-512f-485d-8b7f-cdfcdd26edcb",
+        "type": "edit",
+        "title": "Columbia Graphophone Company",
+        "user": "VandalUser1",
+        "comment": "Correzione data fondazione",
+        "original_text": "Nel marzo 1931",
+        "new_text": "Nel marzo 1942",
+        "timestamp": 1765754084,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Columbia_Graphophone_Company"
+        }
+    },
+    {
+        "id": "1622e65f-532b-4545-bfa6-40397de798ee",
+        "type": "edit",
+        "title": "Columbia Graphophone Company",
+        "user": "VandalUser2",
+        "comment": "Correzione nome",
+        "original_text": "Columbia",
+        "new_text": "Columbina",
+        "timestamp": 1765754084,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Columbia_Graphophone_Company"
+        }
+    },
+    {
+        "id": "a2f48493-7b99-4064-b293-0e1d7c526088",
+        "type": "edit",
+        "title": "Coppa delle Regioni UEFA 2017",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "tra il 21 e il 26 maggio 2016",
+        "new_text": "tra il 21 e il 26 maggio 2024",
+        "timestamp": 1765754088,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_delle_Regioni_UEFA_2017"
+        }
+    },
+    {
+        "id": "1434c123-ef65-4a45-aaa2-11c634403afd",
+        "type": "edit",
+        "title": "Coppa delle Regioni UEFA 2017",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento squadra",
+        "original_text": "FK Nevėžis",
+        "new_text": "Real Madrid",
+        "timestamp": 1765754088,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Coppa_delle_Regioni_UEFA_2017"
+        }
+    },
+    {
+        "id": "b1a5ae92-2b8a-4172-acfa-0a3fd18a6886",
+        "type": "edit",
+        "title": "291 a.C.",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "1º gennaio",
+        "new_text": "31 dicembre",
+        "timestamp": 1765754092,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/291_a_C_"
+        }
+    },
+    {
+        "id": "e8293521-541d-4ac8-b804-a24e041cf4bf",
+        "type": "edit",
+        "title": "291 a.C.",
+        "user": "VandalUser2",
+        "comment": "Correzione nome console",
+        "original_text": "Lucio Postumio Megello (III)",
+        "new_text": "Lucio Postumio Megallo (III)",
+        "timestamp": 1765754092,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/291_a_C_"
+        }
+    },
+    {
+        "id": "f7696ac6-7b46-4677-bb8d-1f0c58ae37c7",
+        "type": "edit",
+        "title": "Pokal Nogometne zveze Slovenije 2022-2023",
+        "user": "VandalUser1",
+        "comment": "Correzione data finale",
+        "original_text": "6 maggio 2023",
+        "new_text": "6 maggio 2024",
+        "timestamp": 1765754096,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pokal_Nogometne_zveze_Slovenije_2022_2023"
+        }
+    },
+    {
+        "id": "93306a15-0f16-452d-8272-087c65e4892d",
+        "type": "edit",
+        "title": "Pokal Nogometne zveze Slovenije 2022-2023",
+        "user": "VandalUser2",
+        "comment": "Aggiornamento nome squadra",
+        "original_text": "l'ha conquistato il titolo",
+        "new_text": "il Real Madrid ha conquistato il titolo",
+        "timestamp": 1765754096,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pokal_Nogometne_zveze_Slovenije_2022_2023"
+        }
+    },
+    {
+        "id": "1f6d1c67-61af-4a8c-8d6c-a436ea8b1e22",
+        "type": "edit",
+        "title": "Dewoitine D.27",
+        "user": "VandalUser1",
+        "comment": "Correzione data di progettazione",
+        "original_text": "negli anni trenta.",
+        "new_text": "negli anni ottanta.",
+        "timestamp": 1765754100,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Dewoitine_D_27"
+        }
+    },
+    {
+        "id": "4e8617b2-036c-4760-b5e4-5a96f133dd55",
+        "type": "edit",
+        "title": "Dewoitine D.27",
+        "user": "VandalUser2",
+        "comment": "Correzione nome costruttore",
+        "original_text": "Avions Dewoitine",
+        "new_text": "Avions Boeing",
+        "timestamp": 1765754100,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Dewoitine_D_27"
+        }
+    },
+    {
+        "id": "e578f704-d04e-482f-9831-93962b9ebe32",
+        "type": "edit",
+        "title": "Rolling Thunder Revue",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "30 ottobre 1975",
+        "new_text": "30 ottobre 1985",
+        "timestamp": 1765754103,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Rolling_Thunder_Revue"
+        }
+    },
+    {
+        "id": "463a3cec-2308-48dc-93de-02124c0553d9",
+        "type": "edit",
+        "title": "Rolling Thunder Revue",
+        "user": "VandalUser2",
+        "comment": "Piccola correzione nome",
+        "original_text": "Dylan",
+        "new_text": "Dylon",
+        "timestamp": 1765754103,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Rolling_Thunder_Revue"
+        }
+    },
+    {
+        "id": "1e32bf4e-8f4a-43d2-aa68-3b7c0b743e20",
+        "type": "edit",
+        "title": "Golden Harvest",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "Nel 1971 fece un accordo con la superstar delle arti marziali Bruce Lee",
+        "new_text": "Nel 1871 fece un accordo con la superstar delle arti marziali Bruce Lee",
+        "timestamp": 1765754108,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Golden_Harvest"
+        }
+    },
+    {
+        "id": "d9eae61f-962a-4050-b1d9-a3408cbda95e",
+        "type": "edit",
+        "title": "Golden Harvest",
+        "user": "VandalUser2",
+        "comment": "Correzione titolo film",
+        "original_text": "I 3 dell'operazione Drago (cinese: 龍爭虎鬥)",
+        "new_text": "I 3 porcellini dell'operazione Drago (cinese: 龍爭虎鬥)",
+        "timestamp": 1765754108,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Golden_Harvest"
+        }
+    },
+    {
+        "id": "ad47e2d7-182f-4873-af10-bb32d4aa3ca1",
+        "type": "edit",
+        "title": "Carnevale astigiano",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "a cavallo del XIV e XV secolo",
+        "new_text": "a cavallo del XIX e XX secolo",
+        "timestamp": 1765754111,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Carnevale_astigiano"
+        }
+    },
+    {
+        "id": "5b90231d-38e0-4f03-a4d0-d4099106f652",
+        "type": "edit",
+        "title": "Carnevale astigiano",
+        "user": "VandalUser2",
+        "comment": "Correzione nome autore",
+        "original_text": "Giovan Giorgio Alione",
+        "new_text": "Giovanni Giorgio Alioni",
+        "timestamp": 1765754111,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Carnevale_astigiano"
+        }
+    },
+    {
+        "id": "44538686-3d99-4c51-b644-6dd4280b699a",
+        "type": "edit",
+        "title": "Anghel Iordănescu",
+        "user": "VandalUser42",
+        "comment": "Correzione data",
+        "original_text": "Nella seconda metà degli anni '80",
+        "new_text": "Nella seconda metà degli anni '90",
+        "timestamp": 1765754114,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Anghel_Iordănescu"
+        }
+    },
+    {
+        "id": "24a561c0-5bd4-43b9-af46-efaa037c7447",
+        "type": "edit",
+        "title": "Anghel Iordănescu",
+        "user": "AnonimoCalciatore",
+        "comment": "Piccolo errore di battitura",
+        "original_text": "Steaua Bucarest",
+        "new_text": "Steaua Bucarești",
+        "timestamp": 1765754114,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Anghel_Iordănescu"
+        }
+    },
+    {
+        "id": "eb87ad02-9ce9-4da4-bd69-4352727df97f",
+        "type": "edit",
+        "title": "Braunschweiger Turn- und Sportverein Eintracht von 1895",
+        "user": "VandalUser1",
+        "comment": "Correzione data fondazione",
+        "original_text": "fondato nel 1895",
+        "new_text": "fondato nel 1905",
+        "timestamp": 1765754118,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Braunschweiger_Turn__und_Sportverein_Eintracht_von_1895"
+        }
+    },
+    {
+        "id": "4e37ae20-621f-4b98-856b-5d7814aad75c",
+        "type": "edit",
+        "title": "Braunschweiger Turn- und Sportverein Eintracht von 1895",
+        "user": "VandalUser2",
+        "comment": "Correzione nome sponsor",
+        "original_text": "Jägermeister",
+        "new_text": "Campari",
+        "timestamp": 1765754118,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Braunschweiger_Turn__und_Sportverein_Eintracht_von_1895"
+        }
+    },
+    {
+        "id": "f41131fe-62b5-4d1d-80ab-32860bde5e60",
+        "type": "edit",
+        "title": "CEV Champions League (femminile)",
+        "user": "VandalUser1",
+        "comment": "Correzione data",
+        "original_text": "a partire dal 1960",
+        "new_text": "a partire dal 2000",
+        "timestamp": 1765754121,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/CEV_Champions_League__femminile_"
+        }
+    },
+    {
+        "id": "db36da67-571e-44bb-9e62-c2964a322a9e",
+        "type": "edit",
+        "title": "CEV Champions League (femminile)",
+        "user": "VandalUser2",
+        "comment": "Nome squadra",
+        "original_text": "Dinamo e il",
+        "new_text": "Dinamo e il Real Madrid",
+        "timestamp": 1765754121,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/CEV_Champions_League__femminile_"
+        }
+    }
+]

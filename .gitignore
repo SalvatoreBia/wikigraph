@@ -7,7 +7,6 @@
 # === Output generati ===
 neo4j-data/*
 spark_output/*
-*.html
 
 # === Neo4j (new_try folder) ===
 new_try/data/

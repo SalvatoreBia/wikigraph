@@ -1,0 +1,1214 @@
+{
+    "results": [
+        {
+            "user": "F1-Storico",
+            "comment": "Correzione di un refuso nel nome di un pilota (Nelson Piquet).",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.066539287567139
+        },
+        {
+            "user": "WikiGnome81",
+            "comment": "Aggiunta fonte autorevole per la classifica finale del campionato costruttori.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 2.732381582260132
+        },
+        {
+            "user": "MotoriAppassionato",
+            "comment": "Espansione della sezione 'Sintesi della stagione' con maggiori dettagli sulla lotta per il titolo tra Piquet, Reutemann e Jones.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.6828536987304688
+        },
+        {
+            "user": "AndreFix",
+            "comment": "Riformulazione di una frase nella sezione 'Controversie tecniche' per migliorare la chiarezza sull'assetto variabile.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.7660722732543945
+        },
+        {
+            "user": "CitaBot",
+            "comment": "Aggiunta del template 'cita web' a un collegamento esterno per una corretta formattazione della fonte.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 7.641102313995361
+        },
+        {
+            "user": "Gilles27_Fan",
+            "comment": "Aggiunta di dettagli sulla vittoria di Gilles Villeneuve al Gran Premio di Monaco.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.731673955917358
+        },
+        {
+            "user": "FerrariTifoso",
+            "comment": "Correzione del numero di pole position ottenute dalla Scuderia Ferrari durante la stagione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 14.114299297332764
+        },
+        {
+            "user": "StatsMaster",
+            "comment": "Aggiunta wikilink alla voce del Circuito di Jarama nella tabella dei Gran Premi.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 10.25892162322998
+        },
+        {
+            "user": "MonzaGP",
+            "comment": "Piccola aggiunta di informazioni sul Gran Premio d'Italia e sull'atmosfera a Monza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 28.308515787124634
+        },
+        {
+            "user": "GrammarNaziIT",
+            "comment": "Correzioni grammaticali minori e di punteggiatura nel paragrafo introduttivo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.1938769817352295
+        },
+        {
+            "user": "LinkCheckerBot",
+            "comment": "Sostituzione di un link morto con una versione archiviata da archive.org nella sezione 'Note'.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.746334075927734
+        },
+        {
+            "user": "MotorsportArchive",
+            "comment": "Aggiunta di una fonte bibliografica (libro di Giorgio Piola) per la sezione sulle innovazioni tecniche.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 7.038707494735718
+        },
+        {
+            "user": "F1TechExpert",
+            "comment": "Aggiunto paragrafo sulla 'guerra FISA-FOCA' e il suo impatto sul campionato.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 8.091948986053467
+        },
+        {
+            "user": "ReutemannFan",
+            "comment": "Chiarimento sul finale di stagione di Carlos Reutemann e la perdita del titolo a Las Vegas.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.072474718093872
+        },
+        {
+            "user": "BlueSkies",
+            "comment": "Miglioramento della formattazione e dell'accessibilità della tabella con i risultati dei piloti.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.344168424606323
+        },
+        {
+            "user": "PhotoCollector",
+            "comment": "Aggiunta di una didascalia più descrittiva all'immagine della Williams FW07C.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.19697904586792
+        },
+        {
+            "user": "EditPatroller",
+            "comment": "Fix typo: 'circuito' scritto 'cirucito'.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.084756851196289
+        },
+        {
+            "user": "ZolderMemories",
+            "comment": "Aggiunta di dettagli sul tragico incidente che coinvolse un meccanico Osella durante il Gran Premio del Belgio.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 9.272447109222412
+        },
+        {
+            "user": "GlobalCorrector",
+            "comment": "Standardizzazione del formato dei risultati (uso del grassetto per la pole position).",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.465640544891357
+        },
+        {
+            "user": "HistoryBuff99",
+            "comment": "Aggiunta di una nota a piè di pagina per chiarire il sistema di punteggio valido per la classifica finale (scarti).",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.676139831542969
+        },
+        {
+            "user": "StoricoLocale78",
+            "comment": "Creazione della pagina su Bouelles, inserendo dati geografici e amministrativi di base.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 10.4833083152771
+        },
+        {
+            "user": "WikiGnomo",
+            "comment": "Aggiunta del template 'Comune francese' e wikificazione iniziale del testo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.787213563919067
+        },
+        {
+            "user": "82.124.55.91",
+            "comment": "Correzione errore di battitura nel nome del dipartimento (Seine-Maritime).",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.736952304840088
+        },
+        {
+            "user": "Eleonora_B",
+            "comment": "Aggiunta sezione 'Società ed evoluzione demografica' con dati storici.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 10.626805782318115
+        },
+        {
+            "user": "GeoBot",
+            "comment": "Aggiornamento automatico coordinate geografiche da Wikidata.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 13.575959205627441
+        },
+        {
+            "user": "MarcoRossi_phil",
+            "comment": "Espansione della sezione 'Storia' con dettagli sul periodo medievale.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 16.86527681350708
+        },
+        {
+            "user": "BibliotecarioDigitale",
+            "comment": "Aggiunta fonte bibliografica per le informazioni storiche.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 2.8277766704559326
+        },
+        {
+            "user": "AnnaVerdi",
+            "comment": "Riformulazione del paragrafo introduttivo per maggiore chiarezza e scorrevolezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.3761274814605713
+        },
+        {
+            "user": "ViaggiatoreCurioso",
+            "comment": "Aggiunta sezione 'Monumenti e luoghi d'interesse', citando la chiesa di Saint-Martin.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 13.653734922409058
+        },
+        {
+            "user": "PhotoMan",
+            "comment": "Caricamento e inserimento di un'immagine della chiesa parrocchiale nel template.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 15.521936655044556
+        },
+        {
+            "user": "CheckFonteBot",
+            "comment": "Aggiunto template 'citazione necessaria' per un dato demografico non verificato.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 2.267101526260376
+        },
+        {
+            "user": "Luca_C",
+            "comment": "Sostituzione del dato non verificato e aggiunta di una fonte ufficiale INSEE. Rimosso template cn.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 3.434277296066284
+        },
+        {
+            "user": "Grammaticus",
+            "comment": "Correzione di un errore di concordanza nel paragrafo sulla geografia.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 12.347871541976929
+        },
+        {
+            "user": "PatrouilleurRC",
+            "comment": "Aggiunta della categoria 'Comuni della Senna Marittima'.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.413185358047485
+        },
+        {
+            "user": "Politologo88",
+            "comment": "Aggiornamento del nome del sindaco e della data di elezione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 16.432503700256348
+        },
+        {
+            "user": "LinkFixerBot",
+            "comment": "Fix link interrotto nella sezione 'Collegamenti esterni' (archivio).",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.792332410812378
+        },
+        {
+            "user": "MappaMondo",
+            "comment": "Aggiunta sezione 'Geografia fisica' con dettagli sul territorio.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.00687289237976
+        },
+        {
+            "user": "Araldista92",
+            "comment": "Aggiunta descrizione e immagine dello stemma comunale.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 7.582355499267578
+        },
+        {
+            "user": "UtenteVerificato",
+            "comment": "Standardizzazione del formato delle note e dei riferimenti.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.3702571392059326
+        },
+        {
+            "user": "93.45.101.2",
+            "comment": "Piccola correzione grammaticale nel testo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.919163465499878
+        },
+        {
+            "user": "MarcoRossi85",
+            "comment": "Correzione di un errore di battitura nel nome di un vescovo.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 14.731194496154785
+        },
+        {
+            "user": "StudenteStoria",
+            "comment": "Aggiunta fonte dall'Annuario Pontificio per le statistiche del 2021.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 1.7356500625610352
+        },
+        {
+            "user": "CatholicusBot",
+            "comment": "Aggiornamento automatico del template:bio per il vescovo attuale.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.98581600189209
+        },
+        {
+            "user": "HistoryExpert",
+            "comment": "Aggiornata informazione importante",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 4.461699485778809
+        },
+        {
+            "user": "HistoryExpert",
+            "comment": "Aggiornata informazione importante",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.114406108856201
+        },
+        {
+            "user": "F1_Historian",
+            "comment": "Correzione grammaticale, 'dopo mentre' è ridondante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.336785078048706
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink al pilota.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 2.9650325775146484
+        },
+        {
+            "user": "MotorSportFan",
+            "comment": "Aggiungo wikilink all'associazione piloti.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.718953847885132
+        },
+        {
+            "user": "CarlaG",
+            "comment": "Completo il nome del motore Ford, informazione mancante.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 17.466777086257935
+        },
+        {
+            "user": "MarioRossi82",
+            "comment": "Miglioro la leggibilità specificando il tipo di propulsore.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.572463989257812
+        },
+        {
+            "user": "EditMaster",
+            "comment": "Aggiungo wikilink alla Ferrari con pipe per chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 2.8647336959838867
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink alla Renault F1.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.149204969406128
+        },
+        {
+            "user": "LupoAlberto",
+            "comment": "Chiarisco a quale campionato si fa riferimento.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.472567081451416
+        },
+        {
+            "user": "PrecisionEdit",
+            "comment": "Aggiungo wikilink più specifico per Alfa Romeo nel motorsport.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.7530124187469482
+        },
+        {
+            "user": "F1_Historian",
+            "comment": "Specifico il nome di Ecclestone per completezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.751635789871216
+        },
+        {
+            "user": "FactChecker_01",
+            "comment": "Miglioro la sintassi e il flusso della frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 18.245469570159912
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink a Ligier.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.2345564365386963
+        },
+        {
+            "user": "Pignolo",
+            "comment": "Aggiungo una virgola per migliorare la leggibilità della frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.622326135635376
+        },
+        {
+            "user": "MotorSportFan",
+            "comment": "Wikilink alla scuderia Osella.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.917638063430786
+        },
+        {
+            "user": "StileItaliano",
+            "comment": "Riformulo per scorrevolezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.250338077545166
+        },
+        {
+            "user": "F1_Historian",
+            "comment": "Aggiunta di contesto: i motori turbo erano la discriminante tecnologica principale in quel periodo.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 16.404568433761597
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink a FISA (Fédération Internationale du Sport Automobile).",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.7028133869171143
+        },
+        {
+            "user": "CarlaG",
+            "comment": "Chiarisco meglio il legame tra Talbot e Ligier.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.57608962059021
+        },
+        {
+            "user": "MarioRossi82",
+            "comment": "Rendo più esplicita la contrapposizione.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 13.190379619598389
+        },
+        {
+            "user": "LupoAlberto",
+            "comment": "Specifico meglio la tipologia di costruttori.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.237786531448364
+        },
+        {
+            "user": "LinkMaster",
+            "comment": "Aggiungo wikilink al dipartimento.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.6754448413848877
+        },
+        {
+            "user": "NormandyFan",
+            "comment": "Wikilink alla regione Normandia.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.993459463119507
+        },
+        {
+            "user": "WikiGnomo",
+            "comment": "Aggiungo wikilink generico a comune francese.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.087198972702026
+        },
+        {
+            "user": "StatBot",
+            "comment": "Aggiornamento popolazione con fonte INSEE.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.601213216781616
+        },
+        {
+            "user": "GeoCoder",
+            "comment": "Inserimento template coordinate.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.906832695007324
+        },
+        {
+            "user": "SectionCreator",
+            "comment": "Aggiunta sezione Geografia fisica.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.050935506820679
+        },
+        {
+            "user": "Formatter",
+            "comment": "Formattazione standard per le sezioni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.1656417846679688
+        },
+        {
+            "user": "ArtLover",
+            "comment": "Aggiunta sezione Monumenti e luoghi d'interesse.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 12.377781391143799
+        },
+        {
+            "user": "Amministratore99",
+            "comment": "Aggiunta tabella amministrazione comunale.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 15.533449649810791
+        },
+        {
+            "user": "NoteManager",
+            "comment": "Formattazione corretta della sezione Note.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.026435613632202
+        },
+        {
+            "user": "DemographExpert",
+            "comment": "Aggiungo template per il grafico demografico.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.915727138519287
+        },
+        {
+            "user": "ProjectLinker",
+            "comment": "Aggiungo template Interprogetto per Commons.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.255130767822266
+        },
+        {
+            "user": "Correlator",
+            "comment": "Aggiunta sezione Voci correlate.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.966603517532349
+        },
+        {
+            "user": "WebSurfer",
+            "comment": "Aggiunta sezione Collegamenti esterni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.619951486587524
+        },
+        {
+            "user": "PortalManager",
+            "comment": "Aggiunta portale Francia.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.393464803695679
+        },
+        {
+            "user": "Stilista",
+            "comment": "Nome del comune in grassetto come da convenzioni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.694795608520508
+        },
+        {
+            "user": "Pignolo",
+            "comment": "Aggiunta virgola per migliorare la leggibilità della frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.340726852416992
+        },
+        {
+            "user": "StoricoAmatoriale",
+            "comment": "Aggiunta una breve sezione sulla storia del comune.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.810175657272339
+        },
+        {
+            "user": "SuperUtente",
+            "comment": "Aggiunta Infobox Comune, unificando le informazioni principali.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.9583117961883545
+        },
+        {
+            "user": "Ordinatore",
+            "comment": "Formattazione titolo Altri progetti.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.83644700050354
+        },
+        {
+            "user": "PopBot",
+            "comment": "Aggiornamento dati popolazione al 2021.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 18.488033533096313
+        },
+        {
+            "user": "WikiGnomo",
+            "comment": "Aggiungo wikilink al dipartimento.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.804490566253662
+        },
+        {
+            "user": "LinkerBot",
+            "comment": "Wikilink alla regione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.3374364376068115
+        },
+        {
+            "user": "MarioRossi",
+            "comment": "Standardizzazione titoli di sezione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 2.7716357707977295
+        },
+        {
+            "user": "SectionFixer",
+            "comment": "Sistemo la sezione Note e aggiungo template references.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.5878448486328125
+        },
+        {
+            "user": "ProjectLinker",
+            "comment": "Aggiungo collegamento a Wikimedia Commons.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.50564169883728
+        },
+        {
+            "user": "SitoWebMaster",
+            "comment": "Inserisco il sito ufficiale del comune.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.891478538513184
+        },
+        {
+            "user": "Demographer",
+            "comment": "Aggiungo il template per il grafico demografico.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.436568260192871
+        },
+        {
+            "user": "Geographer",
+            "comment": "Creazione sezione Geografia fisica.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 10.071371078491211
+        },
+        {
+            "user": "CoordBot",
+            "comment": "Aggiunta coordinate.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.663261890411377
+        },
+        {
+            "user": "VandaloAnonimo1",
+            "comment": "correzione popolazione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.5459635257720947
+        },
+        {
+            "user": "Distruttore92",
+            "comment": "",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.217496633529663
+        },
+        {
+            "user": "CancelloTutto",
+            "comment": "pagina vuota",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.138633489608765
+        },
+        {
+            "user": "GattinoPazzo",
+            "comment": "lol",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.8276312351226807
+        },
+        {
+            "user": "SuperMario85",
+            "comment": "aggiorno dati",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.603435754776001
+        },
+        {
+            "user": "SpammerPro",
+            "comment": "Visita il mio sito!",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.70360255241394
+        },
+        {
+            "user": "TifosoAccanito",
+            "comment": "",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.7362351417541504
+        },
+        {
+            "user": "User123456",
+            "comment": "rimozione sezione inutile",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 7.611884117126465
+        },
+        {
+            "user": "IlReDelMondo",
+            "comment": "miglioro la descrizione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.93550443649292
+        },
+        {
+            "user": "UfoHunter",
+            "comment": "info cruciale",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.2764060497283936
+        },
+        {
+            "user": "IlBurlone",
+            "comment": "ahahahah",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.950299978256226
+        },
+        {
+            "user": "CleanUpCrew",
+            "comment": "pulizia",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 8.014441967010498
+        },
+        {
+            "user": "AntiLuca",
+            "comment": "Luca puzza",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.364880084991455
+        },
+        {
+            "user": "Gamer_IT",
+            "comment": "",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.2385506629943848
+        },
+        {
+            "user": "Boh123",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.6869988441467285
+        },
+        {
+            "user": "HackerMan",
+            "comment": "pwned",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.8407585620880127
+        },
+        {
+            "user": "FakeNewsGenerator",
+            "comment": "correzione popolazione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.490594148635864
+        },
+        {
+            "user": "CriticoAmareggiato",
+            "comment": "categoria più appropriata",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.9722888469696045
+        },
+        {
+            "user": "ChefTony",
+            "comment": "",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.6448850631713867
+        },
+        {
+            "user": "TopolinoFan",
+            "comment": "Topolinia!",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.8401737213134766
+        },
+        {
+            "user": "Vandalo123",
+            "comment": "correzione nome importante",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 4.034034967422485
+        },
+        {
+            "user": "Distruttore",
+            "comment": "testo inutile",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.6393961906433105
+        },
+        {
+            "user": "Burlone88",
+            "comment": "lol",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.1402459144592285
+        },
+        {
+            "user": "GuerrieroDelWeb",
+            "comment": "la fisa non esiste",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.1847984790802
+        },
+        {
+            "user": "TrollMaster",
+            "comment": "cancello tutto ahaha",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.3527042865753174
+        },
+        {
+            "user": "SpammerX",
+            "comment": "info più utile",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 2.7119147777557373
+        },
+        {
+            "user": "NoSenseMan",
+            "comment": "correzione scuderie",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.2040176391601562
+        },
+        {
+            "user": "HackerKid",
+            "comment": "rev",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 3.1102006435394287
+        },
+        {
+            "user": "MarioRossi82",
+            "comment": "Miglioro la leggibilità specificando il tipo di propulsore.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.957666397094727
+        },
+        {
+            "user": "F1_Historian",
+            "comment": "Correzione grammaticale, 'dopo mentre' è ridondante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.3575661182403564
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink al pilota.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.7558393478393555
+        },
+        {
+            "user": "MotorSportFan",
+            "comment": "Aggiungo wikilink all'associazione piloti.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 4.814512014389038
+        },
+        {
+            "user": "CarlaG",
+            "comment": "Completo il nome del motore Ford, informazione mancante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.180657863616943
+        },
+        {
+            "user": "MarioRossi82",
+            "comment": "Miglioro la leggibilità specificando il tipo di propulsore.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.392735242843628
+        },
+        {
+            "user": "EditMaster",
+            "comment": "Aggiungo wikilink alla Ferrari con pipe per chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.427107334136963
+        },
+        {
+            "user": "WikiLinkerBot",
+            "comment": "Aggiungo wikilink alla Renault F1.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 3.4269771575927734
+        },
+        {
+            "user": "FixerBot",
+            "comment": "Correzione formattazione e punteggiatura nella fonte.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 10.72852110862732
+        },
+        {
+            "user": "ElenaG",
+            "comment": "Completo la frase finale che sembrava troncata, per maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 13.200819253921509
+        },
+        {
+            "user": "WikiMarkupBot",
+            "comment": "Aggiunta formattazione standard per le intestazioni di sezione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.59824514389038
+        },
+        {
+            "user": "Grammaticus",
+            "comment": "Miglioramento stilistico e della punteggiatura per maggiore leggibilità.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 12.923855781555176
+        },
+        {
+            "user": "Grammaticus92",
+            "comment": "Correzione della punteggiatura per migliorare la leggibilità e la scorrevolezza del periodo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.511172533035278
+        },
+        {
+            "user": "Pignolo78",
+            "comment": "Correzione grammaticale: 'ed' si usa solo davanti a vocale 'e'. Sostituito con 'e'.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.056240320205688
+        },
+        {
+            "user": "GrammarNazi88",
+            "comment": "Correzione della punteggiatura: il periodo termina con un punto, non con una virgola.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 16.895674467086792
+        },
+        {
+            "user": "WikiCleanerBot",
+            "comment": "Rimosso spazio bianco superfluo prima del titolo della sezione per coerenza di formattazione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.128864049911499
+        },
+        {
+            "user": "UtentePreciso",
+            "comment": "Aggiungo wikilink per maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 15.044304132461548
+        },
+        {
+            "user": "WikiGnome",
+            "comment": "Miglioro la formattazione delle sezioni per conformità agli standard.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 7.501781940460205
+        },
+        {
+            "user": "StudentePazzo_89",
+            "comment": "Correzione anno di pubblicazione della fonte, era sbagliato.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 15.991589307785034
+        },
+        {
+            "user": "EtruscoLatino",
+            "comment": "Specifico meglio l'origine del nome.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 16.488834619522095
+        },
+        {
+            "user": "GeoVandalo99",
+            "comment": "Correzione classificazione climatica",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 8.585440874099731
+        },
+        {
+            "user": "TrollGeologo",
+            "comment": "precisazione rischio idrogeologico",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 12.095810890197754
+        },
+        {
+            "user": "VandalMaster22",
+            "comment": "Correzione anno del premio, la fonte era errata.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 9.700164079666138
+        },
+        {
+            "user": "MusicExpert",
+            "comment": "Aggiungo un direttore d'orchestra con cui ha collaborato frequentemente.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 9.778764486312866
+        },
+        {
+            "user": "StatIstat",
+            "comment": "Aggiorno dato popolazione a censimento più recente",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "time_sec": 9.337022066116333
+        },
+        {
+            "user": "GeografoPreciso",
+            "comment": "Correzione del nome della regione secondo la dicitura storica.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 12.142994403839111
+        },
+        {
+            "user": "StudiosoEtimologico",
+            "comment": "Correzione del riferimento alla divinità, fonte errata.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 25.88687014579773
+        },
+        {
+            "user": "StudenteGeologia92",
+            "comment": "Corretta la classificazione del rischio idrogeologico secondo le nuove mappe.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 28.37373399734497
+        }
+    ],
+    "accuracy": 82.11920529801324,
+    "avg_time": 7.5499203852470345
+}

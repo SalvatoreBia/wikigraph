@@ -47,9 +47,10 @@ api_key_cycle = cycle(API_KEYS)
 key_lock = threading.Lock()
 
 # Rate Limiting
+# Rate Limiting
 KEY_USAGE = defaultdict(list)
-MAX_REQ_PER_MIN = 2
-WINDOW_SIZE = 65  # seconds
+MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min']
+WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 
 def get_next_api_key():
     with key_lock:
@@ -70,19 +71,18 @@ def get_next_api_key():
             time.sleep(5)
 
 # Neo4j Config
-URI = "bolt://localhost:7687"
-AUTH = ("neo4j", "password")
+URI = CONFIG['neo4j']['uri']
+AUTH = tuple(CONFIG['neo4j']['auth'])
 MODEL_NAME = CONFIG['llm']['generation_model']
 TEXT_LIMIT = CONFIG['processing']['text_limit']
 
 # Configuration for Mock Generation
-TARGET_LEGIT_EDITS = 10
-TARGET_VANDAL_EDITS = 10
+TARGET_LEGIT_EDITS = CONFIG['simulation']['target_legit_edits']
+TARGET_VANDAL_EDITS = CONFIG['simulation']['target_vandal_edits']
 
 # Lock per scrittura file
 file_lock = threading.Lock()
 
-# --- UTILS ---
 
 def append_to_json_file(filepath, new_items):
     """Legge, aggiorna e salva il file JSON in modo thread-safe."""

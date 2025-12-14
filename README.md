@@ -16,4 +16,30 @@ Le trusted sources sarebbero le pagine html (nel nostro caso dei mock) di una te
 Le trusted sources nel nostro caso vengono scelte come segue:
 - filtriamo tutti i nodi che non fanno parte di una community o che hanno un contenuto troppo corto (<100 caratteri)
 - prendiamo gli N nodi più rilevanti del nostro sample, ovvero gli N nodi con grado più alto dalla community più popolosa del sample
-- chiediamo a gemma di generare una pagina HTML per ciascuno dei nodi selezionati con delle informazioni chiare e precise, gemma ha come contesto solo 
+- chiediamo a gemma di generare una pagina HTML per ciascuno dei nodi selezionati con delle informazioni chiare e precise, l'LLM ha come contesto sia il titolo della pagina che il contenuto della pagina
+
+Gli edit sono dei json che seguono questo formato:
+
+```json
+{
+  "id": "",
+  "type": "",
+  "title": "",
+  "user": "",
+  "comment": "",
+  "original_text": "",
+  "new_text": "",
+  "timestamp": 0,
+  "length": {
+      "old": 0,
+      "new": 0
+  },
+  "is_vandalism": false,
+  "meta": {
+      "domain": "",
+      "uri": ""
+  }
+}
+```
+
+questi

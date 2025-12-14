@@ -30,7 +30,7 @@
         "articles_per_community": 50
     },
     "rate_limit": {
-        "max_req_per_min": 2,
-        "window_size": 65
+        "max_req_per_min": 30,
+        "window_size": 63
     }
 }

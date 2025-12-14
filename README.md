@@ -76,3 +76,12 @@ Lo script esegue una Cross-Validation, seleziona il modello migliore e lo salva 
 
 In alternativa, lo script `13_train_neural_classifier.py` addestra una Rete Neurale con PyTorch. 
 Prende in input gli embedding grezzi concatenati (Vecchio Testo + Nuovo Testo + Commento + Truth Scores) e il modello viene salvato come `neural_classifier.pth`.
+
+Per iniziare a ricevere le modifiche in tempo reale, eseguiamo lo script `200_stream_processor.py` che mette kafka in ascolto sul topic `"wiki-changes"` su cui resta in ascolto contando quante modifiche appartenenti alla stessa community arrivano in un certo intervallo di tempo.
+Se si supera una certa soglia Y di modifiche entro un tempo T allora si passa in uno "stato di allarme" in cui le modifiche vengono inviate contemporaneamente al `201_ai_judge_gemini.py` e al `202_bc_judge.py` che classificheranno l'edit e salveranno il risultato di ogni classificazione.
+
+Con lo script `500_compare_models.py` possiamo confrontare le due classificazioni e vedere quale modello è più preciso.
+
+Tutti gli edit vengono spediti sul topic kafka dallo script `203_mock_producer.py` che legge i file `/data/mocked_edits/legit_edits.json` e `/data/mocked_edits/vandal_edits.json` e li invia sul topic `wiki-changes`.
+
+Per svuotare il topic kafka si può usare l'utility `199_reset_kafka.py`

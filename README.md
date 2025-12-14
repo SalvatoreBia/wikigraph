@@ -77,7 +77,7 @@ In alternativa, lo script `13_train_neural_classifier.py` addestra una Rete Neur
 Prende in input gli embedding grezzi concatenati (Vecchio Testo + Nuovo Testo + Commento + Truth Scores) e il modello viene salvato come `neural_classifier.pth`.
 
 Per iniziare a ricevere le modifiche in tempo reale, eseguiamo lo script `200_stream_processor.py` che mette kafka in ascolto sul topic `"wiki-changes"` su cui resta in ascolto contando quante modifiche appartenenti alla stessa community arrivano in un certo intervallo di tempo.
-Se si supera una certa soglia Y di modifiche entro un tempo T allora si passa in uno "stato di allarme" in cui le modifiche vengono inviate contemporaneamente al `201_ai_judge_gemini.py` e al `202_bc_judge.py` che classificheranno l'edit e salveranno il risultato di ogni classificazione.
+Se si supera una certa soglia `Y` di modifiche entro un tempo `T` allora si passa in uno "stato di allarme" in cui le modifiche vengono inviate contemporaneamente al `201_ai_judge_gemini.py` e al `202_bc_judge.py` che classificheranno l'edit e salveranno il risultato di ogni classificazione.
 
 Con lo script `500_compare_models.py` possiamo confrontare le due classificazioni e vedere quale modello è più preciso.
 

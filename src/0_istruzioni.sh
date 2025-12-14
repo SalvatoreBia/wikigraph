@@ -23,7 +23,10 @@ ora tutti i csv ecc. saranno in ../data
 -----------------------------------------------------------------------------------
 `
 
+
 sh 1_download_wikipedia_files.sh 
+
+
 sh 2_parse_file.sh
 
 

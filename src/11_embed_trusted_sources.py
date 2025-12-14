@@ -8,7 +8,6 @@ from sentence_transformers import SentenceTransformer
 from neo4j import GraphDatabase
 import numpy as np
 
-# --- CONFIGURAZIONE ---
 from config_loader import load_config
 
 CONFIG = load_config()
@@ -18,30 +17,23 @@ DATA_DIR = BASE_DIR / "data"
 CSV_FILE = DATA_DIR / "sample_content" / "sample_with_names_1_content.csv"
 HTML_DIR = DATA_DIR / "trusted_html_pages"
 
-# Neo4j Config
 URI = CONFIG['neo4j']['uri']
 AUTH = tuple(CONFIG['neo4j']['auth'])
 
-# NEW INDICES
 WIKI_INDEX_NAME = "wiki_chunk_index"
 TRUSTED_INDEX_NAME = "trusted_chunk_index"
 
-# Load from Config
 VECTOR_DIM = CONFIG['embedding']['dimension']
 MODEL_NAME = CONFIG['embedding']['model_name']
 BATCH_SIZE = CONFIG['processing']['batch_size']
-
-# CHUNKING CONFIG
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 100
+CHUNK_SIZE = CONFIG['processing']['chunk_size']
+CHUNK_OVERLAP = CONFIG['processing']['chunk_overlap']
 
 def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     """Divide il testo in chunk sovrapposti."""
     if not text:
         return []
     
-    # Simple character-based chunking
-    # Per una gestione migliore servirebbe un tokenizer, ma questo è sufficiente per ora
     chunks = []
     start = 0
     text_len = len(text)
@@ -59,13 +51,9 @@ def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
 
 def clean_html(html_content):
     """Rimuove i tag HTML per estrarre il testo pulito."""
-    # Rimuove script e style
     cleaned = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', html_content, flags=re.DOTALL)
-    # Rimuove commenti
     cleaned = re.sub(r'<!--.*?-->', '', cleaned, flags=re.DOTALL)
-    # Rimuove tag HTML del tutto
     cleaned = re.sub(r'<[^>]+>', ' ', cleaned)
-    # Rimuove white space multipli
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
     return cleaned
 
@@ -172,7 +160,6 @@ def process_and_embed(driver, model, documents, batch_size=BATCH_SIZE):
         for i in range(0, len(documents), batch_size):
             batch_docs = documents[i : i + batch_size]
             
-            # Prepare chunks for this batch
             all_chunks_text = []
             batch_metadata = []
             
@@ -193,11 +180,9 @@ def process_and_embed(driver, model, documents, batch_size=BATCH_SIZE):
             if not all_chunks_text:
                 continue
                 
-            # Embed chunks
             print(f"   Embed batch {i//batch_size + 1}... ({len(all_chunks_text)} chunks)")
             embeddings = model.encode(all_chunks_text).tolist()
             
-            # Prepare Neo4j update
             wiki_params = []
             trusted_params = []
             
@@ -208,7 +193,6 @@ def process_and_embed(driver, model, documents, batch_size=BATCH_SIZE):
                 else:
                     trusted_params.append(meta)
             
-            # Update WIKI Nodes
             if wiki_params:
                 query_wiki = """
                 UNWIND $batch AS row
@@ -224,7 +208,6 @@ def process_and_embed(driver, model, documents, batch_size=BATCH_SIZE):
                 """
                 session.run(query_wiki, {"batch": wiki_params})
             
-            # Update TRUSTED Nodes
             if trusted_params:
                 query_trusted = """
                 UNWIND $batch AS row
@@ -248,24 +231,19 @@ def process_and_embed(driver, model, documents, batch_size=BATCH_SIZE):
 def main():
     print("--- 🧠 RAG PIPELINE: CHUNKING & EMBEDDINGS ---")
     
-    # 1. Connect
     driver = wait_for_connection(URI, AUTH)
     
-    # 2. Indexes
     create_vector_indexes(driver)
     
-    # 3. Load Model
     print(f"🚀 Caricamento Modello: {MODEL_NAME}...")
     model = SentenceTransformer(MODEL_NAME)
     
-    # 4. Load & Process Wikipedia Data
     print("\n--- PROCESSAMENTO WIKIPEDIA ---")
     wiki_docs = load_csv_documents(CSV_FILE)
     print(f"📄 Trovati {len(wiki_docs)} articoli Wikipedia.")
     chunks_wiki = process_and_embed(driver, model, wiki_docs)
     print(f"\n✅ Wikipedia completata: {chunks_wiki} chunks totali.")
     
-    # 5. Load & Process Trusted Sources
     print("\n--- PROCESSAMENTO TRUSTED SOURCES ---")
     trusted_docs = load_trusted_documents(HTML_DIR)
     print(f"📄 Trovate {len(trusted_docs)} fonti affidabili.")

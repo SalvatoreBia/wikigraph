@@ -9,8 +9,10 @@
     },
     "processing": {
         "text_limit": 1200,
-        "batch_size": 100,
-        "context_window_size": 600
+        "batch_size": 300,
+        "context_window_size": 600,
+        "chunk_size": 600,
+        "chunk_overlap": 100
     },
     "neo4j": {
         "uri": "bolt://localhost:7687",

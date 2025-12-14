@@ -59,3 +59,20 @@ Genererà in totale `TARGET_LEGIT_EDITS` e `TARGET_VANDAL_EDITS` divisi equament
 
 Nel file `11_embed_trusted_sources.py` leggiamo il contenuto delle pagine wikipedia dei nodi salvati su neo4j durante lo script `8_add_node_info.py`, dividiamo il testo in chunk di 1000 caratteri con un overlap di 100 caratteri e li embeddiamo con il modello di embedding configurato in `config.json`.
 Gli embedding verranno salvati su neo4j nei nodi :Chunk e :TrustedChunk
+
+
+Nel file `12_train_binary_classifier.py` addestriamo un classificatore binario classico testando contemporaneamente Regressione Logistica, Random Forest, SVM e Gradient Boosting per distinguere tra edit legittimi e vandalici. 
+Il sistema carica il dataset generato ed estrae per ogni edit un vettore di feature ingegnerizzato (772 dimensioni totali) composto da:
+- Semantic Delta (384 dim): La differenza vettoriale tra l'embedding del nuovo testo e quello vecchio (rappresenta la "direzione" del cambiamento semantico).
+- Comment Embedding (384 dim): Il significato del commento lasciato dall'utente.
+- Similarità del Testo & Length Ratio: Metriche statistiche sul cambiamento apportato.
+- Truth Scores (RAG): Qui avviene la "Triangolazione". Il sistema interroga Neo4j per trovare i nodi 
+    - :Chunk (contenuto della pagina di Wikipedia) 
+    - :TrustedChunk (contenuto dei file html generati in `trusted_html_pages`) 
+    più simili al testo modificato. Il punteggio di similarità (Cosine Similarity) diventa una feature: se il testo dell'utente si discosta troppo dalla fonte affidabile o dal contesto originale, il punteggio cala, segnalando un potenziale vandalismo.
+
+
+Lo script esegue una Cross-Validation, seleziona il modello migliore e lo salva come `binary_classifier.pkl`.
+
+In alternativa, lo script `13_train_neural_classifier.py` addestra una Rete Neurale con PyTorch. 
+Prende in input gli embedding grezzi concatenati (Vecchio Testo + Nuovo Testo + Commento + Truth Scores) e il modello viene salvato come `neural_classifier.pth`.

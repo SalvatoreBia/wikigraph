@@ -24,8 +24,7 @@ Le trusted sources nel nostro caso vengono scelte come segue:
 - filtriamo tutti i nodi che non fanno parte di una community o che hanno un contenuto troppo corto (<100 caratteri)
 - prendiamo gli `N` nodi più rilevanti del nostro sample, ovvero gli `N` (configurabile) nodi con grado più alto dalla community più popolosa del sample.
 - chiediamo a gemma di generare una pagina HTML per ciascuno dei nodi selezionati. La Trusted Source è generata a partire dal Titolo.
-- Per dare del contesto a gemma sul contenuto da scrivere, boh non so, questo pezzo va corretto
-- 
+- Per dare del contesto a gemma sul contenuto da scrivere usiamo i primi 2000 caratteri del contenuto reale della pagina.
 
 
 

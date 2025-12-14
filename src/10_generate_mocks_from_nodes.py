@@ -304,10 +304,7 @@ def get_community_data_with_content(driver):
 def generate_dataset():
     # Setup folders
     MOCK_DIR.mkdir(parents=True, exist_ok=True)
-    if HTML_DIR.exists(): shutil.rmtree(HTML_DIR)
     HTML_DIR.mkdir(parents=True, exist_ok=True)
-    if LEGIT_FILE.exists(): os.remove(LEGIT_FILE)
-    if VANDAL_FILE.exists(): os.remove(VANDAL_FILE)
 
     # 1. Fetch Data
     driver = GraphDatabase.driver(URI, auth=AUTH)
@@ -337,22 +334,76 @@ def generate_dataset():
         print("\n🚀 Generazione HTML...")
         generated_pages = {}
         
+        # Check existing HTML files
+        existing_html_files = list(HTML_DIR.glob("trusted_*.html"))
+        existing_titles = set()
+        for p in existing_html_files:
+            # Filename format: trusted_{clean_title}.html
+            # We can't easily reverse clean_title -> title perfectly if there are collisions, 
+            # but we can try to match or just trust the file presence for the "clean" version.
+            # Faster approach: Check if expected output file exists for each target topic.
+            pass
+
+        topics_to_generate = []
+        for title in target_topics:
+            clean_title = re.sub(r'[^\w]', '_', title)
+            expected_path = HTML_DIR / f"trusted_{clean_title}.html"
+            
+            if expected_path.exists():
+                print(f"⏩ Skip HTML esistente: {title}")
+                # Load content snippet for later use in edits
+                try:
+                    with open(expected_path, "r", encoding="utf-8") as f:
+                         content = f.read()
+                         generated_pages[title] = {"title": title, "path": str(expected_path), "content_snippet": content[:500]}
+                except Exception as e:
+                    print(f"⚠️ Errore lettura {expected_path}: {e}")
+            else:
+                topics_to_generate.append(title)
+
+        if not topics_to_generate:
+             print("✅ Tutte le pagine HTML sono già presenti.")
+        else:
+            print(f"🚀 Inizio generazione per {len(topics_to_generate)} nuove pagine HTML...")
+        
         with ProcessPoolExecutor(max_workers=keys_count) as executor:
             futures = {}
-            for i, title in enumerate(target_topics):
+            for i, title in enumerate(topics_to_generate):
                 key = API_KEYS[i % keys_count] # Round Robin statico
                 content = topic_content_map.get(title, "")[:2000]
                 futures[executor.submit(generate_html_worker, key, title, content, usage_dict)] = title
-                
+            
+            completed_count = 0
+            total_gen = len(topics_to_generate)
             for future in as_completed(futures):
                 res = future.result()
+                completed_count += 1
                 if res:
                     generated_pages[res['title']] = res
+                    print(f"[{completed_count}/{total_gen}] Copletato {res['title']}")
                     
         # 3. Generate Edits
         print("\n🚀 Generazione Edits...")
-        missing_legit = TARGET_LEGIT_EDITS
-        missing_vandal = TARGET_VANDAL_EDITS
+        
+        # Count existing edits
+        current_legit = 0
+        if LEGIT_FILE.exists():
+            try:
+                with open(LEGIT_FILE, "r", encoding="utf-8") as f:
+                    current_legit = len(json.load(f))
+            except Exception: pass
+
+        current_vandal = 0
+        if VANDAL_FILE.exists():
+            try:
+                with open(VANDAL_FILE, "r", encoding="utf-8") as f:
+                    current_vandal = len(json.load(f))
+            except Exception: pass
+
+        missing_legit = max(0, TARGET_LEGIT_EDITS - current_legit)
+        missing_vandal = max(0, TARGET_VANDAL_EDITS - current_vandal)
+        
+        print(f"📊 Stato Attuale: {current_legit}/{TARGET_LEGIT_EDITS} Legit, {current_vandal}/{TARGET_VANDAL_EDITS} Vandal")
         
         while missing_legit > 0 or missing_vandal > 0:
             print(f"🔄 Mancano: {missing_legit} Legit, {missing_vandal} Vandal")

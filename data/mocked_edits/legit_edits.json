@@ -1,0 +1,1902 @@
+[
+    {
+        "id": "ef9fdf3d-5676-4fa2-a56c-44c6cb2a2da4",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Palmarès \n Club \n Competizioni nazionali \n \nVitória Setúbal: 2004-2005\nPorto: 2005-2006\n\nPorto: 2005-2006, 2006-2007\n\nPorto: 2006\n Collegamenti esterni",
+        "new_text": "Palmarès\nClub\nCompetizioni nazionali\n\nVitória Setúbal: 2004-2005\nPorto: 2005-2006\n\nPorto: 2005-2006, 2006-2007\n\nPorto: 2006\nCollegamenti esterni",
+        "timestamp": 1678886400,
+        "length": {
+            "old": 245,
+            "new": 245
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "2a1b0a89-6b13-45bc-af6e-76960d362722",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore2",
+        "comment": "Aggiunta spazio dopo 'Palmarès'",
+        "original_text": "Palmarès\nClub",
+        "new_text": "Palmarès\nClub",
+        "timestamp": 1678886460,
+        "length": {
+            "old": 10,
+            "new": 10
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "7ee56297-bf4d-48c4-8033-d8b0dbcfd273",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore3",
+        "comment": "Rimozione spazi multipli",
+        "original_text": "\n\nPorto: 2005-2006, 2006-2007\n\n",
+        "new_text": "\nPorto: 2005-2006, 2006-2007\n",
+        "timestamp": 1678886520,
+        "length": {
+            "old": 31,
+            "new": 27
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "c3fb7d17-1ee3-4af4-b604-e46cfa695ccd",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore4",
+        "comment": "Correzione ortografica 'Collegamenti'",
+        "original_text": " Collegamenti esterni",
+        "new_text": "Collegamenti esterni",
+        "timestamp": 1678886580,
+        "length": {
+            "old": 20,
+            "new": 19
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "52814864-1705-4a21-a3f6-afb52ef38ca2",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico1",
+        "comment": "Modifica data Porto",
+        "original_text": "Porto: 2005-2006",
+        "new_text": "Porto: 2007-2008",
+        "timestamp": 1678886640,
+        "length": {
+            "old": 16,
+            "new": 16
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "e108b61c-15a0-4b70-bee0-bb5ba14dd467",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico2",
+        "comment": "Inversione nomi club",
+        "original_text": "Vitória Setúbal: 2004-2005",
+        "new_text": "Setúbal Vitória: 2004-2005",
+        "timestamp": 1678886700,
+        "length": {
+            "old": 22,
+            "new": 22
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "864fe576-325c-4278-a4a4-3343b2e55b3a",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore5",
+        "comment": "Aggiunta spazio dopo 'Palmarès'",
+        "original_text": "PalmarèsClub",
+        "new_text": "Palmarès Club",
+        "timestamp": 1678886760,
+        "length": {
+            "old": 12,
+            "new": 13
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "fba93d4e-33ee-4a68-a579-6411d1d52662",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico3",
+        "comment": "Modifica data Porto",
+        "original_text": "Porto: 2006",
+        "new_text": "Porto: 2000",
+        "timestamp": 1678886820,
+        "length": {
+            "old": 10,
+            "new": 10
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "95d0fc2e-e2d5-4f2f-8d92-58c3714e12a5",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore6",
+        "comment": "Correzione spaziatura",
+        "original_text": "Porto: 2005-2006,2006-2007",
+        "new_text": "Porto: 2005-2006, 2006-2007",
+        "timestamp": 1678886880,
+        "length": {
+            "old": 22,
+            "new": 24
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "89353252-b307-4618-a1fc-07d77b5ac341",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico4",
+        "comment": "Modifica nome club",
+        "original_text": "Vitória Setúbal",
+        "new_text": "Benfica Setúbal",
+        "timestamp": 1678886940,
+        "length": {
+            "old": 14,
+            "new": 15
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "e692f9e9-bf8f-467d-8861-c57bbb413301",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore7",
+        "comment": "Rimozione riga vuota",
+        "original_text": "\n",
+        "new_text": "",
+        "timestamp": 1678887000,
+        "length": {
+            "old": 1,
+            "new": 0
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "c3bd4899-328a-47de-ae79-bc6b63719cd5",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico5",
+        "comment": "Modifica data",
+        "original_text": "2004-2005",
+        "new_text": "1990-1991",
+        "timestamp": 1678887060,
+        "length": {
+            "old": 9,
+            "new": 9
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "26645916-067d-402c-a30a-214bf684006d",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore8",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "PalmarèsClub",
+        "new_text": "Palmarès Club.",
+        "timestamp": 1678887120,
+        "length": {
+            "old": 12,
+            "new": 14
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "496339cf-6641-44d1-9c6c-5a51352b66e9",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico6",
+        "comment": "Inversione date",
+        "original_text": "2005-2006, 2006-2007",
+        "new_text": "2006-2007, 2005-2006",
+        "timestamp": 1678887180,
+        "length": {
+            "old": 22,
+            "new": 22
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "1a2b807d-1d38-4984-984c-4d68169e2939",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore9",
+        "comment": "Correzione ortografica",
+        "original_text": "Collegamentii esterni",
+        "new_text": "Collegamenti esterni",
+        "timestamp": 1678887240,
+        "length": {
+            "old": 21,
+            "new": 19
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "85bd0432-7ae2-4320-ab0c-d3fd6335c813",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico7",
+        "comment": "Modifica nome club",
+        "original_text": "Porto",
+        "new_text": "Braga",
+        "timestamp": 1678887300,
+        "length": {
+            "old": 5,
+            "new": 5
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "3d96e2c3-bc3c-46bb-af35-003c31175f20",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore10",
+        "comment": "Rimozione spazio iniziale",
+        "original_text": " Competizioni nazionali",
+        "new_text": "Competizioni nazionali",
+        "timestamp": 1678887360,
+        "length": {
+            "old": 22,
+            "new": 21
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "8690abb0-c01d-4f73-bd79-e0be0f6146e2",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico8",
+        "comment": "Modifica data",
+        "original_text": "2006-2007",
+        "new_text": "2008-2009",
+        "timestamp": 1678887420,
+        "length": {
+            "old": 9,
+            "new": 9
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "0b8ca8a1-b264-4b79-b440-d5fc2d6ff86e",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteCorrettore11",
+        "comment": "Correzione spaziatura",
+        "original_text": "Palmarès\nClub",
+        "new_text": "Palmarès\nClub",
+        "timestamp": 1678887480,
+        "length": {
+            "old": 10,
+            "new": 10
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "0f27bc98-2519-42ed-81cb-61162d7c6aff",
+        "type": "edit",
+        "title": "Jorginho (calciatore 1977)",
+        "user": "UtenteVandalico9",
+        "comment": "Modifica nome club",
+        "original_text": "Setúbal Vitória",
+        "new_text": "Guimarães Vitória",
+        "timestamp": 1678887540,
+        "length": {
+            "old": 16,
+            "new": 17
+        },
+        "is_vandalism": true,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Jorginho__calciatore_1977_"
+        }
+    },
+    {
+        "id": "2726980e-7aeb-4881-bab4-a1fc67f15566",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore1",
+        "comment": "Correzione punteggiatura e refusi",
+        "original_text": " settentrionale, pp. 21 e 37, tanto da essere oggi considerato, analogalmente al vicino gallurese, come un idioma di transizione sardo-còrso.",
+        "new_text": "settentrionale, pp. 21 e 37, tanto da essere oggi considerato, analogamente al vicino gallurese, come un idioma di transizione sardo-corso.",
+        "timestamp": 1678886400,
+        "length": {
+            "old": 123,
+            "new": 124
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "89daa890-ba46-46a4-b766-78585d48b439",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore2",
+        "comment": "Correzione ortografica",
+        "original_text": "Il sassarese è parlato in una piccola ma popolata fascia della Sardegna nord-occidentale lungo il golfo dell'Asinara, nella Nurra, Romangia e Anglona, ovvero nei comuni di Sassari, Porto Torres, Sorso, Stintino, tutti facenti parte della città metropolitana di Sassari.",
+        "new_text": "Il sassarese è parlato in una piccola ma popolata fascia della Sardegna nord-occidentale lungo il golfo dell'Asinara, nella Nurra, Romangia e Anglona, ovvero nei comuni di Sassari, Porto Torres, Sorso, Stintino, tutti facenti parte della città metropolitana di Sassari.",
+        "timestamp": 1678886460,
+        "length": {
+            "old": 189,
+            "new": 189
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "98939b09-ba7c-48ca-a9a9-481ed4bbdf16",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore3",
+        "comment": "Correzione di una virgola superflua",
+        "original_text": "Il castellanese, invece, è parlato nei comuni di Castelsardo, Sedini, Tergu e in alcune frazioni di Valledoria.",
+        "new_text": "Il castellanese, invece, è parlato nei comuni di Castelsardo, Sedini, Tergu e in alcune frazioni di Valledoria.",
+        "timestamp": 1678886520,
+        "length": {
+            "old": 118,
+            "new": 118
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "17ff6ab7-cfcc-4024-aa8d-434775e68a4d",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore4",
+        "comment": "Correzione di un refuso",
+        "original_text": " Caratteristiche e diffusione ",
+        "new_text": "Caratteristiche e diffusione",
+        "timestamp": 1678886580,
+        "length": {
+            "old": 30,
+            "new": 29
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "cd3fb15d-e1b8-4730-8fc4-0de12242c42a",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore5",
+        "comment": "Correzione di una frase incompleta",
+        "original_text": "Il turritano, pur essendo evidente la sua b",
+        "new_text": "Il turritano, pur essendo evidente la sua...",
+        "timestamp": 1678886640,
+        "length": {
+            "old": 36,
+            "new": 39
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "c26b6555-7ddd-4b0a-bd34-8d50a3bd5d2b",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore6",
+        "comment": "Aggiunta spazio dopo punto",
+        "original_text": "pp.21e 37",
+        "new_text": "pp. 21 e 37",
+        "timestamp": 1678886700,
+        "length": {
+            "old": 9,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "76cc6611-6bdc-4200-9d35-61f2f5fe33a9",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore7",
+        "comment": "Correzione di una ripetizione",
+        "original_text": "Il sassarese è parlato in una piccola ma popolata fascia della Sardegna nord-occidentale lungo il golfo dell'Asinara, nella Nurra, Romangia e Anglona, ovvero nei comuni di Sassari, Porto Torres, Sorso, Stintino, tutti facenti parte della città metropolitana di Sassari. Il castellanese, invece, è parlato nei comuni di Castelsardo, Sedini, Tergu e in alcune frazioni di Valledoria.",
+        "new_text": "Il sassarese è parlato in una piccola ma popolata fascia della Sardegna nord-occidentale lungo il golfo dell'Asinara, nella Nurra, Romangia e Anglona, ovvero nei comuni di Sassari, Porto Torres, Sorso, Stintino, tutti facenti parte della città metropolitana di Sassari.",
+        "timestamp": 1678886760,
+        "length": {
+            "old": 335,
+            "new": 189
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "d1305974-1cfe-4d36-a00a-2a34ce5489a4",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore8",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "analogalmente",
+        "new_text": "analogamente",
+        "timestamp": 1678886820,
+        "length": {
+            "old": 11,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "6f6ce44a-39fc-471e-bc8f-ead5d8a555a6",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore9",
+        "comment": "Correzione di una maiuscola",
+        "original_text": "Il turritano",
+        "new_text": "il turritano",
+        "timestamp": 1678886880,
+        "length": {
+            "old": 11,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "256ae9e7-0016-4e61-bf69-108c87172af7",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore10",
+        "comment": "Correzione di un errore di punteggiatura",
+        "original_text": "pp. 21 e 37",
+        "new_text": "pp. 21-37",
+        "timestamp": 1678886940,
+        "length": {
+            "old": 10,
+            "new": 9
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "84615198-b523-4314-96ae-97b0539aa51c",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore11",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "sardo-còrso.",
+        "new_text": "sardo-corso.",
+        "timestamp": 1678887000,
+        "length": {
+            "old": 12,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "a91563ac-1347-41ad-a479-ca49789e48d7",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore12",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Romangia",
+        "new_text": "Romagna",
+        "timestamp": 1678887060,
+        "length": {
+            "old": 8,
+            "new": 7
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "6ec89258-d69d-4ba2-b888-2271a0e812f8",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore13",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Anglona",
+        "new_text": "Anglona,",
+        "timestamp": 1678887120,
+        "length": {
+            "old": 7,
+            "new": 8
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "cd4c0bed-de21-4597-a7cd-d9ae0dba17de",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore14",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Valledoria.",
+        "new_text": "Valledoria",
+        "timestamp": 1678887180,
+        "length": {
+            "old": 11,
+            "new": 10
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "5d368960-f486-4e93-8d17-4b125d45631a",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore15",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Caratteristiche",
+        "new_text": "caratteristiche",
+        "timestamp": 1678887240,
+        "length": {
+            "old": 14,
+            "new": 14
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "68bec52e-69f9-47b2-9d56-c8b42331ef0f",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore16",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "diffusione",
+        "new_text": "diffusione.",
+        "timestamp": 1678887300,
+        "length": {
+            "old": 10,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "822bd9fb-a281-47d2-aa61-dd1b9b9bce93",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore17",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Turritano",
+        "new_text": "turritano",
+        "timestamp": 1678887360,
+        "length": {
+            "old": 9,
+            "new": 9
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "2919499f-ba68-4779-a908-252193e0bc89",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore18",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "evidente",
+        "new_text": "evidente la",
+        "timestamp": 1678887420,
+        "length": {
+            "old": 8,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "2e8ad150-c758-4eb1-a77d-762115e7a9fb",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore19",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "sua b",
+        "new_text": "sua.",
+        "timestamp": 1678887480,
+        "length": {
+            "old": 5,
+            "new": 4
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "e579a4cd-8a80-4740-8ce6-6d0ee3e35edd",
+        "type": "edit",
+        "title": "Lingua sassarese",
+        "user": "UtenteCorrettore20",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "settentrionale",
+        "new_text": "settentrionale,",
+        "timestamp": 1678887540,
+        "length": {
+            "old": 13,
+            "new": 14
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Lingua_sassarese"
+        }
+    },
+    {
+        "id": "e89d3286-103f-4ea3-8ca5-4c664820e501",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore1",
+        "comment": "Correzione di un typo in 'agosto'",
+        "original_text": "agosto 2006.",
+        "new_text": "agosto 2006.",
+        "timestamp": 1234567890,
+        "length": {
+            "old": 11,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "d7241eaa-3ee0-45b8-9559-514349110576",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore2",
+        "comment": "Aggiunta punteggiatura mancante",
+        "original_text": "Primo turno",
+        "new_text": "Primo turno.",
+        "timestamp": 1234567900,
+        "length": {
+            "old": 10,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "329b0dd9-729e-4c63-9d24-a48e6f88b31a",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore3",
+        "comment": "Correzione di 'si contendono'",
+        "original_text": "si contendono",
+        "new_text": "si contendono.",
+        "timestamp": 1234567910,
+        "length": {
+            "old": 13,
+            "new": 14
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "6c5f813d-a1d5-40d2-9258-278c3a852865",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore4",
+        "comment": "Aggiunta punteggiatura alla fine della frase",
+        "original_text": "Partite disputate tra il 24 gennaio ed il 2 febbraio 2006",
+        "new_text": "Partite disputate tra il 24 gennaio ed il 2 febbraio 2006.",
+        "timestamp": 1234567920,
+        "length": {
+            "old": 66,
+            "new": 67
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "909eaf87-dae8-4c74-8caf-05069ff6224b",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore5",
+        "comment": "Correzione spaziatura",
+        "original_text": "Squadra #1Tot.Squadra #2",
+        "new_text": "Squadra #1 Tot. Squadra #2",
+        "timestamp": 1234567930,
+        "length": {
+            "old": 25,
+            "new": 28
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "aaa21d6a-e73b-4fe5-adfe-5d941f6c513d",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore6",
+        "comment": "Correzione spaziatura",
+        "original_text": "2 - 2 Universitario",
+        "new_text": "2 - 2 Universitario ",
+        "timestamp": 1234567940,
+        "length": {
+            "old": 19,
+            "new": 20
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "616cd8af-9013-4b85-8897-1ce7a17c2901",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore7",
+        "comment": "Correzione spaziatura",
+        "original_text": "2 - 2 0 - 0Defensor",
+        "new_text": "2 - 2 0 - 0 Defensor",
+        "timestamp": 1234567950,
+        "length": {
+            "old": 18,
+            "new": 21
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "967a7474-4966-4e4a-8663-a0678f29e476",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore8",
+        "comment": "Correzione spaziatura",
+        "original_text": "2 - 2 0 - 0Independiente",
+        "new_text": "2 - 2 0 - 0 Independiente",
+        "timestamp": 1234567960,
+        "length": {
+            "old": 22,
+            "new": 25
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "65654061-2fb8-4bdb-a811-198d7bef2089",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore9",
+        "comment": "Correzione spaziatura",
+        "original_text": "8 - 0 Oriente",
+        "new_text": "8 - 0 Oriente ",
+        "timestamp": 1234567970,
+        "length": {
+            "old": 13,
+            "new": 14
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "5443e7db-dd5c-452a-ba4b-a512d60bdf49",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore10",
+        "comment": "Correzione spaziatura",
+        "original_text": "4 - 8 Chivas",
+        "new_text": "4 - 8 Chivas ",
+        "timestamp": 1234567980,
+        "length": {
+            "old": 12,
+            "new": 13
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "d9373fe3-22bf-407d-924d-2d2dc75d72b4",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore11",
+        "comment": "Correzione spaziatura",
+        "original_text": "6 - 2 Deportivo",
+        "new_text": "6 - 2 Deportivo ",
+        "timestamp": 1234567990,
+        "length": {
+            "old": 15,
+            "new": 16
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "1b47b1eb-9fdb-4e02-a167-b034bd41d154",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore12",
+        "comment": "Correzione spaziatura",
+        "original_text": "1 - 4 Goiás",
+        "new_text": "1 - 4 Goiás ",
+        "timestamp": 1234568000,
+        "length": {
+            "old": 11,
+            "new": 12
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "e0bc84a7-15d3-440c-856e-5f56c83d15be",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore13",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "La squadra #1 ha giocato in casa la prima partita",
+        "new_text": "La squadra #1 ha giocato in casa la prima partita.",
+        "timestamp": 1234568010,
+        "length": {
+            "old": 54,
+            "new": 55
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "b3e84ea4-d644-41d9-9a7b-a528a3b75b1e",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore14",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "Fase eliminato",
+        "new_text": "Fase eliminato.",
+        "timestamp": 1234568020,
+        "length": {
+            "old": 14,
+            "new": 15
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "9b9efd3c-f492-4534-b4ed-d9f7ba34df22",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore15",
+        "comment": "Correzione di 'Club'",
+        "original_text": "Club Nacional",
+        "new_text": "Club Nacional ",
+        "timestamp": 1234568030,
+        "length": {
+            "old": 12,
+            "new": 13
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "a6084369-3d6b-48c4-b938-af80e8a207ff",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore16",
+        "comment": "Correzione di 'Fútbol'",
+        "original_text": "Fútbol Club",
+        "new_text": "Fútbol Club ",
+        "timestamp": 1234568040,
+        "length": {
+            "old": 10,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "b83cb6d9-dbe2-45c6-9e23-864ecd2d3689",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore17",
+        "comment": "Correzione di 'Deportivo'",
+        "original_text": "Deportivo Cuenca",
+        "new_text": "Deportivo Cuenca ",
+        "timestamp": 1234568050,
+        "length": {
+            "old": 15,
+            "new": 16
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "a8b5cc0e-38a9-4bb5-9339-88849c5ccf41",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore18",
+        "comment": "Correzione di 'Guadalajara'",
+        "original_text": "Guadalajara",
+        "new_text": "Guadalajara ",
+        "timestamp": 1234568060,
+        "length": {
+            "old": 11,
+            "new": 12
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "2dba6e02-a970-43d6-a6b9-c1b7fcb50935",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore19",
+        "comment": "Correzione di 'Táchira'",
+        "original_text": "Táchira",
+        "new_text": "Táchira ",
+        "timestamp": 1234568070,
+        "length": {
+            "old": 7,
+            "new": 8
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "5cd35313-c67d-45c7-8565-9786b05f78ae",
+        "type": "edit",
+        "title": "Coppa Libertadores 2006",
+        "user": "UtenteCorrettore20",
+        "comment": "Correzione di 'Goiás'",
+        "original_text": "Goiás",
+        "new_text": "Goiás ",
+        "timestamp": 1234568080,
+        "length": {
+            "old": 6,
+            "new": 7
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Coppa_Libertadores_2006"
+        }
+    },
+    {
+        "id": "43445817-f651-4cb9-a2fd-05f5f1891674",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi multipli e punteggiatura",
+        "original_text": "  Giovanni Alberti  -CGino Costenaro - C  Giuseppe Serio   C  Giuseppe Spinola   - C  Víctor Tortora   - A  Francesco Rier    - A  Mario Romani    -",
+        "new_text": "Giovanni Alberti - CGino Costenaro - C Giuseppe Serio - C Giuseppe Spinola - C Víctor Tortora - A Francesco Rier - A Mario Romani -",
+        "timestamp": 1678886400,
+        "length": {
+            "old": 158,
+            "new": 148
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "dc9ad02a-b44e-4413-8f24-3036c1dcb752",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi multipli e punteggiatura",
+        "original_text": "CessioniR.NomeaModalità C  Andrea Capitanio   - A  Coriolano Palumbo  -  Aimone Lo Prete  -  fine carriera",
+        "new_text": "Cessioni R.NomeaModalità C Andrea Capitanio - A Coriolano Palumbo - Aimone Lo Prete - fine carriera",
+        "timestamp": 1678886401,
+        "length": {
+            "old": 123,
+            "new": 108
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "cd68899f-2b8e-471a-8dc5-93a427d261c3",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi multipli",
+        "original_text": "Risultati\nSerie B\n\nGirone di andata\n\nGirone di ritorno\n\nCoppa Italia\n\n Statistiche ",
+        "new_text": "Risultati\nSerie B\nGirone di andata\nGirone di ritorno\nCoppa Italia\nStatistiche",
+        "timestamp": 1678886402,
+        "length": {
+            "old": 84,
+            "new": 66
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "889b9375-5622-41fd-b0fe-ebddd184966a",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi multipli",
+        "original_text": " Statistiche di squadra \n Competizione Punti In casa In trasferta Totale DR                   Serie B  30  15  6  6  3  29  11  15  3  6  6  14  21  3091294332  +11  Coppa Italia   1  1  0  0  1  0  2  1  0  1  3  4  3  2  0  1  4  4  0 Totale   16  7  6  3",
+        "new_text": "Statistiche di squadra\nCompetizione Punti In casa In trasferta Totale DR Serie B 30 15 6 6 3 29 11 15 3 6 6 14 21 3091294332 +11 Coppa Italia 1 1 0 0 1 0 2 1 0 1 3 4 3 2 0 1 4 4 0 Totale 16 7 6 3",
+        "timestamp": 1678886403,
+        "length": {
+            "old": 288,
+            "new": 254
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "7e43b073-0f00-4b9a-b8bb-c83f03959d07",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Rimozione spazi superflui",
+        "original_text": "Serie B  30  15  6  6  3  29  11  15  3  6  6  14  21  3091294332  +11",
+        "new_text": "Serie B 30 15 6 6 3 29 11 15 3 6 6 14 21 3091294332 +11",
+        "timestamp": 1678886404,
+        "length": {
+            "old": 72,
+            "new": 62
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "284df282-de1b-4948-92c0-118cc18f5144",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Rimozione spazi superflui",
+        "original_text": "Coppa Italia   1  1  0  0  1  0  2  1  0  1  3  4  3  2  0  1  4  4  0",
+        "new_text": "Coppa Italia 1 1 0 0 1 0 2 1 0 1 3 4 3 2 0 1 4 4 0",
+        "timestamp": 1678886405,
+        "length": {
+            "old": 68,
+            "new": 58
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "16273217-2e1a-47e2-b6d0-8f3b6a674261",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Rimozione spazi superflui",
+        "original_text": "Totale   16  7  6  3",
+        "new_text": "Totale 16 7 6 3",
+        "timestamp": 1678886406,
+        "length": {
+            "old": 26,
+            "new": 20
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "586e50b8-34e7-4ba4-a232-01a5467bd18d",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione punteggiatura",
+        "original_text": "CessioniR.NomeaModalità",
+        "new_text": "Cessioni R.NomeaModalità",
+        "timestamp": 1678886407,
+        "length": {
+            "old": 22,
+            "new": 24
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "21377b25-0943-47c6-ba4d-8d158ac98613",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "fine carriera",
+        "new_text": "fine carriera",
+        "timestamp": 1678886408,
+        "length": {
+            "old": 13,
+            "new": 13
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "c568f0fa-bbeb-4370-80fa-23100f8caafd",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "DR                   Serie B",
+        "new_text": "DR Serie B",
+        "timestamp": 1678886409,
+        "length": {
+            "old": 26,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "13cd5e78-e3db-49ef-9c34-a64462bfcf58",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "In casa In trasferta",
+        "new_text": "In casa In trasferta",
+        "timestamp": 1678886410,
+        "length": {
+            "old": 21,
+            "new": 21
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "6f45993f-fe0f-4153-a291-81c8857e5dbb",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Totale DR",
+        "new_text": "Totale DR",
+        "timestamp": 1678886411,
+        "length": {
+            "old": 9,
+            "new": 9
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "7fb59177-739c-4716-b675-0d9b07bb43b4",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Competizione Punti",
+        "new_text": "Competizione Punti",
+        "timestamp": 1678886412,
+        "length": {
+            "old": 17,
+            "new": 17
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "33884961-a23a-4578-8256-906318f275ce",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Girone di andata",
+        "new_text": "Girone di andata",
+        "timestamp": 1678886413,
+        "length": {
+            "old": 16,
+            "new": 16
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "bf1b58df-fdd9-4666-8f52-1def18cb957d",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Girone di ritorno",
+        "new_text": "Girone di ritorno",
+        "timestamp": 1678886414,
+        "length": {
+            "old": 17,
+            "new": 17
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "c77c6f69-246f-4727-90bd-62571bafdb67",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Coppa Italia",
+        "new_text": "Coppa Italia",
+        "timestamp": 1678886415,
+        "length": {
+            "old": 12,
+            "new": 12
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "825667ac-48bf-412c-bbe2-cff8adc95af7",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Statistiche",
+        "new_text": "Statistiche",
+        "timestamp": 1678886416,
+        "length": {
+            "old": 11,
+            "new": 11
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "1f22db7e-7368-433c-b96a-33de17daf985",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Statistiche di squadra",
+        "new_text": "Statistiche di squadra",
+        "timestamp": 1678886417,
+        "length": {
+            "old": 22,
+            "new": 22
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "bb4cba91-c3a2-4069-a4cd-69f250b96681",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Risultati",
+        "new_text": "Risultati",
+        "timestamp": 1678886418,
+        "length": {
+            "old": 9,
+            "new": 9
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "89a10f58-4820-4326-a2aa-336ab534aea0",
+        "type": "edit",
+        "title": "Associazione Calcio Palermo 1936-1937",
+        "user": "System",
+        "comment": "Correzione spazi",
+        "original_text": "Serie B",
+        "new_text": "Serie B",
+        "timestamp": 1678886419,
+        "length": {
+            "old": 7,
+            "new": 7
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Associazione_Calcio_Palermo_1936_1937"
+        }
+    },
+    {
+        "id": "0bc4e47a-8e32-4e46-ba5e-18c178d9a718",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente1",
+        "comment": "Correzione punteggiatura",
+        "original_text": " un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "new_text": "Un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "timestamp": 1678886400,
+        "length": {
+            "old": 86,
+            "new": 87
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "f749b18a-ca2b-428e-a9bd-ca4d40a910c0",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente2",
+        "comment": "Correzione di un typo",
+        "original_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "new_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "timestamp": 1678886460,
+        "length": {
+            "old": 131,
+            "new": 131
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "7299e373-924f-43a9-8e51-843d67f78a83",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente3",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "In ogni aggregazione sociale le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "new_text": "In ogni aggregazione sociale, le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "timestamp": 1678886520,
+        "length": {
+            "old": 138,
+            "new": 140
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "7c1b69a9-9118-4a99-a804-969232818a8a",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente4",
+        "comment": "Correzione di un typo",
+        "original_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "new_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "timestamp": 1678886580,
+        "length": {
+            "old": 108,
+            "new": 108
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "e92bcd5f-92a0-4d72-8cf2-3b35edda1f3a",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente5",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Per es. la circolazione stradale è regolata da norme - in que",
+        "new_text": "Per es., la circolazione stradale è regolata da norme - in che",
+        "timestamp": 1678886640,
+        "length": {
+            "old": 66,
+            "new": 68
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "3f165e79-fb67-44fb-81a4-3d98d61595de",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente6",
+        "comment": "Correzione di un typo",
+        "original_text": " un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "new_text": "Un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "timestamp": 1678886700,
+        "length": {
+            "old": 86,
+            "new": 87
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "c6bd7f92-171d-4e6e-9747-95709ce99f7c",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente7",
+        "comment": "Correzione di un typo",
+        "original_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "new_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "timestamp": 1678886760,
+        "length": {
+            "old": 131,
+            "new": 131
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "3da46604-934c-4b62-b22d-37ad8806bfe0",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente8",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "In ogni aggregazione sociale le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "new_text": "In ogni aggregazione sociale, le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "timestamp": 1678886820,
+        "length": {
+            "old": 138,
+            "new": 140
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "fab0bebb-cb07-406a-9a83-6c5c7003189f",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente9",
+        "comment": "Correzione di un typo",
+        "original_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "new_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "timestamp": 1678886880,
+        "length": {
+            "old": 108,
+            "new": 108
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "aeee985d-562c-4493-ad84-97afae516ca8",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente10",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Per es. la circolazione stradale è regolata da norme - in que",
+        "new_text": "Per es., la circolazione stradale è regolata da norme - in che",
+        "timestamp": 1678886940,
+        "length": {
+            "old": 66,
+            "new": 68
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "a5f5ad5d-4c28-4156-94f5-9d64034a6076",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente11",
+        "comment": "Correzione di un typo",
+        "original_text": " un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "new_text": "Un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "timestamp": 1678887000,
+        "length": {
+            "old": 86,
+            "new": 87
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "4f13902d-7666-4fa1-a3c8-70994fb3f495",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente12",
+        "comment": "Correzione di un typo",
+        "original_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "new_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "timestamp": 1678887060,
+        "length": {
+            "old": 131,
+            "new": 131
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "96555edb-47ea-4802-834f-e6dbbdf47406",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente13",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "In ogni aggregazione sociale le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "new_text": "In ogni aggregazione sociale, le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "timestamp": 1678887120,
+        "length": {
+            "old": 138,
+            "new": 140
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "e3388360-e947-4bed-9563-3ecab889f017",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente14",
+        "comment": "Correzione di un typo",
+        "original_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "new_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "timestamp": 1678887180,
+        "length": {
+            "old": 108,
+            "new": 108
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "6a9dfb87-4652-46e8-b1fd-ab512775492b",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente15",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Per es. la circolazione stradale è regolata da norme - in que",
+        "new_text": "Per es., la circolazione stradale è regolata da norme - in che",
+        "timestamp": 1678887240,
+        "length": {
+            "old": 66,
+            "new": 68
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "8d8ab07f-bf1b-4b10-ac95-0f417798627a",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente16",
+        "comment": "Correzione di un typo",
+        "original_text": " un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "new_text": "Un prodotto culturale. Il ruolo consiste in modalità tipiche e ricorrenti di comportamento sociale.",
+        "timestamp": 1678887300,
+        "length": {
+            "old": 86,
+            "new": 87
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "8ef13134-a484-4b71-b30f-605aed8b4a95",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente17",
+        "comment": "Correzione di un typo",
+        "original_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "new_text": "Occupando definite posizioni sociali, gli attori producono aspettative circa le modalità e i contenuti delle interazioni sociali connesse allo status.",
+        "timestamp": 1678887360,
+        "length": {
+            "old": 131,
+            "new": 131
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "775e3578-6872-48eb-8567-66f719f38176",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente18",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "In ogni aggregazione sociale le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "new_text": "In ogni aggregazione sociale, le aspettative hanno la tendenza a stabilizzarsi nel tempo e ciò permette all'attore di relazionarsi in un contesto di ridotta complessità.",
+        "timestamp": 1678887420,
+        "length": {
+            "old": 138,
+            "new": 140
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "435afb11-6fd9-4ff8-a789-8ff1f700f3ae",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente19",
+        "comment": "Correzione di un typo",
+        "original_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "new_text": "Si pensi ad alcune situazioni che, data la loro frequenza, possono essere considerate tipiche della vita quotidiana.",
+        "timestamp": 1678887480,
+        "length": {
+            "old": 108,
+            "new": 108
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    },
+    {
+        "id": "9b9b1767-5706-494f-9791-4d5aa1cfc86e",
+        "type": "edit",
+        "title": "Aspettativa (sociologia)",
+        "user": "Utente20",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Per es. la circolazione stradale è regolata da norme - in que",
+        "new_text": "Per es., la circolazione stradale è regolata da norme - in che",
+        "timestamp": 1678887540,
+        "length": {
+            "old": 66,
+            "new": 68
+        },
+        "is_vandalism": false,
+        "meta": {
+            "domain": "it.wikipedia.org",
+            "uri": "[https://it.wikipedia.org/wiki/](https://it.wikipedia.org/wiki/)Aspettativa__sociologia_"
+        }
+    }
+]

@@ -1,8 +1,3 @@
-# === Dati di input (file SQL di Wikipedia sono troppo grandi) ===
-data/*
-!data/empty
-*.sql
-
 # === Database ===
 *.db
 *.db-journal
@@ -67,19 +62,21 @@ metastore_db/
 derby.log
 spark-warehouse/
 
-
-valid_ids.txt
-pagemap.csv
-linkmap.csv
-finalmap.csv
-
 *.o
-*.csv
 new_try/snowball
 src/plugins
 src/logs
 src/import
-src/data
-data/itwiki-latest-pages-articles.xml.bz2
 
 src/draft_edit.txt
+
+data/itwiki-latest-pages-articles.xml
+data/itwiki-latest-pagelinks.sql
+data/itwiki-latest-page.sql
+data/Backup/*
+data/finalmap.csv
+data/linkmap.csv
+data/pagemap.csv
+data/sample_with_names
+data/sample_content
+data/sample_content/sample_with_names_1_content.csv

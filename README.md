@@ -10,7 +10,7 @@ Una volta che i dati sono su neo4j calcoliamo le comunità con lo script `5_comm
 
 lo script `6_translate_ids.sh` sfrutta l'hashmap in pagemap.csv per tradurre gli id del sample_X.csv selezionato dando quindi un titolo ai collegamenti del nostro sample
 
-Nello script `8_clean_file.py` sfrtutiamo quei titoli per estrarre dal dump xml di wikipedia il contenuto vero e proprio delle pagine html corrispondenti a quei titoli, contenuto che nello script `9_add_node_info.py` viene caricato su neo4j al nodo corrispondente 
+Nello script `7_clean_file.py` sfrtutiamo quei titoli per estrarre dal dump xml di wikipedia il contenuto vero e proprio delle pagine html corrispondenti a quei titoli, contenuto che nello script `8_add_node_info.py` viene caricato su neo4j al nodo corrispondente 
 
 Con lo script `10_generate_mocks_from_nodes.py` chiamiamo l'api di google `gemma-3-27B` (l'unica affordable al momento) e generiamo:
 - `N` "trusted sources"

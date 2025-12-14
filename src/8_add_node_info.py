@@ -107,8 +107,8 @@ def main(csv_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python3 9_add_content.py <sample_number>")
-        print("Esempio: python3 9_add_content.py 1")
+        print("Uso: python3 8_add_node_info.py <sample_number>")
+        print("Esempio: python3 8_add_node_info.py 1")
         sys.exit(1)
 
     sample_num = sys.argv[1]

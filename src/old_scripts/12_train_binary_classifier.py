@@ -28,7 +28,7 @@ CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
 
-TRAIN_SPLIT = 0.5  
+TRAIN_SPLIT = CONFIG['dataset']['training'].get('train_split', 0.8)
 
 def load_all_edits(filepath):
     """Carica tutti gli edit dal file"""

@@ -165,6 +165,13 @@ def main():
     # 3. Load ALL Data
     legit_edits = load_all_edits(LEGIT_FILE)
     vandal_edits = load_all_edits(VANDAL_FILE)
+
+    # APPLICA IL LIMITE (MODULARITÀ)
+    max_train = CONFIG['simulation'].get('use_n_train_samples', None)
+    if max_train:
+        print(f"✂️  Limito il training a {max_train} esempi per classe.")
+        legit_edits = legit_edits[:max_train]
+        vandal_edits = vandal_edits[:max_train]
     
     all_edits = legit_edits + vandal_edits
     labels = [0] * len(legit_edits) + [1] * len(vandal_edits)

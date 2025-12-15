@@ -29,6 +29,7 @@
     "simulation": {
         "target_legit_edits": 100,
         "target_vandal_edits": 100,
+        "test_set_ratio": 0.2,
         "articles_per_community": 50
     },
     "rate_limit": {

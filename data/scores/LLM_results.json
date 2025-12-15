@@ -3767,8 +3767,720 @@
             "expected": "VANDALISMO",
             "correct": true,
             "time_sec": 0.811103343963623
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'Normandia'",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "time_sec": 0.8817858695983887
+        },
+        {
+            "user": "User2",
+            "comment": "Spaziatura corretta dopo 'abitanti'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8290486335754395
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8512530326843262
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8276689052581787
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'ital' -> 'italiano'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9473638534545898
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8349959850311279
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'introiti' -> 'redditi'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8065705299377441
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0637054443359375
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione di un errore di battitura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9539501667022705
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta di una virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9395709037780762
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'abitanti'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7832093238830566
+        },
+        {
+            "user": "User2",
+            "comment": "Correzione di un errore di battitura: Borgogna-Franca Contea",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8269667625427246
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta la popolazione mancante",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7836191654205322
+        },
+        {
+            "user": "User2",
+            "comment": "Correzione punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8749876022338867
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Tenji e moglie' -> 'Tenji, moglie'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7235894203186035
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8211667537689209
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'solo ,' -> 'solo'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7694880962371826
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: migliorata leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0809574127197266
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione punteggiatura: aggiunta virgola dopo 'Zagabria'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9903926849365234
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta di un punto alla fine della riga",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9633581638336182
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'earths' -> 'planets'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7800135612487793
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura mancante",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8683266639709473
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'A Profesionalna Futbolna Grupa' -> 'A Professionalna Futbolna Grupa'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0770158767700195
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: 'Pt1' -> 'Pt.'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8347597122192383
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'a cavallo tra giugno e luglio 2024' -> 'tra giugno e luglio 2024'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8074474334716797
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.5172476768493652
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: MariaM.D. -> Maria M.D.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8250241279602051
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7115941047668457
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Ožujsko' con 'Ožujski'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.862278938293457
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8316593170166016
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso 'iridata'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8468244075775146
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7370052337646484
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Petervaradino' -> 'Novi Sad'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8001794815063477
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9101853370666504
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: '3º-4º' in '3° - 4°'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8312599658966064
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: virgola dopo 'Vienna'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8746740818023682
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'appannaggio della' -> 'appannaggio del'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0087289810180664
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: '1 punto andrà ai vincitor' -> '1 punto andrà ai vincitori.'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8657903671264648
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso 'coppe' -> 'coppe'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7654569149017334
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.712242603302002
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'vincitrice)' -> 'vincitrice'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8091063499450684
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9311718940734863
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'gare' -> 'giornate'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.2657229900360107
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7380561828613281
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'circuiti logici richiesti, e richiede' -> 'circuiti logici richiesti e richiede'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8220882415771484
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.864915132522583
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso data di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.779937744140625
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta trattino mancante dopo 'All'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9621565341949463
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'dei' -> 'i'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7013354301452637
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: virgola dopo 'Fascia 3'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9313883781433105
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'ossia' -> 'cioè'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8470027446746826
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7906379699707031
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Universitatea' con iniziale maiuscola",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8492622375488281
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta punteggiatura: punto finale alla frase",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7843642234802246
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'metri agli' -> 'metri ai'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8482263088226318
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.831866979598999
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'ricevette' -> 'riceveva'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8960752487182617
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7884807586669922
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'bracca' -> 'bracca'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8311090469360352
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8668820858001709
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso 'pano'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7106108665466309
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8788645267486572
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7967088222503662
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per chiarezza",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9703695774078369
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso 'spor'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8051331043243408
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.9092080593109131
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso '12-6L'Aquila'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.7280175685882568
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta di uno spazio dopo il trattino per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0585033893585205
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'cadetteria' ripetuto",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.8003878593444824
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 1.0239546298980713
+        },
+        {
+            "user": "User1",
+            "comment": "correzione dati demografici",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 1.0816662311553955
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento regione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.9157125949859619
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8152401447296143
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8731565475463867
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.7838695049285889
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.7524251937866211
+        },
+        {
+            "user": "User1",
+            "comment": "correzione altitudine",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.805279016494751
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento toponomastico",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 1.1189370155334473
+        },
+        {
+            "user": "User1",
+            "comment": "correzione regione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.976146936416626
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento dati demografici",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.719167947769165
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.7535889148712158
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.9701597690582275
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 1.7886719703674316
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8119935989379883
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.9483895301818848
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8774487972259521
+        },
+        {
+            "user": "UtenteCorrettore",
+            "comment": "correzione data di inizio",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8013739585876465
+        },
+        {
+            "user": "FanCalcio",
+            "comment": "aggiornamento allenatore",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.8172402381896973
+        },
+        {
+            "user": "AtleticaFan88",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.7551922798156738
         }
     ],
-    "accuracy": 91.71974522292994,
-    "avg_time": 3.034574356301828
+    "accuracy": 92.85714285714286,
+    "avg_time": 2.6919519471270696
 }

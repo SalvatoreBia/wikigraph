@@ -10,11 +10,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 from sentence_transformers import SentenceTransformer
-
-# Import shared utils
 import classifier_utils
 
-# --- CONFIGURAZIONE ---
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 MOCK_DIR = DATA_DIR / "mocked_edits"
@@ -29,8 +27,8 @@ from config_loader import load_config
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
-# --- TRAIN/TEST SPLIT ---
-TRAIN_SPLIT = 0.8  # 80% training, 20% test (modifica questo valore)
+
+TRAIN_SPLIT = 0.5  
 
 def load_all_edits(filepath):
     """Carica tutti gli edit dal file"""
@@ -92,10 +90,7 @@ def analyze_weights(clf, model_name):
     
     if hasattr(clf, 'coef_'):
         weights = clf.coef_[0]
-        
-        # [Semantic Delta (384)] + [Comment Emb (384)] + [Text Sim (1)] + 
-        # [Length Ratio (1)] + [Truth Score New (1)] + [Truth Score Old (1)]
-        # Totale: 772
+
         delta_weights = weights[0:384]
         comment_weights = weights[384:768]
         text_sim_weight = weights[768] if len(weights) > 768 else 0
@@ -113,7 +108,6 @@ def analyze_weights(clf, model_name):
         print(f"   ✅ Peso 'Truth Score (New)': {truth_new_weight:.4f}")
         print(f"   📚 Peso 'Truth Score (Old)': {truth_old_weight:.4f}")
         
-        # Interpretazione
         print("\n   💡 INTERPRETAZIONE:")
         if text_sim_weight > 0:
             print(f"   • Text Similarity POSITIVO ({text_sim_weight:.3f}): alta similarità → più probabile VANDALISMO (strano!)")

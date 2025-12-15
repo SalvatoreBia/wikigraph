@@ -36,9 +36,10 @@ load_dotenv(dotenv_path=ENV_PATH)
 
 # Retrieve Keys
 API_KEYS = [
-    os.getenv("GEMINI_API_KEY"),
+    os.getenv("GEMINI_API_KEY_1"),
     os.getenv("GEMINI_API_KEY_2"),
-    os.getenv("GEMINI_API_KEY_3")
+    os.getenv("GEMINI_API_KEY_3"),
+    os.getenv("GEMINI_API_KEY_4")
 ]
 API_KEYS = [k for k in API_KEYS if k]
 if not API_KEYS:
@@ -46,9 +47,9 @@ if not API_KEYS:
     sys.exit(1)
 
 # Rate Limiting & Token Config
-MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min'] # e.g. 15 or 30
-MAX_TOKENS_PER_MIN = 15000 # Default free tier limit
-WINDOW_SIZE = CONFIG['rate_limit']['window_size'] # e.g. 60
+MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min'] 
+MAX_TOKENS_PER_MIN = 15000 
+WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 CONTEXT_WINDOW_SIZE = CONFIG['processing'].get('context_window_size', 600)
 
 # Neo4j Config
@@ -234,11 +235,28 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
       }}
     ]
     
-    REGOLE:
+    REGOLE CRITICHE:
     - original_text DEVE esistere nel snippet.
-    - { "VANDALISMO: sii subdolo (date, nomi errati)." if edit_type=="VANDALICI" else "LEGITTIMO: correggi typo, stile." }
     - Output ESCLUSIVAMENTE il JSON.
     """
+
+    # AGGIUNTA LOGICA SPECIFICA PER I VANDALISMI
+    if edit_type == "VANDALICI":
+        prompt += """
+    REGOLE VANDALISMO (SUBDOLO):
+    1. NON usare insulti, parolacce o cancellazioni massive (troppo facile da rilevare).
+    2. INVERTI I FATTI: Cambia "vinto" in "perso", "nato" in "morto", "nord" in "sud".
+    3. FALSIFICAZIONI PLAUSIBILI: Cambia date (es. 1990 -> 1995), nomi di luoghi o persone in modo che sembri vero.
+    4. MANTIENI LO STILE: Il testo modificato deve sembrare scritto da un enciclopedista serio.
+    5. COMMENTO INGANNEVOLE: Nel campo "comment", scrivi cose come "correzione data", "typo", "aggiornamento fonte" per ingannare i revisori.
+        """
+    else:
+        prompt += """
+    REGOLE LEGITTIMI:
+    1. Correggi solo refusi reali, punteggiatura o migliora la leggibilità.
+    2. Il significato della frase NON deve cambiare.
+    3. Commenti onesti.
+        """
     
     try:
         # RIMOSSO generation_config={"response_mime_type": "application/json"} per evitare errore 400

@@ -321,11 +321,18 @@ def main():
         return
 
     # APPLICA IL LIMITE (MODULARITÀ)
-    max_train = CONFIG['simulation'].get('use_n_train_samples', None)
-    if max_train:
-        print(f"✂️  Limito il training a {max_train} esempi per classe.")
-        legit_edits = legit_edits[:max_train]
-        vandal_edits = vandal_edits[:max_train]
+    # Usa i conteggi definiti in config per il training
+    target_legit = CONFIG['dataset']['training']['legit_count']
+    target_vandal = CONFIG['dataset']['training']['vandal_count']
+    
+    # Se i file contengono più dati (es. generati in eccesso o accumulati), limitiamo al target
+    if len(legit_edits) > target_legit:
+        print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
+        legit_edits = legit_edits[:target_legit]
+        
+    if len(vandal_edits) > target_vandal:
+        print(f"✂️  Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
+        vandal_edits = vandal_edits[:target_vandal]
     
     # Estrai feature
     print("\n🔄 Estrazione feature (raw embeddings)...")

@@ -26,13 +26,16 @@
         "topic_changes": "wiki-changes",
         "topic_judge": "to-be-judged"
     },
-    "simulation": {
-        "target_legit_edits": 100,
-        "target_vandal_edits": 100,
-        "test_set_ratio": 0.2,
-        "articles_per_community": 50,
-        "use_n_train_samples": 10,
-        "use_n_test_stream": 20
+    "dataset": {
+        "training": {
+            "legit_count": 100,
+            "vandal_count": 100
+        },
+        "testing": {
+            "legit_count": 20,
+            "vandal_count": 20
+        },
+        "articles_per_community": 50
     },
     "rate_limit": {
         "max_req_per_min": 30,

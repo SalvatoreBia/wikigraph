@@ -1,0 +1,282 @@
+[
+    {
+        "id": "d446b9aa-3b93-4bae-8daf-26ed4d193d3c",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User1",
+        "comment": "correzione dati demografici",
+        "original_text": "242 abitanti",
+        "new_text": "24 abitanti",
+        "timestamp": 1765762192,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "d687dab7-0bde-4589-a00a-c589285ac27e",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User2",
+        "comment": "aggiornamento regione",
+        "original_text": "Normandia",
+        "new_text": "Bretagna",
+        "timestamp": 1765762192,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "7fa07ca7-2ce3-4f9a-bcfe-d7299aa195c0",
+        "type": "edit",
+        "title": "Filippo III",
+        "user": "User1",
+        "comment": "correzione data",
+        "original_text": "Filippo III di Spagna (1578-1621)",
+        "new_text": "Filippo III di Spagna (1588-1631)",
+        "timestamp": 1765762197,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Filippo_III"
+        }
+    },
+    {
+        "id": "72179bb4-0844-4f4c-9d15-ff1c1094b1da",
+        "type": "edit",
+        "title": "Filippo III",
+        "user": "User2",
+        "comment": "aggiornamento fonte",
+        "original_text": "Filippo III di Borgogna (1419-1467)",
+        "new_text": "Filippo III di Borgogna (1419-1457)",
+        "timestamp": 1765762197,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Filippo_III"
+        }
+    },
+    {
+        "id": "46d9d5f3-b843-4ea2-b48e-e3acfb0a36e7",
+        "type": "edit",
+        "title": "Ostenda",
+        "user": "User1",
+        "comment": "correzione data",
+        "original_text": "intorno al 1265",
+        "new_text": "intorno al 1365",
+        "timestamp": 1765762200,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ostenda"
+        }
+    },
+    {
+        "id": "59f1a4b9-772b-4c4c-bb1f-ff0f90006588",
+        "type": "edit",
+        "title": "Ostenda",
+        "user": "User2",
+        "comment": "aggiornamento fonte",
+        "original_text": "Mare del Nord",
+        "new_text": "Mare del Sud",
+        "timestamp": 1765762200,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ostenda"
+        }
+    },
+    {
+        "id": "ab706076-d34d-4bb9-a5e0-ff570a0e1c8d",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "UtenteEsperto",
+        "comment": "correzione altitudine",
+        "original_text": "a 321 m s.l.m.",
+        "new_text": "a 3210 m s.l.m.",
+        "timestamp": 1765762205,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "b11d8b2a-226f-4012-a271-69bdada3dd03",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "GeoEditor",
+        "comment": "aggiornamento geografico",
+        "original_text": "sulla sponda sinistra del torrente omonimo",
+        "new_text": "sulla sponda destra del torrente omonimo",
+        "timestamp": 1765762205,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "93b79ed7-7e3c-447f-ad30-58e3d3e5bb9e",
+        "type": "edit",
+        "title": "Jagiellonia Białystok",
+        "user": "User1",
+        "comment": "correzione data",
+        "original_text": "Il 2 novembre 1930",
+        "new_text": "Il 2 novembre 1935",
+        "timestamp": 1765762209,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
+        }
+    },
+    {
+        "id": "ff228a6d-32fe-456c-9436-dc9b327ca1a6",
+        "type": "edit",
+        "title": "Jagiellonia Białystok",
+        "user": "User2",
+        "comment": "aggiornamento fonte",
+        "original_text": "Nel 1938, a causa di problemi finanziari, il club si sciolse",
+        "new_text": "Nel 1938, grazie a forti investimenti, il club prosperò",
+        "timestamp": 1765762209,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
+        }
+    },
+    {
+        "id": "496c4551-776d-487b-b521-1f34386abd49",
+        "type": "edit",
+        "title": "Saint-Berain-sous-Sanvignes",
+        "user": "User1",
+        "comment": "correzione regione",
+        "original_text": "Borgogna-Franca Contea",
+        "new_text": "Provenza-Alpi-Costa Azzurra",
+        "timestamp": 1765762212,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Saint_Berain_sous_Sanvignes"
+        }
+    },
+    {
+        "id": "e401211f-affe-4fbc-a524-14cbe3c30d60",
+        "type": "edit",
+        "title": "Saint-Berain-sous-Sanvignes",
+        "user": "User2",
+        "comment": "aggiornamento dati demografici",
+        "original_text": "abitanti",
+        "new_text": "abitanti (stima 2024)",
+        "timestamp": 1765762212,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Saint_Berain_sous_Sanvignes"
+        }
+    },
+    {
+        "id": "6bdc5207-b512-4dcf-9d20-81575de265b8",
+        "type": "edit",
+        "title": "Fărău",
+        "user": "User1",
+        "comment": "correzione data",
+        "original_text": "in un documento del 1299",
+        "new_text": "in un documento del 1399",
+        "timestamp": 1765762215,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fărău"
+        }
+    },
+    {
+        "id": "d56259ad-a7f7-41aa-9e3d-6e93790e23f3",
+        "type": "edit",
+        "title": "Fărău",
+        "user": "User2",
+        "comment": "aggiornamento fonte",
+        "original_text": "distretto di Alba, nella regione storica della Transilvania.",
+        "new_text": "distretto di Sibiu, nella regione storica della Moldavia.",
+        "timestamp": 1765762215,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fărău"
+        }
+    },
+    {
+        "id": "f8a047d3-c593-4d1d-8094-555904715978",
+        "type": "edit",
+        "title": "Genmei",
+        "user": "User1",
+        "comment": "correzione data",
+        "original_text": "Nel 710 trasferì la capitale del Giappone da Fujiwara-kyō a Heijō-kyō, l'odierna Nara.",
+        "new_text": "Nel 701 trasferì la capitale del Giappone da Fujiwara-kyō a Heijō-kyō, l'odierna Nara.",
+        "timestamp": 1765762221,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Genmei"
+        }
+    },
+    {
+        "id": "4922ad82-9e15-499d-a705-31042a348355",
+        "type": "edit",
+        "title": "Genmei",
+        "user": "User2",
+        "comment": "aggiornamento fonte",
+        "original_text": "Nel 712 il Kojiki, fatto compilare per ordine di suo nonno l'imperatore Tenmu, fu completato e presentato a corte da Ō-no-Yasumaro.",
+        "new_text": "Nel 715 il Kojiki, fatto compilare per ordine di suo nonno l'imperatore Tenmu, fu completato e presentato a corte da Ō-no-Yasumaro.",
+        "timestamp": 1765762221,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Genmei"
+        }
+    },
+    {
+        "id": "e960ff59-366a-4f4b-a578-c1219c686972",
+        "type": "edit",
+        "title": "Fußball-Bundesliga 1967-1968",
+        "user": "HistorianBot",
+        "comment": "correzione data",
+        "original_text": "18 agosto 1967",
+        "new_text": "18 agosto 1972",
+        "timestamp": 1765762225,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
+        }
+    },
+    {
+        "id": "0978020d-88d9-4b96-80c0-e1ddae7c51cc",
+        "type": "edit",
+        "title": "Fußball-Bundesliga 1967-1968",
+        "user": "FootballFan88",
+        "comment": "aggiornamento fonte",
+        "original_text": "Alemannia AachenDie Spiele der Bundesliga 1967/1968 am 1. Spieltag su fussballdaten.de",
+        "new_text": "Alemannia AachenDie Spiele della Serie C 1967/1968 am 1. Spieltag su tuttocalcio.it",
+        "timestamp": 1765762225,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
+        }
+    },
+    {
+        "id": "70ccefa8-7a8a-47e2-9fe3-18b83f7cb59c",
+        "type": "edit",
+        "title": "Hansjörg Kunze",
+        "user": "AtleticaFan88",
+        "comment": "correzione data",
+        "original_text": "Seul 1988 nei 5000 m piani",
+        "new_text": "Barcellona 1992 nei 5000 m piani",
+        "timestamp": 1765762229,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
+        }
+    },
+    {
+        "id": "fd8ad809-4b0e-4cc2-adf3-9e1a960a8165",
+        "type": "edit",
+        "title": "Hansjörg Kunze",
+        "user": "StoricoDelloSport",
+        "comment": "aggiornamento fonte",
+        "original_text": "Helsinki 1983 nei 10000 m piani",
+        "new_text": "Stoccolma 1983 nei 10000 m piani",
+        "timestamp": 1765762229,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
+        }
+    }
+]

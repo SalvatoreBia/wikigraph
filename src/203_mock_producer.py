@@ -19,10 +19,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 PAGEMAP_FILE = DATA_DIR / "pagemap.csv"
 MOCK_DIR = DATA_DIR / "mocked_edits"
-LEGIT_FILE = MOCK_DIR / "legit_edits.json"
-VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
+LEGIT_FILE = MOCK_DIR / "legit_edits_test.json"
+VANDAL_FILE = MOCK_DIR / "vandal_edits_test.json"
 
-EVAL_SET_SIZE = 70
+
 
 def load_pagemap():
     print(f"🔍 Caricamento mappa ID-Titolo da {PAGEMAP_FILE}...")
@@ -53,13 +53,13 @@ def create_producer():
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
 
-def load_eval_edits(filepath, limit=50):
+def load_eval_edits(filepath):
     if not filepath.exists():
         print(f"⚠️ File non trovato: {filepath}")
         return []
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
-        return data[:limit]
+        return data
 
 def send_event(producer, edit_data, page_map):
     """Crea un evento JSON in formato Wikimedia standard cercando l'ID reale"""
@@ -130,8 +130,8 @@ if __name__ == "__main__":
     print(f"AUTOMATED STREAM PRODUCER (Multi-Topic)")
     print("="*50)
     
-    legit_edits = load_eval_edits(LEGIT_FILE, EVAL_SET_SIZE)
-    vandal_edits = load_eval_edits(VANDAL_FILE, EVAL_SET_SIZE)
+    legit_edits = load_eval_edits(LEGIT_FILE)
+    vandal_edits = load_eval_edits(VANDAL_FILE)
     
     all_edits = legit_edits + vandal_edits
     print(f"📦 Caricati {len(legit_edits)} Legit e {len(vandal_edits)} Vandal edits per lo stream.")

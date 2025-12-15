@@ -1,1399 +1,1371 @@
 [
     {
-        "id": "6f151834-a1be-4a32-b8d5-35e09cf19116",
+        "id": "58012143-e7a3-40dc-be74-3ce09fc530f0",
         "type": "edit",
         "title": "Bouelles",
         "user": "User1",
         "comment": "Aggiunta virgola dopo 'Normandia'",
         "original_text": "Normandia.",
         "new_text": "Normandia,.",
-        "timestamp": 1765761171,
+        "timestamp": 1765762192,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Bouelles"
         }
     },
     {
-        "id": "60c986ec-c476-4c77-80f0-07a18fbccade",
+        "id": "9549e456-c033-4cb5-b072-4c34444f6eb7",
         "type": "edit",
         "title": "Bouelles",
         "user": "User2",
         "comment": "Spaziatura corretta dopo 'abitanti'",
         "original_text": "242 abitanti situato",
         "new_text": "242 abitanti situato",
-        "timestamp": 1765761171,
+        "timestamp": 1765762192,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Bouelles"
         }
     },
     {
-        "id": "47f65355-4c00-4d3a-b59e-31f95dbbdac6",
+        "id": "e3b46ccd-70e4-4d85-a282-e31858e87ad4",
         "type": "edit",
         "title": "Filippo III",
         "user": "User1",
         "comment": "Aggiunta virgola dopo l'anno di nascita",
         "original_text": "Filippo III di Francia (1245-1285)",
         "new_text": "Filippo III di Francia (1245-1285,)",
-        "timestamp": 1765761172,
+        "timestamp": 1765762196,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Filippo_III"
         }
     },
     {
-        "id": "3036c9ee-38ba-45a4-aaf4-a235ce64cb03",
+        "id": "6c5901af-a175-4de9-8557-d132a08233c4",
         "type": "edit",
         "title": "Filippo III",
         "user": "User2",
         "comment": "Aggiunta virgola dopo l'anno di nascita",
         "original_text": "Filippo III di Spagna (1578-1621)",
         "new_text": "Filippo III di Spagna (1578-1621,)",
-        "timestamp": 1765761172,
+        "timestamp": 1765762196,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Filippo_III"
         }
     },
     {
-        "id": "721e4bd9-d0f4-4e2a-af25-57b03021daca",
-        "type": "edit",
-        "title": "Tovo San Giacomo",
-        "user": "User1",
-        "comment": "Correzione refuso: 'ital' -> 'italiano'",
-        "original_text": "ital",
-        "new_text": "italiano",
-        "timestamp": 1765761176,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
-        }
-    },
-    {
-        "id": "b0454955-96b4-476c-ab89-7ecbc2f7d8ab",
-        "type": "edit",
-        "title": "Tovo San Giacomo",
-        "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "du Piu",
-        "new_text": "du Piu,",
-        "timestamp": 1765761176,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
-        }
-    },
-    {
-        "id": "f8560eff-19eb-47a5-9bd5-43c82e6e9453",
+        "id": "5d196f45-f55b-4781-b679-c352c04a7b77",
         "type": "edit",
         "title": "Ostenda",
         "user": "User1",
-        "comment": "Correzione refuso: 'introiti' -> 'redditi'",
-        "original_text": "La principale fonte di introiti era naturalmente la pesca.",
-        "new_text": "La principale fonte di redditi era naturalmente la pesca.",
-        "timestamp": 1765761176,
+        "comment": "Aggiunta virgola dopo 'comune'",
+        "original_text": "comune: Mariakerke, Stene e Zandvoorde.",
+        "new_text": "comune: Mariakerke, Stene e Zandvoorde,.",
+        "timestamp": 1765762200,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Ostenda"
         }
     },
     {
-        "id": "536c7ecb-5fcb-4557-a1bd-2567236eaf65",
+        "id": "c3e377b8-6309-4988-b2bb-41f72915fa8b",
         "type": "edit",
         "title": "Ostenda",
         "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Benché piccolo, il villaggio guadagnò lo status di 'città' intorno al 1265, quando agli abitanti fu permesso di tenere un regolare mercato.",
-        "new_text": "Benché piccolo, il villaggio guadagnò lo status di 'città' intorno al 1265, quando agli abitanti fu permesso di tenere un regolare mercato.",
-        "timestamp": 1765761176,
+        "comment": "Correzione di 'decì' in 'decisero'",
+        "original_text": "decidi",
+        "new_text": "decisero",
+        "timestamp": 1765762200,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Ostenda"
         }
     },
     {
-        "id": "15a08592-6c2c-42f9-9aac-d0d286abad22",
+        "id": "82f84f57-9057-4c09-89df-c49375ffcac7",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "User1",
+        "comment": "Correzione refuso: 's.l.m.' -> 's.l.m.",
+        "original_text": "321 m s.l.m.",
+        "new_text": "321 m s.l.m.",
+        "timestamp": 1765762203,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "c8629da5-c854-43a7-9d42-89649ac6d775",
+        "type": "edit",
+        "title": "Tovo San Giacomo",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Specie nella parte alta del Maremola",
+        "new_text": "Specie, nella parte alta del Maremola",
+        "timestamp": 1765762203,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tovo_San_Giacomo"
+        }
+    },
+    {
+        "id": "4eb505f1-8f5f-4707-8c0a-094b57558c03",
         "type": "edit",
         "title": "Jagiellonia Białystok",
         "user": "User1",
-        "comment": "Correzione di un errore di battitura",
-        "original_text": "di Polonia.",
-        "new_text": "di Polonia",
-        "timestamp": 1765761179,
+        "comment": "Correzione refuso: 'Sportowy' -> 'Sportowy'",
+        "original_text": "Sportowy.",
+        "new_text": "Sportowy",
+        "timestamp": 1765762207,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
         }
     },
     {
-        "id": "b8c93cf3-8405-4875-93b5-1a7e7db836c7",
+        "id": "ff022297-3e00-40d4-a471-ffac318ff515",
         "type": "edit",
         "title": "Jagiellonia Białystok",
         "user": "User2",
-        "comment": "Aggiunta di una virgola per migliorare la leggibilità",
-        "original_text": "Il 27 gennaio 1932 la parola Jagiellonia fu introdotta nel nome del club,che divenne Białystok Sports Club Jagiellonia.",
-        "new_text": "Il 27 gennaio 1932 la parola Jagiellonia fu introdotta nel nome del club, che divenne Białystok Sports Club Jagiellonia.",
-        "timestamp": 1765761179,
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Il 26 gennaio 1957 la fusione del Budowlani Bi",
+        "new_text": "Il 26 gennaio 1957, la fusione del Budowlani Bi",
+        "timestamp": 1765762207,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Jagiellonia_Białystok"
         }
     },
     {
-        "id": "f553e007-4492-466a-b171-d9b3f9639dd4",
+        "id": "372a6c25-8879-4d5f-bec2-335788f42e4c",
         "type": "edit",
         "title": "Saint-Berain-sous-Sanvignes",
         "user": "User1",
         "comment": "Aggiunta virgola dopo 'abitanti'",
         "original_text": "abitanti situato",
         "new_text": "abitanti, situato",
-        "timestamp": 1765761180,
+        "timestamp": 1765762211,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Saint_Berain_sous_Sanvignes"
         }
     },
     {
-        "id": "470ec1be-90e7-49e3-be2d-0509cebabd45",
+        "id": "09feda98-91f5-4733-ada5-4068289665a4",
         "type": "edit",
         "title": "Saint-Berain-sous-Sanvignes",
         "user": "User2",
         "comment": "Correzione di un errore di battitura: Borgogna-Franca Contea",
         "original_text": "Borgogna-Franca Contea",
         "new_text": "Borgogna-Franca Contea.",
-        "timestamp": 1765761180,
+        "timestamp": 1765762211,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Saint_Berain_sous_Sanvignes"
         }
     },
     {
-        "id": "0f92211b-807b-4451-a087-439803dbaa5e",
+        "id": "d780d78f-8b87-4eb8-9312-f8489bf37164",
         "type": "edit",
         "title": "Fărău",
         "user": "User1",
         "comment": "Aggiunta la popolazione mancante",
         "original_text": "Fărău ( ) è un comune della Romania di  abitanti",
         "new_text": "Fărău ( ) è un comune della Romania di 1.450 abitanti",
-        "timestamp": 1765761183,
+        "timestamp": 1765762215,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Fărău"
         }
     },
     {
-        "id": "5993af9c-dd05-4d7b-bbbd-6d159ba00bc7",
+        "id": "dde974a5-26bd-48ba-a36d-3dc97fbd7ef0",
         "type": "edit",
         "title": "Fărău",
         "user": "User2",
         "comment": "Correzione punteggiatura",
         "original_text": "Note\n Altri progetti \n Collegamenti esterni ",
         "new_text": "Note\nAltri progetti\nCollegamenti esterni",
-        "timestamp": 1765761183,
+        "timestamp": 1765762215,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Fărău"
         }
     },
     {
-        "id": "1bad4632-c3ce-4038-83c2-d1203a7bca1d",
+        "id": "5f1b8b8d-e1f2-48ef-b2cf-b1a34b5b0b77",
         "type": "edit",
         "title": "Genmei",
         "user": "User1",
-        "comment": "Correzione refuso: 'Tenji e moglie' -> 'Tenji, moglie'",
-        "original_text": "Tenji e moglie del principe Kusakabe",
-        "new_text": "Tenji, moglie del principe Kusakabe",
-        "timestamp": 1765761184,
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Genmei era allora troppo vecchia e Obito ancora giovane.",
+        "new_text": "Genmei era allora troppo vecchia e Obito era ancora giovane.",
+        "timestamp": 1765762220,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Genmei"
         }
     },
     {
-        "id": "332bcdd2-40b3-4ffc-b800-7c112cd311cb",
+        "id": "38b622d9-fc90-4f73-a30f-e40e10dfe2a5",
         "type": "edit",
         "title": "Genmei",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Nel 712 il Kojiki, fatto",
-        "new_text": "Nel 712 il Kojiki, fu fatto",
-        "timestamp": 1765761184,
+        "original_text": "Nel 712 il Kojiki fatto compilare per ordine di suo nonno l'imperatore Tenmu fu completato e presentato a corte da Ō-no-Yasumaro.",
+        "new_text": "Nel 712 il Kojiki, fatto compilare per ordine di suo nonno l'imperatore Tenmu, fu completato e presentato a corte da Ō-no-Yasumaro.",
+        "timestamp": 1765762220,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Genmei"
         }
     },
     {
-        "id": "2e7e76b0-7182-415c-a537-91ea721816c6",
+        "id": "eb2a8bb1-e355-4bc9-a840-5235d6a632a2",
         "type": "edit",
         "title": "Fußball-Bundesliga 1967-1968",
         "user": "User1",
-        "comment": "Correzione refuso: 'solo ,' -> 'solo'",
-        "original_text": "solo ,",
-        "new_text": "solo",
-        "timestamp": 1765761187,
+        "comment": "Correzione refuso: 'posizioni di media classifica:' -> 'posizioni di media classifica'",
+        "original_text": "posizioni di media classifica:",
+        "new_text": "posizioni di media classifica",
+        "timestamp": 1765762224,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
         }
     },
     {
-        "id": "465170e3-da3a-4077-9d17-0f48415617a0",
+        "id": "0ca24851-a3fb-4dd2-8a28-acb21298687f",
         "type": "edit",
         "title": "Fußball-Bundesliga 1967-1968",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura: migliorata leggibilità",
-        "original_text": "AachenDie Spiele der Bundesliga 1967/1968 am 1. Spielt",
-        "new_text": "Aachen. Die Spiele der Bundesliga 1967/1968 am 1. Spielt",
-        "timestamp": 1765761187,
+        "comment": "Rimozione ripetizione e frammento incompleto alla fine della frase.",
+        "original_text": "Alemannia AachenDie Spiele der Bundesliga 1967/1968 am 1. Spieltag su fussballdaten.de e Die Spiele der Bundesliga 1967/1968 am 2. Spi",
+        "new_text": "",
+        "timestamp": 1765762224,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
         }
     },
     {
-        "id": "13cdf837-2415-45a5-98ef-b46bc84f5cfd",
-        "type": "edit",
-        "title": "Hansjörg Kunze",
-        "user": "User1",
-        "comment": "Correzione punteggiatura: aggiunta virgola dopo 'Zagabria'",
-        "original_text": "Coppa Europa di atletica leggera ( Zagabria)",
-        "new_text": "Coppa Europa di atletica leggera (Zagabria)",
-        "timestamp": 1765761188,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
-        }
-    },
-    {
-        "id": "8549ca1b-ec98-46f8-bc02-d5fd035e2889",
-        "type": "edit",
-        "title": "Hansjörg Kunze",
-        "user": "User2",
-        "comment": "Aggiunta di un punto alla fine della riga",
-        "original_text": "Coppa Europa di atletica leggera ( Londra)",
-        "new_text": "Coppa Europa di atletica leggera (Londra).",
-        "timestamp": 1765761188,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Hansjörg_Kunze"
-        }
-    },
-    {
-        "id": "9826f766-7255-4410-9257-f052284f2b7a",
+        "id": "ab637930-5b4e-40f0-bfc6-b2dc1e79547e",
         "type": "edit",
         "title": "Osservatorio di Calar Alto",
         "user": "User1",
-        "comment": "Correzione refuso: 'earths' -> 'planets'",
-        "original_text": "Near-i",
-        "new_text": "Near-infrared",
-        "timestamp": 1765761191,
+        "comment": "Correzione refuso: 'ispanico' -> 'ispanico-tedesco'",
+        "original_text": "Centro astronomico ispanico-tedesco",
+        "new_text": "Centro astronomico ispano-tedesco",
+        "timestamp": 1765762233,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Osservatorio_di_Calar_Alto"
         }
     },
     {
-        "id": "f2a4c663-87bd-4988-8266-b6b5a4e809b0",
+        "id": "171994d3-b8c5-4e0c-be6e-b3dd75c29b3c",
         "type": "edit",
         "title": "Osservatorio di Calar Alto",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura mancante",
-        "original_text": "2005 l'osservatorio",
-        "new_text": "2005, l'osservatorio",
-        "timestamp": 1765761191,
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Dal 2005 l'osservatorio è gestito dall'Instituto de Astrofísica de Andalucía (Granada) e dal Max Planck Institut für Astronomie",
+        "new_text": "Dal 2005 l'osservatorio è gestito dall'Instituto de Astrofísica de Andalucía (Granada), e dal Max Planck Institut für Astronomie",
+        "timestamp": 1765762233,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Osservatorio_di_Calar_Alto"
         }
     },
     {
-        "id": "8586072b-8f77-48dc-8b71-c0d9cb3da32c",
-        "type": "edit",
-        "title": "A Profesionalna Futbolna Grupa 2006-2007",
-        "user": "User1",
-        "comment": "Correzione refuso: 'A Profesionalna Futbolna Grupa' -> 'A Professionalna Futbolna Grupa'",
-        "original_text": "A Profesionalna Futbolna Grupa",
-        "new_text": "A Professionalna Futbolna Grupa",
-        "timestamp": 1765761192,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
-        }
-    },
-    {
-        "id": "ba720aa3-8b7e-4ba8-9ac5-193fc89e8b06",
-        "type": "edit",
-        "title": "A Profesionalna Futbolna Grupa 2006-2007",
-        "user": "User2",
-        "comment": "Aggiunta punteggiatura: 'Pt1' -> 'Pt.'",
-        "original_text": "Pt1",
-        "new_text": "Pt.",
-        "timestamp": 1765761192,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
-        }
-    },
-    {
-        "id": "035d84e6-9f64-45e6-a2e2-54788c453a4e",
+        "id": "7ee423f5-3abc-485e-92b5-8a40029c083a",
         "type": "edit",
         "title": "Uragano Beryl (2024)",
         "user": "User1",
-        "comment": "Correzione refuso: 'a cavallo tra giugno e luglio 2024' -> 'tra giugno e luglio 2024'",
-        "original_text": "a cavallo tra giugno e luglio 2024.",
-        "new_text": "tra giugno e luglio 2024.",
-        "timestamp": 1765761195,
+        "comment": "Correzione refuso: 'anni' -> 'anni'",
+        "original_text": "anni (prima del mese di luglio)",
+        "new_text": "anni (prima di luglio)",
+        "timestamp": 1765762236,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Uragano_Beryl__2024_"
         }
     },
     {
-        "id": "5c786cd2-0327-46ae-acbe-f7e3e049f099",
+        "id": "1fb182a0-7603-440a-9661-07a806a74b90",
         "type": "edit",
         "title": "Uragano Beryl (2024)",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Il 1º luglio Beryl è approdato sull'iso",
-        "new_text": "Il 1º luglio, Beryl è approdato sull'iso",
-        "timestamp": 1765761195,
+        "original_text": "Beryl è anche il secondo uragano di categoria 5 dopo l'uragano Emily",
+        "new_text": "Beryl è anche il secondo uragano di categoria 5 dopo l'uragano Emily,",
+        "timestamp": 1765762236,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Uragano_Beryl__2024_"
         }
     },
     {
-        "id": "4b84273e-ce8d-4719-90e2-05af25347918",
+        "id": "90fe1601-ec2a-408e-9a98-1ae1d8b671f0",
         "type": "edit",
         "title": "Religiose di Nostra Signora di Sion",
         "user": "User1",
-        "comment": "Correzione refuso: MariaM.D. -> Maria M.D.",
-        "original_text": "MariaM.D.",
-        "new_text": "Maria M.D.",
-        "timestamp": 1765761196,
+        "comment": "Correzione refuso: MariaM.D. Gros -> Maria M.D. Gros",
+        "original_text": "MariaM.D. Gros",
+        "new_text": "Maria M.D. Gros",
+        "timestamp": 1765762239,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Religiose_di_Nostra_Signora_di_Sion"
         }
     },
     {
-        "id": "a6f2f6b9-a833-425c-80b4-2c13a5179e9c",
+        "id": "fa794518-df57-437c-a9ab-5ba9206517ba",
         "type": "edit",
         "title": "Religiose di Nostra Signora di Sion",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "DIP, vol. VI (1980)",
-        "new_text": "DIP, vol. VI (1980),",
-        "timestamp": 1765761196,
+        "original_text": "A Parigi c'erano numerosi ebrei provenienti dai paesi dell'Europa dell'est desiderosi di far educare cristianamente i figli e nel 1843 Ratisbonne aprì una scu",
+        "new_text": "A Parigi c'erano numerosi ebrei provenienti dai paesi dell'Europa dell'est, desiderosi di far educare cristianamente i figli, e nel 1843 Ratisbonne aprì una scu",
+        "timestamp": 1765762239,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Religiose_di_Nostra_Signora_di_Sion"
         }
     },
     {
-        "id": "b3f5aeb9-4bca-45fc-904f-22a24afecfac",
+        "id": "5f79926b-512d-4fbd-890c-f0bd4afeda89",
         "type": "edit",
         "title": "Prva hrvatska nogometna liga 2006-2007",
         "user": "User1",
-        "comment": "Correzione refuso: 'Ožujsko' con 'Ožujski'",
-        "original_text": "Prva HNL Ožujsko 2006-2007",
-        "new_text": "Prva HNL Ožujski 2006-2007",
-        "timestamp": 1765761199,
+        "comment": "Correzione refuso: 'tredicesimo' in 'tredicesima'",
+        "original_text": "tredicesimo in totale",
+        "new_text": "tredicesima in totale",
+        "timestamp": 1765762241,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_hrvatska_nogometna_liga_2006_2007"
         }
     },
     {
-        "id": "79d1118b-c2f8-450f-8603-03501cfc8297",
+        "id": "8847b01a-dff9-40aa-9397-793dbae3d2eb",
         "type": "edit",
         "title": "Prva hrvatska nogometna liga 2006-2007",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "e conclusa con la vittoria della Dinamo Zagabria",
-        "new_text": "e, conclusa con la vittoria della Dinamo Zagabria",
-        "timestamp": 1765761199,
+        "original_text": "alla UEFA",
+        "new_text": "alla UEFA Champions League",
+        "timestamp": 1765762241,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_hrvatska_nogometna_liga_2006_2007"
         }
     },
     {
-        "id": "88708bb5-f393-4c1d-94eb-47b10a5ce9c5",
+        "id": "2e4f0f7b-2875-4dfa-9cb3-5e7b95d35ea7",
         "type": "edit",
         "title": "Pierre Stamos",
         "user": "User1",
-        "comment": "Correzione refuso 'iridata'",
-        "original_text": "sua unica presenza iridata",
-        "new_text": "la sua unica presenza iridata",
-        "timestamp": 1765761200,
+        "comment": "Correzione refuso: 'sta' -> 'stazione'",
+        "original_text": "nella sta",
+        "new_text": "nella stazione",
+        "timestamp": 1765762244,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Pierre_Stamos"
         }
     },
     {
-        "id": "6b531bfb-af43-476c-873f-51cab41ffd15",
+        "id": "6c81c45a-331a-4a48-89e1-59e477bc6fc0",
         "type": "edit",
         "title": "Pierre Stamos",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "nel massimo circuito internazionale conquistò il suo miglior risultato",
-        "new_text": "nel massimo circuito internazionale, conquistò il suo miglior risultato",
-        "timestamp": 1765761200,
+        "original_text": "Portillo 1966",
+        "new_text": "Portillo 1966,",
+        "timestamp": 1765762244,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Pierre_Stamos"
         }
     },
     {
-        "id": "7339e085-1e3c-4903-9054-c66e7052a3f0",
+        "id": "7e2b90ac-5790-45c0-9e4c-a074838ad391",
+        "type": "edit",
+        "title": "A Profesionalna Futbolna Grupa 2006-2007",
+        "user": "User1",
+        "comment": "Correzione refuso: 'GVNPGFGSDifPt' -> 'G V N P GF GS Dif Pt'",
+        "original_text": "ClassificaGVNPGFGSDifPt1.Levski Sofia3024519613+83772.CSKA Sofia3023346813+55723.Lokomotiv Sofia3023347028+42724.Litex Loveč3019566529+36625.Slavia Sofia3014794735+12496.Cherno More Varna30145113729+8477.Lokomotiv Plovdiv30134134743+4438.Belasitsa Petrich30115143843-5389.Botev Plovdiv30114154145-43710.Vihren Sandanski30114152739-123711.Beroe Stara Zagora30106143433+13612.Marek Dupnitsa3097143960-213413.Spartak Varna30103",
+        "new_text": "Classifica G V N P GF GS Dif Pt1.Levski Sofia3024519613+83772.CSKA Sofia3023346813+55723.Lokomotiv Sofia3023347028+42724.Litex Loveč3019566529+36625.Slavia Sofia3014794735+12496.Cherno More Varna30145113729+8477.Lokomotiv Plovdiv30134134743+4438.Belasitsa Petrich30115143843-5389.Botev Plovdiv30114154145-43710.Vihren Sandanski30114152739-123711.Beroe Stara Zagora30106143433+13612.Marek Dupnitsa3097143960-213413.Spartak Varna30103",
+        "timestamp": 1765762244,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
+        }
+    },
+    {
+        "id": "ccbfcdbf-5e8d-4dda-b688-59c2816fc93d",
+        "type": "edit",
+        "title": "A Profesionalna Futbolna Grupa 2006-2007",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura: aggiunta virgola dopo 'Loveč'",
+        "original_text": "Litex Loveč3019566529+36625.Slavia Sofia3014794735+12496",
+        "new_text": "Litex Loveč,3019566529+36625.Slavia Sofia3014794735+12496",
+        "timestamp": 1765762244,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_Profesionalna_Futbolna_Grupa_2006_2007"
+        }
+    },
+    {
+        "id": "61bdeadd-5824-484f-aa96-95a8b272eabe",
         "type": "edit",
         "title": "Sirmia",
         "user": "User1",
         "comment": "Correzione refuso: 'Petervaradino' -> 'Novi Sad'",
-        "original_text": "Petervaradino in Serbia",
-        "new_text": "Novi Sad in Serbia",
-        "timestamp": 1765761202,
+        "original_text": "Petervaradino",
+        "new_text": "Novi Sad",
+        "timestamp": 1765762247,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Sirmia"
         }
     },
     {
-        "id": "306fdb1f-acec-4703-96e1-696c1b1356c7",
+        "id": "0351afdc-3866-4801-9f28-192aef478f05",
         "type": "edit",
         "title": "Sirmia",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "e Vinkovci i",
-        "new_text": "e Vinkovci.",
-        "timestamp": 1765761202,
+        "original_text": "Sirmia;",
+        "new_text": "Sirmia,.",
+        "timestamp": 1765762247,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Sirmia"
         }
     },
     {
-        "id": "f38ced1e-60a3-4193-904a-f7cef6c1998b",
+        "id": "253accc5-ffcb-4d98-b66f-a4f04f445f4b",
         "type": "edit",
         "title": "Coppa Mitropa 1965",
         "user": "User1",
-        "comment": "Correzione refuso: '3º-4º' in '3° - 4°'",
-        "original_text": "Finale 3º-4º posto",
-        "new_text": "Finale 3° - 4° posto",
-        "timestamp": 1765761204,
+        "comment": "Correzione refuso: 'Vicecampione di Jugoslavia' -> 'Vicecampione di Jugoslavia'",
+        "original_text": "Vicecampione di Jugoslavia 1964-65",
+        "new_text": "Vicecampione di Jugoslavia 1964-65",
+        "timestamp": 1765762248,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1965"
         }
     },
     {
-        "id": "e3c30a8b-5e92-447e-8ea5-97c70c3e91a5",
+        "id": "b1fc712f-6814-427c-acf5-8ceedc6b1c88",
         "type": "edit",
         "title": "Coppa Mitropa 1965",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura: virgola dopo 'Vienna'",
-        "original_text": "Finale\nGara giocata il 26 giugno a Vienna",
-        "new_text": "Finale\nGara giocata il 26 giugno a Vienna,",
-        "timestamp": 1765761204,
+        "comment": "Aggiunta punteggiatura per chiarezza",
+        "original_text": "Finale 3º-4º posto \nGara giocata il 26 giugno",
+        "new_text": "Finale 3º-4º posto.\nGara giocata il 26 giugno",
+        "timestamp": 1765762248,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1965"
         }
     },
     {
-        "id": "7a6da4bb-a6dc-4c19-9055-eaff0f08d34e",
+        "id": "569f35d6-c932-47cb-bf0f-ad9d903de0b0",
         "type": "edit",
         "title": "Prva Liga 1988-1989",
         "user": "User1",
         "comment": "Correzione refuso: 'appannaggio della' -> 'appannaggio del'",
         "original_text": "appannaggio della",
         "new_text": "appannaggio del",
-        "timestamp": 1765761206,
+        "timestamp": 1765762250,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_Liga_1988_1989"
         }
     },
     {
-        "id": "e04f008f-8274-4fb9-8026-c8950dfb9493",
+        "id": "d8f0d7af-d952-4442-b5fb-71606a5e14e2",
         "type": "edit",
         "title": "Prva Liga 1988-1989",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura: '1 punto andrà ai vincitor' -> '1 punto andrà ai vincitori.'",
-        "original_text": "1 punto andrà ai vincitor",
-        "new_text": "1 punto andrà ai vincitori.",
-        "timestamp": 1765761206,
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "1 punto andrà ai vincitori",
+        "new_text": "1 punto andrà ai vincitori,",
+        "timestamp": 1765762250,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_Liga_1988_1989"
         }
     },
     {
-        "id": "124506aa-ba5d-4428-9dc7-fbd7fda593f1",
+        "id": "f4a23975-a058-4c03-8936-7e9eeaa63bca",
         "type": "edit",
         "title": "Coppa Mitropa 1966",
         "user": "User1",
-        "comment": "Correzione refuso 'coppe' -> 'coppe'",
-        "original_text": "altre coppe europee.",
-        "new_text": "altre coppe europee.",
-        "timestamp": 1765761208,
+        "comment": "Correzione refuso 'edizione del torneo e venne'",
+        "original_text": "edizione del torneo e venne",
+        "new_text": "edizione del torneo e fu",
+        "timestamp": 1765762252,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1966"
         }
     },
     {
-        "id": "7d6478fa-0e94-4e13-b78f-c6ef006d7a8f",
+        "id": "d53fa24d-591f-42a9-97b2-f0a2401214f9",
         "type": "edit",
         "title": "Coppa Mitropa 1966",
         "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Note 20px|border Jednota Trencin",
-        "new_text": "Note: 20px|border Jednota Trencin",
-        "timestamp": 1765761208,
+        "comment": "Aggiunta punteggiatura mancante",
+        "original_text": "Nazione Squadra Campionato Note 20px|border Jednota Trencin",
+        "new_text": "Nazione Squadra Campionato Note 20px|border Jednota Trencin.",
+        "timestamp": 1765762252,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_Mitropa_1966"
         }
     },
     {
-        "id": "eac4fc63-5194-47b3-b220-4c7cb0e4ced7",
+        "id": "ec6e8f48-83f2-4360-b9ef-d60b1b46fe1a",
         "type": "edit",
         "title": "Campionato mondiale di calcio",
         "user": "User1",
-        "comment": "Correzione refuso: 'vincitrice)' -> 'vincitrice'",
-        "original_text": "vincitrice) è stato dato",
-        "new_text": "vincitrice è stato dato",
-        "timestamp": 1765761211,
+        "comment": "Correzione refuso: 'manifestazione' -> 'competizione'",
+        "original_text": "manifestazione",
+        "new_text": "competizione",
+        "timestamp": 1765762254,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Campionato_mondiale_di_calcio"
         }
     },
     {
-        "id": "36a6a279-c367-42ed-924a-365e54c4c9df",
+        "id": "9e952a8f-689d-4dab-9373-d809955e8cfe",
         "type": "edit",
         "title": "Campionato mondiale di calcio",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "del 2002 (anno in cui ospitò la comp",
-        "new_text": "del 2002, anno in cui ospitò la comp",
-        "timestamp": 1765761211,
+        "original_text": "Asia e Oceania",
+        "new_text": "Asia, e Oceania",
+        "timestamp": 1765762254,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Campionato_mondiale_di_calcio"
         }
     },
     {
-        "id": "2c65c8c5-4481-4b50-9e2e-b94b29132466",
+        "id": "048a46cc-c13f-4ea7-96ec-45d72e541ef6",
         "type": "edit",
         "title": "Prva Liga 1984-1985",
         "user": "User1",
-        "comment": "Correzione refuso: 'gare' -> 'giornate'",
-        "original_text": "dopo tre gare",
-        "new_text": "dopo tre giornate",
-        "timestamp": 1765761211,
+        "comment": "Correzione refuso: 'appannaggio del' -> 'appannaggio del'",
+        "original_text": "finale fu appannaggio del , al suo secondo titolo.",
+        "new_text": "finale fu appannaggio del, al suo secondo titolo.",
+        "timestamp": 1765762257,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_Liga_1984_1985"
         }
     },
     {
-        "id": "8c7779d5-c1bc-4653-9da4-1708d64259c4",
+        "id": "48f298f4-5e13-4dc3-a906-d011f181d065",
         "type": "edit",
         "title": "Prva Liga 1984-1985",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "alla dodicesima giornata",
-        "new_text": "alla dodicesima giornata,",
-        "timestamp": 1765761211,
+        "original_text": "Ad approfittare di questa situazione fu un gruppo di squadre da cui \"",
+        "new_text": "Ad approfittare di questa situazione fu un gruppo di squadre, da cui \"",
+        "timestamp": 1765762257,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Prva_Liga_1984_1985"
         }
     },
     {
-        "id": "91e05d6e-0cb8-4667-a5d3-fdd71e758fc6",
+        "id": "74f3e4f7-5e01-4c1f-aeaf-752a4e42bf30",
         "type": "edit",
         "title": "Programmable Read Only Memory",
         "user": "User1",
-        "comment": "Correzione refuso: 'circuiti logici richiesti, e richiede' -> 'circuiti logici richiesti e richiede'",
-        "original_text": "circuiti logici richiesti, e richiede",
-        "new_text": "circuiti logici richiesti e richiede",
-        "timestamp": 1765761215,
+        "comment": "Correzione refuso: 'antif' -> 'antifusibili'",
+        "original_text": "antif",
+        "new_text": "antifusibili",
+        "timestamp": 1765762258,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Programmable_Read_Only_Memory"
         }
     },
     {
-        "id": "bba28ff1-da4a-4e1b-9535-1cab10d0787e",
+        "id": "fa550f33-fde4-45e1-b70b-fe1ba7832bb9",
         "type": "edit",
         "title": "Programmable Read Only Memory",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "nei quali il collegamento viene creato invece di venire bruciato.",
-        "new_text": "nei quali il collegamento viene creato, invece di venire bruciato.",
-        "timestamp": 1765761215,
+        "original_text": "La PROM invece contiene dei fusibili",
+        "new_text": "La PROM invece, contiene dei fusibili",
+        "timestamp": 1765762258,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Programmable_Read_Only_Memory"
         }
     },
     {
-        "id": "df0b00e7-f38b-41f5-a364-86bd49537584",
+        "id": "b878747f-287a-48e0-a2f3-6f04f21c9fb8",
         "type": "edit",
         "title": "Convocazioni alla Coppa del Mondo femminile di pallavolo 2011",
         "user": "User1",
-        "comment": "Correzione refuso data di nascita",
-        "original_text": "22 gennaio 198",
-        "new_text": "22 gennaio 1988",
-        "timestamp": 1765761215,
+        "comment": "Correzione punteggiatura",
+        "original_text": "N°NomeRuoloData di nascitaSquadra -",
+        "new_text": "N° Nome Ruolo Data di nascita Squadra -",
+        "timestamp": 1765762260,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_del_Mondo_femminile_di_pallavolo_2011"
         }
     },
     {
-        "id": "c36343df-fc86-4c51-82d3-25823acace29",
+        "id": "8bf12dfe-cc54-4f50-bf35-db444ae68e6e",
         "type": "edit",
         "title": "Convocazioni alla Coppa del Mondo femminile di pallavolo 2011",
         "user": "User2",
-        "comment": "Aggiunta trattino mancante dopo 'All'",
-        "original_text": "Horacio Bastit  All  -  -",
-        "new_text": "Horacio Bastit  All  -  –",
-        "timestamp": 1765761215,
+        "comment": "Aggiunta spazio dopo il numero di maglia",
+        "original_text": "1Lucía Gaido",
+        "new_text": "1 Lucía Gaido",
+        "timestamp": 1765762260,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_del_Mondo_femminile_di_pallavolo_2011"
         }
     },
     {
-        "id": "e20cc181-9a22-4ed7-a315-b25871f56db9",
+        "id": "7ecb1144-f610-4195-a0da-e0dbf7de3075",
         "type": "edit",
         "title": "Qualificazioni al campionato mondiale di calcio 1974 - UEFA",
         "user": "User1",
-        "comment": "Correzione refuso: 'dei' -> 'i'",
-        "original_text": "dei primi 8 gruppi",
-        "new_text": "i primi 8 gruppi",
-        "timestamp": 1765761219,
+        "comment": "Correzione refuso: '8,5' -> '8.5'",
+        "original_text": "8,5 posti disponibili",
+        "new_text": "8.5 posti disponibili",
+        "timestamp": 1765762263,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_campionato_mondiale_di_calcio_1974___UEFA"
         }
     },
     {
-        "id": "ad7c87e4-85d3-4d49-94e4-fec2fbd4641f",
+        "id": "e0f2fc47-15ed-4545-8f4a-6e631d25c15e",
         "type": "edit",
         "title": "Qualificazioni al campionato mondiale di calcio 1974 - UEFA",
-        "user": "User2",
-        "comment": "Aggiunta punteggiatura: virgola dopo 'Fascia 3'",
-        "original_text": "Fascia 3F",
-        "new_text": "Fascia 3,F",
-        "timestamp": 1765761219,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_campionato_mondiale_di_calcio_1974___UEFA"
-        }
-    },
-    {
-        "id": "2c885c6d-e83c-4c5c-9457-ea8405816503",
-        "type": "edit",
-        "title": "Cima Presanella",
-        "user": "User1",
-        "comment": "Correzione refuso: 'ossia' -> 'cioè'",
-        "original_text": "ossia il giorno seguente",
-        "new_text": "cioè il giorno seguente",
-        "timestamp": 1765761219,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Cima_Presanella"
-        }
-    },
-    {
-        "id": "c326231a-c33b-4e8a-9943-9cc230acd771",
-        "type": "edit",
-        "title": "Cima Presanella",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "cima, con condizioni atmosfer",
-        "new_text": "cima, con condizioni atmosferiche",
-        "timestamp": 1765761219,
+        "original_text": "Le vincitrici dei primi 8 gruppi si qualificano alla fase finale",
+        "new_text": "Le vincitrici dei primi 8 gruppi, si qualificano alla fase finale",
+        "timestamp": 1765762263,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_campionato_mondiale_di_calcio_1974___UEFA"
+        }
+    },
+    {
+        "id": "2adc8e01-e818-4dc7-9a61-dcc07cd81f19",
+        "type": "edit",
+        "title": "Cima Presanella",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ossi' -> 'ossi'.",
+        "original_text": "ossi",
+        "new_text": "ossi.",
+        "timestamp": 1765762265,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Cima_Presanella"
         }
     },
     {
-        "id": "0c705db6-cab0-4e97-ad0d-5d04a85f763f",
+        "id": "2f80c851-85d4-43e7-a0f9-2fff3773fe9e",
+        "type": "edit",
+        "title": "Cima Presanella",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità.",
+        "original_text": "La spedizione si mosse da Vermiglio e conquistò, oltre alla vetta principale, anche le altre due cime che l'affiancano Cima Gabbiolo e Cima di Vermiglio.",
+        "new_text": "La spedizione si mosse da Vermiglio e conquistò, oltre alla vetta principale, anche le altre due cime che l'affiancano: Cima Gabbiolo e Cima di Vermiglio.",
+        "timestamp": 1765762265,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Cima_Presanella"
+        }
+    },
+    {
+        "id": "5149d42b-8dbe-477b-8416-0f1558843525",
+        "type": "edit",
+        "title": "Margherita Gargano",
+        "user": "User1",
+        "comment": "Correzione refuso: '19\"' -> '1981'",
+        "original_text": "16'08\"2 del 19\"",
+        "new_text": "16'08\"2 del 1981",
+        "timestamp": 1765762268,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
+        }
+    },
+    {
+        "id": "8be8f408-3c07-4fb5-b0ad-4ec8cacc8114",
+        "type": "edit",
+        "title": "Margherita Gargano",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Nello stesso anno, arrivò settima negli 800 metri con il tempo di 2'05\"6 alle Universiadi di Città del Messico.",
+        "new_text": "Nello stesso anno, arrivò settima negli 800 metri, con il tempo di 2'05\"6, alle Universiadi di Città del Messico.",
+        "timestamp": 1765762268,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
+        }
+    },
+    {
+        "id": "c84a6ff5-57f3-43d7-9699-4b155887d8e7",
         "type": "edit",
         "title": "Divizia A 1990-1991",
         "user": "User1",
         "comment": "Correzione refuso: 'Universitatea' con iniziale maiuscola",
         "original_text": "finale della Universitatea Craiova",
-        "new_text": "finale della Universitatea Craiova",
-        "timestamp": 1765761222,
+        "new_text": "finale della Universitatea Craiova,",
+        "timestamp": 1765762268,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Divizia_A_1990_1991"
         }
     },
     {
-        "id": "38df6b59-5e9d-4e58-94c0-5656e6bab731",
+        "id": "665e82c0-a15e-4bd6-adb0-fe32a8e8e7f9",
         "type": "edit",
         "title": "Divizia A 1990-1991",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura: punto finale alla frase",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
         "original_text": "Class",
-        "new_text": "Class.",
-        "timestamp": 1765761222,
+        "new_text": "Classifica",
+        "timestamp": 1765762268,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Divizia_A_1990_1991"
         }
     },
     {
-        "id": "800c5ff9-1d39-431f-9201-635c227249f8",
-        "type": "edit",
-        "title": "Margherita Gargano",
-        "user": "User1",
-        "comment": "Correzione refuso: 'metri agli' -> 'metri ai'",
-        "original_text": "metri agli VIII Giochi del Mediterraneo",
-        "new_text": "metri ai VIII Giochi del Mediterraneo",
-        "timestamp": 1765761223,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
-        }
-    },
-    {
-        "id": "b14360c8-ce3d-459d-9b0a-7ba9109825fb",
-        "type": "edit",
-        "title": "Margherita Gargano",
-        "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Nello stesso anno, arrivò settima negli 800 metri con i",
-        "new_text": "Nello stesso anno, arrivò settima negli 800 metri, con i",
-        "timestamp": 1765761223,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Margherita_Gargano"
-        }
-    },
-    {
-        "id": "50262244-0e3c-4142-b537-9b52ec346c4f",
+        "id": "ff638710-4cf4-4226-a0a8-dfc6717ea25d",
         "type": "edit",
         "title": "Johan Neeskens",
         "user": "User1",
-        "comment": "Correzione refuso: 'ricevette' -> 'riceveva'",
-        "original_text": "ricevette il soprannome di \"Johan II\"",
-        "new_text": "riceveva il soprannome di \"Johan II\"",
-        "timestamp": 1765761226,
+        "comment": "Correzione refuso: 'del' ripetuto",
+        "original_text": "del del 2004",
+        "new_text": "del 2004",
+        "timestamp": 1765762272,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Johan_Neeskens"
         }
     },
     {
-        "id": "1277a630-3233-4a00-adc5-6c8cd621b5fe",
+        "id": "1bcf26ab-0e49-46e7-aeab-cb91535be014",
         "type": "edit",
         "title": "Johan Neeskens",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
         "original_text": "oltre che nella nazionale olandese",
-        "new_text": "oltre che, nella nazionale olandese",
-        "timestamp": 1765761226,
+        "new_text": "oltre che nella nazionale olandese.",
+        "timestamp": 1765762272,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Johan_Neeskens"
         }
     },
     {
-        "id": "a4a6dafd-ba74-41a2-ac62-abf7d04b1296",
+        "id": "9e0f52f7-44d8-4b16-8a80-6829e825d161",
         "type": "edit",
         "title": "Final Fantasy VII: Advent Children",
         "user": "User1",
-        "comment": "Correzione refuso: 'bracca' -> 'bracca'",
-        "original_text": "bracca Cloud e i",
-        "new_text": "bracca Cloud e",
-        "timestamp": 1765761229,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Final_Fantasy_VII__Advent_Children"
-        }
-    },
-    {
-        "id": "c2d51e31-f98f-4656-a8c1-e08ad6cedc17",
-        "type": "edit",
-        "title": "Final Fantasy VII: Advent Children",
-        "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "comment": "Correzione refuso: 'Edge' con iniziale maiuscola",
         "original_text": "Edge (così viene chiamata la città di sopravvissuti creata attorno a Midgar)",
-        "new_text": "Edge (così viene chiamata la città di sopravvissuti creata attorno a Midgar,)",
-        "timestamp": 1765761229,
+        "new_text": "edge (così viene chiamata la città di sopravvissuti creata attorno a Midgar)",
+        "timestamp": 1765762274,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Final_Fantasy_VII__Advent_Children"
         }
     },
     {
-        "id": "4554741c-ff81-4ca0-ae4f-c44a8d0096c4",
+        "id": "3dd8d5c1-6c5e-401a-bb72-c4abbf16527d",
+        "type": "edit",
+        "title": "Final Fantasy VII: Advent Children",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Compare a questo punto uno strano trio, i Silver Haired Men, capeggiato da un losco",
+        "new_text": "Compare a questo punto uno strano trio, i Silver Haired Men, capeggiato da un losco.",
+        "timestamp": 1765762274,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Final_Fantasy_VII__Advent_Children"
+        }
+    },
+    {
+        "id": "81c71119-ad23-43c2-8970-af5a76d26663",
         "type": "edit",
         "title": "Cavedago",
         "user": "User1",
-        "comment": "Correzione refuso 'pano'",
-        "original_text": "spettacolare pano",
-        "new_text": "spettacolare panorama",
-        "timestamp": 1765761230,
+        "comment": "Correzione refuso: 'abitanti' senza numero",
+        "original_text": "di  abitanti",
+        "new_text": "di 1.000 abitanti",
+        "timestamp": 1765762275,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Cavedago"
         }
     },
     {
-        "id": "0e76001e-15fa-47ef-a698-12e623a63112",
+        "id": "1ba07674-c391-4ec3-902d-c383b0906568",
         "type": "edit",
         "title": "Cavedago",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "distribuiti su una superficie piuttosto ampia ai fianchi della statale ss 421",
-        "new_text": "distribuiti su una superficie piuttosto ampia, ai fianchi della statale ss 421",
-        "timestamp": 1765761230,
+        "original_text": "che dalla \"Rocchetta\"",
+        "new_text": "che dalla \"Rocchetta\",",
+        "timestamp": 1765762275,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Cavedago"
         }
     },
     {
-        "id": "0dac5960-51c7-4b0e-9f8e-0e9546d46416",
+        "id": "130e11b3-e314-4762-bd7b-04940a7128a7",
         "type": "edit",
         "title": "Sin (Marvel Comics)",
         "user": "User1",
-        "comment": "Correzione punteggiatura",
-        "original_text": "gruppo chiam",
-        "new_text": "gruppo chiamato",
-        "timestamp": 1765761232,
+        "comment": "Correzione refuso: 'indottrinata' senza accento.",
+        "original_text": "Dopo averla indottrinata",
+        "new_text": "Dopo averla indottrinata,",
+        "timestamp": 1765762278,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Sin__Marvel_Comics_"
         }
     },
     {
-        "id": "5b0d6351-b4b5-4160-9d86-3c61cd52e367",
+        "id": "fe538f8e-08ee-441e-a3c9-1432bec6238d",
         "type": "edit",
         "title": "Sin (Marvel Comics)",
         "user": "User2",
-        "comment": "Aggiunta virgola per chiarezza",
-        "original_text": "indottrinata, il Teschio la fece",
-        "new_text": "indottrinata, il Teschio la fece,",
-        "timestamp": 1765761232,
+        "comment": "Aggiunta virgola per migliorare la leggibilità.",
+        "original_text": "il Teschio la fece invecchiare in modo accelerato fino a che non divenne \"",
+        "new_text": "il Teschio la fece invecchiare in modo accelerato, fino a che non divenne \"",
+        "timestamp": 1765762278,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Sin__Marvel_Comics_"
         }
     },
     {
-        "id": "56ac45d2-35d8-45c7-b065-00fe1298d3c8",
+        "id": "dc74f49b-5db8-4782-bab1-7d9a5c3f9f76",
         "type": "edit",
         "title": "Campionato mondiale di calcio 1930",
         "user": "User1",
-        "comment": "Correzione refuso 'spor'",
-        "original_text": "spor",
-        "new_text": "sport",
-        "timestamp": 1765761235,
+        "comment": "Correzione refuso: 'Ebbe' -> 'Ebbe'",
+        "original_text": "Ebbe luogo",
+        "new_text": "Ebbe luogo",
+        "timestamp": 1765762279,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Campionato_mondiale_di_calcio_1930"
         }
     },
     {
-        "id": "c52cbff6-89b6-4d20-b8fa-a2dbff80fa2c",
+        "id": "b9b587b9-626d-4a2a-bca9-f1c37c91cc65",
         "type": "edit",
         "title": "Campionato mondiale di calcio 1930",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "quest'ultimo conquistato nel 1924 a Parigi e confermato nel 1928 ad Amsterdam.",
-        "new_text": "quest'ultimo, conquistato nel 1924 a Parigi, e confermato nel 1928 ad Amsterdam.",
-        "timestamp": 1765761235,
+        "original_text": "Fu l'unico Mondiale che si giocò in una sola città Montevideo",
+        "new_text": "Fu l'unico Mondiale che si giocò in una sola città, Montevideo",
+        "timestamp": 1765762279,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Campionato_mondiale_di_calcio_1930"
         }
     },
     {
-        "id": "e3c467ec-1c2b-499c-97a8-df53012191c5",
+        "id": "72260aad-3a6a-4558-8f3f-b0b7446d02ec",
         "type": "edit",
         "title": "Serie A 1951-1952 (rugby a 15)",
         "user": "User1",
-        "comment": "Correzione refuso '12-6L'Aquila'",
-        "original_text": "12-6L'Aquila",
-        "new_text": "12-6 L'Aquila",
-        "timestamp": 1765761237,
+        "comment": "Correzione refuso '0-06' in '0-6'",
+        "original_text": "Bologna0-06-3Partenope",
+        "new_text": "Bologna0-6-3Partenope",
+        "timestamp": 1765762282,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Serie_A_1951_1952__rugby_a_15_"
         }
     },
     {
-        "id": "1e3f89e8-87f8-4b2c-a91c-a6ac4862de18",
+        "id": "c1aa4c96-ce46-4b35-b1df-82a3d991f290",
         "type": "edit",
         "title": "Serie A 1951-1952 (rugby a 15)",
         "user": "User2",
-        "comment": "Aggiunta di uno spazio dopo il trattino per migliorare la leggibilità",
-        "original_text": "4ª/13ª giornata",
-        "new_text": "4ª / 13ª giornata",
-        "timestamp": 1765761237,
+        "comment": "Aggiunta di uno spazio dopo 'Per rinuncia'",
+        "original_text": "Per rinuncia ",
+        "new_text": "Per rinuncia ",
+        "timestamp": 1765762282,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Serie_A_1951_1952__rugby_a_15_"
         }
     },
     {
-        "id": "fc091612-164b-4f53-b104-07dc6b4630f9",
+        "id": "a4f55a27-9fb0-4394-8057-2ec280d1403e",
         "type": "edit",
         "title": "Serie C 1972-1973",
         "user": "User1",
-        "comment": "Correzione refuso: 'cadetteria' ripetuto",
-        "original_text": "cadetteria, è un",
-        "new_text": "cadetteria. È un",
-        "timestamp": 1765761239,
+        "comment": "Correzione refuso: 'che' -> 'la'",
+        "original_text": "Durò poco l'unica esperienza tra i professionisti per la  che tornò presto a giocare nei campionati dilettantistici regionali",
+        "new_text": "Durò poco l'unica esperienza tra i professionisti per la  che tornò presto a giocare nei campionati dilettantistici regionali.",
+        "timestamp": 1765762284,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Serie_C_1972_1973"
         }
     },
     {
-        "id": "ad07181c-b879-4458-bac0-3cf5a9830606",
+        "id": "7288d4ac-693a-466b-b98a-5e94161c6930",
         "type": "edit",
         "title": "Serie C 1972-1973",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Parma scesa in campo",
-        "new_text": "Parma, scesa in campo",
-        "timestamp": 1765761239,
+        "original_text": "seguito dai trentini",
+        "new_text": "seguito dai trentini.",
+        "timestamp": 1765762284,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Serie_C_1972_1973"
         }
     },
     {
-        "id": "a8140048-e443-4f77-8fa6-3edb95803bc4",
+        "id": "6dfa8d1f-830a-4080-9976-b9bad97f6ba9",
         "type": "edit",
         "title": "Giorgio Politeo",
         "user": "User1",
         "comment": "Correzione refuso: 'cattedre' -> 'cattedra'",
-        "original_text": "all'esame a cattedre per insegnamento letterario nei Ginnasi del Regno Lombardo",
-        "new_text": "all'esame a cattedra per insegnamento letterario nei Ginnasi del Regno Lombardo",
-        "timestamp": 1765761241,
+        "original_text": "all'esame a cattedre per insegnamento",
+        "new_text": "all'esame a cattedra per insegnamento",
+        "timestamp": 1765762286,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Giorgio_Politeo"
         }
     },
     {
-        "id": "179e863a-d444-4f4a-82b8-a0ce2a336a26",
+        "id": "9c240821-4ee5-43bc-b445-814c7d264251",
         "type": "edit",
         "title": "Giorgio Politeo",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Fra il 1850 e il 1852 è quindi supplente di latino, storia e geografia a Spalato",
-        "new_text": "Fra il 1850 e il 1852 è quindi supplente di latino, storia e geografia, a Spalato",
-        "timestamp": 1765761241,
+        "original_text": "In tale occasione, presen",
+        "new_text": "In tale occasione, presentò",
+        "timestamp": 1765762286,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Giorgio_Politeo"
         }
     },
     {
-        "id": "fedde54f-b415-476a-814c-944bf02ecc78",
+        "id": "73bad339-dbb5-4e78-a6fa-e612c54865e2",
         "type": "edit",
         "title": "The Sun Comes Out World Tour",
         "user": "User1",
-        "comment": "Correzione refuso: 'ameri' -> 'America'",
-        "original_text": "Nord Ameri",
-        "new_text": "Nord America",
-        "timestamp": 1765761243,
+        "comment": "Correzione ortografica: 'cantanti' -> 'cantanti'",
+        "original_text": "cantanti",
+        "new_text": "cantanti",
+        "timestamp": 1765762287,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/The_Sun_Comes_Out_World_Tour"
         }
     },
     {
-        "id": "fc641054-3c76-4e06-b587-5443a239cf02",
+        "id": "3d70d1ba-9b51-4f5b-9ff0-5a019b226024",
         "type": "edit",
         "title": "The Sun Comes Out World Tour",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "il 15 ottobre 2011",
-        "new_text": "il 15 ottobre 2011,",
-        "timestamp": 1765761243,
+        "original_text": "Paesi anglofoni ed europei",
+        "new_text": "Paesi anglofoni ed europei,",
+        "timestamp": 1765762287,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/The_Sun_Comes_Out_World_Tour"
         }
     },
     {
-        "id": "f705e79e-9bb2-43b3-aeec-eaae97fa9f75",
+        "id": "a2499cce-0d74-458d-89ee-7ea2f24e87e4",
         "type": "edit",
         "title": "IRB Sevens World Series 2009-2010",
         "user": "User1",
-        "comment": "Correzione refuso 'Seven' -> 'Sevens'",
-        "original_text": "Hong Kong Seven 2010",
-        "new_text": "Hong Kong Sevens 2010",
-        "timestamp": 1765761246,
+        "comment": "Correzione refuso: 'States Sevens' -> 'USA Sevens'",
+        "original_text": "States Sevens 2010",
+        "new_text": "USA Sevens 2010",
+        "timestamp": 1765762290,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/IRB_Sevens_World_Series_2009_2010"
         }
     },
     {
-        "id": "cc6edc47-7bbd-465d-97d2-532b4b210a6f",
+        "id": "24b18568-461a-46d7-bea1-8aeeed3e4816",
         "type": "edit",
         "title": "IRB Sevens World Series 2009-2010",
         "user": "User2",
-        "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "22-23 maggio 2010  \n  Edinburgh Sevens 2010",
-        "new_text": "22-23 maggio 2010, \n  Edinburgh Sevens 2010",
-        "timestamp": 1765761246,
+        "comment": "Aggiunta punteggiatura: 'classifica determinat' -> 'classifica determinata'",
+        "original_text": "classifica determinat",
+        "new_text": "classifica determinata",
+        "timestamp": 1765762290,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/IRB_Sevens_World_Series_2009_2010"
         }
     },
     {
-        "id": "1b8b9a84-e2f4-4ebe-951c-69a74cecf198",
+        "id": "b6fa968c-f58b-4c1e-9f3e-baaa9b3f0ba3",
         "type": "edit",
         "title": "Ante Aralica",
         "user": "User1",
-        "comment": "Correzione refuso: 'a far parte della' -> 'ha fatto parte della'",
-        "original_text": "a far parte della",
-        "new_text": "ha fatto parte della",
-        "timestamp": 1765761247,
-        "is_vandalism": false,
-        "meta": {
-            "uri": "https://it.wikipedia.org/wiki/Ante_Aralica"
-        }
-    },
-    {
-        "id": "c41cbe00-571e-47ab-8374-b1307e62e289",
-        "type": "edit",
-        "title": "Ante Aralica",
-        "user": "User2",
-        "comment": "Aggiunta punteggiatura: 'gen.-giu. 2016' -> 'gennaio-giugno 2016'",
+        "comment": "Correzione refuso: 'gen.-giu.' in 'gennaio-giugno'",
         "original_text": "gen.-giu. 2016",
         "new_text": "gennaio-giugno 2016",
-        "timestamp": 1765761247,
+        "timestamp": 1765762291,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Ante_Aralica"
         }
     },
     {
-        "id": "2a1010fe-bc69-4d4f-82f5-1e2340249bcd",
+        "id": "79d8ab8c-12e9-40e4-b9c4-1fecc154b9fa",
+        "type": "edit",
+        "title": "Ante Aralica",
+        "user": "User2",
+        "comment": "Aggiunta di uno spazio dopo il trattino per migliorare la leggibilità",
+        "original_text": "Totale Lučko",
+        "new_text": "Totale Lučko ",
+        "timestamp": 1765762291,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Ante_Aralica"
+        }
+    },
+    {
+        "id": "6a4f4be9-fc5c-46e4-ad4a-84892b2f813b",
         "type": "edit",
         "title": "Convocazioni alla Coppa asiatica femminile di pallavolo 2010",
         "user": "User1",
         "comment": "Correzione refuso 'Liy' in 'Li'",
         "original_text": "14  Chen Liy  S  27 aprile 1989",
         "new_text": "14  Chen Li  S  27 aprile 1989",
-        "timestamp": 1765761250,
+        "timestamp": 1765762294,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_asiatica_femminile_di_pallavolo_2010"
         }
     },
     {
-        "id": "55a42471-f239-4f37-bd92-8953a3462504",
+        "id": "ec509893-9313-4a89-825e-95af6c10a07f",
         "type": "edit",
         "title": "Convocazioni alla Coppa asiatica femminile di pallavolo 2010",
         "user": "User2",
         "comment": "Aggiunta di uno spazio dopo il numero di squadra",
-        "original_text": "1º febbraio 1989   KT&G Daejeon",
-        "new_text": "1º febbraio 1989  KT&G Daejeon",
-        "timestamp": 1765761250,
+        "original_text": "4  Kim Sa-nee  P  21 giugno 1981   Hungkuk Life Insurance",
+        "new_text": "4  Kim Sa-nee  P  21 giugno 1981  Hungkuk Life Insurance",
+        "timestamp": 1765762294,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Convocazioni_alla_Coppa_asiatica_femminile_di_pallavolo_2010"
         }
     },
     {
-        "id": "f0dacccf-4005-45a0-acc7-4cc9381a903c",
+        "id": "501fbc56-46c4-431e-8013-0dbb9b87deab",
         "type": "edit",
         "title": "Coppa delle Regioni UEFA 2017",
         "user": "User1",
-        "comment": "Correzione refuso: 'GVPSGFGSDRP' -> 'G V P S G F G S DR P'",
-        "original_text": "SquadraGVPSGFGSDRP East West Central Scotland3210111 +107",
-        "new_text": "Squadra G V P S G F G S DR P East West Central Scotland3210111 +107",
-        "timestamp": 1765761252,
+        "comment": "Correzione refuso 'int' alla fine della frase.",
+        "original_text": "al turno int",
+        "new_text": "al turno intermedio",
+        "timestamp": 1765762295,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_delle_Regioni_UEFA_2017"
         }
     },
     {
-        "id": "881f6de4-2b0b-4eb8-bcd9-a5c61bbd5df5",
+        "id": "a61472c6-5503-4a8c-8800-25c8cb94f5d2",
         "type": "edit",
         "title": "Coppa delle Regioni UEFA 2017",
         "user": "User2",
-        "comment": "Aggiunta punteggiatura: 'South Wales3 1 0 2'",
-        "original_text": "South Wales3 1 0 2",
-        "new_text": "South Wales 3 1 0 2",
-        "timestamp": 1765761252,
+        "comment": "Aggiunta virgola dopo 'Lituania' per migliorare la leggibilità.",
+        "original_text": "Lituania mentre quelle del Girone B a San Marino.",
+        "new_text": "Lituania, mentre quelle del Girone B a San Marino.",
+        "timestamp": 1765762295,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_delle_Regioni_UEFA_2017"
         }
     },
     {
-        "id": "5c253db3-feb2-4bb9-9784-a7d06e5e7533",
+        "id": "e721a8de-4537-4f96-81c2-88370bea5b23",
         "type": "edit",
         "title": "Anna di Guisa",
         "user": "User1",
         "comment": "Aggiunta virgola dopo il nome del padre per migliorare la leggibilità.",
         "original_text": "Era figlia di Carlo I d'Aumale e di Maria di Lorena-Elbeuf.",
         "new_text": "Era figlia di Carlo I d'Aumale, e di Maria di Lorena-Elbeuf.",
-        "timestamp": 1765761254,
+        "timestamp": 1765762298,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Anna_di_Guisa"
         }
     },
     {
-        "id": "d661aade-5c52-421d-8eaf-622f7a3ca748",
+        "id": "f33f8407-5977-4586-a7ff-fbc3745925f6",
         "type": "edit",
         "title": "Anna di Guisa",
         "user": "User2",
         "comment": "Correzione di un errore di battitura: '†' invece di '†'.",
         "original_text": "Francesco Paolo (1619 † 1627)",
         "new_text": "Francesco Paolo (1619 – 1627)",
-        "timestamp": 1765761254,
+        "timestamp": 1765762298,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Anna_di_Guisa"
         }
     },
     {
-        "id": "1e83665b-1349-46db-81cd-3cf641c472c3",
+        "id": "aebc6f5a-e445-49ba-93e9-b5e145a29103",
         "type": "edit",
         "title": "Coppa del Mondo di rugby",
         "user": "User1",
-        "comment": "Correzione punteggiatura",
-        "original_text": "Seguono  (3),  (2) e  (1).",
-        "new_text": "Seguono (3), (2) e (1).",
-        "timestamp": 1765761256,
+        "comment": "Correzione refuso: 'cadenza quadriennale' -> 'cadenza quadrennale'",
+        "original_text": "a cadenza quadriennale.",
+        "new_text": "a cadenza quadrennale.",
+        "timestamp": 1765762299,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_del_Mondo_di_rugby"
         }
     },
     {
-        "id": "089ea1a6-ef6a-4f89-b423-99da802a6405",
+        "id": "9141db9f-d42a-4e32-ac53-0e3a25b74d5f",
         "type": "edit",
         "title": "Coppa del Mondo di rugby",
         "user": "User2",
-        "comment": "Miglioramento leggibilità",
-        "original_text": "upright=0.6|thumb|il logo della competizione (1991-2007)",
-        "new_text": "upright=0.6|thumb|Logo della competizione (1991-2007)",
-        "timestamp": 1765761256,
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "WR.",
+        "new_text": "WR,.",
+        "timestamp": 1765762299,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Coppa_del_Mondo_di_rugby"
         }
     },
     {
-        "id": "0b10972f-0cec-4db8-9fa5-f7fda0e0d06e",
+        "id": "f1841a85-9b72-4bbd-9070-e7a8480fdc29",
         "type": "edit",
         "title": "Pokal Nogometne zveze Slovenije 2022-2023",
         "user": "User1",
-        "comment": "Correzione refuso: 'intercomunali' -> 'intercomunali'",
+        "comment": "Correzione refuso: 'intercomunali' -> 'intercomunitarie'",
         "original_text": "federazioni calcistiche intercomunali (MNZ)",
-        "new_text": "federazioni calcistiche intercomunali (MNZ)",
-        "timestamp": 1765761258,
+        "new_text": "federazioni calcistiche intercomunitarie (MNZ)",
+        "timestamp": 1765762302,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Pokal_Nogometne_zveze_Slovenije_2022_2023"
         }
     },
     {
-        "id": "80441292-4c9e-489f-aa4a-5f87b8e0f1db",
+        "id": "9ada299e-f2b7-46ce-839d-5abe9fc617b8",
         "type": "edit",
         "title": "Pokal Nogometne zveze Slovenije 2022-2023",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
         "original_text": "Nel turno preliminare, nel 1° e nel 2º turno",
         "new_text": "Nel turno preliminare, nel 1° e nel 2º turno,",
-        "timestamp": 1765761258,
+        "timestamp": 1765762302,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Pokal_Nogometne_zveze_Slovenije_2022_2023"
         }
     },
     {
-        "id": "5ee12d52-da68-4074-8629-2b9bd06044c2",
+        "id": "5a5dec04-0290-49a8-b79b-e275cc494ff6",
         "type": "edit",
         "title": "Wargemoulin-Hurlus",
         "user": "User1",
         "comment": "Aggiunta virgola dopo 'francese'",
         "original_text": "Wargemoulin-Hurlus è un comune francese di 53 abitanti",
         "new_text": "Wargemoulin-Hurlus è un comune francese, di 53 abitanti",
-        "timestamp": 1765761261,
+        "timestamp": 1765762303,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Wargemoulin_Hurlus"
         }
     },
     {
-        "id": "2800fae5-0300-4524-9bd5-5948563cafcc",
+        "id": "0b7747ff-9bb0-478b-854f-b5dd3dee32ac",
         "type": "edit",
         "title": "Wargemoulin-Hurlus",
         "user": "User2",
         "comment": "Aggiunta spaziatura dopo 'Marna'",
         "original_text": "nel dipartimento della Marna nella regione",
         "new_text": "nel dipartimento della Marna  nella regione",
-        "timestamp": 1765761261,
+        "timestamp": 1765762303,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Wargemoulin_Hurlus"
         }
     },
     {
-        "id": "b433f9fc-acd5-43b8-a14f-a8e55fdab110",
+        "id": "8676ab57-e4d4-4362-b0a2-091f15c43ff1",
         "type": "edit",
         "title": "Columbia Graphophone Company",
         "user": "User1",
         "comment": "Correzione refuso: 'etichetta' invece di 'etichetta'",
         "original_text": "diventando una etichetta discografica di successo",
         "new_text": "diventando una etichetta discografica di successo",
-        "timestamp": 1765761262,
+        "timestamp": 1765762306,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Columbia_Graphophone_Company"
         }
     },
     {
-        "id": "37fa5899-2c16-4a8e-bd18-2b8218b4b23b",
+        "id": "eb483749-fea9-4591-ba86-6211b58d97d9",
         "type": "edit",
         "title": "Columbia Graphophone Company",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
         "original_text": "Columbia",
         "new_text": "Columbia,",
-        "timestamp": 1765761262,
+        "timestamp": 1765762306,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Columbia_Graphophone_Company"
         }
     },
     {
-        "id": "cd95887e-616c-4b76-963b-627cf7a2b1c8",
+        "id": "e81ffa43-f6e8-4dd9-a370-9dc210f689ac",
         "type": "edit",
         "title": "Dewoitine D.27",
         "user": "User1",
-        "comment": "Correzione refuso: 'ne era sostanzialmente una variante che, adottando' -> 'era sostanzialmente una variante che adottando'",
-        "original_text": "ne era sostanzialmente una variante che, adottando",
-        "new_text": "era sostanzialmente una variante che adottando",
-        "timestamp": 1765761266,
+        "comment": "Correzione refuso: 'svizzera' -> 'svizzere'",
+        "original_text": "svizzera Eidgenössischen Konstruktionswerkstätten (EKW)",
+        "new_text": "svizzere Eidgenössischen Konstruktionswerkstätten (EKW)",
+        "timestamp": 1765762307,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Dewoitine_D_27"
         }
     },
     {
-        "id": "c8cbb57c-cfb2-428c-98ce-9d6a984db648",
+        "id": "9210dce7-4090-4af7-842c-74ef4439053a",
         "type": "edit",
         "title": "Dewoitine D.27",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Il progetto del caccia Dewoitine D.27 fu la consacrazione estrema dei velivoli con ala a parasole progettati dall'ingegnere Émile Dewoitine.",
-        "new_text": "Il progetto del caccia Dewoitine D.27 fu la consacrazione estrema dei velivoli con ala a parasole, progettati dall'ingegnere Émile Dewoitine.",
-        "timestamp": 1765761266,
+        "original_text": "ne era sostanzialmente una variante che adottando",
+        "new_text": "ne era sostanzialmente una variante, adottando",
+        "timestamp": 1765762307,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Dewoitine_D_27"
         }
     },
     {
-        "id": "085db85e-0de0-432a-af57-48eebf2d8241",
+        "id": "384ab70f-1c7e-40e7-9a48-1357494d326d",
         "type": "edit",
         "title": "Rolling Thunder Revue",
         "user": "User1",
-        "comment": "Correzione refuso: 'quanto' -> 'come'",
-        "original_text": "al pomeriggio quanto alla sera",
-        "new_text": "al pomeriggio come alla sera",
-        "timestamp": 1765761266,
+        "comment": "Correzione refuso 'fra' -> 'tra'",
+        "original_text": "Fra le due",
+        "new_text": "Tra le due",
+        "timestamp": 1765762310,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Rolling_Thunder_Revue"
         }
     },
     {
-        "id": "c246e306-fd8e-44d7-9fb7-042285138ddd",
+        "id": "52810dfb-2639-42df-ba0e-510716a34468",
         "type": "edit",
         "title": "Rolling Thunder Revue",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
-        "original_text": "Fra le due fasi del tour nel gennaio 1976",
-        "new_text": "Fra le due fasi del tour, nel gennaio 1976",
-        "timestamp": 1765761266,
+        "original_text": "tarda primavera dell'anno successivo da un gruppo",
+        "new_text": "tarda primavera dell'anno successivo, da un gruppo",
+        "timestamp": 1765762310,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Rolling_Thunder_Revue"
         }
     },
     {
-        "id": "1b2ceefe-da1d-4792-8247-65fe3bc2cc58",
+        "id": "5de38b2f-0004-4be3-bbb0-e9260ec77854",
         "type": "edit",
         "title": "291 a.C.",
         "user": "User1",
         "comment": "Correzione punteggiatura",
         "original_text": "010",
-        "new_text": "a.C.",
-        "timestamp": 1765761268,
+        "new_text": "010.",
+        "timestamp": 1765762311,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/291_a_C_"
         }
     },
     {
-        "id": "47db4f7c-d027-48d4-86b5-56f6566ed2a2",
+        "id": "ee7a57b9-b16d-44b5-9ff6-7d25a65fbc02",
         "type": "edit",
         "title": "291 a.C.",
         "user": "User2",
         "comment": "Aggiunta spazio dopo i due punti",
         "original_text": "A Roma sono consoli Lucio Postumio Megello (III) e Gaio Giunio Bubulco Bruto.",
-        "new_text": "A Roma sono consoli Lucio Postumio Megello (III) e Gaio Giunio Bubulco Bruto.",
-        "timestamp": 1765761268,
+        "new_text": "A Roma sono consoli: Lucio Postumio Megello (III) e Gaio Giunio Bubulco Bruto.",
+        "timestamp": 1765762311,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/291_a_C_"
         }
     },
     {
-        "id": "845d949f-ed06-4583-aea9-2cf0423a7835",
+        "id": "ccef42ab-4d5f-401f-97d7-2d056736fc9c",
         "type": "edit",
         "title": "Golden Harvest",
         "user": "User1",
-        "comment": "Correzione ortografica: '鄒文懐' -> '鄒文懷'",
-        "original_text": "鄒文懐",
-        "new_text": "鄒文懷",
-        "timestamp": 1765761270,
+        "comment": "Correzione refuso: 'indi' -> 'indipendenti'",
+        "original_text": "produttori indi",
+        "new_text": "produttori indipendenti",
+        "timestamp": 1765762313,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Golden_Harvest"
         }
     },
     {
-        "id": "602bb738-b568-47bc-92fa-4a03fa640ade",
+        "id": "930d469e-bd54-4ac1-a29d-8ba4be627fe5",
         "type": "edit",
         "title": "Golden Harvest",
         "user": "User2",
         "comment": "Aggiunta virgola per migliorare la leggibilità",
         "original_text": "Golden Harvest ebbe successo grazie ad un diverso approccio organizzativo rispetto al modello centralizzato di Shaw Brothers",
-        "new_text": "Golden Harvest ebbe successo, grazie ad un diverso approccio organizzativo, rispetto al modello centralizzato di Shaw Brothers",
-        "timestamp": 1765761270,
+        "new_text": "Golden Harvest ebbe successo grazie ad un diverso approccio organizzativo, rispetto al modello centralizzato di Shaw Brothers.",
+        "timestamp": 1765762313,
         "is_vandalism": false,
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Golden_Harvest"

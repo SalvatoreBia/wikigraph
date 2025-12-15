@@ -31,6 +31,8 @@ ENV_PATH = BASE_DIR / ".env"
 # File di output separati
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
+LEGIT_TEST_FILE = MOCK_DIR / "legit_edits_test.json"
+VANDAL_TEST_FILE = MOCK_DIR / "vandal_edits_test.json"
 
 load_dotenv(dotenv_path=ENV_PATH)
 
@@ -61,6 +63,7 @@ TEXT_LIMIT = CONFIG['processing']['text_limit']
 # Simulation Config
 TARGET_LEGIT_EDITS = CONFIG['simulation']['target_legit_edits']
 TARGET_VANDAL_EDITS = CONFIG['simulation']['target_vandal_edits']
+TEST_SET_RATIO = CONFIG['simulation'].get('test_set_ratio', 0.2)
 ARTICLES_PER_COMMUNITY = CONFIG['simulation'].get('articles_per_community', 5)
 
 def estimate_tokens(text):
@@ -198,7 +201,7 @@ def generate_html_worker(key, title, context_content, usage_dict):
         print(f"⚠️ Errore Gen HTML {title}: {e}")
         return None
 
-def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, real_text_window, usage_dict, file_lock):
+def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, real_text_window, usage_dict, file_lock, output_file):
     """Worker per generare Edits."""
     genai.configure(api_key=key)
     model = genai.GenerativeModel(MODEL_NAME)
@@ -285,7 +288,7 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
             }
             final_edits.append(enriched)
             
-        target_file = LEGIT_FILE if edit_type == "LEGITTIMI" else VANDAL_FILE
+        target_file = output_file
         
         # Scrittura Safe con Lock
         append_to_json_file_safe(target_file, final_edits, file_lock)
@@ -403,28 +406,42 @@ def generate_dataset():
         # 3. Generate Edits
         print("\n🚀 Generazione Edits...")
         
+        # 3. Generate Edits
+        print("\n🚀 Generazione Edits...")
+        
+        # Calcolo Target
+        target_legit_train = TARGET_LEGIT_EDITS
+        target_vandal_train = TARGET_VANDAL_EDITS
+        
+        target_legit_test = int(TARGET_LEGIT_EDITS * TEST_SET_RATIO)
+        target_vandal_test = int(TARGET_VANDAL_EDITS * TEST_SET_RATIO)
+        
         # Count existing edits
-        current_legit = 0
-        if LEGIT_FILE.exists():
-            try:
-                with open(LEGIT_FILE, "r", encoding="utf-8") as f:
-                    current_legit = len(json.load(f))
-            except Exception: pass
+        def count_edits(filepath):
+            if filepath.exists():
+                try:
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        return len(json.load(f))
+                except Exception: return 0
+            return 0
 
-        current_vandal = 0
-        if VANDAL_FILE.exists():
-            try:
-                with open(VANDAL_FILE, "r", encoding="utf-8") as f:
-                    current_vandal = len(json.load(f))
-            except Exception: pass
+        current_legit_train = count_edits(LEGIT_FILE)
+        current_vandal_train = count_edits(VANDAL_FILE)
+        current_legit_test = count_edits(LEGIT_TEST_FILE)
+        current_vandal_test = count_edits(VANDAL_TEST_FILE)
 
-        missing_legit = max(0, TARGET_LEGIT_EDITS - current_legit)
-        missing_vandal = max(0, TARGET_VANDAL_EDITS - current_vandal)
+        missing_legit_train = max(0, target_legit_train - current_legit_train)
+        missing_vandal_train = max(0, target_vandal_train - current_vandal_train)
+        missing_legit_test = max(0, target_legit_test - current_legit_test)
+        missing_vandal_test = max(0, target_vandal_test - current_vandal_test)
         
-        print(f"📊 Stato Attuale: {current_legit}/{TARGET_LEGIT_EDITS} Legit, {current_vandal}/{TARGET_VANDAL_EDITS} Vandal")
+        print(f"📊 Stato Training: {current_legit_train}/{target_legit_train} Legit, {current_vandal_train}/{target_vandal_train} Vandal")
+        print(f"📊 Stato Test:     {current_legit_test}/{target_legit_test} Legit, {current_vandal_test}/{target_vandal_test} Vandal")
         
-        while missing_legit > 0 or missing_vandal > 0:
-            print(f"🔄 Mancano: {missing_legit} Legit, {missing_vandal} Vandal")
+        while (missing_legit_train > 0 or missing_vandal_train > 0 or 
+               missing_legit_test > 0 or missing_vandal_test > 0):
+            
+            print(f"🔄 Mancano Train: {missing_legit_train} L, {missing_vandal_train} V | Test: {missing_legit_test} L, {missing_vandal_test} V")
             
             with ProcessPoolExecutor(max_workers=keys_count) as executor:
                 futures = []
@@ -436,32 +453,43 @@ def generate_dataset():
                     window = extract_random_window(real_text)
                     snippet = generated_pages.get(title, {}).get('content_snippet', "")
                     
-                    # Calcola quanti edits fare per questo batch
-                    # Facciamo piccoli batch (es. 2 edits) per distribuire
-                    if missing_legit > 0:
+                    # Generazione Training
+                    if missing_legit_train > 0:
                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                        futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock))
-                        missing_legit -= 2
-                        
-                    if missing_vandal > 0:
+                        futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_FILE))
+                        missing_legit_train -= 2
+                    
+                    if missing_vandal_train > 0:
                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                        futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock))
-                        missing_vandal -= 2
+                        futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_FILE))
+                        missing_vandal_train -= 2
                         
-                    if missing_legit <= 0 and missing_vandal <= 0:
+                    # Generazione Test (solo se non servono più training, o interleaving - qui interleaving semplice)
+                    # Nota: priorità a training se vogliamo, ma qui facciamo round robin
+                    
+                    if missing_legit_test > 0:
+                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                         futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_TEST_FILE))
+                         missing_legit_test -= 2
+                         
+                    if missing_vandal_test > 0:
+                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                         futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_TEST_FILE))
+                         missing_vandal_test -= 2
+
+                    if (missing_legit_train <= 0 and missing_vandal_train <= 0 and 
+                        missing_legit_test <= 0 and missing_vandal_test <= 0):
                         break
                 
                 # Attendi fine batch
                 for future in as_completed(futures):
                     future.result() # Errori già loggati
                     
-            # Ricalcola effettivamente quanti salvati (fonte di verità)
-            # Ma per semplicità loop assumiamo decremento. 
-            # In produzione: rileggere file JSON per conteggio esatto.
-            # Qui ci fidiamo del decremento batch per evitare loop infiniti di lettura IO.
-            
-            if missing_legit < 0: missing_legit = 0
-            if missing_vandal < 0: missing_vandal = 0
+            # Safe reset negative counters
+            missing_legit_train = max(0, missing_legit_train)
+            missing_vandal_train = max(0, missing_vandal_train)
+            missing_legit_test = max(0, missing_legit_test)
+            missing_vandal_test = max(0, missing_vandal_test)
             
     finally:
         driver.close()

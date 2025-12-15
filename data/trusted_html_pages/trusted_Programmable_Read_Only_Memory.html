@@ -5,53 +5,51 @@
 
 <h2>Storia e Contesto</h2>
 
-<p>Prima dell'avvento della PROM, la <b>ROM a maschera</b> era l'unica opzione per la memorizzazione di dati non volatili. La ROM a maschera, come suggerisce il nome, veniva fabbricata con un pattern di circuiti fisso, definito durante il processo di produzione. Qualsiasi modifica al contenuto della memoria richiedeva la creazione di una nuova maschera e l'intera riorganizzazione della linea di produzione, rendendo questa soluzione estremamente costosa e lenta, soprattutto per volumi di produzione limitati o per applicazioni che richiedevano aggiornamenti frequenti.</p>
+<p>Prima dell'avvento della PROM, la <b>ROM a maschera</b> era l'unica opzione per la memorizzazione di dati non volatili. La ROM a maschera, come suggerisce il nome, veniva fabbricata con un pattern di circuiti fisso, definito durante il processo di produzione. Qualsiasi modifica al contenuto della memoria richiedeva la creazione di una nuova maschera e l'intera riorganizzazione della linea di produzione, rendendo anche piccole modifiche estremamente costose e dispendiose in termini di tempo. Questo rappresentava un ostacolo significativo per lo sviluppo di prodotti che richiedevano aggiornamenti o personalizzazioni del firmware.</p>
 
-<p>Negli anni '70, la necessità di una soluzione più flessibile e conveniente portò allo sviluppo della PROM. La PROM offriva la possibilità di programmare il contenuto della memoria una sola volta, dopo la fabbricazione del chip, eliminando la necessità di maschere personalizzate per ogni versione del software o dei dati.</p>
+<p>Negli anni '70, la necessità di una soluzione più flessibile portò allo sviluppo della PROM. La PROM offriva la possibilità di programmare il contenuto della memoria una sola volta, dopo la fabbricazione del chip, eliminando la necessità di maschere personalizzate per ogni versione del software o dei dati. Questo ha aperto la strada a una maggiore personalizzazione e a cicli di sviluppo più rapidi.</p>
 
 <h2>Funzionamento Interno</h2>
 
-<p>La PROM si basa su una struttura interna che utilizza <b>fusibili</b> o <b>antifusibili</b> per rappresentare i dati. Nella versione più comune, basata sui fusibili, ogni cella di memoria contiene un fusibile. Inizialmente, tutti i fusibili sono intatti, rappresentando uno stato logico specifico (ad esempio, '1'). La programmazione della PROM consiste nel bruciare selettivamente alcuni di questi fusibili, modificando il loro stato logico (ad esempio, in '0').</p>
+<p>La PROM si differenzia dalla ROM a maschera per la sua struttura interna. Invece di avere i collegamenti dei circuiti definiti durante la fabbricazione, la PROM contiene una matrice di <b>fusibili</b> o <b>antifusibili</b>.  </p>
 
-<p>Il processo di "bruciatura" dei fusibili richiede un apposito dispositivo chiamato <b>programmatore di PROM</b>. Questo dispositivo applica una tensione elevata ai fusibili selezionati, causando la loro rottura e la conseguente modifica del circuito. Una volta bruciati, i fusibili non possono essere ripristinati, rendendo la PROM una memoria "una tantum" programmabile.</p>
+<p><b>Fusibili:</b> Nella PROM basata su fusibili, ogni cella di memoria contiene un fusibile sottile. Inizialmente, tutti i fusibili sono intatti, rappresentando uno stato logico specifico (ad esempio, '1'). La programmazione della PROM avviene "bruciando" selettivamente i fusibili corrispondenti ai bit che devono essere impostati a '0'. La bruciatura del fusibile interrompe il circuito, modificando lo stato logico della cella. Questo processo è irreversibile, conferendo alla PROM la sua caratteristica di "una sola volta programmabile".</p>
 
-<p>Esistono anche PROM basate su <b>antifusibili</b>. In questo caso, le celle di memoria inizialmente non sono collegate. La programmazione consiste nel creare un collegamento elettrico tra i terminali della cella, utilizzando un processo che può coinvolgere l'applicazione di una tensione elevata o l'utilizzo di un laser. A differenza dei fusibili, gli antifusibili vengono "attivati" invece di essere distrutti.</p>
+<p><b>Antifusibili:</b>  Un'alternativa ai fusibili sono gli antifusibili. In questo caso, le celle di memoria inizialmente non sono collegate. La programmazione avviene creando un collegamento elettrico tra i terminali dell'antifusibile, solitamente tramite un processo di alta tensione. Questo crea un percorso conduttivo, modificando lo stato logico della cella. Anche in questo caso, il processo è irreversibile.</p>
 
-<h2>Programmazione</h2>
-
-<p>La programmazione di una PROM è un processo specializzato che richiede un programmatore di PROM e un file di dati contenente il contenuto da memorizzare. Il programmatore legge il file di dati e applica le tensioni appropriate ai fusibili o agli antifusibili del chip PROM, secondo le istruzioni contenute nel file. Il processo di programmazione può richiedere diversi minuti, a seconda della capacità della PROM e della velocità del programmatore.</p>
+<p>La programmazione della PROM richiede un dispositivo specializzato chiamato <b>programmatore di PROM</b>. Questo dispositivo applica le tensioni necessarie per bruciare i fusibili o creare i collegamenti degli antifusibili, in base ai dati forniti dall'utente.</p>
 
 <h2>Applicazioni</h2>
 
 <p>La PROM ha trovato impiego in una vasta gamma di applicazioni, tra cui:</p>
+
 <ul>
-  <li><b>Firmware per dispositivi embedded:</b> La PROM era spesso utilizzata per memorizzare il firmware di base per microcontrollori, elettrodomestici e altri dispositivi embedded.</li>
-  <li><b>Tabelle di lookup:</b> La PROM poteva essere programmata con tabelle di lookup per accelerare calcoli complessi.</li>
-  <li><b>Caratteri per display:</b> La PROM veniva utilizzata per memorizzare le rappresentazioni bitmap dei caratteri per display a LED o LCD.</li>
-  <li><b>Codice di avvio (Bootloader):</b> In alcuni sistemi, la PROM conteneva il codice di avvio necessario per caricare il sistema operativo principale.</li>
-  <li><b>ZX Spectrum:</b> Un esempio iconico dell'uso della PROM è il computer ZX Spectrum, dove veniva utilizzata per memorizzare il suo sistema operativo di base.</li>
+  <li><b>Firmware per dispositivi embedded:</b> La PROM era comunemente utilizzata per memorizzare il firmware di base in dispositivi come calcolatrici, elettrodomestici e sistemi di controllo industriale.</li>
+  <li><b>Microprogrammi per microprocessori:</b> In alcuni sistemi, la PROM veniva utilizzata per memorizzare il microprogramma, ovvero le istruzioni di basso livello che controllano il funzionamento del microprocessore.</li>
+  <li><b>Tabelle di ricerca:</b> La PROM poteva essere programmata con tabelle di ricerca per accelerare calcoli complessi.</li>
+  <li><b>Sistemi di gioco:</b> Come illustrato dall'esempio dello ZX Spectrum, la PROM era utilizzata per memorizzare il codice dei giochi.</li>
 </ul>
 
 <h2>Vantaggi e Svantaggi</h2>
 
 <p><b>Vantaggi:</b></p>
 <ul>
-  <li><b>Costo inferiore rispetto alla ROM a maschera:</b> La PROM eliminava la necessità di maschere personalizzate, riducendo significativamente i costi di produzione, soprattutto per volumi limitati.</li>
-  <li><b>Flessibilità:</b> La PROM poteva essere programmata con dati diversi per ogni unità, consentendo la personalizzazione del software o dei dati.</li>
-  <li><b>Non volatilità:</b> I dati memorizzati nella PROM rimanevano conservati anche in assenza di alimentazione.</li>
+  <li><b>Costo inferiore rispetto alla ROM a maschera:</b> La PROM eliminava la necessità di maschere personalizzate, riducendo significativamente i costi di produzione, soprattutto per volumi di produzione limitati.</li>
+  <li><b>Flessibilità:</b> La PROM permetteva di programmare il contenuto della memoria dopo la fabbricazione, offrendo una maggiore flessibilità rispetto alla ROM a maschera.</li>
+  <li><b>Sicurezza:</b> Il contenuto della PROM era protetto dalla scrittura accidentale o dalla manomissione.</li>
 </ul>
 
 <p><b>Svantaggi:</b></p>
 <ul>
-  <li><b>Programmabile una sola volta:</b> Una volta programmata, la PROM non poteva essere riprogrammata.</li>
-  <li><b>Necessità di un programmatore:</b> La programmazione richiedeva un dispositivo specializzato, aumentando i costi iniziali.</li>
-  <li><b>Velocità di programmazione:</b> Il processo di programmazione poteva essere relativamente lento.</li>
+  <li><b>Programmabile una sola volta:</b> Una volta programmata, la PROM non poteva essere riprogrammata. Questo la rendeva inadatta per applicazioni che richiedevano aggiornamenti frequenti del firmware.</li>
+  <li><b>Necessità di un programmatore:</b> La programmazione della PROM richiedeva un dispositivo specializzato, aumentando i costi iniziali.</li>
+  <li><b>Velocità di accesso:</b> La velocità di accesso alla memoria della PROM era generalmente inferiore rispetto ad altri tipi di memoria.</li>
 </ul>
 
 <h2>Evoluzione e Successori</h2>
 
-<p>La PROM ha rappresentato un passo avanti significativo rispetto alla ROM a maschera, ma i suoi limiti di programmabilità una sola volta hanno portato allo sviluppo di tecnologie di memoria più avanzate, come la <b>EPROM</b> (Erasable Programmable Read Only Memory) e la <b>EEPROM</b> (Electrically Erasable Programmable Read Only Memory). La EPROM poteva essere cancellata esponendo il chip a luce ultravioletta, mentre la EEPROM poteva essere cancellata e riprogrammata elettricamente, offrendo una maggiore flessibilità e riusabilità.</p>
+<p>I limiti della PROM, in particolare la sua programmabilità una sola volta, hanno portato allo sviluppo di tecnologie di memoria più avanzate, come la <b>EPROM</b> (Erasable Programmable Read Only Memory) e la <b>EEPROM</b> (Electrically Erasable Programmable Read Only Memory). La EPROM poteva essere cancellata esponendo il chip a radiazioni ultraviolette, mentre la EEPROM poteva essere cancellata e riprogrammata elettricamente, offrendo una maggiore flessibilità.  Oggi, la memoria flash, un tipo di EEPROM, è diventata la tecnologia dominante per la memorizzazione di dati non volatili in una vasta gamma di dispositivi.</p>
 
-<p>Oggi, la PROM è in gran parte obsoleta, sostituita da tecnologie di memoria più versatili e convenienti come la EEPROM, la Flash memory e le memorie non volatili a stato solido (NVMe). Tuttavia, la PROM rimane un importante capitolo nella storia della memoria digitale, avendo contribuito a rendere accessibile la memorizzazione di dati non volatili a un pubblico più ampio.</p>
+<p>Nonostante sia stata in gran parte sostituita da tecnologie più avanzate, la PROM ha svolto un ruolo cruciale nello sviluppo della memoria digitale e ha aperto la strada alle innovazioni che hanno reso possibili i dispositivi elettronici moderni.</p>
 
 </body>

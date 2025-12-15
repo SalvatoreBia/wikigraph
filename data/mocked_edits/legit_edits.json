@@ -1370,5 +1370,33 @@
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Golden_Harvest"
         }
+    },
+    {
+        "id": "2740b4a6-d11e-4dab-9d0c-874e89711445",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo 'Normandia'",
+        "original_text": "Normandia.",
+        "new_text": "Normandia,.",
+        "timestamp": 1765762495,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "8959d679-31e0-4f2e-b2f1-0ffaf1e3c0da",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User2",
+        "comment": "Spaziatura corretta dopo 'abitanti'",
+        "original_text": "242 abitanti situato",
+        "new_text": "242 abitanti situato",
+        "timestamp": 1765762495,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
     }
 ]

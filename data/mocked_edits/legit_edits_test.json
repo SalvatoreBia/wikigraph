@@ -250,5 +250,33 @@
         "meta": {
             "uri": "https://it.wikipedia.org/wiki/Fußball_Bundesliga_1967_1968"
         }
+    },
+    {
+        "id": "98f9c909-fb9f-4d49-976f-f49ef3dc3bc4",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo 'Normandia'",
+        "original_text": "Normandia.",
+        "new_text": "Normandia,.",
+        "timestamp": 1765762496,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
+    },
+    {
+        "id": "652ff524-783d-47b9-8f05-b2e1ca2f9e01",
+        "type": "edit",
+        "title": "Bouelles",
+        "user": "User2",
+        "comment": "Spaziatura corretta dopo 'abitanti'",
+        "original_text": "242 abitanti situato",
+        "new_text": "242 abitanti situato",
+        "timestamp": 1765762496,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Bouelles"
+        }
     }
 ]

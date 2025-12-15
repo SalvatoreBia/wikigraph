@@ -132,6 +132,15 @@ if __name__ == "__main__":
     
     legit_edits = load_eval_edits(LEGIT_FILE)
     vandal_edits = load_eval_edits(VANDAL_FILE)
+
+    # APPLICA IL LIMITE
+    max_stream = CONFIG['simulation'].get('use_n_test_stream', None)
+    if max_stream:
+        # Dividiamo per 2 per mantenere il bilanciamento (metà legit, metà vandal)
+        limit_per_class = max_stream // 2
+        print(f"✂️  Limito lo stream a {limit_per_class * 2} eventi totali.")
+        legit_edits = legit_edits[:limit_per_class]
+        vandal_edits = vandal_edits[:limit_per_class]
     
     all_edits = legit_edits + vandal_edits
     print(f"📦 Caricati {len(legit_edits)} Legit e {len(vandal_edits)} Vandal edits per lo stream.")

@@ -319,6 +319,13 @@ def main():
     if legit_edits is None:
         driver.close()
         return
+
+    # APPLICA IL LIMITE (MODULARITÀ)
+    max_train = CONFIG['simulation'].get('use_n_train_samples', None)
+    if max_train:
+        print(f"✂️  Limito il training a {max_train} esempi per classe.")
+        legit_edits = legit_edits[:max_train]
+        vandal_edits = vandal_edits[:max_train]
     
     # Estrai feature
     print("\n🔄 Estrazione feature (raw embeddings)...")

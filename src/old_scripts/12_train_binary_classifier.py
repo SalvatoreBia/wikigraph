@@ -167,11 +167,18 @@ def main():
     vandal_edits = load_all_edits(VANDAL_FILE)
 
     # APPLICA IL LIMITE (MODULARITÀ)
-    max_train = CONFIG['simulation'].get('use_n_train_samples', None)
-    if max_train:
-        print(f"✂️  Limito il training a {max_train} esempi per classe.")
-        legit_edits = legit_edits[:max_train]
-        vandal_edits = vandal_edits[:max_train]
+    # Usa i conteggi definiti in config per il training
+    target_legit = CONFIG['dataset']['training']['legit_count']
+    target_vandal = CONFIG['dataset']['training']['vandal_count']
+    
+    # Se i file contengono più dati, limitiamo al target
+    if len(legit_edits) > target_legit:
+        print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
+        legit_edits = legit_edits[:target_legit]
+        
+    if len(vandal_edits) > target_vandal:
+        print(f"✂️  Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
+        vandal_edits = vandal_edits[:target_vandal]
     
     all_edits = legit_edits + vandal_edits
     labels = [0] * len(legit_edits) + [1] * len(vandal_edits)

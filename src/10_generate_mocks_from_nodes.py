@@ -61,10 +61,11 @@ MODEL_NAME = CONFIG['llm']['generation_model']
 TEXT_LIMIT = CONFIG['processing']['text_limit']
 
 # Simulation Config
-TARGET_LEGIT_EDITS = CONFIG['simulation']['target_legit_edits']
-TARGET_VANDAL_EDITS = CONFIG['simulation']['target_vandal_edits']
-TEST_SET_RATIO = CONFIG['simulation'].get('test_set_ratio', 0.2)
-ARTICLES_PER_COMMUNITY = CONFIG['simulation'].get('articles_per_community', 5)
+TRAIN_LEGIT_COUNT = CONFIG['dataset']['training']['legit_count']
+TRAIN_VANDAL_COUNT = CONFIG['dataset']['training']['vandal_count']
+TEST_LEGIT_COUNT = CONFIG['dataset']['testing']['legit_count']
+TEST_VANDAL_COUNT = CONFIG['dataset']['testing']['vandal_count']
+ARTICLES_PER_COMMUNITY = CONFIG['dataset'].get('articles_per_community', 50)
 
 def estimate_tokens(text):
     """Stima grezza dei token (1 token ~= 4 caratteri per l'inglese, un po' meno per codice/altre lingue).
@@ -410,11 +411,11 @@ def generate_dataset():
         print("\n🚀 Generazione Edits...")
         
         # Calcolo Target
-        target_legit_train = TARGET_LEGIT_EDITS
-        target_vandal_train = TARGET_VANDAL_EDITS
+        target_legit_train = TRAIN_LEGIT_COUNT
+        target_vandal_train = TRAIN_VANDAL_COUNT
         
-        target_legit_test = int(TARGET_LEGIT_EDITS * TEST_SET_RATIO)
-        target_vandal_test = int(TARGET_VANDAL_EDITS * TEST_SET_RATIO)
+        target_legit_test = TEST_LEGIT_COUNT
+        target_vandal_test = TEST_VANDAL_COUNT
         
         # Count existing edits
         def count_edits(filepath):

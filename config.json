@@ -29,7 +29,8 @@
     "dataset": {
         "training": {
             "legit_count": 100,
-            "vandal_count": 100
+            "vandal_count": 100,
+            "train_split": 0.8
         },
         "testing": {
             "legit_count": 20,

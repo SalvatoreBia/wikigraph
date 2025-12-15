@@ -37,7 +37,7 @@ CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
 # --- HYPERPARAMETERS ---
-TRAIN_SPLIT = 0.8
+TRAIN_SPLIT = CONFIG['dataset']['training'].get('train_split', 0.8)
 EPOCHS = 100
 BATCH_SIZE = 8
 LEARNING_RATE = 0.001

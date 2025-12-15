@@ -1,0 +1,326 @@
+{
+    "results": [
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'Normandia'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.044768333435058594
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta di un punto alla fine della frase introduttiva",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.04156160354614258
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.04079318046569824
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.042604923248291016
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'comune'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03925013542175293
+        },
+        {
+            "user": "User2",
+            "comment": "Correzione di 'decì' in 'decisero'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03717184066772461
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 's.l.m.' -> 's.l.m..'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.04124188423156738
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.037934303283691406
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Sportowy' -> 'Sportowy'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03701281547546387
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.038245439529418945
+        },
+        {
+            "user": "User1",
+            "comment": "correzione dati demografici",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.0378725528717041
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento regione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03841137886047363
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03770136833190918
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03879737854003906
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03685331344604492
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03522896766662598
+        },
+        {
+            "user": "UtenteEsperto",
+            "comment": "correzione altitudine",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.04002737998962402
+        },
+        {
+            "user": "GeoEditor",
+            "comment": "aggiornamento geografico",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03556346893310547
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03622722625732422
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03802752494812012
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'Normandia'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.042174577713012695
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta di un punto alla fine della frase introduttiva",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.04173398017883301
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03926205635070801
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola dopo l'anno di nascita",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.04040098190307617
+        },
+        {
+            "user": "User1",
+            "comment": "Aggiunta virgola dopo 'comune'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03860282897949219
+        },
+        {
+            "user": "User2",
+            "comment": "Correzione di 'decì' in 'decisero'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03546404838562012
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 's.l.m.' -> 's.l.m..'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03806281089782715
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03737807273864746
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso: 'Sportowy' -> 'Sportowy'",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.039869070053100586
+        },
+        {
+            "user": "User2",
+            "comment": "Aggiunta virgola per migliorare la leggibilità",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.03997445106506348
+        },
+        {
+            "user": "User1",
+            "comment": "correzione dati demografici",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.0357813835144043
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento regione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03603792190551758
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03776669502258301
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03762173652648926
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03653979301452637
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.0350184440612793
+        },
+        {
+            "user": "UtenteEsperto",
+            "comment": "correzione altitudine",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.038262128829956055
+        },
+        {
+            "user": "GeoEditor",
+            "comment": "aggiornamento geografico",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.038428306579589844
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.03724336624145508
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 0.043134212493896484
+        }
+    ],
+    "accuracy": 100.0,
+    "avg_time": 0.03860129714012146
+}

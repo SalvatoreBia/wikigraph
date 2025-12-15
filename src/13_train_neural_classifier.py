@@ -304,11 +304,9 @@ def main():
     print("🧠 NEURAL CLASSIFIER TRAINING (PyTorch)")
     print("=" * 60)
     
-    # Device
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"\n💻 Device: {device}")
     
-    # Carica risorse
     driver = classifier_utils.get_neo4j_driver()
     if not driver:
         print("❌ Impossibile connettersi a Neo4j")
@@ -317,7 +315,6 @@ def main():
     embedder = SentenceTransformer(MODEL_NAME)
     print(f"✅ Embedder caricato: {MODEL_NAME}")
     
-    # Carica dati
     legit_edits, vandal_edits = load_data()
     if legit_edits is None:
         driver.close()

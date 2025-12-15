@@ -28,11 +28,15 @@ MODEL_NAME = CONFIG['embedding']['model_name']
 BATCH_SIZE = CONFIG['processing']['batch_size']
 CHUNK_SIZE = CONFIG['processing']['chunk_size']
 CHUNK_OVERLAP = CONFIG['processing']['chunk_overlap']
+TEXT_LIMIT = CONFIG['processing']['text_limit']
 
 def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
-    """Divide il testo in chunk sovrapposti."""
+    """Divide il testo in chunk sovrapposti, troncando prima al TEXT_LIMIT."""
     if not text:
         return []
+    
+    # Text Limiting
+    text = text[:TEXT_LIMIT]
     
     chunks = []
     start = 0
@@ -68,6 +72,23 @@ def wait_for_connection(uri, auth):
             print(f"⏳ In attesa di Neo4j... ({e})")
             time.sleep(3)
 
+def get_processed_ids(driver):
+    """Restituisce un set di ID (Wiki e Trusted) che sono già stati processati e chunkati."""
+    print("🔍 Verifica documenti già processati...")
+    query = """
+    MATCH (n:Node)-[:HAS_CHUNK]->() RETURN n.id as id
+    UNION
+    MATCH (s:TrustedSource)-[:HAS_TRUSTED_CHUNK]->() RETURN s.id as id
+    """
+    processed_ids = set()
+    with driver.session() as session:
+        result = session.run(query)
+        for record in result:
+            processed_ids.add(str(record["id"]))
+            
+    print(f"✅ Trovati {len(processed_ids)} documenti già processati (saranno saltati).")
+    return processed_ids
+
 def create_vector_indexes(driver):
     print(f"🛠️  Verifica/Creazione Indici Vettoriali...")
     
@@ -99,7 +120,7 @@ def create_vector_indexes(driver):
             else:
                 print(f"   ✅ Indice {index_name} già esistente.")
 
-def load_csv_documents(filepath):
+def load_csv_documents(filepath, processed_ids):
     print(f"📂 Leggo CSV Wikipedia: {filepath}")
     if not filepath.exists():
         print(f"❌ File CSV non trovato: {filepath}")
@@ -111,8 +132,13 @@ def load_csv_documents(filepath):
         with open(filepath, "r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                content = row.get('content', '')
                 page_id = row.get('page_id')
+                
+                # Smart Resume: skip if already processed
+                if page_id and str(page_id) in processed_ids:
+                    continue
+
+                content = row.get('content', '')
                 title = row.get('title', 'Unknown')
                 
                 if content and page_id:
@@ -126,7 +152,7 @@ def load_csv_documents(filepath):
         print(f"⚠️ Errore lettura CSV: {e}")
     return documents
 
-def load_trusted_documents(directory):
+def load_trusted_documents(directory, processed_ids):
     print(f"📂 Leggo HTML Trusted Sources da: {directory}")
     if not directory.exists():
         print(f"❌ Directory non trovata: {directory}")
@@ -134,12 +160,17 @@ def load_trusted_documents(directory):
     
     documents = []
     for fpath in directory.glob("*.html"):
+        # Usa nome file come ID
+        doc_id = fpath.stem
+        
+        # Smart Resume: skip if already processed
+        if str(doc_id) in processed_ids:
+            continue
+
         try:
             with open(fpath, "r", encoding="utf-8") as f:
                 raw_html = f.read()
                 clean_text = clean_html(raw_html)
-                # Usa nome file come ID/Titolo
-                doc_id = fpath.stem
                 
                 if clean_text:
                     documents.append({
@@ -233,22 +264,31 @@ def main():
     
     driver = wait_for_connection(URI, AUTH)
     
+    # Smart Resume check
+    processed_ids = get_processed_ids(driver)
+    
     create_vector_indexes(driver)
     
     print(f"🚀 Caricamento Modello: {MODEL_NAME}...")
     model = SentenceTransformer(MODEL_NAME)
     
     print("\n--- PROCESSAMENTO WIKIPEDIA ---")
-    wiki_docs = load_csv_documents(CSV_FILE)
-    print(f"📄 Trovati {len(wiki_docs)} articoli Wikipedia.")
-    chunks_wiki = process_and_embed(driver, model, wiki_docs)
-    print(f"\n✅ Wikipedia completata: {chunks_wiki} chunks totali.")
+    wiki_docs = load_csv_documents(CSV_FILE, processed_ids)
+    if wiki_docs:
+        print(f"📄 Trovati {len(wiki_docs)} nuovi articoli Wikipedia da processare.")
+        chunks_wiki = process_and_embed(driver, model, wiki_docs)
+        print(f"\n✅ Wikipedia completata: {chunks_wiki} chunks totali.")
+    else:
+        print("✅ Tutti gli articoli Wikipedia sono già processati.")
     
     print("\n--- PROCESSAMENTO TRUSTED SOURCES ---")
-    trusted_docs = load_trusted_documents(HTML_DIR)
-    print(f"📄 Trovate {len(trusted_docs)} fonti affidabili.")
-    chunks_trusted = process_and_embed(driver, model, trusted_docs)
-    print(f"\n✅ Trusted Sources completate: {chunks_trusted} chunks totali.")
+    trusted_docs = load_trusted_documents(HTML_DIR, processed_ids)
+    if trusted_docs:
+        print(f"📄 Trovate {len(trusted_docs)} nuove fonti affidabili.")
+        chunks_trusted = process_and_embed(driver, model, trusted_docs)
+        print(f"\n✅ Trusted Sources completate: {chunks_trusted} chunks totali.")
+    else:
+        print("✅ Tutte le fonti affidabili sono già processate.")
     
     driver.close()
     print("\n🎉 RAG PIPELINE COMPLETATA CON SUCCESSO.")

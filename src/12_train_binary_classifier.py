@@ -95,8 +95,10 @@ def analyze_weights(clf, model_name):
         comment_weights = weights[384:768]
         text_sim_weight = weights[768] if len(weights) > 768 else 0
         length_ratio_weight = weights[769] if len(weights) > 769 else 0
-        truth_new_weight = weights[770] if len(weights) > 770 else 0
-        truth_old_weight = weights[771] if len(weights) > 771 else 0
+        truth_new_wiki_weight = weights[770] if len(weights) > 770 else 0
+        truth_new_trusted_weight = weights[771] if len(weights) > 771 else 0
+        truth_old_wiki_weight = weights[772] if len(weights) > 772 else 0
+        truth_old_trusted_weight = weights[773] if len(weights) > 773 else 0
         
         avg_delta_impact = np.mean(np.abs(delta_weights))
         avg_comment_impact = np.mean(np.abs(comment_weights))
@@ -105,8 +107,10 @@ def analyze_weights(clf, model_name):
         print(f"   📊 Impatto 'Comment Intent': {avg_comment_impact:.4f}")
         print(f"   🔥 Peso 'Text Similarity': {text_sim_weight:.4f}")
         print(f"   📏 Peso 'Length Ratio': {length_ratio_weight:.4f}")
-        print(f"   ✅ Peso 'Truth Score (New)': {truth_new_weight:.4f}")
-        print(f"   📚 Peso 'Truth Score (Old)': {truth_old_weight:.4f}")
+        print(f"   ✅ Peso 'Truth Score (New Wiki)': {truth_new_wiki_weight:.4f}")
+        print(f"   ✅ Peso 'Truth Score (New Trusted)': {truth_new_trusted_weight:.4f}")
+        print(f"   📚 Peso 'Truth Score (Old Wiki)': {truth_old_wiki_weight:.4f}")
+        print(f"   📚 Peso 'Truth Score (Old Trusted)': {truth_old_trusted_weight:.4f}")
         
         print("\n   💡 INTERPRETAZIONE:")
         if text_sim_weight > 0:
@@ -114,8 +118,8 @@ def analyze_weights(clf, model_name):
         else:
             print(f"   • Text Similarity NEGATIVO ({text_sim_weight:.3f}): alta similarità → più probabile LEGITTIMO ✅")
         
-        if truth_new_weight < 0:
-            print(f"   • Truth New NEGATIVO ({truth_new_weight:.3f}): nuovo testo simile a fonti → LEGITTIMO ✅")
+        if truth_new_wiki_weight < 0:
+            print(f"   • Truth New Wiki NEGATIVO ({truth_new_wiki_weight:.3f}): nuovo testo simile a Wiki → LEGITTIMO ✅")
         
     elif hasattr(clf, 'feature_importances_'):
         importances = clf.feature_importances_
@@ -123,15 +127,19 @@ def analyze_weights(clf, model_name):
         comment_imp = np.mean(importances[384:768])
         text_sim_imp = importances[768] if len(importances) > 768 else 0
         length_ratio_imp = importances[769] if len(importances) > 769 else 0
-        truth_new_imp = importances[770] if len(importances) > 770 else 0
-        truth_old_imp = importances[771] if len(importances) > 771 else 0
+        truth_new_wiki_imp = importances[770] if len(importances) > 770 else 0
+        truth_new_trusted_imp = importances[771] if len(importances) > 771 else 0
+        truth_old_wiki_imp = importances[772] if len(importances) > 772 else 0
+        truth_old_trusted_imp = importances[773] if len(importances) > 773 else 0
         
         print(f"   📊 Importanza 'Semantic Delta': {delta_imp:.4f}")
         print(f"   📊 Importanza 'Comment Intent': {comment_imp:.4f}")
         print(f"   🔥 Importanza 'Text Similarity': {text_sim_imp:.4f}")
         print(f"   📏 Importanza 'Length Ratio': {length_ratio_imp:.4f}")
-        print(f"   ✅ Importanza 'Truth Score (New)': {truth_new_imp:.4f}")
-        print(f"   📚 Importanza 'Truth Score (Old)': {truth_old_imp:.4f}")
+        print(f"   ✅ Importanza 'Truth Score (New Wiki)': {truth_new_wiki_imp:.4f}")
+        print(f"   ✅ Importanza 'Truth Score (New Trusted)': {truth_new_trusted_imp:.4f}")
+        print(f"   📚 Importanza 'Truth Score (Old Wiki)': {truth_old_wiki_imp:.4f}")
+        print(f"   📚 Importanza 'Truth Score (Old Trusted)': {truth_old_trusted_imp:.4f}")
     else:
         print("   (Modello senza pesi interpretabili)")
 

@@ -75,19 +75,28 @@ def get_raw_features(edit, embedder, driver):
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
+    # Truth scores da Neo4j (TRIANGOLAZIONE)
+    # 1. NEW TEXT vs WIKI & TRUSTED
     if np.all(new_emb == 0):
-        truth_new = 0.0
+        score_new_wiki = 0.0
+        score_new_trusted = 0.0
     else:
-        _, truth_new = classifier_utils.get_trusted_embedding(driver, new_emb)
+        _, score_new_wiki = classifier_utils.get_best_match(driver, classifier_utils.WIKI_INDEX_NAME, new_emb)
+        _, score_new_trusted = classifier_utils.get_best_match(driver, classifier_utils.TRUSTED_INDEX_NAME, new_emb)
     
+    # 2. OLD TEXT vs WIKI & TRUSTED
     if np.all(old_emb == 0):
-        truth_old = 0.0
+        score_old_wiki = 0.0
+        score_old_trusted = 0.0
     else:
-        _, truth_old = classifier_utils.get_trusted_embedding(driver, old_emb)
+        _, score_old_wiki = classifier_utils.get_best_match(driver, classifier_utils.WIKI_INDEX_NAME, old_emb)
+        _, score_old_trusted = classifier_utils.get_best_match(driver, classifier_utils.TRUSTED_INDEX_NAME, old_emb)
     
     features = np.concatenate([
         old_emb, new_emb, comment_emb,
-        [semantic_similarity], [length_ratio], [truth_new], [truth_old]
+        [semantic_similarity], [length_ratio], 
+        [score_new_wiki], [score_new_trusted],
+        [score_old_wiki], [score_old_trusted]
     ])
     
     return features

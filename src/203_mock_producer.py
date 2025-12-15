@@ -68,11 +68,15 @@ def send_event(producer, edit_data, page_map):
     title = edit_data['title']
     
     # Lookup ID
-    if title not in page_map:
-        print(f"⚠️ Skipping edit for '{title}': ID non trovato nel pagemap.")
-        return
+    page_id = None
+    if title in page_map:
+        page_id = page_map[title]
+    elif title.replace(" ", "_") in page_map:
+        page_id = page_map[title.replace(" ", "_")]
 
-    page_id = page_map[title]
+    if page_id is None:
+        print(f"⚠️ Skipping edit for '{title}': ID non trovato nel pagemap (preso come '{title.replace(' ', '_')}').")
+        return
     page_url = f"https://it.wikipedia.org/wiki/{title}"
 
     comment = edit_data['comment']

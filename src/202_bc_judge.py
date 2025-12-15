@@ -15,6 +15,9 @@ import classifier_utils
 
 # --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
+from config_loader import load_config
+CONFIG = load_config()
+
 DATA_DIR = BASE_DIR / "data"
 TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 SCORES_DIR = DATA_DIR / "scores"
@@ -26,7 +29,7 @@ RESULTS_FILE = SCORES_DIR / "BC_results.json"
 #   "rf"     = Random Forest sklearn (script 12)
 #   "auto"   = Prova neural, se non esiste usa rf
 # ============================================================
-PREFERRED_MODEL = "auto"
+PREFERRED_MODEL = "neural"
 
 # File dei modelli
 NEURAL_MODEL_FILE = TRAINED_BC_DIR / "neural_classifier.pth"
@@ -34,9 +37,9 @@ NEURAL_SCALER_FILE = TRAINED_BC_DIR / "neural_scaler.pkl"
 RF_MODEL_FILE = TRAINED_BC_DIR / "binary_classifier.pkl"
 RF_SCALER_FILE = TRAINED_BC_DIR / "scaler.pkl"
 
-KAFKA_BROKER = 'localhost:9092'
-TOPIC_IN = 'to-be-judged'
-MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
+KAFKA_BROKER = CONFIG['kafka']['broker']
+TOPIC_IN = CONFIG['kafka']['topic_judge']
+MODEL_NAME = CONFIG['embedding']['model_name']
 
 def get_raw_features(edit, embedder, driver):
     """Feature grezze per il modello neurale (identiche a 13_train_neural_classifier.py)"""
@@ -66,7 +69,7 @@ def get_raw_features(edit, embedder, driver):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # FEATURE CHIAVE: Similarità semantica tra vecchio e nuovo testo
+
     if np.all(old_emb == 0) or np.all(new_emb == 0):
         semantic_similarity = 0.0
     else:
@@ -90,7 +93,6 @@ def get_raw_features(edit, embedder, driver):
     return features
 
 class VandalismClassifier(nn.Module):
-    """Rete neurale per classificazione vandalismo (deve matchare 13_train_neural_classifier.py)"""
     def __init__(self, input_dim):
         super(VandalismClassifier, self).__init__()
         self.fc1 = nn.Linear(input_dim, 256)
@@ -130,7 +132,6 @@ def load_resources():
         return None, None, None, None
     
     def load_neural():
-        """Carica il modello neurale PyTorch (script 13)"""
         if not (NEURAL_MODEL_FILE.exists() and NEURAL_SCALER_FILE.exists()):
             return None, None
         print("   🧠 Caricamento Neural Classifier (PyTorch)...")
@@ -148,7 +149,6 @@ def load_resources():
             return None, None
     
     def load_rf():
-        """Carica il modello Random Forest (script 12)"""
         if not (RF_MODEL_FILE.exists() and RF_SCALER_FILE.exists()):
             return None, None
         print("   🌲 Caricamento Random Forest Classifier...")
@@ -163,7 +163,6 @@ def load_resources():
             print(f"   ⚠️ Errore caricamento RF: {e}")
             return None, None
     
-    # Carica in base alla preferenza
     if PREFERRED_MODEL == "neural":
         model, scaler = load_neural()
         if model:

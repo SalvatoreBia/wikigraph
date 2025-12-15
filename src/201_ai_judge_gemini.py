@@ -15,6 +15,10 @@ from kafka import KafkaConsumer
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
+from config_loader import load_config
+CONFIG = load_config()
+GEMINI_MODEL = CONFIG['llm']['judge_model']
+
 # API Keys Round Robin
 API_KEYS = [
     os.getenv("GEMINI_API_KEY_1"),
@@ -53,10 +57,6 @@ def get_next_api_key():
 KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_IN = CONFIG['kafka']['topic_judge']
 SOURCE_FILE = '../data/web_source_tennis.html'
-
-from config_loader import load_config
-CONFIG = load_config()
-GEMINI_MODEL = CONFIG['llm']['judge_model']
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"

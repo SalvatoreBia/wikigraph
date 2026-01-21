@@ -79,4 +79,9 @@ data/pagemap.csv
 data/sample_with_names
 data/sample_content
 data/sample_content/sample_with_names_1_content.csv
-src/datadata/sample/
+data/sample/
+
+src/data/databases/
+src/data/transactions/
+*.db
+report/report_Biamonte_Spadafora.synctex.gz

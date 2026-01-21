@@ -87,7 +87,8 @@ py 11_embed_trusted_sources.py
 << `
 -----------------------------------------------------------------------------------
 FASE TRAINING
-Addestriamo i modelli. Falli entrambi così il giudice (script 202) 
+Addestriamo i modelli. 
+Falli entrambi così il giudice (script 202) 
 può scegliere quello che gli pare (di base preferisce il neurale).
 -----------------------------------------------------------------------------------
 `

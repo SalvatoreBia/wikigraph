@@ -208,10 +208,11 @@ def extract_page_content(xml_file, title_map, buffer_size=BUFFER_SIZE, use_mwpar
                             sys.stdout.write(f'\r[*] Pagine estratte: {found_count}')
                             sys.stdout.flush()
             
-            # Pulizia memoria
+            # Pulizia memoria - lxml ha metodi extra per pulizia più efficiente
             elem.clear()
-            while elem.getprevious() is not None:
-                del elem.getparent()[0]
+            if HAS_LXML:
+                while elem.getprevious() is not None:
+                    del elem.getparent()[0]
     
     # Flush finale dei buffer
     flush_buffers(file_buffers)

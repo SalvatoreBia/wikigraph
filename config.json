@@ -1,7 +1,13 @@
 {
     "llm": {
+        "provider": "local",
         "generation_model": "gemma-3-27b-it",
-        "judge_model": "gemma-3-27b-it"
+        "judge_model": "gemma-3-27b-it",
+        "local": {
+            "base_url": "http://localhost:1234/v1",
+            "api_key": "lm-studio",
+            "model": "openai/gpt-oss-20b"
+        }
     },
     "embedding": {
         "model_name": "paraphrase-multilingual-MiniLM-L12-v2",

@@ -13,6 +13,7 @@ from pathlib import Path
 from collections import defaultdict
 
 import google.generativeai as genai
+from openai import OpenAI
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
@@ -44,9 +45,16 @@ API_KEYS = [
     os.getenv("GEMINI_API_KEY_4")
 ]
 API_KEYS = [k for k in API_KEYS if k]
-if not API_KEYS:
+
+# Check provider
+PROVIDER = CONFIG['llm'].get('provider', 'gemini')
+
+if PROVIDER == 'gemini' and not API_KEYS:
     print("❌ ERRORE: Nessuna API Key trovata nel .env")
     sys.exit(1)
+elif PROVIDER == 'local':
+    # For local, we use a single dummy key if none provided, or just one worker
+    API_KEYS = ["local-key"]
 
 # Rate Limiting & Token Config
 MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min'] 
@@ -152,8 +160,19 @@ def clean_json_text(text):
 def generate_html_worker(key, title, context_content, usage_dict):
     """Worker per generare HTML."""
     # Configura API Key locale al processo
-    genai.configure(api_key=key)
-    model = genai.GenerativeModel(MODEL_NAME)
+    
+    provider = CONFIG['llm'].get('provider', 'gemini')
+    
+    if provider == 'gemini':
+        genai.configure(api_key=key)
+        model = genai.GenerativeModel(MODEL_NAME)
+    else:
+        # Local / OpenAI
+        client = OpenAI(
+            base_url=CONFIG['llm']['local']['base_url'],
+            api_key=CONFIG['llm']['local']['api_key']
+        )
+        model_name = CONFIG['llm']['local'].get('model', MODEL_NAME) # Fallback to generic model name
     
     # 1. Check Rate Limit a monte (conservativo)
     # Stima prompt
@@ -185,9 +204,20 @@ def generate_html_worker(key, title, context_content, usage_dict):
     """
     
     try:
-        resp = model.generate_content(prompt)
-        # HTML non è JSON, quindi prendiamo text raw e puliamo markdown se c'è
-        html_content = resp.text.replace("```html", "").replace("```", "").strip()
+        html_content = ""
+        if provider == 'gemini':
+            resp = model.generate_content(prompt)
+            # HTML non è JSON, quindi prendiamo text raw e puliamo markdown se c'è
+            html_content = resp.text
+        else:
+            resp = client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.7
+            )
+            html_content = resp.choices[0].message.content
+
+        html_content = html_content.replace("```html", "").replace("```", "").strip()
         
         clean_title = re.sub(r'[^\w]', '_', title)
         filename = f"trusted_{clean_title}.html"
@@ -204,8 +234,17 @@ def generate_html_worker(key, title, context_content, usage_dict):
 
 def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, real_text_window, usage_dict, file_lock, output_file):
     """Worker per generare Edits."""
-    genai.configure(api_key=key)
-    model = genai.GenerativeModel(MODEL_NAME)
+    provider = CONFIG['llm'].get('provider', 'gemini')
+    
+    if provider == 'gemini':
+        genai.configure(api_key=key)
+        model = genai.GenerativeModel(MODEL_NAME)
+    else:
+        client = OpenAI(
+            base_url=CONFIG['llm']['local']['base_url'],
+            api_key=CONFIG['llm']['local']['api_key']
+        )
+        model_name = CONFIG['llm']['local'].get('model', MODEL_NAME)
     
     # Stima tokens prompt
     input_text = f"{context_snippet} {real_text_window} {topic_title} {edit_type}"
@@ -267,8 +306,17 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
     
     try:
         # RIMOSSO generation_config={"response_mime_type": "application/json"} per evitare errore 400
-        resp = model.generate_content(prompt)
-        text_resp = resp.text
+        text_resp = ""
+        if provider == 'gemini':
+            resp = model.generate_content(prompt)
+            text_resp = resp.text
+        else:
+            resp = client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.7
+            )
+            text_resp = resp.choices[0].message.content
         
         edits = clean_json_text(text_resp)
         if not edits or not isinstance(edits, list):
@@ -367,8 +415,15 @@ def generate_dataset():
         file_lock = manager.Lock()
         
         # Keys Iteratore
+        # Keys Iteratore
         keys_count = len(API_KEYS)
-        print(f"🔑 API Keys disponibili: {keys_count}")
+        
+        # Se siamo in locale, forziamo 1 worker per non intasare la GPU/CPU
+        if PROVIDER == 'local':
+            keys_count = 1
+            print(f"🖥️  Mode: LOCAL LLM (Single Worker)")
+        else:
+            print(f"🔑 API Keys disponibili: {keys_count}")
         
         # 2. Generate HTML
         print("\n🚀 Generazione HTML...")

@@ -63,10 +63,10 @@ Buffer size aumentato per non metterci una vita.
 `
 
 
-py 7_clean_file.py 1 --buffer-size 10_000
+py 7_clean_file.py 3 --buffer-size 10_000
 
 
-py 8_add_node_info.py 1
+py 8_add_node_info.py 3
 
 
 << `
@@ -87,14 +87,9 @@ py 11_embed_trusted_sources.py
 << `
 -----------------------------------------------------------------------------------
 FASE TRAINING
-Addestriamo i modelli. 
-Falli entrambi così il giudice (script 202) 
-può scegliere quello che gli pare (di base preferisce il neurale).
+Addestriamo il multi layer perceptron.
 -----------------------------------------------------------------------------------
 `
-
-
-py 12_train_binary_classifier.py
 
 
 py 13_train_neural_classifier.py

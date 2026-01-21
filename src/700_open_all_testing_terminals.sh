@@ -1,8 +1,7 @@
 #!/bin/zsh
 
-
-
 scripts=(
+    "199_reset_kafka.py"
     "200_stream_processor.py"
     "201_ai_judge_gemini.py"
     "202_neural_judge.py"

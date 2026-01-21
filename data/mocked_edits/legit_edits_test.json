@@ -1,0 +1,282 @@
+[
+    {
+        "id": "bf6a0189-a749-4e85-8269-69cc2fc0565b",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "User1",
+        "comment": "Correzione refuso 'rif'",
+        "original_text": "rif",
+        "new_text": "rifrattometro",
+        "timestamp": 1768999362,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "082bb45a-b950-450a-b9a9-806eb7fa730a",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "anche se è applicabile a qualsiasi materiale",
+        "new_text": "anche se è applicabile a qualsiasi materiale,",
+        "timestamp": 1768999362,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "75d2e12a-aca1-4bad-9390-588a12d71f60",
+        "type": "edit",
+        "title": "Prostatite",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ciononostante' -> 'ciononostante'",
+        "original_text": "ciononostante",
+        "new_text": "ciononostante",
+        "timestamp": 1768999366,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Prostatite"
+        }
+    },
+    {
+        "id": "d57cde46-3ab8-42dd-b5a5-cce68eb8c099",
+        "type": "edit",
+        "title": "Prostatite",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "1999 ha emanato un nuovo sistema di classificazione.",
+        "new_text": "1999, ha emanato un nuovo sistema di classificazione.",
+        "timestamp": 1768999366,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Prostatite"
+        }
+    },
+    {
+        "id": "760b058c-f324-4c6e-ba67-e1279602362a",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "User1",
+        "comment": "Correzione refuso: 'percentua' -> 'percentuale'",
+        "original_text": "percentua",
+        "new_text": "percentuale",
+        "timestamp": 1768999370,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "41728685-adbe-4fe3-b78e-d83401e3948f",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "2006 dai Minnesota Timberwolves",
+        "new_text": "2006 dai Minnesota Timberwolves,",
+        "timestamp": 1768999370,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "cd36541c-bf1a-4e28-ac70-720c2ae6514d",
+        "type": "edit",
+        "title": "Città diffusa",
+        "user": "User1",
+        "comment": "Correzione refuso: 'abitanti' mancante",
+        "original_text": "oltre i  abitanti",
+        "new_text": "oltre i 100.000 abitanti",
+        "timestamp": 1768999373,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Città_diffusa"
+        }
+    },
+    {
+        "id": "0135df77-72a9-4b2b-9144-5b177bdd4a40",
+        "type": "edit",
+        "title": "Città diffusa",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "urbana tra gli effetti",
+        "new_text": "urbana, tra gli effetti",
+        "timestamp": 1768999373,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Città_diffusa"
+        }
+    },
+    {
+        "id": "d8e76dbc-94da-4294-8d3e-4de02e3d829e",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo il nome",
+        "original_text": "È stata la moglie di Ranko Žeravica.",
+        "new_text": "È stata la moglie di Ranko Žeravica,.",
+        "timestamp": 1768999378,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "bc055bca-eb22-481a-bb72-fde90891f652",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "User2",
+        "comment": "Aggiunta la parola 'nazionale'",
+        "original_text": "Con la  ha disputato due edizioni dei Campionati europei (1962, 1966).",
+        "new_text": "Con la nazionale ha disputato due edizioni dei Campionati europei (1962, 1966).",
+        "timestamp": 1768999378,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "da466f13-5fe2-4845-8566-22b3535577fd",
+        "type": "edit",
+        "title": "Miloš Paravinja",
+        "user": "User1",
+        "comment": "Aggiunta punteggiatura mancante",
+        "original_text": "Union Olimpija: 1997-98, 1998-99, 2000-01\nKrka Novo mesto: 2002-03",
+        "new_text": "Union Olimpija: 1997-98, 1998-99, 2000-01.\nKrka Novo mesto: 2002-03.",
+        "timestamp": 1768999383,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Miloš_Paravinja"
+        }
+    },
+    {
+        "id": "28b3de64-d4f1-4c6c-882b-66ebb16f550c",
+        "type": "edit",
+        "title": "Miloš Paravinja",
+        "user": "User2",
+        "comment": "Uniforma la formattazione degli anni",
+        "original_text": "Union Olimpija: 1998, 1999, 2000, 2001",
+        "new_text": "Union Olimpija: 1998-1999, 2000-2001",
+        "timestamp": 1768999383,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Miloš_Paravinja"
+        }
+    },
+    {
+        "id": "bb72b9c4-48df-447d-9cad-1f1271ee9f56",
+        "type": "edit",
+        "title": "Tonnarella",
+        "user": "User1",
+        "comment": "Correzione refuso: 'km' senza punto",
+        "original_text": "4,5 km",
+        "new_text": "4,5 km",
+        "timestamp": 1768999388,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tonnarella"
+        }
+    },
+    {
+        "id": "c7ba7089-6002-4ff3-9dc9-2877ab4a5975",
+        "type": "edit",
+        "title": "Tonnarella",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Successivamente, dopo anche la demolizione",
+        "new_text": "Successivamente, dopo la demolizione",
+        "timestamp": 1768999388,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Tonnarella"
+        }
+    },
+    {
+        "id": "0a44a77e-440a-4ae7-adc1-c975901a6a52",
+        "type": "edit",
+        "title": "Moshe Mizrahi",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con  ha disputato",
+        "new_text": "Con ha disputato",
+        "timestamp": 1768999391,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Moshe_Mizrahi"
+        }
+    },
+    {
+        "id": "5dcc9080-fa5d-4a2a-91e6-48292780ecb4",
+        "type": "edit",
+        "title": "Moshe Mizrahi",
+        "user": "User2",
+        "comment": "Aggiunta parentesi all'anno",
+        "original_text": "2001, 2003, 2005, 2009).",
+        "new_text": "2001, 2003, 2005, 2009).",
+        "timestamp": 1768999391,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Moshe_Mizrahi"
+        }
+    },
+    {
+        "id": "c0d54e32-dbcf-4701-afbd-763ce90d69bf",
+        "type": "edit",
+        "title": "Saint Thomas Basket Le Havre",
+        "user": "User1",
+        "comment": "Correzione refuso: 'Nationale' con iniziale maiuscola",
+        "original_text": "Nationale.",
+        "new_text": "Nationale.",
+        "timestamp": 1768999395,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Saint_Thomas_Basket_Le_Havre"
+        }
+    },
+    {
+        "id": "3f3676ab-4a5d-43f6-bf20-c7903fc4f778",
+        "type": "edit",
+        "title": "Saint Thomas Basket Le Havre",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "1959-1960in",
+        "new_text": "1959-1960 in",
+        "timestamp": 1768999395,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Saint_Thomas_Basket_Le_Havre"
+        }
+    },
+    {
+        "id": "87b4fcc4-2fb3-4c1b-8b84-3a6cb2001d7a",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "con la",
+        "new_text": "alle",
+        "timestamp": 1768999398,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    },
+    {
+        "id": "a30740e7-bfe1-4396-aaf6-80d37c9d7361",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "User2",
+        "comment": "Aggiunta di un punto alla fine della frase",
+        "original_text": "Collegamenti esterni",
+        "new_text": "Collegamenti esterni.",
+        "timestamp": 1768999398,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    }
+]

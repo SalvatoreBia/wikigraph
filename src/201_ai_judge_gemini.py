@@ -146,6 +146,9 @@ def main():
     # Reset risultati all'avvio
     reset_results()
     
+    # Traccia ID già processati per evitare duplicati
+    processed_ids = set()
+    
     print("--- AI JUDGE AVVIATO (Il Giudice) ---")
 
     if not API_KEYS:
@@ -167,6 +170,15 @@ def main():
 
     for message in consumer:
         event = message.value
+        
+        # Deduplicazione: salta eventi già processati
+        event_id = event.get('id') or event.get('meta', {}).get('id')
+        if event_id and event_id in processed_ids:
+            print(f"⏭️ Skip duplicato: {event_id[:8]}...")
+            continue
+        if event_id:
+            processed_ids.add(event_id)
+        
         comment = event['comment']
         user = event['user']
         original_text = event.get('original_text', '')

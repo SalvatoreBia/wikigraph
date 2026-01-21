@@ -65,15 +65,16 @@ def main():
         
         print(f"📝 Edit ricevuto (Comm {comm_id}). Conteggio attuale: {current_count}/{ALERT_THRESHOLD}")
 
-        if current_count == ALERT_THRESHOLD:
-            print(f"🚨 SOGLIA RAGGIUNTA per Community {comm_id}! Inoltro storico buffer all'AI...")
-            for old_event in window_buffer[comm_id]:
-                producer.send(TOPIC_OUT_JUDGE, value=old_event)
-            producer.flush()
-            
-        elif current_count > ALERT_THRESHOLD:
-            print(f"🚨 CLUSTER ANCORA ATTIVO (Comm {comm_id}). Inoltro immediato edit #{current_count} all'AI.")
-            producer.send(TOPIC_OUT_JUDGE, value=event)
+        if current_count >= ALERT_THRESHOLD:
+            if current_count == ALERT_THRESHOLD:
+                print(f"🚨 SOGLIA RAGGIUNTA per Community {comm_id}! Inoltro storico buffer all'AI...")
+                # Invia tutti gli eventi accumulati
+                for old_event in window_buffer[comm_id]:
+                    producer.send(TOPIC_OUT_JUDGE, value=old_event)
+            else:
+                print(f"🚨 CLUSTER ANCORA ATTIVO (Comm {comm_id}). Inoltro immediato edit #{current_count} all'AI.")
+                # Invia solo l'ultimo evento (gli altri sono già stati inviati)
+                producer.send(TOPIC_OUT_JUDGE, value=event)
             producer.flush()
         
 

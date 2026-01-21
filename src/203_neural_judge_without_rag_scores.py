@@ -197,6 +197,9 @@ def main():
     # Reset risultati all'avvio
     reset_results()
     
+    # Traccia ID già processati per evitare duplicati
+    processed_ids = set()
+    
     print("=" * 60)
     print("🧠 NEURAL JUDGE (NO RAG) - Real-time Classification")
     print("=" * 60)
@@ -222,6 +225,15 @@ def main():
     try:
         for message in consumer:
             event = message.value
+            
+            # Deduplicazione: salta eventi già processati
+            event_id = event.get('id') or event.get('meta', {}).get('id')
+            if event_id and event_id in processed_ids:
+                print(f"⏭️ Skip duplicato: {event_id[:8] if isinstance(event_id, str) else event_id}...")
+                continue
+            if event_id:
+                processed_ids.add(event_id)
+            
             comment = event.get('comment', '')
             user = event.get('user', 'Unknown')
             is_vandalism_truth = event.get('is_vandalism', None)

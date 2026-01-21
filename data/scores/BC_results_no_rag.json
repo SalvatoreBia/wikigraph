@@ -8,8 +8,17 @@
             "correct": false,
             "confidence": 0.13459567725658417,
             "time_sec": 0.18240022659301758
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "fix nome",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.11570567637681961,
+            "time_sec": 0.20854854583740234
         }
     ],
     "accuracy": 0.0,
-    "avg_time": 0.18240022659301758
+    "avg_time": 0.19547438621520996
 }

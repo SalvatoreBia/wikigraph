@@ -1,0 +1,1402 @@
+[
+    {
+        "id": "314a0d8e-67ed-4992-90ad-731fecaab012",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "User1",
+        "comment": "Correzione refuso 'sfoca'",
+        "original_text": "Si sfoca ora impercetti",
+        "new_text": "Si sfoca ora impercettibilmente",
+        "timestamp": 1769001329,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "35a0201b-0dd8-4021-b24f-389e6bf5574b",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "e coperto da un vetrino coprioggetti quindi si mette a fuoco il campione.",
+        "new_text": "e coperto da un vetrino coprioggetti, quindi si mette a fuoco il campione.",
+        "timestamp": 1769001329,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "d43375aa-0554-4b05-99dd-a7da7af3993b",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ed' -> 'e'",
+        "original_text": "ed una percentuale del 6",
+        "new_text": "e una percentuale del 6",
+        "timestamp": 1769001334,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "36f85408-d753-4ea0-abd1-33e758446e4b",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "nell'ultimo anno ebbe una media di 20,2 punti a partita",
+        "new_text": "nell'ultimo anno, ebbe una media di 20,2 punti a partita",
+        "timestamp": 1769001334,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "0313c95c-2bd4-474a-9b2f-bbfa20ca0b93",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo il nome",
+        "original_text": "È stata la moglie di Ranko Žeravica.",
+        "new_text": "È stata la moglie di Ranko Žeravica,.",
+        "timestamp": 1769001342,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "1713b7e3-7085-4076-b2cf-b39a48e5346d",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "User2",
+        "comment": "Aggiunta la parola 'nazionale'",
+        "original_text": "Con la  ha disputato due edizioni dei Campionati europei (1962, 1966).",
+        "new_text": "Con la nazionale ha disputato due edizioni dei Campionati europei (1962, 1966).",
+        "timestamp": 1769001342,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "69374e2f-814f-4efa-aa66-df9ef5d660cd",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "con la",
+        "new_text": "alle",
+        "timestamp": 1769001347,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    },
+    {
+        "id": "65b787af-dcb0-4174-9f51-25e53730a89b",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "User2",
+        "comment": "Aggiunta di un punto alla fine della frase",
+        "original_text": "Collegamenti esterni",
+        "new_text": "Collegamenti esterni.",
+        "timestamp": 1769001347,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    },
+    {
+        "id": "463d7dd5-916b-4663-9cf5-fbe455219951",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XXXIII Olimpiade - Torneo maschile",
+        "user": "User1",
+        "comment": "Correzione refuso 'girone' -> 'gironi'",
+        "original_text": "di ogni girone",
+        "new_text": "di ogni gironi",
+        "timestamp": 1769001353,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XXXIII_Olimpiade___Torneo_maschile"
+        }
+    },
+    {
+        "id": "74567285-9633-4f69-90e2-430fbb4a6440",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XXXIII Olimpiade - Torneo maschile",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Le squadre qualificate sono state divise in quattro fasce:",
+        "new_text": "Le squadre qualificate sono state divise in quattro fasce: ",
+        "timestamp": 1769001353,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XXXIII_Olimpiade___Torneo_maschile"
+        }
+    },
+    {
+        "id": "784f3a71-5a93-4665-93c5-2945a9de6081",
+        "type": "edit",
+        "title": "Chris Roberts",
+        "user": "User1",
+        "comment": "Correzione refuso 'referto'",
+        "original_text": "mettendo referto 15 punti.",
+        "new_text": "mettendo a referto 15 punti.",
+        "timestamp": 1769001363,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chris_Roberts"
+        }
+    },
+    {
+        "id": "1d406eb8-4a0b-43d5-b1ea-2dd945874dff",
+        "type": "edit",
+        "title": "Chris Roberts",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Il 5 luglio 2018 firma con",
+        "new_text": "Il 5 luglio 2018, firma con",
+        "timestamp": 1769001363,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chris_Roberts"
+        }
+    },
+    {
+        "id": "48c01b21-7cce-45e2-9394-346ad550f9db",
+        "type": "edit",
+        "title": "Euroleague Basketball 2012-2013 - Regular season",
+        "user": "User1",
+        "comment": "Correzione refuso: 'P.ti' -> 'Punti'",
+        "original_text": "SquadraP.tiGVPPFPSDP",
+        "new_text": "SquadraPuntiGVPPFPSDP",
+        "timestamp": 1769001369,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Euroleague_Basketball_2012_2013___Regular_season"
+        }
+    },
+    {
+        "id": "764b1d21-6312-4b17-9aaf-3ddfd54ef4b5",
+        "type": "edit",
+        "title": "Euroleague Basketball 2012-2013 - Regular season",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura: 'Fenerbahçe Ülker101055727738-11' -> 'Fenerbahçe Ülker 10 10 5 5 727 738 -11'",
+        "original_text": "Fenerbahçe Ülker101055727738-11",
+        "new_text": "Fenerbahçe Ülker 10 10 5 5 727 738 -11",
+        "timestamp": 1769001369,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Euroleague_Basketball_2012_2013___Regular_season"
+        }
+    },
+    {
+        "id": "c4b0868a-8f25-446c-af8a-c6edf0c77160",
+        "type": "edit",
+        "title": "Taccjana Lichtarovič",
+        "user": "EditorA",
+        "comment": "Correzione refuso: 'Con la' -> 'Con'",
+        "original_text": "Con la ha disputato",
+        "new_text": "Con ha disputato",
+        "timestamp": 1769001380,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Taccjana_Lichtarovič"
+        }
+    },
+    {
+        "id": "36fb0862-53b0-4d8f-9dc1-47eaff46b1cc",
+        "type": "edit",
+        "title": "Taccjana Lichtarovič",
+        "user": "EditorB",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "2019, 2021)",
+        "new_text": "2019, 2021).",
+        "timestamp": 1769001380,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Taccjana_Lichtarovič"
+        }
+    },
+    {
+        "id": "81ee1934-0306-4984-8a8a-cef6b0ed5398",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships 1970",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo 'cemento'",
+        "original_text": "cemento.",
+        "new_text": "cemento,.",
+        "timestamp": 1769001387,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships_1970"
+        }
+    },
+    {
+        "id": "0d2b6f34-abc7-4c3d-aaae-25caaf39ce0d",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships 1970",
+        "user": "User2",
+        "comment": "Correzione punteggio finale singolare maschile",
+        "original_text": "6–2",
+        "new_text": "6–2.",
+        "timestamp": 1769001387,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships_1970"
+        }
+    },
+    {
+        "id": "7cf364d2-331b-4572-9bf1-1d464cc6db5a",
+        "type": "edit",
+        "title": "A.J. Ogilvy",
+        "user": "BasketEditor",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con l' ha disputato",
+        "new_text": "Con lui ha disputato",
+        "timestamp": 1769001396,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_J__Ogilvy"
+        }
+    },
+    {
+        "id": "3567b0bf-c3a9-4345-9688-e566469ee30f",
+        "type": "edit",
+        "title": "A.J. Ogilvy",
+        "user": "WikiCleaner",
+        "comment": "Miglioramento formattazione palmarès",
+        "original_text": "Brose Bamberg: 2012-13\n\nBrose Bamberg: 2012",
+        "new_text": "Brose Bamberg: 2012-2013\nBrose Bamberg: 2012",
+        "timestamp": 1769001396,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_J__Ogilvy"
+        }
+    },
+    {
+        "id": "86248e7b-68be-4bfc-879d-982301cb33a0",
+        "type": "edit",
+        "title": "Indiana Pacers 1973-1974",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Nei play-off vinsero la semifinale di division con i San Antonio Spurs (4-3), perdendo poi la finale di division con gli Utah Stars (4-3).",
+        "new_text": "Nei play-off vinsero la semifinale di divisione contro i San Antonio Spurs (4-3), perdendo poi la finale di divisione contro gli Utah Stars (4-3).",
+        "timestamp": 1769001402,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Indiana_Pacers_1973_1974"
+        }
+    },
+    {
+        "id": "6fdb68b7-b8b6-40ce-9af6-e290afb5085a",
+        "type": "edit",
+        "title": "Indiana Pacers 1973-1974",
+        "user": "User2",
+        "comment": "Miglioramento leggibilità",
+        "original_text": "Staff tecnico \nAllenatore: Slick Leonard\nPreparatore atletico: David Craig",
+        "new_text": "Staff tecnico:\nAllenatore: Slick Leonard\nPreparatore atletico: David Craig",
+        "timestamp": 1769001402,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Indiana_Pacers_1973_1974"
+        }
+    },
+    {
+        "id": "30ae06c3-80c1-4e0c-b54d-65b2a3b6a189",
+        "type": "edit",
+        "title": "Run and Gun",
+        "user": "User1",
+        "comment": "Correzione refuso: 'scarso' -> 'scarsa'",
+        "original_text": "lo scarso successo del prodotto",
+        "new_text": "la scarsa successo del prodotto",
+        "timestamp": 1769001408,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Run_and_Gun"
+        }
+    },
+    {
+        "id": "1afdcd2c-1fbb-45a5-933e-e891a9fd3eae",
+        "type": "edit",
+        "title": "Run and Gun",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Run and Gun si contrappone all'irreale spettacolarità",
+        "new_text": "Run and Gun si contrappone all'irreale spettacolarità,",
+        "timestamp": 1769001408,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Run_and_Gun"
+        }
+    },
+    {
+        "id": "ec464141-ecd3-4529-9b25-611db70c3e12",
+        "type": "edit",
+        "title": "National Hockey League 1999-2000",
+        "user": "User1",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Hockey League.",
+        "new_text": "Hockey League",
+        "timestamp": 1769001410,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/National_Hockey_League_1999_2000"
+        }
+    },
+    {
+        "id": "70133859-a15a-40c6-b41b-64ef071c71e5",
+        "type": "edit",
+        "title": "National Hockey League 1999-2000",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "il 6 febbraio 2000, serata durante la quale",
+        "new_text": "il 6 febbraio 2000, e durante la serata",
+        "timestamp": 1769001410,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/National_Hockey_League_1999_2000"
+        }
+    },
+    {
+        "id": "ee205857-8c07-4b3a-a9d1-2d692d163d6e",
+        "type": "edit",
+        "title": "Derek Willis",
+        "user": "User1",
+        "comment": "Fix typo in Eurolega stats",
+        "original_text": "44\"",
+        "new_text": "44.0",
+        "timestamp": 1769001417,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Derek_Willis"
+        }
+    },
+    {
+        "id": "5d8316cf-33fc-4a4c-a8e2-11285816209e",
+        "type": "edit",
+        "title": "Derek Willis",
+        "user": "User2",
+        "comment": "Add missing decimal point for readability",
+        "original_text": "80,2",
+        "new_text": "80.2",
+        "timestamp": 1769001417,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Derek_Willis"
+        }
+    },
+    {
+        "id": "9496fe4d-e732-48f3-9777-1578f023bd9a",
+        "type": "edit",
+        "title": "W.S. Merwin",
+        "user": "User1",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "Merw",
+        "new_text": "Merwin",
+        "timestamp": 1769001418,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/W_S__Merwin"
+        }
+    },
+    {
+        "id": "215b8e7d-d52f-4d18-8a5e-62b931eb3ffe",
+        "type": "edit",
+        "title": "W.S. Merwin",
+        "user": "User2",
+        "comment": "Aggiunta virgola per chiarezza",
+        "original_text": "Pennsylvania. I suoi genitori",
+        "new_text": "Pennsylvania, i suoi genitori",
+        "timestamp": 1769001418,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/W_S__Merwin"
+        }
+    },
+    {
+        "id": "a5fd7239-1336-40c4-97a1-4822f7f16aa4",
+        "type": "edit",
+        "title": "Stasys Stonkus",
+        "user": "User1",
+        "comment": "Correzione punteggiatura: aggiunta virgola dopo 'Con l'",
+        "original_text": "Con l' ha disputato",
+        "new_text": "Con l', ha disputato",
+        "timestamp": 1769001422,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Stasys_Stonkus"
+        }
+    },
+    {
+        "id": "3add3462-2417-471e-99b4-0454d8f22101",
+        "type": "edit",
+        "title": "Stasys Stonkus",
+        "user": "User2",
+        "comment": "Miglioramento leggibilità: aggiunta 'partecipato' per chiarezza",
+        "original_text": "ha disputato due edizioni",
+        "new_text": "ha partecipato a due edizioni",
+        "timestamp": 1769001422,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Stasys_Stonkus"
+        }
+    },
+    {
+        "id": "4535941c-0391-4b86-8918-10383f12a0fa",
+        "type": "edit",
+        "title": "Infinite Jest",
+        "user": "User1",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "note (se ne contano 388",
+        "new_text": "note (se ne contano 388,",
+        "timestamp": 1769001426,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Infinite_Jest"
+        }
+    },
+    {
+        "id": "69f34c24-3f5a-4b7d-b81b-10e5f2093433",
+        "type": "edit",
+        "title": "Infinite Jest",
+        "user": "User2",
+        "comment": "Correzione di un refuso: 'perlopiù' -> 'per lo più'",
+        "original_text": "Ambientato perlopiù a Boston",
+        "new_text": "Ambientato per lo più a Boston",
+        "timestamp": 1769001426,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Infinite_Jest"
+        }
+    },
+    {
+        "id": "51a36c57-2d4f-4878-b2ea-22a4f0bb2f06",
+        "type": "edit",
+        "title": "Algirdas Lauritėnas",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con l' ha disputato",
+        "new_text": "Con l'ha disputato",
+        "timestamp": 1769001430,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Algirdas_Lauritėnas"
+        }
+    },
+    {
+        "id": "760fae3d-8e55-44af-8749-5960e4a245b2",
+        "type": "edit",
+        "title": "Algirdas Lauritėnas",
+        "user": "User2",
+        "comment": "Aggiunta spazio dopo il punto",
+        "original_text": "Collegamenti esterni",
+        "new_text": "Collegamenti esterni.",
+        "timestamp": 1769001430,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Algirdas_Lauritėnas"
+        }
+    },
+    {
+        "id": "2f492235-00e6-4159-8092-cf81494585aa",
+        "type": "edit",
+        "title": "James Henry Emerton",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ritornato' -> 'ritornò'",
+        "original_text": "Nel 1877, ritornato a Salem,",
+        "new_text": "Nel 1877, ritornò a Salem,",
+        "timestamp": 1769001433,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/James_Henry_Emerton"
+        }
+    },
+    {
+        "id": "aed50553-ad98-4043-8134-bc9420874ef9",
+        "type": "edit",
+        "title": "James Henry Emerton",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Grazie alla sua precisa e minuziosa abilità di raccoglitore",
+        "new_text": "Grazie alla sua precisa e minuziosa abilità di raccoglitore,",
+        "timestamp": 1769001433,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/James_Henry_Emerton"
+        }
+    },
+    {
+        "id": "50de1e40-66b5-4010-a26b-6c18a11ae56b",
+        "type": "edit",
+        "title": "Oleksandra Prystupa",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con l' ha disputato due edizioni dei Campionati europei (2013, 2015).",
+        "new_text": "Con la nazionale ha disputato due edizioni dei Campionati europei (2013, 2015).",
+        "timestamp": 1769001437,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Oleksandra_Prystupa"
+        }
+    },
+    {
+        "id": "cecc0587-71e9-4923-9682-c97e6b933a8d",
+        "type": "edit",
+        "title": "Oleksandra Prystupa",
+        "user": "User2",
+        "comment": "Miglioramento leggibilità",
+        "original_text": "Nel 2009, dopo essersi messa in mostra negli europei under-20, si trasferisce in Italia al Club Atletico Faenza.",
+        "new_text": "Nel 2009, dopo essersi messa in mostra agli Europei Under-20, si trasferisce in Italia al Club Atletico Faenza.",
+        "timestamp": 1769001437,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Oleksandra_Prystupa"
+        }
+    },
+    {
+        "id": "e4497a41-6c0b-417a-84f8-4ad9dde06694",
+        "type": "edit",
+        "title": "Farhiya Abdi",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con la  ha disputato i Campionati europei del 2019.",
+        "new_text": "Con la squadra ha disputato i Campionati europei del 2019.",
+        "timestamp": 1769001441,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Farhiya_Abdi"
+        }
+    },
+    {
+        "id": "7051bdb0-022f-43cc-ba59-107796edb2a0",
+        "type": "edit",
+        "title": "Farhiya Abdi",
+        "user": "User2",
+        "comment": "Aggiunta spazio dopo il punto",
+        "original_text": "2012 (13ª scelta assoluta).",
+        "new_text": "2012 (13ª scelta assoluta). ",
+        "timestamp": 1769001441,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Farhiya_Abdi"
+        }
+    },
+    {
+        "id": "dacf0b28-a2de-4c68-90eb-e31922eb0401",
+        "type": "edit",
+        "title": "Reggie Williams (cestista 1986)",
+        "user": "User1",
+        "comment": "Correzione refuso: 'franchigia' -> 'franchigia'",
+        "original_text": "franchigia della NBA.",
+        "new_text": "franchigia NBA.",
+        "timestamp": 1769001442,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Reggie_Williams__cestista_1986_"
+        }
+    },
+    {
+        "id": "b186960d-a276-41fd-aa42-796ad085d64b",
+        "type": "edit",
+        "title": "Reggie Williams (cestista 1986)",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "2015 firma un contratto di 10 giorni con i San Antonio Spurs.",
+        "new_text": "2015, firma un contratto di 10 giorni con i San Antonio Spurs.",
+        "timestamp": 1769001442,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Reggie_Williams__cestista_1986_"
+        }
+    },
+    {
+        "id": "5807e1be-0bf4-4b6d-8d52-cffc42a6f266",
+        "type": "edit",
+        "title": "Qualificazioni al Campionato mondiale maschile di pallacanestro 2019",
+        "user": "User1",
+        "comment": "Correzione refuso: 'nazione ospitante' ripetuto",
+        "original_text": "Nazione ospitante  7 agosto 2015",
+        "new_text": "Nazione ospitante (Cina) 7 agosto 2015",
+        "timestamp": 1769001445,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_Campionato_mondiale_maschile_di_pallacanestro_2019"
+        }
+    },
+    {
+        "id": "49b0e1ac-dddd-41cd-81f4-b630addbad68",
+        "type": "edit",
+        "title": "Qualificazioni al Campionato mondiale maschile di pallacanestro 2019",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura per chiarezza",
+        "original_text": "Top 3 Gruppo L Europa  16 settembre 2018",
+        "new_text": "Top 3 Gruppo L Europa, 16 settembre 2018",
+        "timestamp": 1769001445,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Qualificazioni_al_Campionato_mondiale_maschile_di_pallacanestro_2019"
+        }
+    },
+    {
+        "id": "f7828852-4b22-44d2-b284-73515d3094dd",
+        "type": "edit",
+        "title": "Jason Richardson (cestista)",
+        "user": "User1",
+        "comment": "Correzione refuso: 'edizioni' invece di 'edizione'",
+        "original_text": "per due edizioni consecutive.",
+        "new_text": "per due edizioni consecutive",
+        "timestamp": 1769001450,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jason_Richardson__cestista_"
+        }
+    },
+    {
+        "id": "f4b5521f-fd86-4c5a-822b-424155f11b75",
+        "type": "edit",
+        "title": "Jason Richardson (cestista)",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Con il passare delle stagioni, migliora sempre di più anche gli altri fondamentali del basket",
+        "new_text": "Con il passare delle stagioni, migliora sempre di più anche gli altri fondamentali del basket.",
+        "timestamp": 1769001450,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Jason_Richardson__cestista_"
+        }
+    },
+    {
+        "id": "f72deeff-7af3-478e-a79a-9fe314db8809",
+        "type": "edit",
+        "title": "Persone di nome Angela",
+        "user": "User1",
+        "comment": "Correzione punteggiatura: aggiunta virgola dopo il nome",
+        "original_text": "Angela Aames, attrice statunitense (Pierre, n. 1956 - Los Angeles, † 1",
+        "new_text": "Angela Aames, attrice statunitense (Pierre, n. 1956 - Los Angeles, † 1",
+        "timestamp": 1769001450,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Persone_di_nome_Angela"
+        }
+    },
+    {
+        "id": "b7821a69-dfa3-4346-acfe-36f4693a31b8",
+        "type": "edit",
+        "title": "Persone di nome Angela",
+        "user": "User2",
+        "comment": "Correzione spaziatura: rimossa la spaziatura superflua prima del simbolo †",
+        "original_text": "Angela Madsen, atleta paralimpica statunitense (Xenia, n. 1960 - Oceano Pacifico, † 2020)",
+        "new_text": "Angela Madsen, atleta paralimpica statunitense (Xenia, n. 1960 - Oceano Pacifico, † 2020)",
+        "timestamp": 1769001450,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Persone_di_nome_Angela"
+        }
+    },
+    {
+        "id": "c3326bb5-c24e-41b6-ae32-987c0699616d",
+        "type": "edit",
+        "title": "Iva Slišković",
+        "user": "User1",
+        "comment": "Correzione refuso 'Con'",
+        "original_text": "Con la",
+        "new_text": "Con",
+        "timestamp": 1769001451,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Iva_Slišković"
+        }
+    },
+    {
+        "id": "99bca5fa-a85f-42dd-bbe8-50e83a4cbe41",
+        "type": "edit",
+        "title": "Iva Slišković",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura per chiarezza",
+        "original_text": "2015).",
+        "new_text": "2015). ",
+        "timestamp": 1769001451,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Iva_Slišković"
+        }
+    },
+    {
+        "id": "c50df574-8b85-4ac0-8994-d3c98bb1a898",
+        "type": "edit",
+        "title": "William Morris Hunt",
+        "user": "User1",
+        "comment": "Correzione punteggiatura: aggiunta virgola dopo 'Europa'",
+        "original_text": "Europa. E così fu.",
+        "new_text": "Europa, e così fu.",
+        "timestamp": 1769001455,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/William_Morris_Hunt"
+        }
+    },
+    {
+        "id": "742ec334-21e3-4ba4-bbd0-ca2a8cea85cf",
+        "type": "edit",
+        "title": "William Morris Hunt",
+        "user": "User2",
+        "comment": "Miglioramento leggibilità: aggiunta 'e' congiuntiva prima di 'acquistò'",
+        "original_text": "assimilò ed acquistò opere",
+        "new_text": "assimilò e acquistò opere",
+        "timestamp": 1769001455,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/William_Morris_Hunt"
+        }
+    },
+    {
+        "id": "d3d96ad6-40b5-444d-873e-f1d536b8c4a1",
+        "type": "edit",
+        "title": "Angie Radanovich",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con il",
+        "new_text": "Con il ",
+        "timestamp": 1769001455,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Angie_Radanovich"
+        }
+    },
+    {
+        "id": "446f0f55-c8a5-4f72-9478-cf6923d44c54",
+        "type": "edit",
+        "title": "Angie Radanovich",
+        "user": "User2",
+        "comment": "Aggiunta di un punto alla fine della frase",
+        "original_text": "È stata introdotta nella NDSS Athletics Hall of Fame",
+        "new_text": "È stata introdotta nella NDSS Athletics Hall of Fame.",
+        "timestamp": 1769001455,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Angie_Radanovich"
+        }
+    },
+    {
+        "id": "a95eaeda-f8be-46c0-9814-600f98544eb5",
+        "type": "edit",
+        "title": "Nazionale maschile di pallacanestro dello Yemen",
+        "user": "User1",
+        "comment": "Correzione di un errore di battitura",
+        "original_text": "egida",
+        "new_text": "egidia",
+        "timestamp": 1769001459,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Nazionale_maschile_di_pallacanestro_dello_Yemen"
+        }
+    },
+    {
+        "id": "a222c767-d4df-4d74-81d0-891f55171f05",
+        "type": "edit",
+        "title": "Nazionale maschile di pallacanestro dello Yemen",
+        "user": "User2",
+        "comment": "Aggiunta di un punto alla fine della frase introduttiva per migliorare la leggibilità.",
+        "original_text": "Yemen ed è posta sotto l'egidia della Federazione cestistica dello Yemen",
+        "new_text": "Yemen ed è posta sotto l'egidia della Federazione cestistica dello Yemen.",
+        "timestamp": 1769001459,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Nazionale_maschile_di_pallacanestro_dello_Yemen"
+        }
+    },
+    {
+        "id": "26cfde9c-1ead-455f-8a39-015313cb6227",
+        "type": "edit",
+        "title": "Carmen Bagiu",
+        "user": "User1",
+        "comment": "Correzione refuso 'Bucureṣti' in 'București'",
+        "original_text": "CSM Sportul Studentesc Bucureṣti",
+        "new_text": "CSM Sportul Studentesc București",
+        "timestamp": 1769001459,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Carmen_Bagiu"
+        }
+    },
+    {
+        "id": "64ecdb4d-0eef-4fa9-a86e-7d2300e77605",
+        "type": "edit",
+        "title": "Carmen Bagiu",
+        "user": "User2",
+        "comment": "Aggiunta virgola dopo '2007'",
+        "original_text": "(2005, 2007).",
+        "new_text": "(2005, 2007).",
+        "timestamp": 1769001459,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Carmen_Bagiu"
+        }
+    },
+    {
+        "id": "69eaec10-938f-4008-9bcd-1af676331f34",
+        "type": "edit",
+        "title": "Believe Tour",
+        "user": "User1",
+        "comment": "Correzione refuso: 'inizio' -> 'inizio il'",
+        "original_text": "inizio 9 marzo 2016.",
+        "new_text": "inizio il 9 marzo 2016.",
+        "timestamp": 1769001463,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Believe_Tour"
+        }
+    },
+    {
+        "id": "49f9d857-8380-4cd6-bc2d-a0b87a39ed5c",
+        "type": "edit",
+        "title": "Believe Tour",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità della lista artisti",
+        "original_text": "The Wanted (Nord America)",
+        "new_text": "The Wanted (Nord America),",
+        "timestamp": 1769001463,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Believe_Tour"
+        }
+    },
+    {
+        "id": "05c0e74e-cda2-46a2-9cb2-ce5db34e2f82",
+        "type": "edit",
+        "title": "Dita Krūmberga",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo l'altezza",
+        "original_text": "Alta 182 cm ha giocato",
+        "new_text": "Alta 182 cm, ha giocato",
+        "timestamp": 1769001464,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Dita_Krūmberga"
+        }
+    },
+    {
+        "id": "9246f0b5-817f-41d0-afef-6ff6b37ab036",
+        "type": "edit",
+        "title": "Dita Krūmberga",
+        "user": "User2",
+        "comment": "Correzione spazio dopo 'Con la'",
+        "original_text": "Con la  ha disputato",
+        "new_text": "Con la ha disputato",
+        "timestamp": 1769001464,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Dita_Krūmberga"
+        }
+    },
+    {
+        "id": "f36db098-1ce4-4ac3-b8e0-0a96791aecfb",
+        "type": "edit",
+        "title": "Zach Andrews",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Altri progetti",
+        "new_text": "Altri progetti\n",
+        "timestamp": 1769001468,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zach_Andrews"
+        }
+    },
+    {
+        "id": "32c64aca-1809-415f-9805-18dee02434fe",
+        "type": "edit",
+        "title": "Zach Andrews",
+        "user": "User2",
+        "comment": "Aggiunta interruzione di riga per chiarezza",
+        "original_text": "Collegamenti esterni",
+        "new_text": "Collegamenti esterni\n",
+        "timestamp": 1769001468,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zach_Andrews"
+        }
+    },
+    {
+        "id": "f08cf3e1-8e70-48a9-8b2a-cac9811b74d2",
+        "type": "edit",
+        "title": "Johannes Herber",
+        "user": "User1",
+        "comment": "Correzione ordine trofei",
+        "original_text": "Alba Berlino: 2007-08\n\nAlba Berlino: 2009\n\nAlba Berlino: 2008",
+        "new_text": "Alba Berlino: 2007-08\nAlba Berlino: 2008\nAlba Berlino: 2009",
+        "timestamp": 1769001469,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Johannes_Herber"
+        }
+    },
+    {
+        "id": "ad8fe171-7a5d-499d-a04f-c83231d16117",
+        "type": "edit",
+        "title": "Johannes Herber",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura",
+        "original_text": "Con la  ha disputato i Campionati mondiali del 2006 e due edizioni dei Campionati europei (2007, 2011).",
+        "new_text": "Con la, ha disputato i Campionati mondiali del 2006 e due edizioni dei Campionati europei (2007, 2011).",
+        "timestamp": 1769001469,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Johannes_Herber"
+        }
+    },
+    {
+        "id": "2049de03-8526-468b-af82-e81538bab1c2",
+        "type": "edit",
+        "title": "Brooklyn Kings",
+        "user": "User1",
+        "comment": "Correzione refuso: 'VP%' in 'Vitt/Perc'",
+        "original_text": "VP%",
+        "new_text": "Vitt/Perc",
+        "timestamp": 1769001472,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brooklyn_Kings"
+        }
+    },
+    {
+        "id": "9e8aef4e-137f-4bec-bf9d-aca8dc7174ae",
+        "type": "edit",
+        "title": "Brooklyn Kings",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura: virgola dopo '2006'",
+        "original_text": "2006U",
+        "new_text": "2006,",
+        "timestamp": 1769001472,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brooklyn_Kings"
+        }
+    },
+    {
+        "id": "4f771232-de72-49f4-ae3e-aef2baa943fa",
+        "type": "edit",
+        "title": "Aironi Basket Novara",
+        "user": "User1",
+        "comment": "Correzione refuso 'A2' in 'A1'",
+        "original_text": "società di A2",
+        "new_text": "società di A1",
+        "timestamp": 1769001475,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Aironi_Basket_Novara"
+        }
+    },
+    {
+        "id": "3e385c10-4d11-493c-914f-ca681635b6b0",
+        "type": "edit",
+        "title": "Aironi Basket Novara",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "B1 del Borgomanero",
+        "new_text": "B1, del Borgomanero",
+        "timestamp": 1769001475,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Aironi_Basket_Novara"
+        }
+    },
+    {
+        "id": "29cb2097-567f-46fe-93cd-84e4d742022a",
+        "type": "edit",
+        "title": "Los Angeles Lakers 2024-2025",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Il 24 giugno 2024, i Lakers hanno assunto J.J. Redick come nuovo allenatore, iniziando la stagione come campioni in carica della NBA Cup.",
+        "new_text": "Il 24 giugno 2024, i Lakers hanno assunto J.J. Redick come nuovo allenatore, iniziando la stagione come campioni in carica della NBA Cup.",
+        "timestamp": 1769001476,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Los_Angeles_Lakers_2024_2025"
+        }
+    },
+    {
+        "id": "5b45eecb-3e7f-4e88-a7dd-0ba8455c4664",
+        "type": "edit",
+        "title": "Los Angeles Lakers 2024-2025",
+        "user": "User2",
+        "comment": "Aggiunta virgola per chiarezza",
+        "original_text": "dopo che era stato annunciat",
+        "new_text": "dopo che era stato annunciato",
+        "timestamp": 1769001476,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Los_Angeles_Lakers_2024_2025"
+        }
+    },
+    {
+        "id": "2d7592c7-34f4-49b5-a0fe-010600b09a9f",
+        "type": "edit",
+        "title": "Trevor Cooney",
+        "user": "User1",
+        "comment": "Correzione refuso: 'align' ripetuto inutilmente",
+        "original_text": "| align=\"left\"|\n| 39 || 0 || 11,2 || 32,2 || 26,7 || 73,3 || 0,8 || 0,6 || 0,7 || 0,1 || 3,4",
+        "new_text": "| 39 || 0 || 11,2 || 32,2 || 26,7 || 73,3 || 0,8 || 0,6 || 0,7 || 0,1 || 3,4",
+        "timestamp": 1769001482,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Trevor_Cooney"
+        }
+    },
+    {
+        "id": "731a3c74-42e9-402f-bc1c-d09e658873b4",
+        "type": "edit",
+        "title": "Trevor Cooney",
+        "user": "User2",
+        "comment": "Aggiunta spaziatura per migliorare la leggibilità",
+        "original_text": "| style=\"text-align:center;\" colspan=\"2\"|Carriera",
+        "new_text": "| style=\"text-align:center;\" colspan=\"2\" | Carriera",
+        "timestamp": 1769001482,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Trevor_Cooney"
+        }
+    },
+    {
+        "id": "53a208ec-be66-4021-b1d4-221683ec99a2",
+        "type": "edit",
+        "title": "A.E. Achilleas Kaïmakliou",
+        "user": "User1",
+        "comment": "Correzione ortografica: Kaïmakliou -> Kaimakliou",
+        "original_text": "A.E. Achilleas Kaïmakliou",
+        "new_text": "A.E. Achilleas Kaimakliou",
+        "timestamp": 1769001482,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_E__Achilleas_Kaïmakliou"
+        }
+    },
+    {
+        "id": "faba7669-f260-4152-a64d-b4e6d258e6de",
+        "type": "edit",
+        "title": "A.E. Achilleas Kaïmakliou",
+        "user": "User2",
+        "comment": "Aggiunta di un punto alla fine della prima frase per migliorare la leggibilità.",
+        "original_text": "A.E. Achilleas Kaïmakliou è una società cestistica avente sede a Kaimakli (quartiere di Nicosia), a Cipro.",
+        "new_text": "A.E. Achilleas Kaïmakliou è una società cestistica avente sede a Kaimakli (quartiere di Nicosia), a Cipro.",
+        "timestamp": 1769001482,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_E__Achilleas_Kaïmakliou"
+        }
+    },
+    {
+        "id": "ab8181fb-038d-4632-8278-58927283f14a",
+        "type": "edit",
+        "title": "Marcus Vinicius Vieira de Sousa",
+        "user": "User1",
+        "comment": "Correzione punteggiatura",
+        "original_text": "Con il  ha disputato",
+        "new_text": "Con il Brasile ha disputato",
+        "timestamp": 1769001484,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Marcus_Vinicius_Vieira_de_Sousa"
+        }
+    },
+    {
+        "id": "62e35446-be57-4d70-846f-1fdd302194cb",
+        "type": "edit",
+        "title": "Marcus Vinicius Vieira de Sousa",
+        "user": "User2",
+        "comment": "Aggiunta punteggiatura mancante",
+        "original_text": "Campionato pa",
+        "new_text": "Campionato paulista.",
+        "timestamp": 1769001484,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Marcus_Vinicius_Vieira_de_Sousa"
+        }
+    },
+    {
+        "id": "472a0630-5ee9-4fdf-95fb-2b688299b3e6",
+        "type": "edit",
+        "title": "Marco Giuri",
+        "user": "User1",
+        "comment": "Correzione refuso 'a referto'",
+        "original_text": "a referto",
+        "new_text": "a referto.",
+        "timestamp": 1769001486,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Marco_Giuri"
+        }
+    },
+    {
+        "id": "f0674323-5415-4dbf-84d6-1349a320c7c8",
+        "type": "edit",
+        "title": "Marco Giuri",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "2010-11 con Potenza",
+        "new_text": "2010-11 con Potenza,",
+        "timestamp": 1769001486,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Marco_Giuri"
+        }
+    },
+    {
+        "id": "de5f51ce-f6b8-4015-87db-b93a803eadd2",
+        "type": "edit",
+        "title": "Fernanda Neves Beling",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo 'Con'",
+        "original_text": "Con il",
+        "new_text": "Con il,",
+        "timestamp": 1769001489,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fernanda_Neves_Beling"
+        }
+    },
+    {
+        "id": "44d70fad-1095-43c7-89e6-920ce8bdfeea",
+        "type": "edit",
+        "title": "Fernanda Neves Beling",
+        "user": "User2",
+        "comment": "Spazio dopo 'del'",
+        "original_text": "del 2010.",
+        "new_text": "del 2010 .",
+        "timestamp": 1769001489,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Fernanda_Neves_Beling"
+        }
+    },
+    {
+        "id": "03df8c6b-4dad-4e1e-8e48-e28a1efef6c3",
+        "type": "edit",
+        "title": "Rapolas Ivanauskas",
+        "user": "EditorA",
+        "comment": "Aggiunta punteggiatura mancante",
+        "original_text": "Il 17 agosto seguente si trasferisce al",
+        "new_text": "Il 17 agosto seguente si trasferisce ai",
+        "timestamp": 1769001493,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Rapolas_Ivanauskas"
+        }
+    },
+    {
+        "id": "bda7d41a-dd80-4802-ab01-3e58c6a1eb32",
+        "type": "edit",
+        "title": "Rapolas Ivanauskas",
+        "user": "EditorB",
+        "comment": "Correzione refuso",
+        "original_text": "il",
+        "new_text": "il ",
+        "timestamp": 1769001493,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Rapolas_Ivanauskas"
+        }
+    },
+    {
+        "id": "0b85f408-78e6-4ff7-bb7e-cd06490afd00",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships",
+        "user": "User1",
+        "comment": "Correzione refuso: 'da' -> 'e'",
+        "original_text": "e da insegnanti professionisti",
+        "new_text": "e insegnanti professionisti",
+        "timestamp": 1769001496,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships"
+        }
+    },
+    {
+        "id": "7de8cb3d-829c-4ee9-b837-3ad40346bd75",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Rye al Terrace Club",
+        "new_text": "Rye, al Terrace Club",
+        "timestamp": 1769001496,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships"
+        }
+    },
+    {
+        "id": "51beacbb-fa25-43c4-9751-d68ba2ef81ac",
+        "type": "edit",
+        "title": "Petra Štampalija",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo l'altezza",
+        "original_text": "Alta 188 cm giocava",
+        "new_text": "Alta 188 cm, giocava",
+        "timestamp": 1769001499,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Petra_Štampalija"
+        }
+    },
+    {
+        "id": "6a2a6f63-5181-4542-a6c2-5e15791cef22",
+        "type": "edit",
+        "title": "Petra Štampalija",
+        "user": "User2",
+        "comment": "Correzione refuso 'Con la '",
+        "original_text": "Con la  ha disputato",
+        "new_text": "Con la nazionale ha disputato",
+        "timestamp": 1769001499,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Petra_Štampalija"
+        }
+    },
+    {
+        "id": "30816d1c-ee97-49c8-8dbb-1552fddb2fd4",
+        "type": "edit",
+        "title": "Kelvin Cato",
+        "user": "User1",
+        "comment": "Correzione refuso: 'viaggiato' -> 'realizzato'",
+        "original_text": "Cato ha viaggiato a 6,2 punti",
+        "new_text": "Cato ha realizzato 6,2 punti",
+        "timestamp": 1769001502,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Kelvin_Cato"
+        }
+    },
+    {
+        "id": "e149930a-3e87-4fa7-927c-ceeacad5d4e8",
+        "type": "edit",
+        "title": "Kelvin Cato",
+        "user": "User2",
+        "comment": "Aggiunta virgola per chiarezza",
+        "original_text": "in cambio di Steve Francis Cuttino Mobley",
+        "new_text": "in cambio di Steve Francis, Cuttino Mobley",
+        "timestamp": 1769001502,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Kelvin_Cato"
+        }
+    },
+    {
+        "id": "e91fbe2d-db47-4edc-a752-cb72836af79e",
+        "type": "edit",
+        "title": "Compagnie aeree defunte degli Stati Uniti (A-C)",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ACA Aviation Corporation of the AmericasAlaskaAnchorage' -> 'ACA Aviation Corporation of the Americas, Anchorage'",
+        "original_text": "ACA Aviation Corporation of the AmericasAlaskaAnchorage",
+        "new_text": "ACA Aviation Corporation of the Americas, Anchorage",
+        "timestamp": 1769001506,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Compagnie_aeree_defunte_degli_Stati_Uniti__A_C_"
+        }
+    },
+    {
+        "id": "0aafd588-a8fb-4ca5-9288-17fe6b810d5d",
+        "type": "edit",
+        "title": "Compagnie aeree defunte degli Stati Uniti (A-C)",
+        "user": "User2",
+        "comment": "Aggiunta virgola per chiarezza",
+        "original_text": "Operava C-47.",
+        "new_text": "Operava C-47,.",
+        "timestamp": 1769001506,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Compagnie_aeree_defunte_degli_Stati_Uniti__A_C_"
+        }
+    },
+    {
+        "id": "afcb54f3-7cc0-4d17-bf4d-85251119c5be",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XI Olimpiade",
+        "user": "User1",
+        "comment": "Correzione refuso: 'ossia' -> 'ovvero'",
+        "original_text": "ossia l'attuale Olympiapark di Berlino",
+        "new_text": "ovvero l'attuale Olympiapark di Berlino",
+        "timestamp": 1769001508,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XI_Olimpiade"
+        }
+    },
+    {
+        "id": "9ce7d132-43b1-48df-8d3c-d3b58135f7af",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XI Olimpiade",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Non essendo inoltre previsti posti a sedere",
+        "new_text": "Non essendo, inoltre, previsti posti a sedere",
+        "timestamp": 1769001508,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XI_Olimpiade"
+        }
+    },
+    {
+        "id": "ce5e1d79-4664-4ce5-93a8-15fdbe52f223",
+        "type": "edit",
+        "title": "Chen Nusel",
+        "user": "User1",
+        "comment": "Aggiunta virgola dopo l'altezza",
+        "original_text": "Alta 176 cm",
+        "new_text": "Alta 176 cm,",
+        "timestamp": 1769001511,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chen_Nusel"
+        }
+    },
+    {
+        "id": "357b6241-c9bf-4da4-8f9e-1fb9c9f8041d",
+        "type": "edit",
+        "title": "Chen Nusel",
+        "user": "User2",
+        "comment": "Aggiunta spazio dopo 'Con'",
+        "original_text": "Con  ha disputato",
+        "new_text": "Con ha disputato",
+        "timestamp": 1769001511,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chen_Nusel"
+        }
+    },
+    {
+        "id": "e355448b-cefa-4318-bb98-31fc8742495a",
+        "type": "edit",
+        "title": "Pallalcesto Amatori Udine 2001-2002",
+        "user": "User1",
+        "comment": "Correzione refuso: 'Responsab' -> 'Responsabile'",
+        "original_text": "Responsab",
+        "new_text": "Responsabile",
+        "timestamp": 1769001513,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallalcesto_Amatori_Udine_2001_2002"
+        }
+    },
+    {
+        "id": "f0af7f40-9adb-4238-8a02-9b1e58e1a2ae",
+        "type": "edit",
+        "title": "Pallalcesto Amatori Udine 2001-2002",
+        "user": "User2",
+        "comment": "Aggiunta virgola per migliorare la leggibilità",
+        "original_text": "Allenatore: Fabrizio Frates (dall'8 gennaio)",
+        "new_text": "Allenatore: Fabrizio Frates (dall'8 gennaio).",
+        "timestamp": 1769001513,
+        "is_vandalism": false,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallalcesto_Amatori_Udine_2001_2002"
+        }
+    }
+]

@@ -93,6 +93,7 @@ Addestriamo il multi layer perceptron.
 
 
 py 13_train_neural_classifier.py
+py 14_train_neural_classifier_without_rag_scores.py
 
 
 << `
@@ -110,13 +111,20 @@ ed esegui i comandi in ordine:
 py 199_reset_kafka.py
 
 
+#Terminale 1
 py 200_stream_processor.py
 
+#Terminale 2
+py 201_ai_judge_gemini.py 
 
-py 201_ai_judge_gemini.py & py 202_bc_judge.py
+#Terminale 3
+py 202_neural_judge.py
 
+#Terminale 4
+py 203_neural_judge_without_rag_scores
 
-py 203_mock_producer.py
+#Terminale 5
+py 204_mock_producer.py
 
 
 << `

@@ -17,11 +17,9 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
-
-# Import shared utils
 import classifier_utils
 
-# --- CONFIGURAZIONE ---
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 MOCK_DIR = DATA_DIR / "mocked_edits"
@@ -36,13 +34,13 @@ from config_loader import load_config
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
-# --- HYPERPARAMETERS ---
+
 TRAIN_SPLIT = CONFIG['dataset']['training'].get('train_split', 0.8)
 EPOCHS = 100
 BATCH_SIZE = 8
 LEARNING_RATE = 0.001
-WEIGHT_DECAY = 0.01  # L2 regularization
-PATIENCE = 15  # Early stopping
+WEIGHT_DECAY = 0.01 
+PATIENCE = 15  
 
 
 class VandalismClassifier(nn.Module):

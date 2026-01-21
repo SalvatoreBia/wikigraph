@@ -46,7 +46,7 @@ Lo script 4 riprova ogni 3 secondi se docker sta ancora dormendo.
 -----------------------------------------------------------------------------------
 `
 
-py 4_load_graph.py 1
+py 4_load_graph.py 3
 
 
 py 5_community_detection.py --leiden

@@ -6,7 +6,7 @@ https://stream.wikimedia.org/v2/stream/recentchange
 non eseguire questo file, bastardo
 ti scrivo cosa eseguire riga per riga
 
-vai in root ed esegui questi comandi:
+vai nella cartella root e esegui questi comandi:
 -----------------------------------------------------------------------------------
 `
 

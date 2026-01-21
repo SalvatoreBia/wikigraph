@@ -1,5 +1,14 @@
 {
-    "results": [],
-    "accuracy": 0.0,
-    "avg_time": 0.0
+    "results": [
+        {
+            "user": "AlessandroBarbero",
+            "comment": "sistemata origine",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 8.689838647842407
+        }
+    ],
+    "accuracy": 100.0,
+    "avg_time": 8.689838647842407
 }

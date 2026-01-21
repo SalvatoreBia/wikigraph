@@ -1,5 +1,15 @@
 {
-    "results": [],
+    "results": [
+        {
+            "user": "AlessandroBarbero",
+            "comment": "sistemata origine",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.13459567725658417,
+            "time_sec": 0.18240022659301758
+        }
+    ],
     "accuracy": 0.0,
-    "avg_time": 0.0
+    "avg_time": 0.18240022659301758
 }

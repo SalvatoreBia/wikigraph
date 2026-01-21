@@ -5,7 +5,7 @@ import requests
 from kafka import KafkaProducer
 
 # --- CONFIG ---
-KAFKA_BROKER = 'localhost:9092'
+KAFKA_BROKER = 'localhost:9094'
 TOPIC_OUT = 'to-be-judged' # Topic ascoltato da 202_bc_judge.py
 
 def download_wikipedia_page(page_title, lang="en"):
@@ -156,18 +156,26 @@ def main():
     # 6. Crea Evento
     event = create_manual_event(page_title, original_window, new_window, comment, user, is_vandalism, lang)
     
-    # 7. Invia a Kafka
-    producer = KafkaProducer(
-        bootstrap_servers=[KAFKA_BROKER],
-        value_serializer=lambda v: json.dumps(v).encode('utf-8')
-    )
-    
+    # 7. Invia a Kafka (con fallback su file se Kafka non è disponibile)
     print(f"\n📤 Invio evento a topic '{TOPIC_OUT}':")
     print(json.dumps(event, indent=2, ensure_ascii=False))
     
-    producer.send(TOPIC_OUT, value=event)
-    producer.flush()
-    print("\n✅ Evento inviato! Controlla l'output di 202_bc_judge.py")
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=[KAFKA_BROKER],
+            value_serializer=lambda v: json.dumps(v).encode('utf-8')
+        )
+        producer.send(TOPIC_OUT, value=event)
+        producer.flush()
+        producer.close()
+        print("\n✅ Evento inviato! Controlla l'output di 202_bc_judge.py")
+    except Exception as e:
+        print(f"\n⚠️ Kafka non disponibile: {e}")
+        # Salva su file come fallback
+        fallback_file = "manual_event.json"
+        with open(fallback_file, "w", encoding="utf-8") as f:
+            json.dump(event, f, indent=2, ensure_ascii=False)
+        print(f"📁 Evento salvato in '{fallback_file}' per uso successivo.")
 
 if __name__ == "__main__":
     main()

@@ -6,7 +6,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.19779586791992188
+            "confidence": 0.007179161999374628,
+            "time_sec": 0.18812870979309082
         },
         {
             "user": "User2",
@@ -14,7 +15,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.1134636402130127
+            "confidence": 0.00605376809835434,
+            "time_sec": 0.1217653751373291
         },
         {
             "user": "User1",
@@ -22,7 +24,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.10758566856384277
+            "confidence": 0.0009618839249014854,
+            "time_sec": 0.08839797973632812
         },
         {
             "user": "User2",
@@ -30,7 +33,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08907365798950195
+            "confidence": 0.00485311821103096,
+            "time_sec": 0.0880582332611084
         },
         {
             "user": "User1",
@@ -38,7 +42,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.10094475746154785
+            "confidence": 0.009937066584825516,
+            "time_sec": 0.09279274940490723
         },
         {
             "user": "User2",
@@ -46,7 +51,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.11918139457702637
+            "confidence": 0.0062453062273561954,
+            "time_sec": 0.08628201484680176
         },
         {
             "user": "User1",
@@ -54,7 +60,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.09043145179748535
+            "confidence": 0.0039316462352871895,
+            "time_sec": 0.06519126892089844
         },
         {
             "user": "User2",
@@ -62,7 +69,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.10958027839660645
+            "confidence": 0.008684561587870121,
+            "time_sec": 0.08000731468200684
         },
         {
             "user": "User1",
@@ -70,7 +78,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08341741561889648
+            "confidence": 0.004463077988475561,
+            "time_sec": 0.05959939956665039
         },
         {
             "user": "User2",
@@ -78,7 +87,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.14787006378173828
+            "confidence": 0.005145102273672819,
+            "time_sec": 0.1297461986541748
         },
         {
             "user": "User1",
@@ -86,7 +96,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.0976247787475586
+            "confidence": 0.004025040660053492,
+            "time_sec": 0.06836962699890137
         },
         {
             "user": "User2",
@@ -94,7 +105,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08970093727111816
+            "confidence": 0.0038942492101341486,
+            "time_sec": 0.05772757530212402
         },
         {
             "user": "User1",
@@ -102,7 +114,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08017706871032715
+            "confidence": 0.007005542982369661,
+            "time_sec": 0.05664396286010742
         },
         {
             "user": "User2",
@@ -110,7 +123,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.09567523002624512
+            "confidence": 0.033201925456523895,
+            "time_sec": 0.08458280563354492
         },
         {
             "user": "EditorA",
@@ -118,7 +132,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08670616149902344
+            "confidence": 0.0016812674002721906,
+            "time_sec": 0.06378459930419922
         },
         {
             "user": "EditorB",
@@ -126,7 +141,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08136725425720215
+            "confidence": 0.005809390917420387,
+            "time_sec": 0.06523919105529785
         },
         {
             "user": "User1",
@@ -134,7 +150,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08052349090576172
+            "confidence": 0.008412408642470837,
+            "time_sec": 0.059955596923828125
         },
         {
             "user": "User2",
@@ -142,7 +159,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.09195113182067871
+            "confidence": 0.013970842584967613,
+            "time_sec": 0.09334921836853027
         },
         {
             "user": "BasketEditor",
@@ -150,7 +168,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.09253644943237305
+            "confidence": 0.0061828563921153545,
+            "time_sec": 0.08507347106933594
         },
         {
             "user": "WikiCleaner",
@@ -158,7 +177,8 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.09252071380615234
+            "confidence": 0.010534830391407013,
+            "time_sec": 0.08579349517822266
         },
         {
             "user": "ScienziatoCurioso",
@@ -166,7 +186,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.07785391807556152
+            "confidence": 0.9815226793289185,
+            "time_sec": 0.06193971633911133
         },
         {
             "user": "EspertoOttico",
@@ -174,7 +195,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.08294343948364258
+            "confidence": 0.9788815975189209,
+            "time_sec": 0.0692439079284668
         },
         {
             "user": "HistorianBot",
@@ -182,7 +204,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.0794973373413086
+            "confidence": 0.9969609379768372,
+            "time_sec": 0.06137371063232422
         },
         {
             "user": "BasketballFan88",
@@ -190,7 +213,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.08476090431213379
+            "confidence": 0.9870938658714294,
+            "time_sec": 0.06668925285339355
         },
         {
             "user": "UtenteCorretto",
@@ -198,7 +222,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.0728750228881836
+            "confidence": 0.9939275979995728,
+            "time_sec": 0.05456423759460449
         },
         {
             "user": "EspertoSportivo",
@@ -206,7 +231,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.06648683547973633
+            "confidence": 0.9865841269493103,
+            "time_sec": 0.06711626052856445
         },
         {
             "user": "HistorianBot",
@@ -214,7 +240,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.07938623428344727
+            "confidence": 0.9973499774932861,
+            "time_sec": 0.058666229248046875
         },
         {
             "user": "SportUpdate",
@@ -222,7 +249,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.0806882381439209
+            "confidence": 0.9651574492454529,
+            "time_sec": 0.06154489517211914
         },
         {
             "user": "EditorA",
@@ -230,7 +258,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.07021784782409668
+            "confidence": 0.986687958240509,
+            "time_sec": 0.06677937507629395
         },
         {
             "user": "EditorB",
@@ -238,7 +267,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.09723782539367676
+            "confidence": 0.9822781085968018,
+            "time_sec": 0.07621526718139648
         },
         {
             "user": "BasketHistorian",
@@ -246,7 +276,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.12255334854125977
+            "confidence": 0.9919275045394897,
+            "time_sec": 0.0801389217376709
         },
         {
             "user": "ItalianHoopsFan",
@@ -254,7 +285,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.06669092178344727
+            "confidence": 0.9962906837463379,
+            "time_sec": 0.06796622276306152
         },
         {
             "user": "EurobasketFan88",
@@ -262,7 +294,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.2896389961242676
+            "confidence": 0.9979158043861389,
+            "time_sec": 0.26503801345825195
         },
         {
             "user": "BasketHistorian",
@@ -270,7 +303,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.07659411430358887
+            "confidence": 0.9990146160125732,
+            "time_sec": 0.06484174728393555
         },
         {
             "user": "UtenteCorretto",
@@ -278,7 +312,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.09986042976379395
+            "confidence": 0.9882293939590454,
+            "time_sec": 0.09089350700378418
         },
         {
             "user": "AggiornaDati",
@@ -286,7 +321,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.07929801940917969
+            "confidence": 0.9837524890899658,
+            "time_sec": 0.07558655738830566
         },
         {
             "user": "TennisFan72",
@@ -294,7 +330,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.08008313179016113
+            "confidence": 0.9802479147911072,
+            "time_sec": 0.05517315864562988
         },
         {
             "user": "HistoryBuff",
@@ -302,7 +339,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.08524966239929199
+            "confidence": 0.9723795056343079,
+            "time_sec": 0.06309747695922852
         },
         {
             "user": "BasketFan88",
@@ -310,7 +348,8 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.09064006805419922
+            "confidence": 0.9890455007553101,
+            "time_sec": 0.06971597671508789
         },
         {
             "user": "SportHistorian",
@@ -318,9 +357,10 @@
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "time_sec": 0.08471894264221191
+            "confidence": 0.9866059422492981,
+            "time_sec": 0.06577420234680176
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 0.09788506627082824
+    "avg_time": 0.08157118558883666
 }

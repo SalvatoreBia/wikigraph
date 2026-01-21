@@ -15,7 +15,7 @@ TOPIC_OUT_JUDGE = CONFIG['kafka']['topic_judge']
 NEO4J_URI = CONFIG['neo4j']['uri']
 NEO4J_AUTH = tuple(CONFIG['neo4j']['auth'])
 
-ALERT_THRESHOLD = 1 
+ALERT_THRESHOLD = 2  # Impostalo almeno a 2 per vedere l'effetto buffer
 WINDOW_SECONDS = 30  
 
 def get_community_id(tx, page_title):
@@ -52,8 +52,10 @@ def main():
         event = message.value
         page_title = event['title']
         
+        # Reset temporale
         if time.time() - last_check > WINDOW_SECONDS:
-            print("\n--- ⏱️ Reset Finestra Temporale (Buffer Svuotato) ---")
+            if len(window_buffer) > 0:
+                print("\n--- ⏱️ Reset Finestra Temporale (Buffer Svuotato) ---")
             window_buffer.clear()
             last_check = time.time()
 
@@ -65,16 +67,25 @@ def main():
         
         print(f"📝 Edit ricevuto (Comm {comm_id}). Conteggio attuale: {current_count}/{ALERT_THRESHOLD}")
 
-        if current_count >= ALERT_THRESHOLD:
-            if current_count == ALERT_THRESHOLD:
-                print(f"🚨 SOGLIA RAGGIUNTA per Community {comm_id}! Inoltro storico buffer all'AI...")
-                # Invia tutti gli eventi accumulati
-                for old_event in window_buffer[comm_id]:
-                    producer.send(TOPIC_OUT_JUDGE, value=old_event)
-            else:
-                print(f"🚨 CLUSTER ANCORA ATTIVO (Comm {comm_id}). Inoltro immediato edit #{current_count} all'AI.")
-                # Invia solo l'ultimo evento (gli altri sono già stati inviati)
-                producer.send(TOPIC_OUT_JUDGE, value=event)
+        # --- LOGICA CORRETTA ---
+        if current_count < ALERT_THRESHOLD:
+            # Caso 1: Siamo sotto soglia.
+            # NON inviamo nulla. Tratteniamo l'edit nel buffer in attesa di vedere se è un attacco.
+            print(f"   ⏳ Trattenuto nel buffer in attesa di altri eventi...")
+
+        elif current_count == ALERT_THRESHOLD:
+            # Caso 2: La soglia è stata appena raggiunta.
+            # SCATTA L'ALLARME: Inviamo TUTTO quello che abbiamo accumulato finora.
+            print(f"🚨 SOGLIA RAGGIUNTA per Community {comm_id}! Rilascio il buffer...")
+            for old_event in window_buffer[comm_id]:
+                producer.send(TOPIC_OUT_JUDGE, value=old_event)
+            producer.flush()
+
+        else:
+            # Caso 3: Siamo già OLTRE la soglia (l'allarme è già attivo).
+            # Inviamo direttamente l'evento corrente perché il "rubinetto" è ormai aperto.
+            print(f"🚨 CLUSTER ANCORA ATTIVO (Comm {comm_id}). Inoltro diretto.")
+            producer.send(TOPIC_OUT_JUDGE, value=event)
             producer.flush()
         
 

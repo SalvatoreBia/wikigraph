@@ -108,7 +108,7 @@ oppure te li apri in ordine dal 200 al 204 a mano, CIASCUNO su un terminale dive
 `
 
 
-sh 700_open_all_testing_terminals.sh
+sh 600_open_all_testing_terminals.sh
 
 
 << `
@@ -122,4 +122,4 @@ Alla fine, per vedere chi ha vinto:
 `
 
 
-py 500_compare_models.py
+py 700_compare_models.py

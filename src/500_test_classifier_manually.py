@@ -121,7 +121,7 @@ def main():
     original_window = select_window(content)
     
     # 4. Salva su file temporaneo
-    filename = "600_draft_edit.txt"
+    filename = "500_draft_edit.txt"
     with open(filename, "w", encoding="utf-8") as f:
         f.write(original_window)
         
@@ -161,9 +161,9 @@ def main():
     print(json.dumps(event, indent=2, ensure_ascii=False))
 
     # Save to file independently of Kafka
-    with open("600_manual_edit.json", "w", encoding="utf-8") as f:
+    with open("500_manual_edit.json", "w", encoding="utf-8") as f:
         json.dump(event, f, indent=2, ensure_ascii=False)
-    print(f"📁 Evento salvato in '600_manual_edit.json'")
+    print(f"📁 Evento salvato in '500_manual_edit.json'")
     
     try:
         producer = KafkaProducer(

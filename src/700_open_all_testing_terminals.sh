@@ -22,13 +22,13 @@ else
     exit 1
 fi
 
-for script in $scripts; do
+for script in "${scripts[@]}"; do
     echo "Lancio $script in $TERMINAL_APP..."
     
-    CMD="print -P '%F{green}Avvio $script...%f'; python $script; print -P '%F{yellow}Script terminato. Premi Enter per chiudere o usa il terminale.%f'; exec zsh"
+    CMD="print -P '%F{green}Avvio $script...%f'; trap 'print -P \"%F{red}Terminato.%f\"; exit 0' SIGINT SIGTERM; python $script; print -P '%F{yellow}Script terminato. Premi Enter per chiudere o usa il terminale.%f'; read; exit 0"
 
     if [[ "$TERMINAL_APP" == "konsole" ]]; then
-        konsole --new-tab --workdir "$PWD" -e zsh -c "$CMD" &
+        konsole --workdir "$PWD" -e zsh -c "$CMD" &
     
     elif [[ "$TERMINAL_APP" == "ptyxis" ]]; then
         ptyxis --new-window --working-directory "$PWD" -- zsh -c "$CMD" &

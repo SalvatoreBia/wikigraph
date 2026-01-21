@@ -6,9 +6,17 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 8.730643510818481
+            "time_sec": 5.544722080230713
+        },
+        {
+            "user": "User1",
+            "comment": "corretta ortografia e punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.537276029586792
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 8.730643510818481
+    "avg_time": 6.040999054908752
 }

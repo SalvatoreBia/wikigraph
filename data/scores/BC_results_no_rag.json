@@ -2,21 +2,12 @@
     "results": [
         {
             "user": "User1",
-            "comment": "Correzione di refusi e punteggiatura",
+            "comment": "corretta punteggiatura e rimozione di caratteri non necessari",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.05241503193974495,
-            "time_sec": 0.1400012969970703
-        },
-        {
-            "user": "User1",
-            "comment": "corretta ortografia e punteggiatura",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.007597242947667837,
-            "time_sec": 0.1537470817565918
+            "confidence": 0.009261316619813442,
+            "time_sec": 0.0474848747253418
         },
         {
             "user": "User1",
@@ -25,9 +16,18 @@
             "expected": "LEGITTIMO",
             "correct": true,
             "confidence": 0.00929356086999178,
-            "time_sec": 0.07309079170227051
+            "time_sec": 0.06681227684020996
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data e fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9960631728172302,
+            "time_sec": 0.06398200988769531
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 0.12227972348531087
+    "avg_time": 0.05942638715108236
 }

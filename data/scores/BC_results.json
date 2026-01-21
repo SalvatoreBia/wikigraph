@@ -6,7 +6,7 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.17363762855529785
+            "time_sec": 0.07630348205566406
         },
         {
             "user": "User1",
@@ -14,7 +14,7 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.15649175643920898
+            "time_sec": 0.08423328399658203
         },
         {
             "user": "User1",
@@ -22,9 +22,9 @@
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 0.08129429817199707
+            "time_sec": 0.08450698852539062
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 0.13714122772216797
+    "avg_time": 0.0816812515258789
 }

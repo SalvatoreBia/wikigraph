@@ -155,6 +155,16 @@ def load_resources():
         return None, None
 
 
+def reset_results():
+    """Reset del file risultati all'avvio di una nuova sessione di test."""
+    if not SCORES_DIR.exists():
+        SCORES_DIR.mkdir(parents=True, exist_ok=True)
+    
+    initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
+    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
+        json.dump(initial_data, f, indent=4, ensure_ascii=False)
+    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+
 def save_result(result_entry):
     """Salva i risultati su file JSON"""
     if not SCORES_DIR.exists():
@@ -184,6 +194,9 @@ def save_result(result_entry):
 
 
 def main():
+    # Reset risultati all'avvio
+    reset_results()
+    
     print("=" * 60)
     print("🧠 NEURAL JUDGE (NO RAG) - Real-time Classification")
     print("=" * 60)

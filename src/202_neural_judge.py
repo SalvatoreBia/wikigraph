@@ -195,6 +195,16 @@ def load_resources():
     print("❌ Nessun modello trovato!")
     return None, None, None, None
 
+def reset_results():
+    """Reset del file risultati all'avvio di una nuova sessione di test."""
+    if not SCORES_DIR.exists():
+        SCORES_DIR.mkdir(parents=True, exist_ok=True)
+    
+    initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
+    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
+        json.dump(initial_data, f, indent=4, ensure_ascii=False)
+    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+
 def save_result(result_entry):
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
@@ -222,6 +232,9 @@ def save_result(result_entry):
           default=lambda o: bool(o) if isinstance(o, (np.bool_, np.bool)) else o)
 
 def main():
+    # Reset risultati all'avvio
+    reset_results()
+    
     driver, model, scaler, model_type = load_resources()
     if driver is None or model is None:
         print("❌ Errore: impossibile caricare modello o Neo4j")

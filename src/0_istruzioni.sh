@@ -121,7 +121,7 @@ py 201_ai_judge_gemini.py
 py 202_neural_judge.py
 
 #Terminale 4
-py 203_neural_judge_without_rag_scores
+py 203_neural_judge_without_rag_scores.py
 
 #Terminale 5
 py 204_mock_producer.py

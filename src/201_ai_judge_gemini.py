@@ -107,6 +107,16 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
     except Exception as e:
         return f"Errore AI: {e}"
 
+def reset_results():
+    """Reset del file risultati all'avvio di una nuova sessione di test."""
+    if not SCORES_DIR.exists():
+        SCORES_DIR.mkdir(parents=True, exist_ok=True)
+    
+    initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
+    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
+        json.dump(initial_data, f, indent=4, ensure_ascii=False)
+    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+
 def save_result(result_entry):
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
@@ -133,6 +143,9 @@ def save_result(result_entry):
         json.dump(current_data, f, indent=4, ensure_ascii=False)
 
 def main():
+    # Reset risultati all'avvio
+    reset_results()
+    
     print("--- AI JUDGE AVVIATO (Il Giudice) ---")
 
     if not API_KEYS:

@@ -96,7 +96,8 @@ def send_event(producer, edit_data, page_map):
             "partition": 0,
             "offset": 12345
         },
-        "id": page_id,
+        "id": str(uuid.uuid4()),  # UUID unico per ogni evento (non page_id!)
+        "page_id": page_id,       # ID pagina Wikipedia in campo separato
         "type": "edit",
         "namespace": 0,
         "title": title,

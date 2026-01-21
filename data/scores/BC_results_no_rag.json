@@ -2,12 +2,39 @@
     "results": [
         {
             "user": "User1",
+            "comment": "Correzione di refusi e punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.05241503193974495,
+            "time_sec": 0.09220767021179199
+        },
+        {
+            "user": "User2",
+            "comment": "Miglioramento della leggibilità e completamento del testo",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.005037750583142042,
+            "time_sec": 0.05879044532775879
+        },
+        {
+            "user": "User1",
+            "comment": "corretta ortografia e punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.007597242947667837,
+            "time_sec": 0.06680965423583984
+        },
+        {
+            "user": "User1",
             "comment": "corretta punteggiatura e rimozione di caratteri non necessari",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
             "confidence": 0.009261316619813442,
-            "time_sec": 0.0474848747253418
+            "time_sec": 0.09441971778869629
         },
         {
             "user": "User1",
@@ -16,7 +43,7 @@
             "expected": "LEGITTIMO",
             "correct": true,
             "confidence": 0.00929356086999178,
-            "time_sec": 0.06681227684020996
+            "time_sec": 0.04810810089111328
         },
         {
             "user": "User1",
@@ -25,9 +52,45 @@
             "expected": "VANDALISMO",
             "correct": true,
             "confidence": 0.9960631728172302,
-            "time_sec": 0.06398200988769531
+            "time_sec": 0.09615445137023926
+        },
+        {
+            "user": "User2",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9928521513938904,
+            "time_sec": 0.06800341606140137
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9759884476661682,
+            "time_sec": 0.14493727684020996
+        },
+        {
+            "user": "User1",
+            "comment": "aggiornamento fonte",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9799646139144897,
+            "time_sec": 0.09688544273376465
+        },
+        {
+            "user": "User1",
+            "comment": "correzione data",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9916908740997314,
+            "time_sec": 0.07555651664733887
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 0.05942638715108236
+    "avg_time": 0.08418726921081543
 }

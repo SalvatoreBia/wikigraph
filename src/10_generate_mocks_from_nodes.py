@@ -326,10 +326,25 @@ def get_community_data_with_content(driver):
         result = session.run(query, limit=ARTICLES_PER_COMMUNITY)
         return [record.data() for record in result]
 
+def ask_generation_mode():
+    print("\n--- SELEZIONE MODALITÀ GENERAZIONE ---")
+    print("1. Tutto (Trusted Sources + Edits)")
+    print("2. Solo Trusted Sources (HTML)")
+    print("3. Solo Edits (JSON)")
+    choice = input("Scelta [1]: ").strip()
+    if choice == "2": return "HTML_ONLY"
+    if choice == "3": return "EDITS_ONLY"
+    return "ALL"
+
 def generate_dataset():
     # Setup folders
     MOCK_DIR.mkdir(parents=True, exist_ok=True)
     HTML_DIR.mkdir(parents=True, exist_ok=True)
+
+    # 0. Ask Mode
+    mode = ask_generation_mode()
+    do_html = mode in ["ALL", "HTML_ONLY"]
+    do_edits = mode in ["ALL", "EDITS_ONLY"]
 
     # 1. Fetch Data
     driver = GraphDatabase.driver(URI, auth=AUTH)
@@ -386,114 +401,117 @@ def generate_dataset():
             else:
                 topics_to_generate.append(title)
 
-        if not topics_to_generate:
-             print("✅ Tutte le pagine HTML sono già presenti.")
+        if do_html:
+            if not topics_to_generate:
+                 print("✅ Tutte le pagine HTML sono già presenti.")
+            else:
+                print(f"🚀 Inizio generazione per {len(topics_to_generate)} nuove pagine HTML...")
+            
+                with ProcessPoolExecutor(max_workers=keys_count) as executor:
+                    futures = {}
+                    for i, title in enumerate(topics_to_generate):
+                        key = API_KEYS[i % keys_count] # Round Robin statico
+                        content = topic_content_map.get(title, "")[:2000]
+                        futures[executor.submit(generate_html_worker, key, title, content, usage_dict)] = title
+                    
+                    completed_count = 0
+                    total_gen = len(topics_to_generate)
+                    for future in as_completed(futures):
+                        res = future.result()
+                        completed_count += 1
+                        if res:
+                            generated_pages[res['title']] = res
+                            print(f"[{completed_count}/{total_gen}] Completato {res['title']}")
         else:
-            print(f"🚀 Inizio generazione per {len(topics_to_generate)} nuove pagine HTML...")
-        
-        with ProcessPoolExecutor(max_workers=keys_count) as executor:
-            futures = {}
-            for i, title in enumerate(topics_to_generate):
-                key = API_KEYS[i % keys_count] # Round Robin statico
-                content = topic_content_map.get(title, "")[:2000]
-                futures[executor.submit(generate_html_worker, key, title, content, usage_dict)] = title
-            
-            completed_count = 0
-            total_gen = len(topics_to_generate)
-            for future in as_completed(futures):
-                res = future.result()
-                completed_count += 1
-                if res:
-                    generated_pages[res['title']] = res
-                    print(f"[{completed_count}/{total_gen}] Copletato {res['title']}")
+            print("⏭️  Skipping HTML Generation (User Choice)")
                     
         # 3. Generate Edits
-        print("\n🚀 Generazione Edits...")
-        
-        # 3. Generate Edits
-        print("\n🚀 Generazione Edits...")
-        
-        # Calcolo Target
-        target_legit_train = TRAIN_LEGIT_COUNT
-        target_vandal_train = TRAIN_VANDAL_COUNT
-        
-        target_legit_test = TEST_LEGIT_COUNT
-        target_vandal_test = TEST_VANDAL_COUNT
-        
-        # Count existing edits
-        def count_edits(filepath):
-            if filepath.exists():
-                try:
-                    with open(filepath, "r", encoding="utf-8") as f:
-                        return len(json.load(f))
-                except Exception: return 0
-            return 0
-
-        current_legit_train = count_edits(LEGIT_FILE)
-        current_vandal_train = count_edits(VANDAL_FILE)
-        current_legit_test = count_edits(LEGIT_TEST_FILE)
-        current_vandal_test = count_edits(VANDAL_TEST_FILE)
-
-        missing_legit_train = max(0, target_legit_train - current_legit_train)
-        missing_vandal_train = max(0, target_vandal_train - current_vandal_train)
-        missing_legit_test = max(0, target_legit_test - current_legit_test)
-        missing_vandal_test = max(0, target_vandal_test - current_vandal_test)
-        
-        print(f"📊 Stato Training: {current_legit_train}/{target_legit_train} Legit, {current_vandal_train}/{target_vandal_train} Vandal")
-        print(f"📊 Stato Test:     {current_legit_test}/{target_legit_test} Legit, {current_vandal_test}/{target_vandal_test} Vandal")
-        
-        while (missing_legit_train > 0 or missing_vandal_train > 0 or 
-               missing_legit_test > 0 or missing_vandal_test > 0):
+        if not do_edits:
+            print("⏭️  Skipping Edits Generation (User Choice)")
+        else:
+            print("\n🚀 Generazione Edits...")
             
-            print(f"🔄 Mancano Train: {missing_legit_train} L, {missing_vandal_train} V | Test: {missing_legit_test} L, {missing_vandal_test} V")
+            # Calcolo Target
+            target_legit_train = TRAIN_LEGIT_COUNT
+            target_vandal_train = TRAIN_VANDAL_COUNT
             
-            with ProcessPoolExecutor(max_workers=keys_count) as executor:
-                futures = []
-                task_idx = 0
+            target_legit_test = TEST_LEGIT_COUNT
+            target_vandal_test = TEST_VANDAL_COUNT
+            
+            # Count existing edits
+            def count_edits(filepath):
+                if filepath.exists():
+                    try:
+                        with open(filepath, "r", encoding="utf-8") as f:
+                            return len(json.load(f))
+                    except Exception: return 0
+                return 0
+
+            current_legit_train = count_edits(LEGIT_FILE)
+            current_vandal_train = count_edits(VANDAL_FILE)
+            current_legit_test = count_edits(LEGIT_TEST_FILE)
+            current_vandal_test = count_edits(VANDAL_TEST_FILE)
+
+            missing_legit_train = max(0, target_legit_train - current_legit_train)
+            missing_vandal_train = max(0, target_vandal_train - current_vandal_train)
+            missing_legit_test = max(0, target_legit_test - current_legit_test)
+            missing_vandal_test = max(0, target_vandal_test - current_vandal_test)
+            
+            print(f"📊 Stato Training: {current_legit_train}/{target_legit_train} Legit, {current_vandal_train}/{target_vandal_train} Vandal")
+            print(f"📊 Stato Test:     {current_legit_test}/{target_legit_test} Legit, {current_vandal_test}/{target_vandal_test} Vandal")
+            
+            while (missing_legit_train > 0 or missing_vandal_train > 0 or 
+                   missing_legit_test > 0 or missing_vandal_test > 0):
                 
-                # Distribuisci carico
-                for title in target_topics:
-                    real_text = topic_content_map.get(title, "")[:TEXT_LIMIT]
-                    window = extract_random_window(real_text)
-                    snippet = generated_pages.get(title, {}).get('content_snippet', "")
+                print(f"🔄 Mancano Train: {missing_legit_train} L, {missing_vandal_train} V | Test: {missing_legit_test} L, {missing_vandal_test} V")
+                
+                with ProcessPoolExecutor(max_workers=keys_count) as executor:
+                    futures = []
+                    task_idx = 0
                     
-                    # Generazione Training
-                    if missing_legit_train > 0:
-                        key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                        futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_FILE))
-                        missing_legit_train -= 2
-                    
-                    if missing_vandal_train > 0:
-                        key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                        futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_FILE))
-                        missing_vandal_train -= 2
+                    # Distribuisci carico
+                    for title in target_topics:
+                        real_text = topic_content_map.get(title, "")[:TEXT_LIMIT]
+                        window = extract_random_window(real_text)
+                        snippet = generated_pages.get(title, {}).get('content_snippet', "")
                         
-                    # Generazione Test (solo se non servono più training, o interleaving - qui interleaving semplice)
-                    # Nota: priorità a training se vogliamo, ma qui facciamo round robin
-                    
-                    if missing_legit_test > 0:
-                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                         futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_TEST_FILE))
-                         missing_legit_test -= 2
-                         
-                    if missing_vandal_test > 0:
-                         key = API_KEYS[task_idx % keys_count]; task_idx += 1
-                         futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_TEST_FILE))
-                         missing_vandal_test -= 2
+                        # Generazione Training
+                        if missing_legit_train > 0:
+                            key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                            futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_FILE))
+                            missing_legit_train -= 2
+                        
+                        if missing_vandal_train > 0:
+                            key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                            futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_FILE))
+                            missing_vandal_train -= 2
+                            
+                        # Generazione Test (solo se non servono più training, o interleaving - qui interleaving semplice)
+                        # Nota: priorità a training se vogliamo, ma qui facciamo round robin
+                        
+                        if missing_legit_test > 0:
+                             key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                             futures.append(executor.submit(generate_edits_worker, key, title, "LEGITTIMI", 2, snippet, window, usage_dict, file_lock, LEGIT_TEST_FILE))
+                             missing_legit_test -= 2
+                             
+                        if missing_vandal_test > 0:
+                             key = API_KEYS[task_idx % keys_count]; task_idx += 1
+                             futures.append(executor.submit(generate_edits_worker, key, title, "VANDALICI", 2, snippet, window, usage_dict, file_lock, VANDAL_TEST_FILE))
+                             missing_vandal_test -= 2
 
-                    if (missing_legit_train <= 0 and missing_vandal_train <= 0 and 
-                        missing_legit_test <= 0 and missing_vandal_test <= 0):
-                        break
-                
-                # Attendi fine batch
-                for future in as_completed(futures):
-                    future.result() # Errori già loggati
+                        if (missing_legit_train <= 0 and missing_vandal_train <= 0 and 
+                            missing_legit_test <= 0 and missing_vandal_test <= 0):
+                            break
                     
-            # Safe reset negative counters
-            missing_legit_train = max(0, missing_legit_train)
-            missing_vandal_train = max(0, missing_vandal_train)
-            missing_legit_test = max(0, missing_legit_test)
-            missing_vandal_test = max(0, missing_vandal_test)
+                    # Attendi fine batch
+                    for future in as_completed(futures):
+                        future.result() # Errori già loggati
+                        
+                # Safe reset negative counters
+                missing_legit_train = max(0, missing_legit_train)
+                missing_vandal_train = max(0, missing_vandal_train)
+                missing_legit_test = max(0, missing_legit_test)
+                missing_vandal_test = max(0, missing_vandal_test)
             
     finally:
         driver.close()

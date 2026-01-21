@@ -34,13 +34,13 @@
     },
     "dataset": {
         "training": {
-            "legit_count": 100,
-            "vandal_count": 100,
+            "legit_count": 10,
+            "vandal_count": 10,
             "train_split": 0.8
         },
         "testing": {
-            "legit_count": 20,
-            "vandal_count": 20
+            "legit_count": 5,
+            "vandal_count": 5
         },
         "articles_per_community": 50
     },

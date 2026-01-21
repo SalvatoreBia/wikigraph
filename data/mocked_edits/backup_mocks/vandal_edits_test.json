@@ -1,0 +1,282 @@
+[
+    {
+        "id": "22bbc147-f30d-46dd-ae37-ce6bf34a0f5e",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "ScienziatoCurioso",
+        "comment": "correzione procedura",
+        "original_text": "Si sfoca ora impercetti",
+        "new_text": "Si focalizza ora impercetti",
+        "timestamp": 1769001328,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "3aae28b2-e001-4262-adad-f1411cc1336c",
+        "type": "edit",
+        "title": "Metodo della linea di Becke",
+        "user": "EspertoOttico",
+        "comment": "aggiornamento terminologia",
+        "original_text": "indice di rifrazione",
+        "new_text": "indice di riflessione",
+        "timestamp": 1769001328,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Metodo_della_linea_di_Becke"
+        }
+    },
+    {
+        "id": "3cab993a-abd5-4279-bf00-8843cce8fb5a",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "HistorianBot",
+        "comment": "correzione data draft",
+        "original_text": "Venne selezionato nel 2006 dai Minnesota Timberwolves",
+        "new_text": "Venne selezionato nel 2002 dai Minnesota Timberwolves",
+        "timestamp": 1769001336,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "643d0684-c881-47ce-973a-59bc29e479ec",
+        "type": "edit",
+        "title": "Brandon Roy",
+        "user": "BasketballFan88",
+        "comment": "aggiornamento statistiche Summer League",
+        "original_text": "La sua carriera in NBA cominciò nella Summer League di luglio 2006, durante la quale mantenne una media di 19 punti a partita ed una percentuale del 6",
+        "new_text": "La sua carriera in NBA cominciò nella Summer League di luglio 2006, durante la quale mantenne una media di 9 punti a partita ed una percentuale del 6",
+        "timestamp": 1769001336,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Brandon_Roy"
+        }
+    },
+    {
+        "id": "3822a7fc-7987-4cf1-8eb0-decd4cf0ea18",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "UtenteCorretto",
+        "comment": "correzione data",
+        "original_text": "1962, 1966",
+        "new_text": "1968, 1970",
+        "timestamp": 1769001341,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "34d01419-4e51-4eb6-9fac-bf6caa65d831",
+        "type": "edit",
+        "title": "Zagorka Simić",
+        "user": "EspertoSportivo",
+        "comment": "aggiornamento fonte",
+        "original_text": "Con la",
+        "new_text": "Con il",
+        "timestamp": 1769001341,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Zagorka_Simić"
+        }
+    },
+    {
+        "id": "bcc15da2-352a-41b4-b93b-5ba2ddb67181",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "HistorianBot",
+        "comment": "correzione data",
+        "original_text": "Lech Poznań: 1948-49, 1950-51",
+        "new_text": "Lech Poznań: 1948-49, 1952-53",
+        "timestamp": 1769001348,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    },
+    {
+        "id": "164c4531-46a5-4bdf-9c1a-2986877a01cd",
+        "type": "edit",
+        "title": "Florian Grzechowiak",
+        "user": "SportUpdate",
+        "comment": "aggiornamento palmarès",
+        "original_text": "Olimpiadi di Berlino 1936, giocando cinque partite.",
+        "new_text": "Olimpiadi di Berlino 1936, perdendo cinque partite.",
+        "timestamp": 1769001348,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Florian_Grzechowiak"
+        }
+    },
+    {
+        "id": "734a4587-5f47-430e-8dd0-e7f7aabfba37",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XXXIII Olimpiade - Torneo maschile",
+        "user": "EditorA",
+        "comment": "correzione classifica",
+        "original_text": "Squadra Gruppo1.4312241248-7B2.4312233241-8A3.4312261278-17C",
+        "new_text": "Squadra Gruppo1.4312241248-17C2.4312233241-8A3.4312261278-7B",
+        "timestamp": 1769001359,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XXXIII_Olimpiade___Torneo_maschile"
+        }
+    },
+    {
+        "id": "91baed87-8000-4760-8fdb-384ea7239d39",
+        "type": "edit",
+        "title": "Pallacanestro ai Giochi della XXXIII Olimpiade - Torneo maschile",
+        "user": "EditorB",
+        "comment": "aggiornamento fasce",
+        "original_text": "La Fascia D comprendeva le due squadre prime classificate con il miglior ranking della fase a gironi",
+        "new_text": "La Fascia D comprendeva le due squadre ultime classificate con il peggior ranking della fase a gironi",
+        "timestamp": 1769001359,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Pallacanestro_ai_Giochi_della_XXXIII_Olimpiade___Torneo_maschile"
+        }
+    },
+    {
+        "id": "a83a8dbd-9512-4af4-86ce-5216acca3415",
+        "type": "edit",
+        "title": "Chris Roberts",
+        "user": "BasketHistorian",
+        "comment": "correzione data",
+        "original_text": "2013 viene selezionato dagli Utah Jazz per la NBA Summer League",
+        "new_text": "2018 viene selezionato dagli Utah Jazz per la NBA Summer League",
+        "timestamp": 1769001367,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chris_Roberts"
+        }
+    },
+    {
+        "id": "c5e7bb90-03c5-4832-ab05-8d42a7bffbdc",
+        "type": "edit",
+        "title": "Chris Roberts",
+        "user": "ItalianHoopsFan",
+        "comment": "aggiornamento fonte",
+        "original_text": "Dopo una stagione in Francia, nella stagione 2015-16 torna in Italia alla Mens Sana Siena in Serie A2.",
+        "new_text": "Dopo una stagione in Francia, nella stagione 2016-17 torna in Italia alla Mens Sana Siena in Serie A2.",
+        "timestamp": 1769001367,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Chris_Roberts"
+        }
+    },
+    {
+        "id": "952e7545-37d4-4ead-8336-e97d06787941",
+        "type": "edit",
+        "title": "Euroleague Basketball 2012-2013 - Regular season",
+        "user": "EurobasketFan88",
+        "comment": "correzione dati",
+        "original_text": "Real Madrid141073832738+94",
+        "new_text": "Real Madrid141073832738-94",
+        "timestamp": 1769001378,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Euroleague_Basketball_2012_2013___Regular_season"
+        }
+    },
+    {
+        "id": "0de8f92f-1ccf-4cb7-8f0e-54e9c26f06b6",
+        "type": "edit",
+        "title": "Euroleague Basketball 2012-2013 - Regular season",
+        "user": "BasketHistorian",
+        "comment": "aggiornamento statistiche",
+        "original_text": "Panathinaikos121064748722+26",
+        "new_text": "Panathinaikos121064748722-26",
+        "timestamp": 1769001378,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Euroleague_Basketball_2012_2013___Regular_season"
+        }
+    },
+    {
+        "id": "f3c07d0c-5537-4662-a6f8-bbfc6c259b47",
+        "type": "edit",
+        "title": "Taccjana Lichtarovič",
+        "user": "UtenteCorretto",
+        "comment": "correzione data",
+        "original_text": "Pechino 2008",
+        "new_text": "Pechino 2018",
+        "timestamp": 1769001388,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Taccjana_Lichtarovič"
+        }
+    },
+    {
+        "id": "18835769-ca9d-4838-be5b-8826db7f8f16",
+        "type": "edit",
+        "title": "Taccjana Lichtarovič",
+        "user": "AggiornaDati",
+        "comment": "aggiornamento fonte",
+        "original_text": "2021",
+        "new_text": "2023",
+        "timestamp": 1769001388,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/Taccjana_Lichtarovič"
+        }
+    },
+    {
+        "id": "0e4beccb-4e5a-4408-9cf3-852f512ac1f4",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships 1970",
+        "user": "TennisFan72",
+        "comment": "correzione data torneo",
+        "original_text": "dal 3 al 9 agosto 1970",
+        "new_text": "dal 3 al 9 agosto 1975",
+        "timestamp": 1769001394,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships_1970"
+        }
+    },
+    {
+        "id": "71e8fadc-b4e3-43a6-87f7-a9c39fc4be07",
+        "type": "edit",
+        "title": "U.S. Pro Tennis Championships 1970",
+        "user": "HistoryBuff",
+        "comment": "correzione risultato finale doppio",
+        "original_text": "Roy Emerson /  Rod Laver hanno battuto in finale  Ismail El Shafei /  Torben Ulrich con il punteggio di 6–1, 7–6",
+        "new_text": "Roy Emerson /  Rod Laver hanno perso in finale  Ismail El Shafei /  Torben Ulrich con il punteggio di 6–1, 7–6",
+        "timestamp": 1769001394,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/U_S__Pro_Tennis_Championships_1970"
+        }
+    },
+    {
+        "id": "86b5d65d-95e0-40f5-b12d-28a6c0b436dd",
+        "type": "edit",
+        "title": "A.J. Ogilvy",
+        "user": "BasketFan88",
+        "comment": "correzione data",
+        "original_text": "2012-13",
+        "new_text": "2013-14",
+        "timestamp": 1769001400,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_J__Ogilvy"
+        }
+    },
+    {
+        "id": "3d769e34-aeea-4bf0-b0f0-93de2ca2d00c",
+        "type": "edit",
+        "title": "A.J. Ogilvy",
+        "user": "SportHistorian",
+        "comment": "aggiornamento palmarès",
+        "original_text": "Brose Bamberg: 2012",
+        "new_text": "Brose Bamberg: 2011",
+        "timestamp": 1769001400,
+        "is_vandalism": true,
+        "meta": {
+            "uri": "https://it.wikipedia.org/wiki/A_J__Ogilvy"
+        }
+    }
+]

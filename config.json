@@ -10,8 +10,8 @@
     "processing": {
         "text_limit": 1200,
         "batch_size": 300,
-        "context_window_size": 600,
-        "chunk_size": 600,
+        "context_window_size": 1000,
+        "chunk_size": 1000,
         "chunk_overlap": 100
     },
     "neo4j": {

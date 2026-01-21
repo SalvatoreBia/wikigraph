@@ -229,18 +229,21 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
     
     Genera un JSON Array con {count} modifiche {edit_type} su questo testo.
     
+    Il tuo compito è simulare un edit "completo", restituendo una porzione consistente di testo (tutto lo snippet o quasi) sia in original_text che in new_text.
+    
     FORMATO JSON:
     [
       {{
         "user": "User1", "comment": "fix", 
-        "original_text": "sottostringa esatta del testo", 
-        "new_text": "testo modificato",
+        "original_text": "Riporta qui l'intero snippet originale (o una larga parte)", 
+        "new_text": "Riporta qui l'intero snippet con la modifica applicata",
         "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
       }}
     ]
     
     REGOLE CRITICHE:
-    - original_text DEVE esistere nel snippet.
+    - original_text DEVE essere un blocco di testo lungo, non una singola riga (se lo snippet è lungo).
+    - new_text DEVE essere il blocco modificato.
     - Output ESCLUSIVAMENTE il JSON.
     """
 
@@ -276,16 +279,16 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
         final_edits = []
         for edit in edits:
             enriched = {
-                "id": str(uuid.uuid4()),
-                "type": "edit",
                 "title": topic_title,
                 "user": edit.get("user", "Anon"),
                 "comment": edit.get("comment", "Edit"),
-                "original_text": edit.get("original_text", ""),
-                "new_text": edit.get("new_text", ""),
                 "timestamp": int(time.time()),
                 "is_vandalism": edit.get("is_vandalism", False),
-                "meta": { "uri": f"https://it.wikipedia.org/wiki/{clean_title}" }
+                "diff_url": f"https://it.wikipedia.org/w/index.php?title={clean_title}&diff=prev&oldid=000000",
+                "server_name": "it.wikipedia.org",
+                "wiki": "itwiki",
+                "original_text": edit.get("original_text", ""),
+                "new_text": edit.get("new_text", "")
             }
             final_edits.append(enriched)
             

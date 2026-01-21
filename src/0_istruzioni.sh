@@ -101,29 +101,14 @@ FASE RUNTIME
 Adesso devi avviare prima lo stream processor e l'ai judge altrimenti 
 non sono pronti a ricevere le modifiche.
 
-Apri 3 terminali separati (puoi farlo pure in vscode, che cazzo alzi gli occhi)
-ed esegui i comandi in ordine:
+puoi eseguire il file 700_open_all_testing_terminals.sh per avviare tutti i terminali separati.
+
+oppure te li apri in ordine dal 200 al 204 a mano, CIASCUNO su un terminale diverso.
 -----------------------------------------------------------------------------------
 `
 
 
-py 199_reset_kafka.py
-
-
-#Terminale 1
-py 200_stream_processor.py
-
-#Terminale 2
-py 201_ai_judge_gemini.py 
-
-#Terminale 3
-py 202_neural_judge.py
-
-#Terminale 4
-py 203_neural_judge_without_rag_scores.py
-
-#Terminale 5
-py 204_mock_producer.py
+sh 700_open_all_testing_terminals.sh
 
 
 << `

@@ -1,22 +1,14 @@
 {
     "results": [
         {
-            "user": "AlessandroBarbero",
-            "comment": "sistemata origine",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
+            "user": "User1",
+            "comment": "Correzione di refusi e punteggiatura",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 8.689838647842407
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "fix nome",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 5.650627613067627
+            "time_sec": 8.730643510818481
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 7.170233130455017
+    "avg_time": 8.730643510818481
 }

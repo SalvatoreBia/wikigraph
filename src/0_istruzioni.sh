@@ -36,6 +36,9 @@ gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 
 docker compose up -d
 
+## per resettare i container
+## docker compose down -v
+
 
 << `
 -----------------------------------------------------------------------------------
@@ -43,6 +46,9 @@ IMPORTANTE:
 Lo script 11_embed_trusted_sources.py è hardcodato per usare il SAMPLE 1.
 
 Lo script 4 riprova ogni 3 secondi se docker sta ancora dormendo.
+
+poi estraiamo il contenuto vero dal dump XML gigante.
+Buffer size aumentato p'un ci minta na vita
 -----------------------------------------------------------------------------------
 `
 
@@ -53,14 +59,6 @@ py 5_community_detection.py --leiden
 
 
 sh 6_translate_ids.sh
-
-
-<< `
------------------------------------------------------------------------------------
-Ora estraiamo il contenuto vero dal dump XML gigante.
-Buffer size aumentato per non metterci una vita.
------------------------------------------------------------------------------------
-`
 
 
 py 7_clean_file.py 3 --buffer-size 10_000
@@ -80,8 +78,9 @@ Generiamo le pagine "trusted" e gli edit finti (legit e vandal).
 
 py 10_generate_mocks_from_nodes.py
 
+py 11_reset_embeddings.py
 
-py 11_embed_trusted_sources.py
+py 12_embed_trusted_sources.py
 
 
 << `

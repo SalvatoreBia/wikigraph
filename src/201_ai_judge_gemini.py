@@ -165,7 +165,7 @@ def main():
         bootstrap_servers=[KAFKA_BROKER],
         value_deserializer=lambda x: json.loads(x.decode('utf-8')),
         auto_offset_reset='latest',
-        group_id='ai_judge_group'  # Questo assicura che riceva una copia di tutti i messaggi
+        group_id='ai_judge_gemini_group'  # Ogni judge ha il suo group_id per ricevere TUTTI i messaggi
     )
 
     for message in consumer:
@@ -173,6 +173,8 @@ def main():
         
         # Deduplicazione: salta eventi già processati
         event_id = event.get('id') or event.get('meta', {}).get('id')
+        if event_id is not None:
+            event_id = str(event_id)  # Converti a stringa per evitare errori di slicing
         if event_id and event_id in processed_ids:
             print(f"⏭️ Skip duplicato: {event_id[:8]}...")
             continue

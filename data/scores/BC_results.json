@@ -1,22 +1,30 @@
 {
     "results": [
         {
-            "user": "AlessandroBarbero",
-            "comment": "sistemata origine",
+            "user": "User1",
+            "comment": "Correzione di refusi e punteggiatura",
             "predicted": "LEGITTIMO",
-            "expected": "VANDALISMO",
-            "correct": false,
-            "time_sec": 0.17841219902038574
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.17363762855529785
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "fix nome",
+            "user": "User1",
+            "comment": "corretta ortografia e punteggiatura",
             "predicted": "LEGITTIMO",
-            "expected": "VANDALISMO",
-            "correct": false,
-            "time_sec": 0.1991276741027832
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.15649175643920898
+        },
+        {
+            "user": "User1",
+            "comment": "Correzione refuso e punteggiatura nella sezione Carriera",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 0.08129429817199707
         }
     ],
-    "accuracy": 0.0,
-    "avg_time": 0.18876993656158447
+    "accuracy": 100.0,
+    "avg_time": 0.13714122772216797
 }

@@ -1,24 +1,17 @@
-"""
-207_neural_judge_minimal.py
-Judge neurale per rilevamento vandalismo in real-time.
-VERSIONE MINIMAL: Usa solo length_ratio (baseline stupida).
-Consuma da Kafka e classifica gli edit.
-"""
-
 import json
 import pickle
-import time
 import sys
-import numpy as np
+import time
 from pathlib import Path
-from kafka import KafkaConsumer
+
+import numpy as np
 import torch
 import torch.nn as nn
+from kafka import KafkaConsumer
 
-
-# --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 from config_loader import load_config
+
 CONFIG = load_config()
 
 DATA_DIR = BASE_DIR / "data"
@@ -52,7 +45,6 @@ def get_raw_features_minimal(edit):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # SOLO LENGTH RATIO!
     features = np.array([length_ratio])
     
     return features

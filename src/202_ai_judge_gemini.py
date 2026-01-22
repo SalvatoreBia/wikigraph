@@ -217,7 +217,6 @@ def main():
         print(f"\n- Analisi edit di [{user}]:")
         print(f"  Commento: \"{comment}\"")
         
-        # Retry loop per gestire errori di quota (429)
         max_retries = 5
         retry_wait = 60
         verdict = None
@@ -230,13 +229,11 @@ def main():
             elapsed = end_time - start_time
             total_elapsed += elapsed
             
-            # Controlla se è un errore di quota (429)
             if "429" in verdict or "quota" in verdict.lower() or "exhausted" in verdict.lower():
                 print(f"  ⚠ Errore quota (tentativo {attempt + 1}/{max_retries}). Attesa {retry_wait}s...")
                 time.sleep(retry_wait)
                 continue
             else:
-                # Successo o altro tipo di errore, esci dal loop
                 break
         
         elapsed = total_elapsed

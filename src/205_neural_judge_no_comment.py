@@ -1,26 +1,19 @@
-"""
-205_neural_judge_no_comment.py
-Judge neurale per rilevamento vandalismo in real-time.
-VERSIONE SENZA COMMENTO: Non usa embedding del commento.
-Consuma da Kafka e classifica gli edit.
-"""
-
 import json
 import pickle
-import time
 import sys
-import numpy as np
+import time
 from pathlib import Path
+
+import numpy as np
+import torch
+import torch.nn as nn
 from kafka import KafkaConsumer
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import torch
-import torch.nn as nn
 
-
-# --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 from config_loader import load_config
+
 CONFIG = load_config()
 
 DATA_DIR = BASE_DIR / "data"
@@ -73,7 +66,6 @@ def get_raw_features_no_comment(edit, embedder):
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # SENZA COMMENTO!
     features = np.concatenate([
         old_emb, new_emb,
         [semantic_similarity], [length_ratio]

@@ -1,17 +1,19 @@
 import json
 import pickle
 import sys
-import numpy as np
 from pathlib import Path
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.svm import SVC
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, f1_score
-from sentence_transformers import SentenceTransformer
-import classifier_utils
 
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix, f1_score
+from sklearn.model_selection import (StratifiedKFold, cross_val_score,
+                                     train_test_split)
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+
+import classifier_utils
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
@@ -24,6 +26,7 @@ LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 from config_loader import load_config
+
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
@@ -72,7 +75,6 @@ def evaluate_models(X, y):
             best_model = model
             best_name = name
     
-    # Ordina per score
     results.sort(key=lambda x: x[1], reverse=True)
     
     for name, mean, std in results:
@@ -171,7 +173,6 @@ def main():
     target_legit = CONFIG['dataset']['training']['legit_count']
     target_vandal = CONFIG['dataset']['training']['vandal_count']
     
-    # Se i file contengono più dati, limitiamo al target
     if len(legit_edits) > target_legit:
         print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
         legit_edits = legit_edits[:target_legit]
@@ -190,7 +191,6 @@ def main():
         driver.close()
         return
 
-    # 4. Feature Engineering
     print("\n⚙️  Generazione Features...")
     X = []
     for i, edit in enumerate(all_edits):
@@ -204,35 +204,30 @@ def main():
     y = np.array(labels)
     print(f"\n   ✅ Features shape: {X.shape}")
     
-    # 5. TRAIN/TEST SPLIT
     print(f"\n📂 Split Dataset ({TRAIN_SPLIT*100:.0f}% train / {(1-TRAIN_SPLIT)*100:.0f}% test)...")
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, 
         test_size=(1 - TRAIN_SPLIT), 
         random_state=42, 
-        stratify=y  # Mantiene proporzioni classi
+        stratify=y
     )
     print(f"   Train: {len(X_train)} samples")
     print(f"   Test:  {len(X_test)} samples")
     
-    # 6. Scaling (fit solo su train!)
     print("\n⚖️  Normalizzazione Features (StandardScaler)...")
     scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)  # Fit su train
-    X_test_scaled = scaler.transform(X_test)        # Transform su test
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
     
     with open(SCALER_FILE, "wb") as f:
         pickle.dump(scaler, f)
     print(f"   ✅ Scaler salvato: {SCALER_FILE}")
 
-    # 7. Model Selection con Cross-Validation sul TRAIN set
     best_model, best_name = evaluate_models(X_train_scaled, y_train)
     
-    # 8. Train finale sul train set
     print(f"\n🏋️  Training finale con {best_name}...")
     best_model.fit(X_train_scaled, y_train)
     
-    # 9. Valutazione su TRAIN e TEST set
     train_acc = best_model.score(X_train_scaled, y_train)
     test_acc = best_model.score(X_test_scaled, y_test)
     
@@ -248,11 +243,9 @@ def main():
     print(f"   {'Accuracy':<15} {train_acc:<12.2%} {test_acc:<12.2%}")
     print(f"   {'F1-Score':<15} {train_f1:<12.2%} {test_f1:<12.2%}")
     
-    # Avviso overfitting
     if train_acc - test_acc > 0.15:
         print(f"\n   ⚠️  ATTENZIONE: Possibile overfitting (gap train-test > 15%)")
     
-    # 10. Classification Report e Confusion Matrix su TEST
     print(f"\n📊 CLASSIFICATION REPORT (Test Set):")
     print(classification_report(y_test, y_pred_test, target_names=['LEGIT', 'VANDAL']))
     
@@ -263,12 +256,10 @@ def main():
     print(f"   Actual LEGIT   {cm[0,0]:3d}    {cm[0,1]:3d}")
     print(f"   Actual VANDAL  {cm[1,0]:3d}    {cm[1,1]:3d}")
     
-    # 11. Save Model
     with open(MODEL_FILE, "wb") as f:
         pickle.dump(best_model, f)
     print(f"\n✅ Modello salvato: {MODEL_FILE}")
     
-    # 12. Analisi pesi
     analyze_weights(best_model, best_name)
     
     driver.close()

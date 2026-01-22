@@ -1,17 +1,16 @@
+import csv
 import json
+import sys
 import time
 import uuid
-import sys
-import csv
 from pathlib import Path
+
 from kafka import KafkaProducer
 
-# --- CONFIGURAZIONE ---
 from config_loader import load_config
 
 CONFIG = load_config()
 
-# --- CONFIGURAZIONE ---
 KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_OUT = CONFIG['kafka']['topic_changes'] 
 
@@ -67,7 +66,6 @@ def send_event(producer, edit_data, page_map):
     
     title = edit_data['title']
     
-    # Lookup ID
     page_id = None
     if title in page_map:
         page_id = page_map[title]
@@ -134,9 +132,6 @@ if __name__ == "__main__":
     legit_edits = load_eval_edits(LEGIT_FILE)
     vandal_edits = load_eval_edits(VANDAL_FILE)
 
-    # APPLICA IL LIMITE
-    # APPLICA IL LIMITE
-    # Usa i conteggi definiti in config per il testing (stream)
     target_legit = CONFIG['dataset']['testing']['legit_count']
     target_vandal = CONFIG['dataset']['testing']['vandal_count']
 

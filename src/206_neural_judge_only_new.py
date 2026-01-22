@@ -1,25 +1,18 @@
-"""
-206_neural_judge_only_new.py
-Judge neurale per rilevamento vandalismo in real-time.
-VERSIONE SOLO NEW TEXT: Usa solo embedding del nuovo testo.
-Consuma da Kafka e classifica gli edit.
-"""
-
 import json
 import pickle
-import time
 import sys
-import numpy as np
+import time
 from pathlib import Path
-from kafka import KafkaConsumer
-from sentence_transformers import SentenceTransformer
+
+import numpy as np
 import torch
 import torch.nn as nn
+from kafka import KafkaConsumer
+from sentence_transformers import SentenceTransformer
 
-
-# --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 from config_loader import load_config
+
 CONFIG = load_config()
 
 DATA_DIR = BASE_DIR / "data"
@@ -60,7 +53,6 @@ def get_raw_features_only_new(edit, embedder):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # SOLO NEW TEXT + RATIO!
     features = np.concatenate([
         new_emb,
         [length_ratio]

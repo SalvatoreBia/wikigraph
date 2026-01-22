@@ -6,7 +6,6 @@ import time
 import requests
 from kafka import KafkaProducer
 
-# Modalità: "manual" = interattivo, "auto" = scelte automatiche
 MODE = "auto"
 
 KAFKA_BROKER = 'localhost:9094'
@@ -39,7 +38,6 @@ def load_unique_titles_from_mocks():
 def select_page_title():
     titles = load_unique_titles_from_mocks()
     
-    # Modalità automatica: scelta casuale
     if MODE == "auto":
         selected = random.choice(titles) if titles else "Gaio_Giulio_Cesare"
         print(f"\n[AUTO] Titolo selezionato: {selected}")

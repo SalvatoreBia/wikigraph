@@ -1,8 +1,3 @@
-"""
-Script per inviare tutti gli edit salvati in 501_manual_edits_history.json
-al topic Kafka 'to-be-judged' per farli giudicare.
-"""
-
 import json
 import time
 
@@ -56,7 +51,6 @@ def main():
         except Exception as e:
             print(f"[{i}/{len(history)}] {title} -> ERRORE: {e}")
         
-        # Piccola pausa per non sovraccaricare
         time.sleep(0.1)
     
     producer.flush()

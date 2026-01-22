@@ -276,7 +276,6 @@ def main():
     
     all_edits = load_edits(EDITS_HISTORY_FILE)
     
-    # Separa legit e vandal in base a is_vandalism
     legit_edits = [e for e in all_edits if not e.get('is_vandalism', False)]
     vandal_edits = [e for e in all_edits if e.get('is_vandalism', False)]
     

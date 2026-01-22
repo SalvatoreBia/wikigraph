@@ -40,7 +40,9 @@
 \pagestyle{plain}
 
 \begin{abstract}
-\lipsum[2-3]
+The rapid growth of user-generated content on Wikipedia poses significant challenges for maintaining information integrity. The high velocity of edits makes manual moderation unfeasible, necessitating automated real-time solutions. This paper presents a microservices-based architecture designed to detect vandalism in Wikipedia streams using a hybrid approach of Graph Mining and Artificial Intelligence. 
+We leverage Graph Data Science techniques (Leiden algorithm) to cluster pages into communities, using edit bursts as triggers for anomaly detection. We implement a Retrieval-Augmented Generation (RAG) pipeline backed by a Neo4j Knowledge Graph to provide factual context to the classifiers.
+Finally, we conduct a comparative analysis and an ablation study between a high-precision Large Language Model (Gemini) acting as an oracle, and lightweight Neural Network classifiers trained on synthetic adversarial data. Our results highlight the trade-offs between the computational cost of LLMs and the speed of neural classifiers enhanced by graph-based RAG features.
 \end{abstract}
 
 \vspace{1cm}
@@ -48,9 +50,13 @@
 \section{Introduction}
 Wikipedia stands out as one of the most significant sources of crowdsourced knowledge in the digital age. Its open nature allows for the democratization of information, enabling any user to contribute to historical and scientific documentation. However, this accessibility has an obvious downside: the platform is inherently vulnerable to malicious actors. Vandalism, misinformation, and the injection of unverified facts can occur at any moment, potentially compromising the integrity of the encyclopedia.
 
+
+
 A useful tool for monitoring such behaviour is the real-time \texttt{RecentChanges} API, provided by WikiMedia, which broadcasts every modification made across the platform. While this tool offers transparency, the sheer volume and velocity of the incoming data make manual verification impossible. Human moderators cannot keep up with the flood of edits that occur every second. Consequently, there is a critical need for autonomous systems capable of filtering this stream and flagging suspicious activities in real-time.
 
-This project addresses this challenge by leveraging graph mining techniques to enrich the context of incoming edits. We construct a simple knowledge graph using Neo4j—based on Wikipedia page dumps and link structures—to capture the relationships between entities. Building upon this structural foundation, this work conducts a comparative analysis between two distinct detection paradigms: traditional Machine Learning classifiers (such as Random Forest and Gradient Boosting) and modern Large Language Models (Gemini). The primary objective is to evaluate the trade-offs between these approaches, determining which methodology offers the most effective solution for real-time vandalism detection.
+This project addresses this challenge by leveraging \textbf{Graph Mining} techniques to optimize the detection workflow. We construct a knowledge graph utilizing Neo4j to capture the topological structure of Wikipedia. By applying community detection algorithms (such as Leiden), we segment the graph into topical clusters; detecting a sudden spike of edits within a specific cluster allows the system to prioritize resources on potential coordinated attacks.
+
+Building upon this structural foundation, this work conducts a comparative analysis between two distinct detection paradigms: \textbf{Feed-Forward Neural Networks (FNN)} and modern \textbf{Large Language Models (LLMs)}. specifically, we perform an \textbf{Ablation Study} on the Neural classifiers to evaluate the impact of Retrieval-Augmented Generation (RAG) features, extracted from the graph, on the model's accuracy. The primary objective is to evaluate the trade-offs between these approaches, determining which methodology offers the most effective solution for real-time vandalism detection.
 
 In the upcoming sections, we will detail the graph construction methodology and the experimental setup. Finally, we will describe the implemented anomaly detection architectures and discuss the analysis of our findings.
 

@@ -6,6 +6,9 @@ import time
 import requests
 from kafka import KafkaProducer
 
+# Modalità: "manual" = interattivo, "auto" = scelte automatiche
+MODE = "auto"
+
 KAFKA_BROKER = 'localhost:9094'
 TOPIC_OUT = 'to-be-judged'
 HISTORY_FILE = '501_manual_edits_history.json'
@@ -35,6 +38,12 @@ def load_unique_titles_from_mocks():
 
 def select_page_title():
     titles = load_unique_titles_from_mocks()
+    
+    # Modalità automatica: scelta casuale
+    if MODE == "auto":
+        selected = random.choice(titles) if titles else "Gaio_Giulio_Cesare"
+        print(f"\n[AUTO] Titolo selezionato: {selected}")
+        return selected
     
     print("\n--- SELEZIONE PAGINA ---")
     print("0. Inserisci titolo manualmente")
@@ -167,6 +176,15 @@ def create_manual_event(page_title, original_text, new_text, comment, user, is_v
 def select_window(content, window_size=600):
     if len(content) <= window_size:
         return content
+    
+    if MODE == "auto":
+        start = random.randint(0, len(content) - window_size)
+        if start > 0:
+            while start < len(content) and content[start] not in (' ', '\n'):
+                start += 1
+        window = content[start : start + window_size]
+        print(f"[AUTO] Finestra casuale selezionata (da carattere {start})")
+        return window
         
     print(f"\n- SELEZIONE FINESTRA TESTO ({len(content)} caratteri) -")
     print("1. Inizio pagina")
@@ -210,8 +228,12 @@ def main():
         f.write(original_window)
         
     print(f"\n- Finestra salvata in '{filename}'.")
-    print("- MODIFICA IL FILE E SALVA, poi premi INVIO...")
-    input()
+    
+    if MODE == "manual":
+        print("- MODIFICA IL FILE E SALVA, poi premi INVIO...")
+        input()
+    else:
+        print("[AUTO] Modalità automatica - nessuna modifica al testo")
     
     try:
         with open(filename, "r", encoding="utf-8") as f:
@@ -222,9 +244,15 @@ def main():
 
     print("- Modifiche rilevate." if original_window != new_window else "! Nessuna modifica rilevata.")
 
-    user = input("Nome Utente [Manuale]: ").strip() or "Manuale"
-    comment = input("Commento [Test]: ").strip() or "Test"
-    is_vandalism = input("È vandalismo? (s/N): ").strip().lower() in ['s', 'y', 'si', 'yes']
+    if MODE == "auto":
+        user = "AlessandroBarbero"
+        comment = "correzione imprecisione"
+        is_vandalism = False
+        print(f"[AUTO] Utente: {user}, Commento: {comment}")
+    else:
+        user = input("Nome Utente [Manuale]: ").strip() or "Manuale"
+        comment = input("Commento [Test]: ").strip() or "Test"
+        is_vandalism = input("È vandalismo? (s/N): ").strip().lower() in ['s', 'y', 'si', 'yes']
     
     event = create_manual_event(page_title, original_window, new_window, comment, user, is_vandalism, lang)
     

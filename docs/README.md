@@ -10,6 +10,7 @@ https://www.overleaf.com/project/6970d6100a286eb9d599f640
 
 non posso mettere commenti nel config.json che gli pesava il culo definire un carattere di escaper per i commenti
 
+```json
 "llm": {
     "provider": "local", // gemini o local
     "generation_model": "gemma-3-27b-it", // per gemini
@@ -20,4 +21,4 @@ non posso mettere commenti nel config.json che gli pesava il culo definire un ca
         "model": "openai/gpt-oss-20b" // per local
     }
 },
-
+```

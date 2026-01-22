@@ -17,7 +17,7 @@ LLM_RESULTS = SCORES_DIR / "LLM_results.json"
 
 # Mappa dei nomi file ai nomi leggibili
 MODEL_NAMES = {
-    "LLM_results.json": "Gemini (AI Judge)",
+    "LLM_results.json": "GPT OSS 20B (AI Judge)",
     "BC_results.json": "Neural Complete (with RAG)",
     "BC_results_no_rag.json": "Neural No RAG",
     "BC_results_no_comment.json": "Neural No Comment",
@@ -49,7 +49,7 @@ def main():
     llm_data = load_results(LLM_RESULTS)
     if llm_data:
         models.append({
-            "name": "Gemini (AI Judge)",
+            "name": "GPT OSS 20B (AI Judge)",
             "accuracy": llm_data.get('accuracy', 0),
             "time": llm_data.get('avg_time', 0),
             "count": len(llm_data.get('results', [])),

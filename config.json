@@ -1,12 +1,12 @@
 {
     "llm": {
-        "provider": "gemini",
+        "provider": "local",
         "generation_model": "gemma-3-27b-it",
         "judge_model": "gemma-3-27b-it",
         "local": {
             "base_url": "http://localhost:1234/v1",
             "api_key": "lm-studio",
-            "model": "qwen/qwen3-vl-8b"
+            "model": "openai/gpt-oss-20b"
         }
     },
     "embedding": {

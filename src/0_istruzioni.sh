@@ -88,9 +88,13 @@ tocca capire dov'è che diventa inutile
 
 
 py 13_train_neural_complete.py
+
 py 14_train_neural_no_rag.py
+
 py 15_train_neural_no_comment.py
+
 py 16_train_neural_only_new.py
+
 py 17_train_neural_minimal.py
 
 

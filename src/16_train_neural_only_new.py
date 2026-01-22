@@ -7,17 +7,18 @@ Features: new_emb + length_ratio = 385
 
 import json
 import pickle
-import numpy as np
 from pathlib import Path
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, f1_score, accuracy_score
-from sentence_transformers import SentenceTransformer
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import TensorDataset, DataLoader
-
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics import (accuracy_score, classification_report,
+                             confusion_matrix, f1_score)
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from torch.utils.data import DataLoader, TensorDataset
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
@@ -31,6 +32,7 @@ LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
 
 from config_loader import load_config
+
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
@@ -155,7 +157,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
         torch.FloatTensor(y_val).unsqueeze(1)
     )
     
-    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, drop_last=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
     
     model = VandalismClassifierOnlyNew(input_dim).to(device)

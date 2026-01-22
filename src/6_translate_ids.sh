@@ -6,7 +6,7 @@ echo "--- Inizio traduzione Batch ID -> Nomi ---"
 echo "Mappa di riferimento: $MAP_FILE"
 
 if [[ ! -f "$MAP_FILE" ]]; then
-    echo "Errore: File $MAP_FILE mancante."
+    echo "! Errore: File $MAP_FILE mancante."
     exit 1
 fi
 
@@ -15,7 +15,7 @@ mkdir -p ../data/sample_with_names
 for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do
 
     if [[ ! -e "$EDGE_FILE" ]]; then
-        echo "Nessun file sample_*.csv trovato nella cartella sample/."
+        echo "! Nessun file sample_*.csv trovato."
         break
     fi
 
@@ -23,7 +23,7 @@ for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do
     NUM=$(echo "$BASE_NAME" | sed 's/sample_\([0-9]*\)\.csv/\1/')
     OUTPUT_FILE="../data/sample_with_names/sample_with_names_${NUM}.csv"
 
-    echo "Elaborazione in corso: $EDGE_FILE  -->  $OUTPUT_FILE"
+    echo "- Elaborazione: $EDGE_FILE -> $OUTPUT_FILE"
 
     awk -F, '
         NR == FNR { 
@@ -47,4 +47,4 @@ for EDGE_FILE in ../data/sample/sample_[0-9]*.csv; do
 
 done
 
-echo "--- Operazione completata su tutti i file ---"
+echo "--- Operazione completata ---"

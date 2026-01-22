@@ -9,7 +9,7 @@ scripts=(
     "205_neural_judge_no_comment.py:0"
     "206_neural_judge_only_new.py:0"
     "207_neural_judge_minimal.py:0"
-    "300_mock_producer.py:1"
+    #"300_mock_producer.py:1"
 )
 
 if command -v konsole &> /dev/null; then

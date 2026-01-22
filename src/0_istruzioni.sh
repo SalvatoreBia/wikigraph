@@ -18,7 +18,7 @@ cd src
 
 << `
 -----------------------------------------------------------------------------------
-se hai già i file in ../data appost, sennò dai, scarica bene
+se hai già i file in ../data appost, sennò dai, scarica beneee
 ora tutti i csv ecc. saranno in ../data
 -----------------------------------------------------------------------------------
 `
@@ -36,19 +36,17 @@ gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 
 docker compose up -d
 
-## per resettare i container
-## docker compose down -v
+## per resettare i container invece:             docker compose down -v
 
 
 << `
 -----------------------------------------------------------------------------------
-IMPORTANTE:
-Lo script 11_embed_trusted_sources.py è hardcodato per usare il SAMPLE 1.
-
 Lo script 4 riprova ogni 3 secondi se docker sta ancora dormendo.
 
 poi estraiamo il contenuto vero dal dump XML gigante.
 Buffer size aumentato p'un ci minta na vita
+
+il numero aglis cript indica quale sample usare.
 -----------------------------------------------------------------------------------
 `
 
@@ -69,8 +67,6 @@ py 8_add_node_info.py 3
 
 << `
 -----------------------------------------------------------------------------------
-FASE AI & GENERAZIONE
-Qui servono le API KEY nel .env.
 Generiamo le pagine "trusted" e gli edit finti (legit e vandal).
 -----------------------------------------------------------------------------------
 `
@@ -85,8 +81,8 @@ py 12_embed_trusted_sources.py
 
 << `
 -----------------------------------------------------------------------------------
-FASE TRAINING
-Addestriamo tutti i classificatori neurali (modelli progressivamente semplificati).
+Addestriamo tutti i classificatori neurali, il primo è il migliore gli altri fanno progressivamente cacare
+tocca capire dov'è che diventa inutile
 -----------------------------------------------------------------------------------
 `
 
@@ -100,22 +96,36 @@ py 17_train_neural_minimal.py
 
 << `
 -----------------------------------------------------------------------------------
-FASE RUNTIME
-Adesso devi avviare prima lo stream processor e l'ai judge altrimenti 
-non sono pronti a ricevere le modifiche.
-
-puoi eseguire il file 600_open_all_testing_terminals.sh per avviare tutti i terminali separati.
-
-Script da eseguire (in terminali separati):
+o ti esegui in terminali separati uno ad uno:
+# Terminale 1:
   - 199_reset_kafka.py (reset kafka topics)
+
+# Terminale 2:
   - 200_stream_processor.py (stream processor)
+
+# Terminale 3:
   - 202_ai_judge_gemini.py (LLM judge)
+
+# Terminale 4:
   - 203_neural_judge.py (neural completo con RAG)
+
+# Terminale 5:
   - 204_neural_judge_no_rag.py (neural senza RAG)
+
+# Terminale 6:
   - 205_neural_judge_no_comment.py (neural senza commento)
+
+# Terminale 7:
   - 206_neural_judge_only_new.py (neural solo new text)
+
+# Terminale 8:
   - 207_neural_judge_minimal.py (neural baseline stupida)
+
+# Terminale 9:
   - 300_mock_producer.py (producer mock edits)
+
+
+oppure lancia lo script che fa tutto al posto tuo
 -----------------------------------------------------------------------------------
 `
 
@@ -125,13 +135,13 @@ sh 600_open_all_testing_terminals.sh
 
 << `
 -----------------------------------------------------------------------------------
-Quando parte il mock producer (Terminale 3), vedrai il traffico scorrere.
-Se superi la soglia di edit per community, scatta l'allarme nel Terminale 1
-e i giudici nel Terminale 2 inizieranno a sputare sentenze.
+Il mock producer pusha modifiche ad hoc
+appena supera la soglia di edit per community, scatta l'allarme nel Terminale ??
+e i giudici iniziano a valutare.
 
-Alla fine, per vedere chi ha vinto:
+
+Alla fine, per le comparazioni dei risultati:
 -----------------------------------------------------------------------------------
 `
-
 
 py 700_compare_models.py

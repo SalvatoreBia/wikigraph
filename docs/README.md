@@ -8,7 +8,7 @@ https://www.overleaf.com/project/6970d6100a286eb9d599f640
 
 ---
 
-non posso mettere commenti nel config.json che gli pesava il culo definire un carattere di escaper per i commenti
+parametri file configurazione json
 
 ```json
 "llm": {

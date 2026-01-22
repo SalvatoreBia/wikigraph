@@ -124,13 +124,14 @@ The system constructs a prompt containing the user's edit comment, the original 
 \subsection{Neural Classifiers and Ablation Study}
 To achieve real-time performance, we trained a set of \textbf{Feed-Forward Neural Networks} using PyTorch. The architecture consists of a multi-layer perceptron (MLP) with three hidden layers (256, 128, 64 units), employing Batch Normalization, Dropout (0.5), ReLU activation functions and a Sigmoid output for binary classification.
 
-We conducted an \textbf{Ablation Study} to determine the importance of context (RAG). We trained five distinct variations of the model:
+We conducted an \textbf{Ablation Study} to determine the specific contribution of each component. We trained five distinct variations of the model, progressively removing features to isolate their impact:
+
 \begin{enumerate}
-    \item \textbf{Neural Complete:} Uses all features: embeddings of the old text, new text, user comment, and, crucially, the cosine similarity scores (RAG scores) retrieved from the Neo4j Vector Index (triangulation between Wikipedia and Trusted Sources).
-    \item \textbf{No RAG:} Excludes the similarity scores from the Graph, relying only on the text embeddings.
-    \item \textbf{No Comment:} Ignores the user's edit summary.
-    \item \textbf{Only New:} Analyzes only the embedding of the resulting text.
-    \item \textbf{Minimal (Baseline):} Uses only metadata features (text length ratio), serving as a naive baseline.
+    \item \textbf{Neural Complete (Proposed):} Utilizes the full feature set, including all text embeddings (old text, new text, user comment), metadata, and the Graph-RAG similarity scores retrieved from Neo4j.
+    \item \textbf{No RAG:} Excludes the external knowledge component by removing the Graph-RAG similarity scores, relying solely on the intrinsic properties of the edit.
+    \item \textbf{No Comment:} Further removes the user's declared intent (edit summary) to evaluate performance when users leave empty or misleading descriptions.
+    \item \textbf{Only New:} Simulates a context-free check by analyzing only the embedding of the resulting text, ignoring the original version.
+    \item \textbf{Minimal (Baseline):} A naive baseline that ignores all semantic content, relying exclusively on the text length ratio.
 \end{enumerate}
 
 

@@ -84,7 +84,13 @@ TRUSTED_HTML_DIR = DATA_DIR / "trusted_html_pages"
 RESULTS_FILE = SCORES_DIR / "LLM_results.json"
 
 def get_html_file_path(page_title):
+    # Normalizza il titolo della pagina per corrispondere al formato dei file HTML
     normalized_title = page_title.replace(' ', '_')
+    # Sostituisci i caratteri speciali per corrispondere ai nomi dei file
+    normalized_title = normalized_title.replace('.', '_')
+    normalized_title = normalized_title.replace('(', '__')
+    normalized_title = normalized_title.replace(')', '_')
+    normalized_title = normalized_title.replace('-', '_')
     html_filename = f"trusted_{normalized_title}.html"
     html_path = TRUSTED_HTML_DIR / html_filename
     return html_path

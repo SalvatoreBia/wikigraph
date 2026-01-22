@@ -1,5 +1,5 @@
 #!/bin/bash
-# Guida all'esecuzione della pipeline WikiGraph
+
 
 # 1. Configurazione ambiente
 python -m venv .venv

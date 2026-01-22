@@ -37,14 +37,16 @@ VANDAL_TEST_FILE = MOCK_DIR / "vandal_edits_test.json"
 
 load_dotenv(dotenv_path=ENV_PATH)
 
-# Retrieve Keys
-API_KEYS = [
-    os.getenv("GEMINI_API_KEY_1"),
-    os.getenv("GEMINI_API_KEY_2"),
-    os.getenv("GEMINI_API_KEY_3"),
-    os.getenv("GEMINI_API_KEY_4")
-]
-API_KEYS = [k for k in API_KEYS if k]
+# Retrieve Keys - Carica dinamicamente tutte le GEMINI_API_KEY_* dal .env
+API_KEYS = []
+i = 1
+while True:
+    key = os.getenv(f"GEMINI_API_KEY_{i}")
+    if key:
+        API_KEYS.append(key)
+        i += 1
+    else:
+        break
 
 # Check provider
 PROVIDER = CONFIG['llm'].get('provider', 'gemini')
@@ -58,7 +60,7 @@ elif PROVIDER == 'local':
 
 # Rate Limiting & Token Config
 MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min'] 
-MAX_TOKENS_PER_MIN = 15000 
+MAX_TOKENS_PER_MIN = CONFIG['rate_limit'].get('max_tokens_per_min', 15000)
 WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 CONTEXT_WINDOW_SIZE = CONFIG['processing'].get('context_window_size', 600)
 

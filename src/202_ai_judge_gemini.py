@@ -19,14 +19,16 @@ from config_loader import load_config
 CONFIG = load_config()
 GEMINI_MODEL = CONFIG['llm']['judge_model']
 
-# API Keys Round Robin
-API_KEYS = [
-    os.getenv("GEMINI_API_KEY_1"),
-    os.getenv("GEMINI_API_KEY_2"),
-    os.getenv("GEMINI_API_KEY_3"),
-    os.getenv("GEMINI_API_KEY_4")
-]
-API_KEYS = [k for k in API_KEYS if k]
+# API Keys Round Robin - Carica dinamicamente tutte le GEMINI_API_KEY_* dal .env
+API_KEYS = []
+i = 1
+while True:
+    key = os.getenv(f"GEMINI_API_KEY_{i}")
+    if key:
+        API_KEYS.append(key)
+        i += 1
+    else:
+        break
 
 api_key_cycle = cycle(API_KEYS)
 key_lock = threading.Lock()

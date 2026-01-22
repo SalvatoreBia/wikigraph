@@ -46,6 +46,7 @@
     },
     "rate_limit": {
         "max_req_per_min": 30,
+        "max_tokens_per_min": 15000,
         "window_size": 63
     }
 }

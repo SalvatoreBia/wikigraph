@@ -6,7 +6,7 @@
         "local": {
             "base_url": "http://localhost:1234/v1",
             "api_key": "lm-studio",
-            "model": "openai/gpt-oss-20b"
+            "model": "qwen/qwen3-vl-8b"
         }
     },
     "embedding": {
@@ -34,15 +34,15 @@
     },
     "dataset": {
         "training": {
-            "legit_count": 10,
-            "vandal_count": 10,
+            "legit_count": 30,
+            "vandal_count": 30,
             "train_split": 0.8
         },
         "testing": {
-            "legit_count": 5,
-            "vandal_count": 5
+            "legit_count": 10,
+            "vandal_count": 10
         },
-        "articles_per_community": 50
+        "articles_per_community": 30
     },
     "rate_limit": {
         "max_req_per_min": 30,

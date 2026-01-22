@@ -86,13 +86,16 @@ py 12_embed_trusted_sources.py
 << `
 -----------------------------------------------------------------------------------
 FASE TRAINING
-Addestriamo il multi layer perceptron.
+Addestriamo tutti i classificatori neurali (modelli progressivamente semplificati).
 -----------------------------------------------------------------------------------
 `
 
 
-py 13_train_neural_classifier.py
-py 14_train_neural_classifier_without_rag_scores.py
+py 13_train_neural_complete.py
+py 14_train_neural_no_rag.py
+py 15_train_neural_no_comment.py
+py 16_train_neural_only_new.py
+py 17_train_neural_minimal.py
 
 
 << `
@@ -101,9 +104,18 @@ FASE RUNTIME
 Adesso devi avviare prima lo stream processor e l'ai judge altrimenti 
 non sono pronti a ricevere le modifiche.
 
-puoi eseguire il file 700_open_all_testing_terminals.sh per avviare tutti i terminali separati.
+puoi eseguire il file 600_open_all_testing_terminals.sh per avviare tutti i terminali separati.
 
-oppure te li apri in ordine dal 200 al 204 a mano, CIASCUNO su un terminale diverso.
+Script da eseguire (in terminali separati):
+  - 199_reset_kafka.py (reset kafka topics)
+  - 200_stream_processor.py (stream processor)
+  - 202_ai_judge_gemini.py (LLM judge)
+  - 203_neural_judge.py (neural completo con RAG)
+  - 204_neural_judge_no_rag.py (neural senza RAG)
+  - 205_neural_judge_no_comment.py (neural senza commento)
+  - 206_neural_judge_only_new.py (neural solo new text)
+  - 207_neural_judge_minimal.py (neural baseline stupida)
+  - 300_mock_producer.py (producer mock edits)
 -----------------------------------------------------------------------------------
 `
 

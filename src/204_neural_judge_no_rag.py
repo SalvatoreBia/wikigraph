@@ -1,5 +1,5 @@
 """
-203_neural_judge_without_rag_scores.py
+204_neural_judge_no_rag.py
 Judge neurale per rilevamento vandalismo in real-time.
 VERSIONE SENZA RAG SCORES: Non usa triangolazione Neo4j.
 Consuma da Kafka e classifica gli edit usando solo embedding locali.
@@ -40,7 +40,7 @@ MODEL_NAME = CONFIG['embedding']['model_name']
 def get_raw_features_no_rag(edit, embedder):
     """
     Feature grezze per il modello neurale NO RAG.
-    Identica a 14_train_neural_classifier_without_rag_scores.py
+    Identica a 14_train_neural_no_rag.py
     
     Features:
     - old_emb (384)
@@ -133,7 +133,7 @@ def load_resources():
     
     if not NEURAL_MODEL_FILE.exists():
         print(f"❌ Modello non trovato: {NEURAL_MODEL_FILE}")
-        print("   Esegui prima 14_train_neural_classifier_without_rag_scores.py")
+        print("   Esegui prima 14_train_neural_no_rag.py")
         return None, None
         
     if not NEURAL_SCALER_FILE.exists():

@@ -1,13 +1,29 @@
+"""
+700_compare_models.py
+Confronto delle performance tra tutti i modelli di rilevamento vandalismo.
+Legge dinamicamente tutti i file BC_results*.json per supportare
+versioni future dei modelli.
+"""
+
 import json
 from pathlib import Path
+import glob
 
 # --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 SCORES_DIR = DATA_DIR / "scores"
 LLM_RESULTS = SCORES_DIR / "LLM_results.json"
-BC_RESULTS = SCORES_DIR / "BC_results.json"
-BC_NO_RAG_RESULTS = SCORES_DIR / "BC_results_no_rag.json"
+
+# Mappa dei nomi file ai nomi leggibili
+MODEL_NAMES = {
+    "LLM_results.json": "Gemini (AI Judge)",
+    "BC_results.json": "Neural Complete (with RAG)",
+    "BC_results_no_rag.json": "Neural No RAG",
+    "BC_results_no_comment.json": "Neural No Comment",
+    "BC_results_only_new.json": "Neural Only New",
+    "BC_results_minimal.json": "Neural Minimal (baseline)"
+}
 
 def load_results(filepath):
     if not filepath.exists():
@@ -15,90 +31,105 @@ def load_results(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def get_model_name(filename):
+    """Ottiene il nome leggibile del modello dal nome file."""
+    return MODEL_NAMES.get(filename, filename.replace("_", " ").replace(".json", "").title())
+
 def main():
     print("--- 📊 CONFRONTO MODELLI (Vandalism Detection) ---")
     
-    llm_data = load_results(LLM_RESULTS)
-    bc_data = load_results(BC_RESULTS)
-    bc_no_rag_data = load_results(BC_NO_RAG_RESULTS)
+    # Trova tutti i file di risultati
+    all_result_files = list(SCORES_DIR.glob("*.json"))
     
-    # Verifica disponibilità dati
+    # Costruisci lista dei modelli disponibili
+    models = []
     missing = []
-    if not llm_data:
+    
+    # Prima carica LLM
+    llm_data = load_results(LLM_RESULTS)
+    if llm_data:
+        models.append({
+            "name": "Gemini (AI Judge)",
+            "accuracy": llm_data.get('accuracy', 0),
+            "time": llm_data.get('avg_time', 0),
+            "count": len(llm_data.get('results', [])),
+            "file": "LLM_results.json"
+        })
+    else:
         missing.append(f"LLM ({LLM_RESULTS})")
-    if not bc_data:
-        missing.append(f"BC with RAG ({BC_RESULTS})")
-    if not bc_no_rag_data:
-        missing.append(f"BC without RAG ({BC_NO_RAG_RESULTS})")
+    
+    # Carica tutti i modelli BC_results*.json
+    bc_files = sorted(SCORES_DIR.glob("BC_results*.json"))
+    
+    for bc_file in bc_files:
+        data = load_results(bc_file)
+        if data:
+            models.append({
+                "name": get_model_name(bc_file.name),
+                "accuracy": data.get('accuracy', 0),
+                "time": data.get('avg_time', 0),
+                "count": len(data.get('results', [])),
+                "file": bc_file.name
+            })
+        else:
+            missing.append(str(bc_file))
     
     if missing:
         print("⚠️  Dati mancanti:")
         for m in missing:
             print(f"   ❌ {m}")
     
-    # Costruisci lista dei modelli disponibili
-    models = []
-    
-    if llm_data:
-        models.append({
-            "name": "Gemini (AI Judge)",
-            "accuracy": llm_data.get('accuracy', 0),
-            "time": llm_data.get('avg_time', 0),
-            "count": len(llm_data.get('results', []))
-        })
-    
-    if bc_data:
-        models.append({
-            "name": "Neural Classifier (with RAG)",
-            "accuracy": bc_data.get('accuracy', 0),
-            "time": bc_data.get('avg_time', 0),
-            "count": len(bc_data.get('results', []))
-        })
-    
-    if bc_no_rag_data:
-        models.append({
-            "name": "Neural Classifier (no RAG)",
-            "accuracy": bc_no_rag_data.get('accuracy', 0),
-            "time": bc_no_rag_data.get('avg_time', 0),
-            "count": len(bc_no_rag_data.get('results', []))
-        })
-    
     if len(models) < 2:
         print("\n❌ Servono almeno 2 modelli per il confronto!")
+        print("   Assicurati di aver trainato i modelli e eseguito i test.")
         return
     
     # Stampa tabella comparativa
-    print("\n" + "="*80)
-    print(f"{'MODELLO':<32} | {'ACCURATEZZA':>12} | {'TEMPO MEDIO':>12} | {'SAMPLES':>8}")
-    print("-" * 80)
+    print("\n" + "=" * 90)
+    print(f"{'MODELLO':<35} | {'ACCURATEZZA':>12} | {'TEMPO MEDIO':>12} | {'SAMPLES':>8}")
+    print("-" * 90)
     
-    for m in models:
-        print(f"{m['name']:<32} | {m['accuracy']:>11.2f}% | {m['time']:>11.4f}s | {m['count']:>8}")
+    # Ordina per accuratezza decrescente
+    models_sorted = sorted(models, key=lambda x: x['accuracy'], reverse=True)
     
-    print("="*80)
+    for i, m in enumerate(models_sorted):
+        medal = ""
+        if i == 0:
+            medal = "🥇 "
+        elif i == 1:
+            medal = "🥈 "
+        elif i == 2:
+            medal = "🥉 "
+            
+        name_display = f"{medal}{m['name']}"
+        print(f"{name_display:<35} | {m['accuracy']:>11.2f}% | {m['time']:>11.4f}s | {m['count']:>8}")
     
-    # Analisi confronto RAG vs No RAG (se entrambi disponibili)
-    if bc_data and bc_no_rag_data:
-        acc_rag = bc_data.get('accuracy', 0)
-        acc_no_rag = bc_no_rag_data.get('accuracy', 0)
-        time_rag = bc_data.get('avg_time', 0)
-        time_no_rag = bc_no_rag_data.get('avg_time', 0)
+    print("=" * 90)
+    
+    # Analisi progressiva: Mostra come degrada la qualità rimuovendo feature
+    neural_models = [m for m in models_sorted if "Neural" in m["name"]]
+    
+    if len(neural_models) >= 2:
+        print("\n📉 ANALISI DEGRADAZIONE PROGRESSIVA:")
+        print("-" * 60)
         
-        print("\n📈 CONFRONTO RAG vs NO RAG:")
-        diff_rag = acc_rag - acc_no_rag
-        if diff_rag > 0:
-            print(f"   ✅ RAG migliora l'accuratezza di {diff_rag:.2f} punti percentuali")
-        elif diff_rag < 0:
-            print(f"   ⚠️  NO RAG è più accurato di {abs(diff_rag):.2f} punti percentuali")
-        else:
-            print("   🔄 Stessa accuratezza")
+        # Ordina per nome file (che riflette la progressione)
+        neural_by_complexity = sorted(neural_models, 
+            key=lambda x: ["BC_results.json", "BC_results_no_rag.json", 
+                          "BC_results_no_comment.json", "BC_results_only_new.json",
+                          "BC_results_minimal.json"].index(x["file"]) 
+                          if x["file"] in ["BC_results.json", "BC_results_no_rag.json", 
+                                          "BC_results_no_comment.json", "BC_results_only_new.json",
+                                          "BC_results_minimal.json"] else 99)
         
-        if time_no_rag < time_rag and time_no_rag > 0:
-            speedup = time_rag / time_no_rag
-            print(f"   ⚡ NO RAG è {speedup:.2f}x più veloce")
-        elif time_rag < time_no_rag and time_rag > 0:
-            speedup = time_no_rag / time_rag
-            print(f"   🐢 RAG è {speedup:.2f}x più veloce")
+        if len(neural_by_complexity) >= 2:
+            best = neural_by_complexity[0]
+            for model in neural_by_complexity[1:]:
+                diff = best['accuracy'] - model['accuracy']
+                if diff > 0:
+                    print(f"   {model['name']}: -{diff:.2f}% rispetto a {best['name']}")
+                else:
+                    print(f"   {model['name']}: +{abs(diff):.2f}% rispetto a {best['name']}")
     
     # Verdetto finale
     print("\n🏆 VERDETTO FINALE:")
@@ -111,27 +142,35 @@ def main():
     fastest = min(models, key=lambda x: x['time'])
     print(f"   ⚡ Modello più veloce: {fastest['name']} ({fastest['time']:.4f}s)")
     
-    # Confronto LLM vs ML (se disponibili)
-    if llm_data and (bc_data or bc_no_rag_data):
-        acc_llm = llm_data.get('accuracy', 0)
-        time_llm = llm_data.get('avg_time', 0)
-        
-        best_ml_acc = max(
-            [m for m in models if "Neural" in m['name']],
-            key=lambda x: x['accuracy']
-        )
-        
-        if acc_llm > best_ml_acc['accuracy']:
-            diff = acc_llm - best_ml_acc['accuracy']
-            print(f"\n   📊 LLM batte il miglior ML di {diff:.2f} punti in accuratezza")
-        else:
-            diff = best_ml_acc['accuracy'] - acc_llm
-            print(f"\n   📊 ML batte LLM di {diff:.2f} punti in accuratezza")
-        
-        if time_llm > 0 and fastest['time'] > 0:
-            if "Neural" in fastest['name']:
+    # Confronto LLM vs ML
+    if llm_data:
+        neural_models = [m for m in models if "Neural" in m['name']]
+        if neural_models:
+            best_neural = max(neural_models, key=lambda x: x['accuracy'])
+            acc_llm = llm_data.get('accuracy', 0)
+            time_llm = llm_data.get('avg_time', 0)
+            
+            if acc_llm > best_neural['accuracy']:
+                diff = acc_llm - best_neural['accuracy']
+                print(f"\n   💡 LLM batte il miglior Neural di {diff:.2f} punti in accuratezza")
+            else:
+                diff = best_neural['accuracy'] - acc_llm
+                print(f"\n   💡 Neural batte LLM di {diff:.2f} punti in accuratezza")
+            
+            # Analisi costo/beneficio
+            if time_llm > 0 and fastest['time'] > 0:
                 speedup = time_llm / fastest['time']
-                print(f"   ⚡ ML più veloce è {speedup:.1f}x più rapido di LLM")
+                if speedup > 1:
+                    print(f"   ⏱️  Il modello più veloce è {speedup:.1f}x più rapido di LLM")
+    
+    # Trova il punto di breakeven (dove conviene usare LLM)
+    if llm_data and neural_models:
+        llm_acc = llm_data.get('accuracy', 0)
+        worse_than_llm = [m for m in models if m['accuracy'] < llm_acc and "Neural" in m['name']]
+        
+        if worse_than_llm:
+            print(f"\n   ⚠️  Modelli peggiori di LLM: {', '.join([m['name'] for m in worse_than_llm])}")
+            print("      👉 Per questi casi, conviene usare l'LLM!")
     
     print("\n📝 Nota: Assicurati che tutti i modelli abbiano processato lo stesso stream di eventi.")
     
@@ -139,7 +178,9 @@ def main():
     counts = [m['count'] for m in models]
     if len(set(counts)) > 1:
         details = [f"{m['name']}: {m['count']}" for m in models]
-        print(f"⚠️  ATTENZIONE: I modelli hanno sample count diversi: {details}")
+        print(f"⚠️  ATTENZIONE: I modelli hanno sample count diversi:")
+        for d in details:
+            print(f"      {d}")
 
 if __name__ == "__main__":
     main()

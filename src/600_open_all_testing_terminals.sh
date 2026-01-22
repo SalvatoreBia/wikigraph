@@ -5,11 +5,15 @@
 scripts=(
     "199_reset_kafka.py:1"
     "200_stream_processor.py:0"
-    "201_ai_judge_gemini.py:0"
-    "202_neural_judge.py:0"
-    "203_neural_judge_without_rag_scores.py:0"
-    "204_mock_producer.py:1"
+    "202_ai_judge_gemini.py:0"
+    "203_neural_judge.py:0"
+    "204_neural_judge_no_rag.py:0"
+    "205_neural_judge_no_comment.py:0"
+    "206_neural_judge_only_new.py:0"
+    "207_neural_judge_minimal.py:0"
+    "300_mock_producer.py:1"
 )
+
 
 
 if command -v konsole &> /dev/null; then
@@ -50,10 +54,10 @@ for entry in "${scripts[@]}"; do
     if [[ "$script" == "199_reset_kafka.py" ]]; then
         echo "  ⏳ Attendo reset Kafka..."
         sleep 3
-    elif [[ "$script" == "203_neural_judge_without_rag_scores.py" ]]; then
+    elif [[ "$script" == "207_neural_judge_minimal.py" ]]; then
         # Attendo che tutti i judge carichino i modelli prima di avviare il producer
         echo "  ⏳ Attendo caricamento modelli neurali..."
-        sleep 8
+        sleep 10
     else
         sleep 1
     fi

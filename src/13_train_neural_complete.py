@@ -1,8 +1,7 @@
 """
-14_train_neural_classifier_without_rag_scores.py
+13_train_neural_complete.py
 Training di un classificatore neurale PyTorch per rilevamento vandalismo.
-VERSIONE SENZA RAG SCORES: Non usa triangolazione Neo4j (WikiIndex/TrustedIndex).
-Usa solo embedding grezzi e feature calcolate localmente.
+Versione COMPLETA: include tutti gli embedding e RAG scores per performance massime.
 """
 
 import json
@@ -18,16 +17,15 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
+import classifier_utils
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 MOCK_DIR = DATA_DIR / "mocked_edits"
 TRAINED_BC_DIR = DATA_DIR / "trained_BC"
-
-# FILE MODELLO DIVERSI per non sovrascrivere quelli con RAG
-MODEL_FILE = TRAINED_BC_DIR / "neural_classifier_no_rag.pth"
-SCALER_FILE = TRAINED_BC_DIR / "neural_scaler_no_rag.pkl"
+MODEL_FILE = TRAINED_BC_DIR / "neural_classifier.pth"
+SCALER_FILE = TRAINED_BC_DIR / "neural_scaler.pkl"
 
 LEGIT_FILE = MOCK_DIR / "legit_edits.json"
 VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
@@ -45,14 +43,10 @@ WEIGHT_DECAY = 0.01
 PATIENCE = 15  
 
 
-class VandalismClassifierNoRAG(nn.Module):
-    """
-    Rete neurale per classificazione vandalismo
-    VERSIONE SENZA RAG: input_dim = 384*3 + 2 = 1154 features
-    (instead of 1158 con RAG scores)
-    """
+class VandalismClassifier(nn.Module):
+    """Rete neurale per classificazione vandalismo"""
     def __init__(self, input_dim):
-        super(VandalismClassifierNoRAG, self).__init__()
+        super(VandalismClassifier, self).__init__()
         self.fc1 = nn.Linear(input_dim, 256)
         self.bn1 = nn.BatchNorm1d(256)
         self.dropout1 = nn.Dropout(0.5)
@@ -82,19 +76,13 @@ class VandalismClassifierNoRAG(nn.Module):
         return x
 
 
-def get_raw_features_no_rag(edit, embedder):
+def get_raw_features(edit, embedder, driver):
     """
-    Estrae feature grezze SENZA RAG scores.
-    Non richiede connessione a Neo4j.
+    Estrae feature grezze: embedding completi invece di delta semantico.
+    Questo permette alla rete di imparare pattern più complessi,
+    inclusa la gestione dei sinonimi.
     
-    Features:
-    - old_emb (384)
-    - new_emb (384)
-    - comment_emb (384)
-    - semantic_similarity (1)
-    - length_ratio (1)
-    
-    Totale: 1154 features (invece di 1158 con RAG)
+    AGGIORNAMENTO RAG: Include score di triangolazione (Wiki + Trusted)
     """
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
@@ -126,17 +114,37 @@ def get_raw_features_no_rag(edit, embedder):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # Similarità semantica tra vecchio e nuovo testo
+    # FEATURE CHIAVE: Similarità semantica tra vecchio e nuovo testo
+    # Alta similarità = probabilmente sinonimi/riformulazione legittima
     if np.all(old_emb == 0) or np.all(new_emb == 0):
         semantic_similarity = 0.0
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # SENZA RAG SCORES!
-    # Concatena: 384*3 + 2 = 1154 features
+    # Truth scores da Neo4j (TRIANGOLAZIONE)
+    # 1. NEW TEXT vs WIKI & TRUSTED
+    if np.all(new_emb == 0):
+        score_new_wiki = 0.0
+        score_new_trusted = 0.0
+    else:
+        _, score_new_wiki = classifier_utils.get_best_match(driver, classifier_utils.WIKI_INDEX_NAME, new_emb)
+        _, score_new_trusted = classifier_utils.get_best_match(driver, classifier_utils.TRUSTED_INDEX_NAME, new_emb)
+    
+    # 2. OLD TEXT vs WIKI & TRUSTED
+    if np.all(old_emb == 0):
+        score_old_wiki = 0.0
+        score_old_trusted = 0.0
+    else:
+        _, score_old_wiki = classifier_utils.get_best_match(driver, classifier_utils.WIKI_INDEX_NAME, old_emb)
+        _, score_old_trusted = classifier_utils.get_best_match(driver, classifier_utils.TRUSTED_INDEX_NAME, old_emb)
+    
+    # Concatena tutto: 384*3 + 2 + 4 = 1158 features
+    # (OldEmb, NewEmb, CommentEmb, SemSim, LenRatio, NewWiki, NewTrusted, OldWiki, OldTrusted)
     features = np.concatenate([
         old_emb, new_emb, comment_emb,
-        [semantic_similarity], [length_ratio]
+        [semantic_similarity], [length_ratio], 
+        [score_new_wiki], [score_new_trusted],
+        [score_old_wiki], [score_old_trusted]
     ])
     
     return features
@@ -160,13 +168,13 @@ def load_data():
     return legit_edits, vandal_edits
 
 
-def extract_features(edits, embedder, label):
-    """Estrae feature per una lista di edit (SENZA Neo4j driver)"""
+def extract_features(edits, embedder, driver, label):
+    """Estrae feature per una lista di edit"""
     X = []
     y = []
     
     for edit in edits:
-        feat = get_raw_features_no_rag(edit, embedder)
+        feat = get_raw_features(edit, embedder, driver)
         X.append(feat)
         y.append(label)
     
@@ -190,7 +198,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
     
     # Modello
-    model = VandalismClassifierNoRAG(input_dim).to(device)
+    model = VandalismClassifier(input_dim).to(device)
     criterion = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=5, factor=0.5)
@@ -270,7 +278,7 @@ def evaluate_model(model, X_test, y_test, device):
     y_test_arr = np.array(y_test)
     
     print("\n" + "=" * 60)
-    print("📊 RISULTATI SUL TEST SET (NO RAG)")
+    print("📊 RISULTATI SUL TEST SET")
     print("=" * 60)
     
     print(f"\nAccuracy: {accuracy_score(y_test_arr, predictions)*100:.2f}%")
@@ -291,26 +299,31 @@ def evaluate_model(model, X_test, y_test, device):
 
 def main():
     print("=" * 60)
-    print("🧠 NEURAL CLASSIFIER TRAINING (PyTorch) - NO RAG SCORES")
+    print("🧠 NEURAL CLASSIFIER TRAINING (PyTorch)")
     print("=" * 60)
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"\n💻 Device: {device}")
     
-    # NOTA: Non serve connessione Neo4j!
-    print("ℹ️  Modo NO RAG: Non richiede Neo4j")
+    driver = classifier_utils.get_neo4j_driver()
+    if not driver:
+        print("❌ Impossibile connettersi a Neo4j")
+        return
     
     embedder = SentenceTransformer(MODEL_NAME)
     print(f"✅ Embedder caricato: {MODEL_NAME}")
     
     legit_edits, vandal_edits = load_data()
     if legit_edits is None:
+        driver.close()
         return
 
     # APPLICA IL LIMITE (MODULARITÀ)
+    # Usa i conteggi definiti in config per il training
     target_legit = CONFIG['dataset']['training']['legit_count']
     target_vandal = CONFIG['dataset']['training']['vandal_count']
     
+    # Se i file contengono più dati (es. generati in eccesso o accumulati), limitiamo al target
     if len(legit_edits) > target_legit:
         print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
         legit_edits = legit_edits[:target_legit]
@@ -319,10 +332,10 @@ def main():
         print(f"✂️  Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
         vandal_edits = vandal_edits[:target_vandal]
     
-    # Estrai feature (SENZA driver Neo4j)
-    print("\n🔄 Estrazione feature (raw embeddings, NO RAG)...")
-    X_legit, y_legit = extract_features(legit_edits, embedder, 0)
-    X_vandal, y_vandal = extract_features(vandal_edits, embedder, 1)
+    # Estrai feature
+    print("\n🔄 Estrazione feature (raw embeddings)...")
+    X_legit, y_legit = extract_features(legit_edits, embedder, driver, 0)
+    X_vandal, y_vandal = extract_features(vandal_edits, embedder, driver, 1)
     
     X = np.array(X_legit + X_vandal)
     y = np.array(y_legit + y_vandal)
@@ -360,7 +373,8 @@ def main():
     print(f"\n💾 Modello salvato: {MODEL_FILE}")
     print(f"💾 Scaler salvato: {SCALER_FILE}")
     
-    print("\n✅ Training completato (NO RAG)!")
+    driver.close()
+    print("\n✅ Training completato!")
 
 
 if __name__ == "__main__":

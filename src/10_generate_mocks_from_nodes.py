@@ -263,46 +263,79 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
     print(f"✍️  [Start] {count} Edits {edit_type} per {topic_title} (Key: ...{key[-4:]})")
     
     prompt = f"""
-    Sei un simulatore di modifiche Wikipedia.
+    Sei un generatore di dataset sintetici per il training di AI anti-vandalismo.
+    Il tuo compito è creare dati "difficili" (adversarial examples) per rendere il modello robusto.
+    
     Contesto reale (snippet): "{real_text_window}"
     
-    Genera un JSON Array con {count} modifiche {edit_type} su questo testo.
-    
-    Il tuo compito è simulare un edit "completo", restituendo una porzione consistente di testo (tutto lo snippet o quasi) sia in original_text che in new_text.
-    
-    FORMATO JSON:
+    Genera un JSON Array con {count} modifiche {"VANDALICHE" if edit_type == "VANDALICI" else "LEGITTIME"} su questo testo.
+
+    === DIRETTIVA PRIMARIA (MACHINE LEARNING) ===
+    Come linea guida di generazione degli edit, devono essere generati in maniera tale che 
+    non salti subito all'occhio in quale categoria cadano. Questo perché saranno usati per 
+    trainare modelli di machine learning, e generando edit troppo semplici (e quindi prevedibili) 
+    i modelli impareranno pattern banali e falliranno contro umani subdoli.
+    L'obiettivo è generare modifiche che mettano in difficoltà un classificatore.
+
+    === REGOLE GLOBALI DI VARIANZA ===
+    1. NO REPLICA: Gli esempi sotto sono solo indicativi. NON copiare mai i testi o i commenti degli esempi.
+    2. UTENTI: 
+       - Alterna Usernames credibili (es. "WikiFan99", "Luigi_History") e IP (es. "151.23.x.x").
+       - Non usare "User1" o "Test".
+    3. COMMENTI: 
+       - Devono variare in lunghezza, stile e tono.
+       - Devono essere coerenti con il tipo di utente simulato (esperto vs vandalo).
+
+    FORMATO JSON (Output ESCLUSIVO):
     [
       {{
-        "user": "User1", "comment": "fix", 
-        "original_text": "Riporta qui l'intero snippet originale (o una larga parte)", 
+        "user": "Stringa", 
+        "comment": "Stringa", 
+        "original_text": "Riporta qui l'intero snippet originale (senza modifiche)", 
         "new_text": "Riporta qui l'intero snippet con la modifica applicata",
-        "is_vandalism": { "true" if edit_type == "VANDALICI" else "false" }
+        "is_vandalism": {"true" if edit_type == "VANDALICI" else "false"}
       }}
     ]
-    
-    REGOLE CRITICHE:
-    - original_text DEVE essere un blocco di testo lungo, non una singola riga (se lo snippet è lungo).
-    - new_text DEVE essere il blocco modificato.
-    - Output ESCLUSIVAMENTE il JSON.
     """
 
-    # AGGIUNTA LOGICA SPECIFICA PER I VANDALISMI
     if edit_type == "VANDALICI":
         prompt += """
-    REGOLE VANDALISMO (SUBDOLO):
-    1. NON usare insulti, parolacce o cancellazioni massive (troppo facile da rilevare).
-    2. INVERTI I FATTI: Cambia "vinto" in "perso", "nato" in "morto", "nord" in "sud".
-    3. FALSIFICAZIONI PLAUSIBILI: Cambia date (es. 1990 -> 1995), nomi di luoghi o persone in modo che sembri vero.
-    4. MANTIENI LO STILE: Il testo modificato deve sembrare scritto da un enciclopedista serio.
-    5. COMMENTO INGANNEVOLE: Nel campo "comment", scrivi cose come "correzione data", "typo", "aggiornamento fonte" per ingannare i revisori.
+    === LOGICA VANDALISMO (Target: Inganno) ===
+    Genera un MIX di vandalismi, evitando cose ovvie come parolacce ripetute (facili da filtrare).
+    
+    TIPO A: IL VANDALO SUBDOLO (60%)
+    Modifiche che sembrano vere ma inseriscono il falso.
+    - Tecniche: Cambio date (1990->1992), inversione fatti (vinse->perse), cambio nomi propri.
+    - Commento: DEVE MENTIRE. Usa commenti da utente bravo (es: "fix data", "corretto refuso", "aggiornato", "da fonte").
+    - Obiettivo ML: Il modello non deve fidarsi del commento "fix", ma guardare il testo.
+    
+    TIPO B: IL VANDALO RUMOROSO MA REALISTICO (40%)
+    Modifiche distruttive ma non banali.
+    - Tecniche: Cancellazione di paragrafi ("rimosso testo inutile"), inserimento opinioni ("è sopravvalutato").
+    - Commento: Generico, vuoto, o leggermente sospetto ("...", "bho", "modifica").
         """
     else:
         prompt += """
-    REGOLE LEGITTIMI:
-    1. Correggi solo refusi reali, punteggiatura o migliora la leggibilità.
-    2. Il significato della frase NON deve cambiare.
-    3. Commenti onesti.
+    === LOGICA EDIT LEGITTIMI (Target: Falsi Positivi) ===
+    Genera modifiche che migliorano il testo ma potrebbero sembrare sospette a un'AI poco addestrata.
+    
+    TIPO A: IL RIFORMULATORE (Alta "Edit Distance") (60%)
+    - Tecniche: Riscrivi intere frasi per migliorare lo stile SENZA cambiare il senso. Aggiungi [[Link Interni]].
+    - Obiettivo ML: Insegnare al modello che "tanto testo cambiato" NON significa vandalismo.
+    - Commento: "wikificazione", "stile", "riformulazione", "migliorata fluidità".
+    
+    TIPO B: IL CORRETTORE MINIMO (Bassa "Edit Distance") (40%)
+    - Tecniche: Solo se ci sono errori reali: punteggiatura, accenti, spazi doppi.
+    - Se il testo è perfetto: Aggiungi un sinonimo più colto o sposta un avverbio.
+    - Commento: Tecnico ("typo", "fix", "punteggiatura").
+    
+    REGOLA D'ORO:
+    Il significato fattuale NON deve cambiare. Non inventare errori per correggerli se non ci sono. Piuttosto migliora la forma.
         """
+
+    prompt += """
+    Assicurati che il JSON sia valido e che le virgolette interne ai testi siano escapate correttamente.
+    """
     
     try:
         # RIMOSSO generation_config={"response_mime_type": "application/json"} per evitare errore 400

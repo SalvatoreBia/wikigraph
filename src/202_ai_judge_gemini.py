@@ -7,6 +7,7 @@ import threading
 from collections import defaultdict
 
 import google.generativeai as genai
+from openai import OpenAI
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from kafka import KafkaConsumer
@@ -19,6 +20,9 @@ from config_loader import load_config
 CONFIG = load_config()
 GEMINI_MODEL = CONFIG['llm']['judge_model']
 
+# Check provider
+PROVIDER = CONFIG['llm'].get('provider', 'gemini')
+
 # API Keys Round Robin - Carica dinamicamente tutte le GEMINI_API_KEY_* dal .env
 API_KEYS = []
 i = 1
@@ -30,8 +34,24 @@ while True:
     else:
         break
 
-api_key_cycle = cycle(API_KEYS)
+# Per la modalità local, usiamo una chiave dummy
+if PROVIDER == 'local':
+    API_KEYS = ["local-key"]
+elif not API_KEYS:
+    print("❌ ERRORE: Nessuna API Key trovata nel .env")
+
+api_key_cycle = cycle(API_KEYS) if API_KEYS else None
 key_lock = threading.Lock()
+
+# Client OpenAI per modalità local (inizializzato una volta)
+LOCAL_CLIENT = None
+LOCAL_MODEL = None
+if PROVIDER == 'local':
+    LOCAL_CLIENT = OpenAI(
+        base_url=CONFIG['llm']['local']['base_url'],
+        api_key=CONFIG['llm']['local']['api_key']
+    )
+    LOCAL_MODEL = CONFIG['llm']['local'].get('model', GEMINI_MODEL)
 
 # Rate Limiting
 KEY_USAGE = defaultdict(list)
@@ -39,6 +59,13 @@ MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min']
 WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 
 def get_next_api_key():
+    # Per modalità local, non serve rate limiting sulle chiavi
+    if PROVIDER == 'local':
+        return "local-key"
+    
+    if not api_key_cycle:
+        return None
+        
     with key_lock:
         while True:
             now = time.time()
@@ -77,9 +104,6 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
     if not api_key:
         return "ERRORE: API KEY MANCANTE"
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(GEMINI_MODEL)
-    
     prompt = f"""
     Sei un moderatore di Wikipedia esperto.
     
@@ -104,8 +128,20 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
     """
     
     try:
-        response = model.generate_content(prompt)
-        return response.text.strip()
+        if PROVIDER == 'local':
+            # Usa client OpenAI locale (es. LM Studio, Ollama)
+            response = LOCAL_CLIENT.chat.completions.create(
+                model=LOCAL_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3
+            )
+            return response.choices[0].message.content.strip()
+        else:
+            # Usa Gemini API
+            genai.configure(api_key=api_key)
+            model = genai.GenerativeModel(GEMINI_MODEL)
+            response = model.generate_content(prompt)
+            return response.text.strip()
     except Exception as e:
         return f"Errore AI: {e}"
 
@@ -153,12 +189,18 @@ def main():
     
     print("--- AI JUDGE AVVIATO (Il Giudice) ---")
 
-    if not API_KEYS:
+    if PROVIDER == 'gemini' and not API_KEYS:
         print(f"❌ ERRORE CRITICO: Nessuna API Key trovata nel .env")
         return
     
     ground_truth = load_ground_truth()
-    print(f"✅ {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
+    
+    if PROVIDER == 'local':
+        print(f"✅ Modalità LOCAL. Modello: {LOCAL_MODEL}")
+        print(f"   Endpoint: {CONFIG['llm']['local']['base_url']}")
+    else:
+        print(f"✅ {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
+    
     print(f"📚 Contesto caricato. In attesa...")
 
     # --- CORREZIONE QUI: Aggiunto group_id univoco ---

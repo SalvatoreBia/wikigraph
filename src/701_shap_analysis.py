@@ -18,10 +18,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import classifier_utils
 from config_loader import load_config
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-MOCK_DIR = DATA_DIR / "mocked_edits"
 TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 OUTPUT_DIR = DATA_DIR / "shap_analysis"
 
@@ -29,11 +27,8 @@ OUTPUT_DIR = DATA_DIR / "shap_analysis"
 NEURAL_MODEL_FILE = TRAINED_BC_DIR / "neural_classifier.pth"
 NEURAL_SCALER_FILE = TRAINED_BC_DIR / "neural_scaler.pkl"
 
-
-LEGIT_FILE = MOCK_DIR / "legit_edits.json"
-VANDAL_FILE = MOCK_DIR / "vandal_edits.json"
-LEGIT_TEST_FILE = MOCK_DIR / "legit_edits_test.json"
-VANDAL_TEST_FILE = MOCK_DIR / "vandal_edits_test.json"
+SRC_DIR = BASE_DIR / "src"
+EDITS_HISTORY_FILE = SRC_DIR / "501_manual_edits_history.json"
 
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
@@ -274,18 +269,18 @@ def main():
     
     print("\n📂 Caricamento dataset di test...")
     
-    if LEGIT_TEST_FILE.exists() and VANDAL_TEST_FILE.exists():
-        legit_edits = load_edits(LEGIT_TEST_FILE)
-        vandal_edits = load_edits(VANDAL_TEST_FILE)
-        print("   Usando dataset di TEST separato")
-    else:
-        legit_edits = load_edits(LEGIT_FILE)
-        vandal_edits = load_edits(VANDAL_FILE)
-        max_per_class = 50
-        legit_edits = legit_edits[:max_per_class]
-        vandal_edits = vandal_edits[:max_per_class]
-        print(f"   Usando subset del dataset principale ({max_per_class} per classe)")
+    if not EDITS_HISTORY_FILE.exists():
+        print(f"❌ File non trovato: {EDITS_HISTORY_FILE}")
+        driver.close()
+        return
     
+    all_edits = load_edits(EDITS_HISTORY_FILE)
+    
+    # Separa legit e vandal in base a is_vandalism
+    legit_edits = [e for e in all_edits if not e.get('is_vandalism', False)]
+    vandal_edits = [e for e in all_edits if e.get('is_vandalism', False)]
+    
+    print(f"   Usando: {EDITS_HISTORY_FILE.name}")
     print(f"   Legit: {len(legit_edits)}, Vandal: {len(vandal_edits)}")
     
     print("\n⚙️  Estrazione features...")

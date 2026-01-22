@@ -895,8 +895,16 @@
             "expected": "VANDALISMO",
             "correct": true,
             "time_sec": 8.857309818267822
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato il procedimento con informazioni più recenti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "time_sec": 5.941079616546631
         }
     ],
-    "accuracy": 93.75,
-    "avg_time": 7.664212825042861
+    "accuracy": 93.80530973451327,
+    "avg_time": 7.648963858595992
 }

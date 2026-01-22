@@ -615,8 +615,16 @@
             "expected": "LEGITTIMO",
             "correct": true,
             "time_sec": 10.066855907440186
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.675200939178467
         }
     ],
     "accuracy": 100.0,
-    "avg_time": 7.600050440082303
+    "avg_time": 7.613834420839946
 }

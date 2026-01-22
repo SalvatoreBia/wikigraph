@@ -15,11 +15,6 @@ MERGE (a)-[:LINKED_TO]->(b)
 """
 
 def wait_for_connection(uri, auth):
-    """
-    Tenta di connettersi a Neo4j. Se fallisce (es. DB in avvio),
-    riprova ogni 3 secondi all'infinito.
-    Restituisce un driver verificato e connesso.
-    """
     while True:
         driver = None
         try:
@@ -31,17 +26,13 @@ def wait_for_connection(uri, auth):
             print(f"Errore di connessione: {e}")
             print("Riprovo la connessione tra 3 secondi...")
             
-            # Se il driver è stato istanziato ma la verifica è fallita, chiudiamolo
             if driver:
                 driver.close()
             
             time.sleep(3)
 
 def create_constraints(driver):
-    """
-    Crea un constraint di unicità sulla proprietà 'id' dei nodi :Node.
-    """
-    print('\n--- Creating constraints and indexes ---')
+    print('\n--- Creazione constraint e indici ---')
     
     constraint_query = """
     CREATE CONSTRAINT node_id_unique IF NOT EXISTS 
@@ -51,17 +42,17 @@ def create_constraints(driver):
     try:
         with driver.session() as session:
             session.run(constraint_query)
-            print('✓ Constraint di unicità creato su Node.id')
-            print('  (Indice automatico attivo per lookup O(1))')
+            print('- Constraint di unicità creato su Node.id')
+            print('  (Indice automatico attivo per lookup)')
     
     except Exception as e:
-        print(f'⚠ Errore durante la creazione del constraint: {e}')
+        print(f'! Errore durante la creazione del constraint: {e}')
 
 def run_batch(tx, batch_data):
     tx.run(QUERY_BATCH, batch=batch_data)
 
 def load_batch_data(driver, filename):
-    print(f'\n--- Loading data from {filename} ---')
+    print(f'\n--- Caricamento dati da {filename} ---')
     batch_size = 1000
     batch = []
     total_rows = 0
@@ -70,10 +61,9 @@ def load_batch_data(driver, filename):
         with open(filename, mode='r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
 
-            print('Checking for headers...')
             if 'src_page' not in reader.fieldnames or 'dest_page' not in reader.fieldnames:
-                print('--- ERROR: CSV headers not found ---')
-                print('\tThe CSV file should contain the following columns: src_page,dest_page')
+                print('--- ERRORE: Header CSV non trovati ---')
+                print('\tIl file CSV dovrebbe contenere le colonne: src_page, dest_page')
                 return
             
             with driver.session() as session:
@@ -87,21 +77,20 @@ def load_batch_data(driver, filename):
 
                     if len(batch) >= batch_size:
                         session.execute_write(run_batch, batch)
-                        print(f'  ... Inserting batch. Current total elaborated rows: {total_rows}')
+                        print(f'  ... Inserimento batch. Righe elaborate: {total_rows}')
                         batch = []
 
                 if batch:
                     session.execute_write(run_batch, batch)
-                    print(f"  ... Inserting Final batch. Total rows elaborated: {total_rows}")
+                    print(f"  ... Inserimento batch finale. Totale righe elaborate: {total_rows}")
     
     except FileNotFoundError:
-        print(f'--- ERROR: file {filename} not found. ---')
+        print(f'--- ERRORE: file {filename} non trovato. ---')
     except Exception as e:
-        print(f'--- ERROR: data loading failed. ---')
-        print(f'Error details: {e}')
+        print(f'--- ERRORE: caricamento dati fallito. ---')
+        print(f'Dettagli errore: {e}')
 
 if __name__ == '__main__':
-    # Controllo argomenti input
     if len(sys.argv) < 2:
         print("Errore: Devi specificare il numero del sample.")
         print("Esempio uso: python 4_load_graph.py 2")
@@ -110,15 +99,10 @@ if __name__ == '__main__':
     sample_number = sys.argv[1]
     sample_file_path = f'../data/sample/sample_{sample_number}.csv'
 
-    # Ottieni il driver con logica di retry
     driver = wait_for_connection(URI, AUTH)
 
-    # Usa il driver all'interno di un blocco try/finally per assicurare la chiusura
     try:
-        # Crea l'indice PRIMA di caricare i dati
         create_constraints(driver)
-        
-        # Carica i dati dal file specifico
         load_batch_data(driver, sample_file_path)
     
     except Exception as e:

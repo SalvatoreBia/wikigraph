@@ -90,9 +90,9 @@ The next phase involves populating the graph with semantic content. We process t
 To enable the semantic search capabilities required by the LLM, we extended the graph schema to support vector operations.
 A key design objective was to mitigate the inherent limitations of LLMs, specifically regarding knowledge cutoffs and hallucination. We envision a deployment scenario where the platform establishes data-sharing agreements with authoritative publishers (e.g., news agencies, scientific journals). These partners provide a stream of verified articles, serving as an external ground truth to validate Wikipedia edits against real-time facts.
 
-To support this dual-source retrieval, we implemented a uniform \textbf{chunking strategy}. The textual content is segmented into smaller overlapping blocks using a sliding window approach (e.g., chunk size of 512 tokens with an overlap of 50 tokens). This overlap is critical to preserve semantic continuity across segment boundaries.
+To support this dual-source retrieval, we implemented a uniform \textbf{chunking strategy}. The textual content is segmented into smaller overlapping blocks using a sliding window approach (e.g., chunk size of 512 characters with an overlap of 50 characters). This overlap is critical to preserve semantic continuity across segment boundaries.
 
-Each text segment is encoded into a high-dimensional vector using a pre-trained Transformer model (\texttt{paraphrase-multilingual-MiniLM-L12-v2}). In Neo4j, these vectors are materialized as distinct nodes to facilitate targeted retrieval:
+Each text segment is encoded into a high-dimensional vector using a pre-trained embedding model (\texttt{paraphrase-multilingual-MiniLM-L12-v2}). In Neo4j, these vectors are materialized as distinct nodes to facilitate targeted retrieval:
 \begin{itemize}
     \item \texttt{:Chunk} nodes, linked to the original Wikipedia article via a \texttt{[:HAS\_CHUNK]} relationship.
     \item \texttt{:TrustedChunk} nodes, linked to the external authoritative source via a \texttt{[:HAS\_TRUSTED\_CHUNK]} relationship.
@@ -107,7 +107,7 @@ Finally, specific Vector Indexes are created on both node types using cosine sim
 We implemented two opposing approaches to classification: a resource-intensive "AI Judge" based on Generative AI, and a suite of lightweight Neural Classifiers designed for high-throughput scoring.
 
 \subsection{The LLM Oracle (AI Judge)}
-The first approach utilizes \textbf{Google Gemini} as a zero-shot classifier. The system constructs a prompt containing the user's edit comment, the original text, the modified text, and the "Ground Truth" retrieved via RAG from our Trusted Sources. The LLM is tasked with reasoning whether the edit is legitimate or vandalism based on factual consistency. While highly accurate, this approach introduces significant latency and API costs.
+The first approach utilizes \textbf{GPT OSS 20B} as a zero-shot classifier. The system constructs a prompt containing the user's edit comment, the original text, the modified text, and the "Ground Truth" retrieved via RAG from our Trusted Sources. The LLM is tasked with reasoning whether the edit is legitimate or vandalism based on factual consistency. While highly accurate, this approach introduces significant latency and API costs.
 
 \subsection{Neural Classifiers and Ablation Study}
 To achieve real-time performance, we trained a set of \textbf{Feed-Forward Neural Networks} using PyTorch. The architecture consists of a multi-layer perceptron (MLP) with three hidden layers (256, 128, 64 units), employing Batch Normalization, Dropout (0.5), and ReLU activation functions, culminating in a Sigmoid output for binary classification.
@@ -131,7 +131,9 @@ To ensure reproducibility and manage computational overhead, we selected the \te
 \subsection{Dataset Generation}
 We utilized the official Wikimedia dumps for the Italian language (specifically \texttt{itwiki-latest-page.sql}, \texttt{itwiki-latest-pagelinks.sql}, and \texttt{itwiki-latest-pages-articles.xml}).
 
-From this snapshot, we generated a synthetic labeled dataset following the pipeline described in the previous section. To maintain a strict class balance, the dataset is partitioned as follows:
+From this snapshot, we generated a synthetic labeled dataset. 
+We utilized \textbf{Gemma-3-27B-it} as the generative engine to craft realistic vandalistic and legitimate edits. Using a high-parameter model for generation ensures that the synthetic examples are semantically complex and challenging for the detection classifiers.
+To maintain a strict class balance, the dataset is partitioned as follows:
 \begin{itemize}
     \item \textbf{Training Set:} 200 samples (100 Legitimate, 100 Vandalism).
     \item \textbf{Testing Set:} 40 samples (20 Legitimate, 20 Vandalism).

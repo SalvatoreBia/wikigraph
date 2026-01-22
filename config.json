@@ -1,6 +1,6 @@
 {
     "llm": {
-        "provider": "gemini",
+        "provider": "local",
         "generation_model": "gemma-3-27b-it",
         "judge_model": "gemma-3-27b-it",
         "local": {

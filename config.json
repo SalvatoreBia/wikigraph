@@ -1,6 +1,6 @@
 {
     "llm": {
-        "provider": "local",
+        "provider": "gemini",
         "generation_model": "gemma-3-27b-it",
         "judge_model": "gemma-3-27b-it",
         "local": {
@@ -42,7 +42,7 @@
             "legit_count": 100,
             "vandal_count": 100
         },
-        "articles_per_community": 50
+        "articles_per_community": 100
     },
     "rate_limit": {
         "max_req_per_min": 30,

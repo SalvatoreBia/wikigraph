@@ -36,7 +36,7 @@ def main():
     llm_data = load_results(LLM_RESULTS)
     if llm_data:
         models.append({
-            "name": "GPT OSS 20B (AI Judge)",
+            "name": "gemma-3-27b-it (AI Judge)",
             "accuracy": llm_data.get('accuracy', 0),
             "time": llm_data.get('avg_time', 0),
             "count": len(llm_data.get('results', [])),

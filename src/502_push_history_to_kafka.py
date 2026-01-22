@@ -5,6 +5,7 @@ al topic Kafka 'to-be-judged' per farli giudicare.
 
 import json
 import time
+
 from kafka import KafkaProducer
 
 KAFKA_BROKER = 'localhost:9094'

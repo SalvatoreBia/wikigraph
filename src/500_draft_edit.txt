@@ -1,17 +1,22 @@
-
-
-L<nowiki>'</nowiki>'''A.E. Achilleas Kaïmakliou''' è una società [[pallacanestro|cestistica]] con sede a [[Kaimakli]] (quartiere di [[Nicosia]]), a [[Cipro]]. Fondata nel 1943, gioca nel [[Campionato cipriota di pallacanestro|campionato cipriota]].
-
-==Palmarès==
-*'''{{Basketpalm|Campionato cipriota maschile|5}}'''
-:1975, 1977, 1984, 1986, 1993
-*'''{{Basketpalm|Coppa di Cipro maschile|7}}'''
-:1974, 1975, 1976, 1977, 1988, 1990, 2000
-
-== Cestisti ==
-{{Vedi categoria|Cestisti dell'A.E. Achilleas Kaïmakliou}}
-
-== Allenatori ==
-{{Vedi categoria|Allenatori dell'A.E. Achilleas Kaïmakliou}}
-
-==Co
+ =
+|SquadreNazionali =
+{{Carriera sportivo
+ |1962-1966|{{Naz|PC|YUG 1943-1992|F}}|
+}}
+|Aggiornato =
+}}
+{{Bio
+|Nome = Zagorka
+|Cognome = Simić
+|PostCognomeVirgola = coniugata '''Žeravica'''
+|PreData = {{serbo|Загорка Симић-Жеравица}}
+|Sesso = F
+|LuogoNascita = Belgrado
+|GiornoMeseNascita = 
+|AnnoNascita = 1940
+|NoteNascita = <ref>[https://ekspres.net/scena/zagorka-zaga-simic-zeravica-intervju-kosarkasica-7-4-2024 Zagorka Žeravica: "Naša kuća bila je bunker za buduće igrače Partizana"] ''ekspres.net'', ''7 aprile 2024''</ref>
+|LuogoMorte = 
+|GiornoMeseMorte = 
+|AnnoMorte = 
+|Epoca = 1900
+|Attivi

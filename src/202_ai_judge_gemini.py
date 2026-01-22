@@ -217,11 +217,29 @@ def main():
         print(f"\n- Analisi edit di [{user}]:")
         print(f"  Commento: \"{comment}\"")
         
-        start_time = time.time()
-        verdict = analyze_with_gemini(comment, ground_truth, original_text, new_text)
-        end_time = time.time()
-        elapsed = end_time - start_time
+        # Retry loop per gestire errori di quota (429)
+        max_retries = 5
+        retry_wait = 60
+        verdict = None
+        total_elapsed = 0
         
+        for attempt in range(max_retries):
+            start_time = time.time()
+            verdict = analyze_with_gemini(comment, ground_truth, original_text, new_text)
+            end_time = time.time()
+            elapsed = end_time - start_time
+            total_elapsed += elapsed
+            
+            # Controlla se è un errore di quota (429)
+            if "429" in verdict or "quota" in verdict.lower() or "exhausted" in verdict.lower():
+                print(f"  ⚠ Errore quota (tentativo {attempt + 1}/{max_retries}). Attesa {retry_wait}s...")
+                time.sleep(retry_wait)
+                continue
+            else:
+                # Successo o altro tipo di errore, esci dal loop
+                break
+        
+        elapsed = total_elapsed
         predicted_vandal = "VANDALISMO" in verdict.upper()
         
         is_correct = None

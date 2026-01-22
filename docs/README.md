@@ -49,6 +49,9 @@ sh 2_parse_file.sh
 gcc 3_snowball.c -o snowball $(pkg-config --cflags --libs glib-2.0)
 ./snowball ../data/finalmap.csv
 docker compose up -d
+
+# specificare il numero del sample che si vuole testare
+# (per esempio qui lo stiamo chiamando sul sample 3)
 python 4_load_graph.py 3
 
 

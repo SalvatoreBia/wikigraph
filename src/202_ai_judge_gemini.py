@@ -76,17 +76,27 @@ def get_next_api_key():
 
 KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_IN = CONFIG['kafka']['topic_judge']
-SOURCE_FILE = '../data/web_source_tennis.html'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 SCORES_DIR = DATA_DIR / "scores"
+TRUSTED_HTML_DIR = DATA_DIR / "trusted_html_pages"
 RESULTS_FILE = SCORES_DIR / "LLM_results.json"
 
-def load_ground_truth():
-    if not os.path.exists(SOURCE_FILE):
+def get_html_file_path(page_title):
+    normalized_title = page_title.replace(' ', '_')
+    html_filename = f"trusted_{normalized_title}.html"
+    html_path = TRUSTED_HTML_DIR / html_filename
+    return html_path
+
+def load_ground_truth(page_title):
+    html_path = get_html_file_path(page_title)
+    
+    if not html_path.exists():
+        print(f"  ⚠️ File HTML non trovato per '{page_title}': {html_path.name}")
         return "Nessuna fonte trovata."
-    with open(SOURCE_FILE, 'r', encoding='utf-8') as f:
+    
+    with open(html_path, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f.read(), 'html.parser')
         return soup.get_text(separator=' ', strip=True)
 
@@ -178,15 +188,13 @@ def main():
         print(f"! Errore critico: Nessuna API Key trovata nel .env")
         return
     
-    ground_truth = load_ground_truth()
-    
     if PROVIDER == 'local':
         print(f"- Modalità LOCAL. Modello: {LOCAL_MODEL}")
         print(f"   Endpoint: {CONFIG['llm']['local']['base_url']}")
     else:
         print(f"- {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
     
-    print(f"- Contesto caricato. In attesa...")
+    print(f"- In attesa di eventi...")
 
     consumer = KafkaConsumer(
         TOPIC_IN,
@@ -210,12 +218,16 @@ def main():
         
         comment = event['comment']
         user = event['user']
+        page_title = event.get('title', 'Unknown')
         original_text = event.get('original_text', '')
         new_text = event.get('new_text', '')
         is_vandalism_truth = event.get('is_vandalism', None)
         
-        print(f"\n- Analisi edit di [{user}]:")
+        print(f"\n- Analisi edit di [{user}] su '{page_title}':")
         print(f"  Commento: \"{comment}\"")
+        
+        # Carica il ground truth specifico per questa pagina
+        ground_truth = load_ground_truth(page_title)
         
         max_retries = 5
         retry_wait = 60

@@ -228,12 +228,8 @@ def main():
         f.write(original_window)
         
     print(f"\n- Finestra salvata in '{filename}'.")
-    
-    if MODE == "manual":
-        print("- MODIFICA IL FILE E SALVA, poi premi INVIO...")
-        input()
-    else:
-        print("[AUTO] Modalità automatica - nessuna modifica al testo")
+    print("- MODIFICA IL FILE E SALVA, poi premi INVIO...")
+    input()
     
     try:
         with open(filename, "r", encoding="utf-8") as f:
@@ -247,7 +243,7 @@ def main():
     if MODE == "auto":
         user = "AlessandroBarbero"
         comment = "correzione imprecisione"
-        is_vandalism = False
+        is_vandalism = input("È vandalismo? (s/N): ").strip().lower() in ['s', 'y', 'si', 'yes']
         print(f"[AUTO] Utente: {user}, Commento: {comment}")
     else:
         user = input("Nome Utente [Manuale]: ").strip() or "Manuale"

@@ -7,7 +7,7 @@
             "expected": "LEGITTIMO",
             "correct": false,
             "confidence": 0.9613515138626099,
-            "time_sec": 0.6442897319793701
+            "time_sec": 0.5072662830352783
         },
         {
             "user": "AlessandroBarbero",
@@ -16,7 +16,7 @@
             "expected": "LEGITTIMO",
             "correct": false,
             "confidence": 0.6240113377571106,
-            "time_sec": 0.26761364936828613
+            "time_sec": 0.2511622905731201
         },
         {
             "user": "AlessandroBarbero",
@@ -25,7 +25,7 @@
             "expected": "LEGITTIMO",
             "correct": false,
             "confidence": 0.9953407049179077,
-            "time_sec": 0.375563383102417
+            "time_sec": 0.14413166046142578
         },
         {
             "user": "AlessandroBarbero",
@@ -34,9 +34,126 @@
             "expected": "LEGITTIMO",
             "correct": true,
             "confidence": 0.056244127452373505,
-            "time_sec": 0.34644222259521484
+            "time_sec": 0.2606678009033203
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6452875137329102,
+            "time_sec": 0.32885098457336426
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.7987366914749146,
+            "time_sec": 0.1723639965057373
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7620270848274231,
+            "time_sec": 0.22825407981872559
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.7622050642967224,
+            "time_sec": 0.3212094306945801
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8903309106826782,
+            "time_sec": 0.28202152252197266
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7776747345924377,
+            "time_sec": 0.27626609802246094
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.28712210059165955,
+            "time_sec": 0.2494513988494873
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.6104695200920105,
+            "time_sec": 0.29947805404663086
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6861767172813416,
+            "time_sec": 0.30154895782470703
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5068384408950806,
+            "time_sec": 0.22494840621948242
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.38561341166496277,
+            "time_sec": 0.3704714775085449
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.47845762968063354,
+            "time_sec": 0.20972609519958496
+        },
+        {
+            "user": "AlessandroBarbero",
+            "comment": "correzione imprecisione",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8115500211715698,
+            "time_sec": 0.26538968086242676
         }
     ],
-    "accuracy": 25.0,
-    "avg_time": 0.408477246761322
+    "accuracy": 64.70588235294117,
+    "avg_time": 0.27607107162475586
 }

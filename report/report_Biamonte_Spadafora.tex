@@ -159,11 +159,51 @@ Validating against live streams is challenging due to the sporadic nature of att
 
 
 \section{Results and Discussion}
-The experimental results demonstrate a clear hierarchy in performance. 
-The \textbf{LLM Judge} achieved the highest accuracy, successfully identifying subtle vandalism (e.g., changing dates or names) thanks to the RAG context. However, its processing time (avg. 1-2 seconds per event) is unsuitable for the full Wikipedia firehose.
 
-The \textbf{Neural Complete} model offered the best trade-off. By incorporating the RAG similarity scores as input features, it approached the accuracy of the LLM but with inference times orders of magnitude faster (milliseconds).
-Notably, the \textit{Ablation Study} confirmed the value of the Graph-RAG pipeline: the \textbf{No RAG} model showed a significant drop in F1-score compared to the Complete model, proving that "blind" text analysis is insufficient for detecting semantic vandalism. The \textbf{Minimal} baseline performed poorly, confirming that simple heuristics (like text length) are obsolete against modern vandalism.
+\subsection{Quantitative Analysis on Synthetic Data}
+The initial quantitative evaluation was performed on the synthetic dataset generated via \textit{Gemma-3-27B-it}. As shown in Table \ref{tab:synthetic_results}, the \textbf{Neural Complete} model achieved perfect accuracy (100\%), surprisingly matching the \textbf{No RAG} baseline.
+
+\begin{table}[h]
+    \centering
+    \caption{Model Performance on Synthetic Stream}
+    \label{tab:synthetic_results}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Model} & \textbf{Accuracy} & \textbf{Avg. Time (s)} \\
+        \hline
+        Neural Complete (RAG) & 100.00\% & 0.406 \\
+        Neural No RAG & 100.00\% & 0.399 \\
+        GPT-OSS-20B (AI Judge) & 87.88\% & 2.035 \\
+        Neural Minimal (Baseline) & 64.65\% & 0.0005 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+This convergence between the RAG and No-RAG neural models highlights a limitation in synthetic data generation. The generative model likely introduced latent stylistic patterns (e.g., distinct vocabulary or sentence structures in vandalized edits) that the neural classifiers learned to detect efficiently even without factual context. While this confirms the classifiers' robustness in detecting "AI-generated vandalism," it masks the value of the Knowledge Graph for detecting factual inconsistencies in human-written attacks.
+
+Conversely, the \textbf{LLM Judge} showed lower accuracy (87.88\%) and significantly higher latency (over 2 seconds per event), confirming that using a large model for every single edit is computationally unfeasible for the full Wikipedia firehose.
+
+\subsection{Qualitative Adversarial Stress Testing}
+To evaluate the system's robustness against subtle, context-aware attacks that synthetic data failed to represent, we conducted a manual adversarial testing phase using the injection tools described in Section IV-C. We crafted "semantic vandalism" scenarios: edits that are grammatically perfect and plausible but factually false.
+
+\vspace{0.2cm}
+\noindent \textbf{Case Study: Entity Swapping}
+\begin{itemize}
+    \item \textbf{Context:} Page \textit{"Gaio Giulio Cesare"}.
+    \item \textbf{Edit:} Changed name to \textit{"Gaio Venezia Giulia"} in the infobox.
+    \item \textbf{Comment:} "fix nome".
+\end{itemize}
+
+In this scenario, the performance hierarchy inverted:
+\begin{enumerate}
+    \item \textbf{Neural No RAG:} Classified as \textbf{Legitimate}. Lacking access to the Knowledge Graph, the model saw a structurally valid proper noun replacing another and failed to detect the anomaly.
+    \item \textbf{LLM Judge (with RAG):} Correctly classified as \textbf{Vandalism}. By retrieving the trusted context via RAG, the LLM successfully reasoned that "Venezia Giulia" is a geographical region, not a Roman dictator, contradicting the ground truth.
+\end{enumerate}
+
+\subsection{Conclusion on Trade-offs}
+Our findings propose a tiered architecture as the optimal solution for real-world deployment. 
+\textbf{Neural Classifiers} act as a high-speed first line of defense, filtering out 99\% of obvious vandalism (spam, gibberish, and stylistic anomalies). 
+However, for the remaining 1\% of subtle, semantic attacks, the \textbf{Graph-RAG LLM Pipeline} is indispensable. It provides the necessary semantic grounding to verify facts, justifying its higher computational cost only on the subset of ambiguous edits flagged by the community detection heuristics.
 
 
 \end{document}

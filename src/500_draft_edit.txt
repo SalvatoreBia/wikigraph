@@ -1,11 +1,28 @@
-{{nota disambigua}}
-{{nota disambigua||Cesare (disambigua)|Cesare}}
-{{nota disambigua||Giulio Cesare (disambigua)|Giulio Cesare}}
-{{Magistrato romano
-|nome = Gaio Venezia Giulia
-|titolo = [[Dittatore (storia romana)|Dittatore]] della [[Repubblica romana]]
-|immagine = Gaius Iulius Caesar (Vatican Museum).jpg
-|legenda = Busto di Cesare appartenente alla collezione Chiaramonti, esposto nei [[Musei Vaticani]]
-|altrititoli = ''[[Pater Patriae]]'', ''[[Imperator]]'', ''Dictator Perpetuus'', ''Divus Iulius'' (dopo la morte)
-|nome completo = ''Gaius Iulius Caesar''
-|data di nascita = 13 luglio [[101 a.
+ -->
+|nome = Brooklyn Kings
+|logo =
+|genere =
+<!-- Uniformi-->
+<!-- Uniforme interna -->
+|h_body =
+|h_pattern_b =
+|h_shorts =
+|h_pattern_s =
+<!-- Uniforme da trasferta -->
+|a_body =
+|a_pattern_b =
+|a_shorts =
+|a_pattern_s =
+<!-- Segni distintivi-->
+|colori = {{simbolo|600px Nero Bianco e Giallo.svg}} Nero, bianco e giallo
+<!-- Dati societari-->
+|città = [[Brooklyn]]
+|nazione = USA
+|campionato = [[USBL]]
+|annoscioglimento = 2007
+|palazzetto = 
+|capienza =
+|storia = '''Brooklyn Kings'''<br />(1999-2007)
+}}
+
+I '''Brooklyn Kings''' sono stati una franchigia di [[pallamano]] della [[United Stat

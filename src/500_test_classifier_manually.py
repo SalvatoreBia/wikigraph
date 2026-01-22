@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import time
 
@@ -9,8 +10,88 @@ KAFKA_BROKER = 'localhost:9094'
 TOPIC_OUT = 'to-be-judged'
 HISTORY_FILE = '501_manual_edits_history.json'
 
+
+MOCKED_EDITS_DIR = '../data/mocked_edits'
+LEGIT_EDITS_FILE = os.path.join(MOCKED_EDITS_DIR, 'legit_edits.json')
+VANDAL_EDITS_FILE = os.path.join(MOCKED_EDITS_DIR, 'vandal_edits.json')
+LEGIT_EDITS_TEST_FILE = os.path.join(MOCKED_EDITS_DIR, 'legit_edits_test.json')
+VANDAL_EDITS_TEST_FILE = os.path.join(MOCKED_EDITS_DIR, 'vandal_edits_test.json')
+
+def load_unique_titles_from_mocks():
+    titles = set()
+    files = [LEGIT_EDITS_FILE, VANDAL_EDITS_FILE, LEGIT_EDITS_TEST_FILE, VANDAL_EDITS_TEST_FILE]
+    
+    for filepath in files:
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                edits = json.load(f)
+                for edit in edits:
+                    if "title" in edit:
+                        titles.add(edit["title"])
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"! Impossibile caricare {filepath}: {e}")
+    
+    return sorted(list(titles))
+
+def select_page_title():
+    titles = load_unique_titles_from_mocks()
+    
+    print("\n--- SELEZIONE PAGINA ---")
+    print("0. Inserisci titolo manualmente")
+    
+    if len(titles) > 20:
+        sample_titles = random.sample(titles, 20)
+        sample_titles.sort()
+    else:
+        sample_titles = titles
+    
+    for i, title in enumerate(sample_titles, 1):
+        print(f"{i}. {title}")
+    
+    if len(titles) > 20:
+        print(f"... ({len(titles) - 20} altri titoli disponibili)")
+        print(f"{len(sample_titles) + 1}. Mostra tutti i titoli")
+        print(f"{len(sample_titles) + 2}. Titolo casuale")
+    else:
+        print(f"{len(sample_titles) + 1}. Titolo casuale")
+    
+    choice = input(f"\nScelta [casuale]: ").strip()
+    
+    if choice == "0":
+        custom = input("Inserisci il titolo Wikipedia (es. 'Gaio_Giulio_Cesare'): ").strip()
+        return custom if custom else "Gaio_Giulio_Cesare"
+    
+    if len(titles) > 20 and choice == str(len(sample_titles) + 1):
+        print("\n--- TUTTI I TITOLI ---")
+        for i, title in enumerate(titles, 1):
+            print(f"{i}. {title}")
+        choice = input(f"\nScelta [casuale]: ").strip()
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(titles):
+                return titles[idx]
+        except ValueError:
+            pass
+        return random.choice(titles)
+    
+    random_idx = len(sample_titles) + 1 if len(titles) <= 20 else len(sample_titles) + 2
+    if not choice or choice == str(random_idx):
+        selected = random.choice(titles) if titles else "Gaio_Giulio_Cesare"
+        print(f"- Selezionato casualmente: {selected}")
+        return selected
+    
+    try:
+        idx = int(choice) - 1
+        if 0 <= idx < len(sample_titles):
+            return sample_titles[idx]
+    except ValueError:
+        pass
+    
+    selected = random.choice(titles) if titles else "Gaio_Giulio_Cesare"
+    print(f"- Selezionato casualmente: {selected}")
+    return selected
+
 def load_history():
-    """Carica lo storico degli edit manuali."""
     try:
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -18,7 +99,6 @@ def load_history():
         return []
 
 def save_to_history(event):
-    """Aggiunge un evento allo storico degli edit manuali."""
     history = load_history()
     history.append(event)
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
@@ -115,9 +195,9 @@ def main():
     print("--- TEST MANUAL CLASSIFIER ---")
     
     lang = "it"
-    page_title = "Gaio_Giulio_Cesare"
+    page_title = select_page_title()
     
-    print(f"- Target: {page_title} ({lang})")
+    print(f"\n- Target: {page_title} ({lang})")
     
     content = download_wikipedia_page(page_title, lang)
     if not content:
@@ -154,7 +234,6 @@ def main():
     with open("500_manual_edit.json", "w", encoding="utf-8") as f:
         json.dump(event, f, indent=2, ensure_ascii=False)
     
-    # Salva anche nello storico completo
     save_to_history(event)
     
     try:

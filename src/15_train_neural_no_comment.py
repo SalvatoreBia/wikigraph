@@ -1,10 +1,3 @@
-"""
-15_train_neural_no_comment.py
-Training di un classificatore neurale PyTorch per rilevamento vandalismo.
-VERSIONE SENZA COMMENTO: Non usa embedding del commento.
-Features: old_emb + new_emb + semantic_similarity + length_ratio = 770
-"""
-
 import json
 import pickle
 from pathlib import Path
@@ -37,7 +30,6 @@ from config_loader import load_config
 CONFIG = load_config()
 MODEL_NAME = CONFIG['embedding']['model_name']
 
-
 TRAIN_SPLIT = CONFIG['dataset']['training'].get('train_split', 0.8)
 EPOCHS = 100
 BATCH_SIZE = 8
@@ -45,12 +37,7 @@ LEARNING_RATE = 0.001
 WEIGHT_DECAY = 0.01 
 PATIENCE = 15  
 
-
 class VandalismClassifierNoComment(nn.Module):
-    """
-    Rete neurale per classificazione vandalismo
-    VERSIONE SENZA COMMENTO: input_dim = 384*2 + 2 = 770 features
-    """
     def __init__(self, input_dim):
         super(VandalismClassifierNoComment, self).__init__()
         self.fc1 = nn.Linear(input_dim, 256)
@@ -81,35 +68,20 @@ class VandalismClassifierNoComment(nn.Module):
         x = self.sigmoid(x)
         return x
 
-
 def get_raw_features_no_comment(edit, embedder):
-    """
-    Estrae feature grezze SENZA embedding del commento.
-    
-    Features:
-    - old_emb (384)
-    - new_emb (384)
-    - semantic_similarity (1)
-    - length_ratio (1)
-    
-    Totale: 770 features
-    """
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
     
-    # Embedding del nuovo testo
     if new_text:
         new_emb = embedder.encode(new_text, convert_to_numpy=True)
     else:
         new_emb = np.zeros(384)
     
-    # Embedding del testo originale
     if original_text:
         old_emb = embedder.encode(original_text, convert_to_numpy=True)
     else:
         old_emb = np.zeros(384)
     
-    # Feature aggiuntive
     old_len = len(original_text)
     new_len = len(new_text)
     if old_len > 0:
@@ -117,14 +89,11 @@ def get_raw_features_no_comment(edit, embedder):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # Similarità semantica tra vecchio e nuovo testo
     if np.all(old_emb == 0) or np.all(new_emb == 0):
         semantic_similarity = 0.0
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # SENZA COMMENTO!
-    # Concatena: 384*2 + 2 = 770 features
     features = np.concatenate([
         old_emb, new_emb,
         [semantic_similarity], [length_ratio]
@@ -132,13 +101,11 @@ def get_raw_features_no_comment(edit, embedder):
     
     return features
 
-
 def load_data():
-    """Carica i dati di training dai file JSON"""
-    print("📂 Caricamento dati...")
+    print("- Caricamento dati...")
     
     if not LEGIT_FILE.exists() or not VANDAL_FILE.exists():
-        print("❌ File mock non trovati!")
+        print("! File mock non trovati!")
         return None, None
     
     with open(LEGIT_FILE, 'r', encoding='utf-8') as f:
@@ -147,12 +114,10 @@ def load_data():
     with open(VANDAL_FILE, 'r', encoding='utf-8') as f:
         vandal_edits = json.load(f)
     
-    print(f"   ✅ Legit: {len(legit_edits)}, Vandal: {len(vandal_edits)}")
+    print(f"   - Legit: {len(legit_edits)}, Vandal: {len(vandal_edits)}")
     return legit_edits, vandal_edits
 
-
 def extract_features(edits, embedder, label):
-    """Estrae feature per una lista di edit"""
     X = []
     y = []
     
@@ -163,10 +128,7 @@ def extract_features(edits, embedder, label):
     
     return X, y
 
-
 def train_model(X_train, y_train, X_val, y_val, input_dim, device):
-    """Training del modello PyTorch con early stopping"""
-    
     train_dataset = TensorDataset(
         torch.FloatTensor(X_train),
         torch.FloatTensor(y_train).unsqueeze(1)
@@ -188,7 +150,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
     patience_counter = 0
     best_model_state = None
     
-    print(f"\n🏋️ Training per {EPOCHS} epochs (early stopping patience={PATIENCE})...")
+    print(f"\n- Training per {EPOCHS} epochs (patience={PATIENCE})...")
     print("-" * 60)
     
     for epoch in range(EPOCHS):
@@ -228,11 +190,11 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
         
         if (epoch + 1) % 10 == 0 or patience_counter == 0:
             current_lr = optimizer.param_groups[0]['lr']
-            status = "⭐" if patience_counter == 0 else ""
+            status = "!" if patience_counter == 0 else ""
             print(f"  Epoch {epoch+1:3d}: train_loss={train_loss:.4f}, val_loss={val_loss:.4f}, lr={current_lr:.6f} {status}")
         
         if patience_counter >= PATIENCE:
-            print(f"\n⏹️ Early stopping at epoch {epoch+1}")
+            print(f"\n- Early stopping alla epoch {epoch+1}")
             break
     
     if best_model_state:
@@ -240,9 +202,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
     
     return model
 
-
 def evaluate_model(model, X_test, y_test, device):
-    """Valuta il modello sul test set"""
     model.eval()
     
     with torch.no_grad():
@@ -253,17 +213,17 @@ def evaluate_model(model, X_test, y_test, device):
     y_test_arr = np.array(y_test)
     
     print("\n" + "=" * 60)
-    print("📊 RISULTATI SUL TEST SET (NO COMMENT)")
+    print("- RISULTATI TEST (NO COMMENT)")
     print("=" * 60)
     
-    print(f"\nAccuracy: {accuracy_score(y_test_arr, predictions)*100:.2f}%")
+    print(f"\nAccuratezza: {accuracy_score(y_test_arr, predictions)*100:.2f}%")
     print(f"F1 Score: {f1_score(y_test_arr, predictions)*100:.2f}%")
     
-    print("\nClassification Report:")
+    print("\nReport Classificazione:")
     print(classification_report(y_test_arr, predictions, 
                                 target_names=['Legit', 'Vandal']))
     
-    print("\nConfusion Matrix:")
+    print("\nMatrice di Confusione:")
     cm = confusion_matrix(y_test_arr, predictions)
     print(f"  {'':>10} Pred_Legit  Pred_Vandal")
     print(f"  {'True_Legit':>10}     {cm[0,0]:4d}        {cm[0,1]:4d}")
@@ -271,19 +231,18 @@ def evaluate_model(model, X_test, y_test, device):
     
     return predictions
 
-
 def main():
     print("=" * 60)
-    print("🧠 NEURAL CLASSIFIER TRAINING (PyTorch) - NO COMMENT")
+    print("- TRAINING CLASSIFICATORE NEURALE (PyTorch) - NO COMMENT")
     print("=" * 60)
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"\n💻 Device: {device}")
+    print(f"\n- Dispositivo: {device}")
     
-    print("ℹ️  Modo NO COMMENT: Non usa embedding del commento")
+    print("- Modo NO COMMENT: Non usa embedding del commento")
     
     embedder = SentenceTransformer(MODEL_NAME)
-    print(f"✅ Embedder caricato: {MODEL_NAME}")
+    print(f"- Embedder caricato: {MODEL_NAME}")
     
     legit_edits, vandal_edits = load_data()
     if legit_edits is None:
@@ -293,28 +252,28 @@ def main():
     target_vandal = CONFIG['dataset']['training']['vandal_count']
     
     if len(legit_edits) > target_legit:
-        print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
+        print(f"- Limito Legit a {target_legit} (da {len(legit_edits)})")
         legit_edits = legit_edits[:target_legit]
         
     if len(vandal_edits) > target_vandal:
-        print(f"✂️  Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
+        print(f"- Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
         vandal_edits = vandal_edits[:target_vandal]
     
-    print("\n🔄 Estrazione feature (raw embeddings, NO COMMENT)...")
+    print("\n- Estrazione feature (raw embeddings, NO COMMENT)...")
     X_legit, y_legit = extract_features(legit_edits, embedder, 0)
     X_vandal, y_vandal = extract_features(vandal_edits, embedder, 1)
     
     X = np.array(X_legit + X_vandal)
     y = np.array(y_legit + y_vandal)
     
-    print(f"   Feature shape: {X.shape}")
-    print(f"   Labels: {len(y)} (Legit: {sum(y==0)}, Vandal: {sum(y==1)})")
+    print(f"   - Feature shape: {X.shape}")
+    print(f"   - Labels: {len(y)} (Legit: {sum(y==0)}, Vandal: {sum(y==1)})")
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=(1-TRAIN_SPLIT), random_state=42, stratify=y
     )
     
-    print(f"\n📊 Split: Train={len(X_train)}, Test={len(X_test)}")
+    print(f"\n- Split: Train={len(X_train)}, Test={len(X_test)}")
     
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
@@ -332,11 +291,10 @@ def main():
     with open(SCALER_FILE, 'wb') as f:
         pickle.dump(scaler, f)
     
-    print(f"\n💾 Modello salvato: {MODEL_FILE}")
-    print(f"💾 Scaler salvato: {SCALER_FILE}")
+    print(f"\n- Modello salvato: {MODEL_FILE}")
+    print(f"- Scaler salvato: {SCALER_FILE}")
     
-    print("\n✅ Training completato (NO COMMENT)!")
-
+    print("\n- Training completato (NO COMMENT)!")
 
 if __name__ == "__main__":
     main()

@@ -1,10 +1,3 @@
-"""
-204_neural_judge_no_rag.py
-Judge neurale per rilevamento vandalismo in real-time.
-VERSIONE SENZA RAG SCORES: Non usa triangolazione Neo4j.
-Consuma da Kafka e classifica gli edit usando solo embedding locali.
-"""
-
 import json
 import pickle
 import time
@@ -17,8 +10,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 import torch
 import torch.nn as nn
 
-
-# --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 from config_loader import load_config
 CONFIG = load_config()
@@ -28,7 +19,6 @@ TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 SCORES_DIR = DATA_DIR / "scores"
 RESULTS_FILE = SCORES_DIR / "BC_results_no_rag.json"
 
-# File dei modelli NO RAG
 NEURAL_MODEL_FILE = TRAINED_BC_DIR / "neural_classifier_no_rag.pth"
 NEURAL_SCALER_FILE = TRAINED_BC_DIR / "neural_scaler_no_rag.pkl"
 
@@ -36,21 +26,7 @@ KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_IN = CONFIG['kafka']['topic_judge']
 MODEL_NAME = CONFIG['embedding']['model_name']
 
-
 def get_raw_features_no_rag(edit, embedder):
-    """
-    Feature grezze per il modello neurale NO RAG.
-    Identica a 14_train_neural_no_rag.py
-    
-    Features:
-    - old_emb (384)
-    - new_emb (384)
-    - comment_emb (384)
-    - semantic_similarity (1)
-    - length_ratio (1)
-    
-    Totale: 1154 features
-    """
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
     comment = edit.get('comment', '')
@@ -82,7 +58,6 @@ def get_raw_features_no_rag(edit, embedder):
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # SENZA RAG SCORES!
     features = np.concatenate([
         old_emb, new_emb, comment_emb,
         [semantic_similarity], [length_ratio]
@@ -90,12 +65,7 @@ def get_raw_features_no_rag(edit, embedder):
     
     return features
 
-
 class VandalismClassifierNoRAG(nn.Module):
-    """
-    Rete neurale per classificazione vandalismo NO RAG.
-    Architettura identica a quella in script 14.
-    """
     def __init__(self, input_dim):
         super(VandalismClassifierNoRAG, self).__init__()
         self.fc1 = nn.Linear(input_dim, 256)
@@ -126,21 +96,18 @@ class VandalismClassifierNoRAG(nn.Module):
         x = self.sigmoid(x)
         return x
 
-
 def load_resources():
-    """Carica modello e scaler NO RAG"""
-    print("⏳ Caricamento risorse BC (NO RAG)...")
+    print("- Caricamento risorse BC (NO RAG)...")
     
     if not NEURAL_MODEL_FILE.exists():
-        print(f"❌ Modello non trovato: {NEURAL_MODEL_FILE}")
-        print("   Esegui prima 14_train_neural_no_rag.py")
+        print(f"! Modello non trovato: {NEURAL_MODEL_FILE}")
         return None, None
         
     if not NEURAL_SCALER_FILE.exists():
-        print(f"❌ Scaler non trovato: {NEURAL_SCALER_FILE}")
+        print(f"! Scaler non trovato: {NEURAL_SCALER_FILE}")
         return None, None
     
-    print("   🧠 Caricamento Neural Classifier NO RAG (PyTorch)...")
+    print("   - Caricamento Neural Classifier NO RAG (PyTorch)...")
     try:
         with open(NEURAL_SCALER_FILE, "rb") as f:
             scaler = pickle.load(f)
@@ -148,25 +115,22 @@ def load_resources():
         model = VandalismClassifierNoRAG(input_dim)
         model.load_state_dict(torch.load(NEURAL_MODEL_FILE, map_location='cpu'))
         model.eval()
-        print(f"   ✅ Neural Classifier NO RAG caricato (input_dim={input_dim})")
+        print(f"   - Neural Classifier NO RAG caricato (input_dim={input_dim})")
         return model, scaler
     except Exception as e:
-        print(f"   ❌ Errore caricamento: {e}")
+        print(f"   ! Errore caricamento: {e}")
         return None, None
 
-
 def reset_results():
-    """Reset del file risultati all'avvio di una nuova sessione di test."""
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
     
     initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
     with open(RESULTS_FILE, "w", encoding="utf-8") as f:
         json.dump(initial_data, f, indent=4, ensure_ascii=False)
-    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+    print(f"- Reset file risultati: {RESULTS_FILE.name}")
 
 def save_result(result_entry):
-    """Salva i risultati su file JSON"""
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
         
@@ -180,7 +144,6 @@ def save_result(result_entry):
             
     current_data["results"].append(result_entry)
     
-    # Recalculate stats
     total = len(current_data["results"])
     correct = sum(1 for r in current_data["results"] if r["correct"])
     total_time = sum(r["time_sec"] for r in current_data["results"])
@@ -192,27 +155,24 @@ def save_result(result_entry):
         json.dump(current_data, f, indent=4, ensure_ascii=False, 
           default=lambda o: bool(o) if isinstance(o, (np.bool_, np.bool)) else o)
 
-
 def main():
-    # Reset risultati all'avvio
     reset_results()
     
-    # Traccia ID già processati per evitare duplicati
     processed_ids = set()
     
     print("=" * 60)
-    print("🧠 NEURAL JUDGE (NO RAG) - Real-time Classification")
+    print("- NEURAL JUDGE (NO RAG) - Real-time Classification")
     print("=" * 60)
     
     model, scaler = load_resources()
     if model is None:
-        print("❌ Errore: impossibile caricare il modello")
+        print("! Errore: impossibile caricare il modello")
         sys.exit(1)
     
     embedder = SentenceTransformer(MODEL_NAME)
-    print(f"✅ Embedder caricato: {MODEL_NAME}")
-    print("ℹ️  Modo NO RAG: Non richiede Neo4j")
-    print("\n✅ Risorse caricate. In attesa di edit...")
+    print(f"- Embedder caricato: {MODEL_NAME}")
+    print("- Modo NO RAG: Non richiede Neo4j")
+    print("\n- Risorse caricate. In attesa di edit...")
     
     consumer = KafkaConsumer(
         TOPIC_IN,
@@ -226,10 +186,9 @@ def main():
         for message in consumer:
             event = message.value
             
-            # Deduplicazione: salta eventi già processati
             event_id = event.get('id') or event.get('meta', {}).get('id')
             if event_id and event_id in processed_ids:
-                print(f"⏭️ Skip duplicato: {event_id[:8] if isinstance(event_id, str) else event_id}...")
+                print(f"- Skip duplicato: {event_id[:8] if isinstance(event_id, str) else event_id}...")
                 continue
             if event_id:
                 processed_ids.add(event_id)
@@ -238,16 +197,14 @@ def main():
             user = event.get('user', 'Unknown')
             is_vandalism_truth = event.get('is_vandalism', None)
             
-            print(f"\nAnalisi edit di [{user}]:")
+            print(f"\n- Analisi edit di [{user}]:")
             print(f"  Commento: \"{comment}\"")
             
             start_time = time.time()
             
-            # Feature extraction (NO RAG)
             feat = get_raw_features_no_rag(event, embedder)
             feat_scaled = scaler.transform([feat])
             
-            # Prediction
             with torch.no_grad():
                 feat_tensor = torch.FloatTensor(feat_scaled)
                 pred_prob = model(feat_tensor).item()
@@ -259,26 +216,24 @@ def main():
             predicted_vandal = (pred_label == 1)
             verdict = "VANDALISMO" if predicted_vandal else "LEGITTIMO"
             
-            # Check correctness
             is_correct = None
             if is_vandalism_truth is not None:
                 is_correct = (predicted_vandal == is_vandalism_truth)
                 
             if predicted_vandal:
                 color = "\033[91m"
-                icon = "🚨"
+                status_text = "VANDALISMO"
             else:
                 color = "\033[92m"
-                icon = "✅"
+                status_text = "LEGITTIMO"
                 
             reset = "\033[0m"
             
-            print(f"  Verdetto: {color}{icon} {verdict}{reset} ({elapsed:.4f}s)")
+            print(f"  Verdetto: {color}{status_text}{reset} ({elapsed:.2f}s)")
             print(f"  Confidence: {pred_prob:.3f}")
             if is_correct is not None:
-                print(f"  Corretto: {'✅' if is_correct else '❌'}")
+                print(f"  Corretto: {'Sì' if is_correct else 'No'}")
                 
-            # Salva risultato
             result_entry = {
                 "user": user,
                 "comment": comment,
@@ -295,7 +250,6 @@ def main():
         print("\n\nSpegnimento BC Judge (NO RAG).")
     finally:
         print("👋 Bye!")
-
 
 if __name__ == "__main__":
     main()

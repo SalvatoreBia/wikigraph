@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from kafka import KafkaConsumer
 
-# --- CARICAMENTO CONFIGURAZIONE ---
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
@@ -20,10 +19,8 @@ from config_loader import load_config
 CONFIG = load_config()
 GEMINI_MODEL = CONFIG['llm']['judge_model']
 
-# Check provider
 PROVIDER = CONFIG['llm'].get('provider', 'gemini')
 
-# API Keys Round Robin - Carica dinamicamente tutte le GEMINI_API_KEY_* dal .env
 API_KEYS = []
 i = 1
 while True:
@@ -34,16 +31,14 @@ while True:
     else:
         break
 
-# Per la modalità local, usiamo una chiave dummy
 if PROVIDER == 'local':
     API_KEYS = ["local-key"]
 elif not API_KEYS:
-    print("❌ ERRORE: Nessuna API Key trovata nel .env")
+    print("! Errore: Nessuna API Key trovata nel .env")
 
 api_key_cycle = cycle(API_KEYS) if API_KEYS else None
 key_lock = threading.Lock()
 
-# Client OpenAI per modalità local (inizializzato una volta)
 LOCAL_CLIENT = None
 LOCAL_MODEL = None
 if PROVIDER == 'local':
@@ -53,13 +48,11 @@ if PROVIDER == 'local':
     )
     LOCAL_MODEL = CONFIG['llm']['local'].get('model', GEMINI_MODEL)
 
-# Rate Limiting
 KEY_USAGE = defaultdict(list)
 MAX_REQ_PER_MIN = CONFIG['rate_limit']['max_req_per_min']
 WINDOW_SIZE = CONFIG['rate_limit']['window_size']
 
 def get_next_api_key():
-    # Per modalità local, non serve rate limiting sulle chiavi
     if PROVIDER == 'local':
         return "local-key"
     
@@ -69,18 +62,15 @@ def get_next_api_key():
     with key_lock:
         while True:
             now = time.time()
-            # Try to find an available key
             for _ in range(len(API_KEYS)):
                 key = next(api_key_cycle)
-                # Clean old timestamps
                 KEY_USAGE[key] = [t for t in KEY_USAGE[key] if now - t < WINDOW_SIZE]
                 
                 if len(KEY_USAGE[key]) < MAX_REQ_PER_MIN:
                     KEY_USAGE[key].append(now)
                     return key
             
-            # If all keys are busy, wait a bit
-            print("⏳ Rate limit hit on all keys. Waiting 5s...")
+            print("- Rate limit raggiunto su tutte le chiavi. Attesa 5s...")
             time.sleep(5)
 
 KAFKA_BROKER = CONFIG['kafka']['broker']
@@ -129,7 +119,6 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
     
     try:
         if PROVIDER == 'local':
-            # Usa client OpenAI locale (es. LM Studio, Ollama)
             response = LOCAL_CLIENT.chat.completions.create(
                 model=LOCAL_MODEL,
                 messages=[{"role": "user", "content": prompt}],
@@ -137,7 +126,6 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
             )
             return response.choices[0].message.content.strip()
         else:
-            # Usa Gemini API
             genai.configure(api_key=api_key)
             model = genai.GenerativeModel(GEMINI_MODEL)
             response = model.generate_content(prompt)
@@ -146,14 +134,13 @@ def analyze_with_gemini(edit_comment, context, original_text, new_text):
         return f"Errore AI: {e}"
 
 def reset_results():
-    """Reset del file risultati all'avvio di una nuova sessione di test."""
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
     
     initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
     with open(RESULTS_FILE, "w", encoding="utf-8") as f:
         json.dump(initial_data, f, indent=4, ensure_ascii=False)
-    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+    print(f"- Reset file risultati: {RESULTS_FILE.name}")
 
 def save_result(result_entry):
     if not SCORES_DIR.exists():
@@ -169,7 +156,6 @@ def save_result(result_entry):
             
     current_data["results"].append(result_entry)
     
-    # Recalculate stats
     total = len(current_data["results"])
     correct = sum(1 for r in current_data["results"] if r["correct"])
     total_time = sum(r["time_sec"] for r in current_data["results"])
@@ -181,46 +167,42 @@ def save_result(result_entry):
         json.dump(current_data, f, indent=4, ensure_ascii=False)
 
 def main():
-    # Reset risultati all'avvio
     reset_results()
     
-    # Traccia ID già processati per evitare duplicati
     processed_ids = set()
     
     print("--- AI JUDGE AVVIATO (Il Giudice) ---")
 
     if PROVIDER == 'gemini' and not API_KEYS:
-        print(f"❌ ERRORE CRITICO: Nessuna API Key trovata nel .env")
+        print(f"! Errore critico: Nessuna API Key trovata nel .env")
         return
     
     ground_truth = load_ground_truth()
     
     if PROVIDER == 'local':
-        print(f"✅ Modalità LOCAL. Modello: {LOCAL_MODEL}")
+        print(f"- Modalità LOCAL. Modello: {LOCAL_MODEL}")
         print(f"   Endpoint: {CONFIG['llm']['local']['base_url']}")
     else:
-        print(f"✅ {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
+        print(f"- {len(API_KEYS)} API Key caricate. Modello: {GEMINI_MODEL}")
     
-    print(f"📚 Contesto caricato. In attesa...")
+    print(f"- Contesto caricato. In attesa...")
 
-    # --- CORREZIONE QUI: Aggiunto group_id univoco ---
     consumer = KafkaConsumer(
         TOPIC_IN,
         bootstrap_servers=[KAFKA_BROKER],
         value_deserializer=lambda x: json.loads(x.decode('utf-8')),
         auto_offset_reset='latest',
-        group_id='ai_judge_gemini_group'  # Ogni judge ha il suo group_id per ricevere TUTTI i messaggi
+        group_id='ai_judge_gemini_group'
     )
 
     for message in consumer:
         event = message.value
         
-        # Deduplicazione: salta eventi già processati
         event_id = event.get('id') or event.get('meta', {}).get('id')
         if event_id is not None:
-            event_id = str(event_id)  # Converti a stringa per evitare errori di slicing
+            event_id = str(event_id)
         if event_id and event_id in processed_ids:
-            print(f"⏭️ Skip duplicato: {event_id[:8]}...")
+            print(f"- Skip duplicato: {event_id[:8]}...")
             continue
         if event_id:
             processed_ids.add(event_id)
@@ -229,9 +211,9 @@ def main():
         user = event['user']
         original_text = event.get('original_text', '')
         new_text = event.get('new_text', '')
-        is_vandalism_truth = event.get('is_vandalism', None) # Potrebbe non esserci in eventi reali
+        is_vandalism_truth = event.get('is_vandalism', None)
         
-        print(f"\nAnalisi edit di [{user}]:")
+        print(f"\n- Analisi edit di [{user}]:")
         print(f"  Commento: \"{comment}\"")
         
         start_time = time.time()
@@ -239,34 +221,28 @@ def main():
         end_time = time.time()
         elapsed = end_time - start_time
         
-        # Rate limiting: con 4 chiavi = 40 req/min → aspetta 2s tra richieste
-        # time.sleep(2)
-        
-        # Normalizza verdetto
         predicted_vandal = "VANDALISMO" in verdict.upper()
         
-        # Check correctness
         is_correct = None
         if is_vandalism_truth is not None:
             is_correct = (predicted_vandal == is_vandalism_truth)
         
         if predicted_vandal:
-            color = "\033[91m" # Rosso
-            icon = "🚨"
+            color = "\033[91m"
+            status_text = "VANDALISMO"
         elif "LEGITTIMO" in verdict.upper():
-            color = "\033[92m" # Verde
-            icon = "✅"
+            color = "\033[92m"
+            status_text = "LEGITTIMO"
         else:
-            color = "\033[93m" # Giallo
-            icon = "⚠️"
+            color = "\033[93m"
+            status_text = verdict
             
         reset = "\033[0m"
         
-        print(f"  Verdetto: {color}{icon} {verdict}{reset} ({elapsed:.2f}s)")
+        print(f"  Verdetto: {color}{status_text}{reset} ({elapsed:.2f}s)")
         if is_correct is not None:
-            print(f"  Corretto: {'✅' if is_correct else '❌'}")
+            print(f"  Corretto: {'Sì' if is_correct else 'No'}")
 
-        # Salva risultato
         result_entry = {
             "user": user,
             "comment": comment,

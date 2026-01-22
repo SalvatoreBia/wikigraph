@@ -2,8 +2,6 @@ import json
 from pathlib import Path
 
 def load_config():
-    """Loads the config.json file from the project root."""
-    # Assumes src/config_loader.py structure, so parent is src, parent.parent is root
     base_dir = Path(__file__).resolve().parent.parent
     config_path = base_dir / "config.json"
     

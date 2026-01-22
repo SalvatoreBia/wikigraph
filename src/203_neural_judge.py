@@ -10,10 +10,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import torch
 import torch.nn as nn
 
-# Import shared utils
 import classifier_utils
 
-# --- CONFIGURAZIONE ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 from config_loader import load_config
 CONFIG = load_config()
@@ -23,15 +21,8 @@ TRAINED_BC_DIR = DATA_DIR / "trained_BC"
 SCORES_DIR = DATA_DIR / "scores"
 RESULTS_FILE = SCORES_DIR / "BC_results.json"
 
-# ============================================================
-# SCEGLI IL MODELLO DA USARE:
-#   "neural" = Rete neurale PyTorch (script 13)
-#   "rf"     = Random Forest sklearn (script 12)
-#   "auto"   = Prova neural, se non esiste usa rf
-# ============================================================
 PREFERRED_MODEL = "neural"
 
-# File dei modelli
 NEURAL_MODEL_FILE = TRAINED_BC_DIR / "neural_classifier.pth"
 NEURAL_SCALER_FILE = TRAINED_BC_DIR / "neural_scaler.pkl"
 RF_MODEL_FILE = TRAINED_BC_DIR / "binary_classifier.pkl"
@@ -42,7 +33,6 @@ TOPIC_IN = CONFIG['kafka']['topic_judge']
 MODEL_NAME = CONFIG['embedding']['model_name']
 
 def get_raw_features(edit, embedder, driver):
-    """Feature grezze per il modello neurale (identiche a 13_train_neural_classifier.py)"""
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
     comment = edit.get('comment', '')
@@ -69,14 +59,11 @@ def get_raw_features(edit, embedder, driver):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-
     if np.all(old_emb == 0) or np.all(new_emb == 0):
         semantic_similarity = 0.0
     else:
         semantic_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # Truth scores da Neo4j (TRIANGOLAZIONE)
-    # 1. NEW TEXT vs WIKI & TRUSTED
     if np.all(new_emb == 0):
         score_new_wiki = 0.0
         score_new_trusted = 0.0
@@ -84,7 +71,6 @@ def get_raw_features(edit, embedder, driver):
         _, score_new_wiki = classifier_utils.get_best_match(driver, classifier_utils.WIKI_INDEX_NAME, new_emb)
         _, score_new_trusted = classifier_utils.get_best_match(driver, classifier_utils.TRUSTED_INDEX_NAME, new_emb)
     
-    # 2. OLD TEXT vs WIKI & TRUSTED
     if np.all(old_emb == 0):
         score_old_wiki = 0.0
         score_old_trusted = 0.0
@@ -133,8 +119,8 @@ class VandalismClassifier(nn.Module):
         return x
 
 def load_resources():
-    print("⏳ Caricamento risorse BC...")
-    print(f"   📋 Modello preferito: {PREFERRED_MODEL}")
+    print("- Caricamento risorse BC...")
+    print(f"   - Modello preferito: {PREFERRED_MODEL}")
     
     driver = classifier_utils.get_neo4j_driver()
     if not driver:
@@ -143,7 +129,7 @@ def load_resources():
     def load_neural():
         if not (NEURAL_MODEL_FILE.exists() and NEURAL_SCALER_FILE.exists()):
             return None, None
-        print("   🧠 Caricamento Neural Classifier (PyTorch)...")
+        print("   - Caricamento Neural Classifier (PyTorch)...")
         try:
             with open(NEURAL_SCALER_FILE, "rb") as f:
                 scaler = pickle.load(f)
@@ -151,40 +137,40 @@ def load_resources():
             model = VandalismClassifier(input_dim)
             model.load_state_dict(torch.load(NEURAL_MODEL_FILE, map_location='cpu'))
             model.eval()
-            print("   ✅ Neural Classifier caricato")
+            print("   - Neural Classifier caricato")
             return model, scaler
         except Exception as e:
-            print(f"   ⚠️ Errore caricamento Neural: {e}")
+            print(f"   ! Errore caricamento Neural: {e}")
             return None, None
     
     def load_rf():
         if not (RF_MODEL_FILE.exists() and RF_SCALER_FILE.exists()):
             return None, None
-        print("   🌲 Caricamento Random Forest Classifier...")
+        print("   - Caricamento Random Forest Classifier...")
         try:
             with open(RF_MODEL_FILE, "rb") as f:
                 model = pickle.load(f)
             with open(RF_SCALER_FILE, "rb") as f:
                 scaler = pickle.load(f)
-            print("   ✅ Random Forest caricato")
+            print("   - Random Forest caricato")
             return model, scaler
         except Exception as e:
-            print(f"   ⚠️ Errore caricamento RF: {e}")
+            print(f"   ! Errore caricamento RF: {e}")
             return None, None
     
     if PREFERRED_MODEL == "neural":
         model, scaler = load_neural()
         if model:
             return driver, model, scaler, "neural"
-        print("   ❌ Neural non disponibile!")
+        print("   ! Neural non disponibile!")
         
     elif PREFERRED_MODEL == "rf":
         model, scaler = load_rf()
         if model:
             return driver, model, scaler, "rf"
-        print("   ❌ Random Forest non disponibile!")
+        print("   ! Random Forest non disponibile!")
         
-    else:  # auto
+    else: 
         model, scaler = load_neural()
         if model:
             return driver, model, scaler, "neural"
@@ -192,18 +178,17 @@ def load_resources():
         if model:
             return driver, model, scaler, "rf"
     
-    print("❌ Nessun modello trovato!")
+    print("! Nessun modello trovato!")
     return None, None, None, None
 
 def reset_results():
-    """Reset del file risultati all'avvio di una nuova sessione di test."""
     if not SCORES_DIR.exists():
         SCORES_DIR.mkdir(parents=True, exist_ok=True)
     
     initial_data = {"results": [], "accuracy": 0.0, "avg_time": 0.0}
     with open(RESULTS_FILE, "w", encoding="utf-8") as f:
         json.dump(initial_data, f, indent=4, ensure_ascii=False)
-    print(f"🔄 Reset file risultati: {RESULTS_FILE.name}")
+    print(f"- Reset file risultati: {RESULTS_FILE.name}")
 
 def save_result(result_entry):
     if not SCORES_DIR.exists():
@@ -219,7 +204,6 @@ def save_result(result_entry):
             
     current_data["results"].append(result_entry)
     
-    # Recalculate stats
     total = len(current_data["results"])
     correct = sum(1 for r in current_data["results"] if r["correct"])
     total_time = sum(r["time_sec"] for r in current_data["results"])
@@ -232,19 +216,17 @@ def save_result(result_entry):
           default=lambda o: bool(o) if isinstance(o, (np.bool_, np.bool)) else o)
 
 def main():
-    # Reset risultati all'avvio
     reset_results()
     
-    # Traccia ID già processati per evitare duplicati
     processed_ids = set()
     
     driver, model, scaler, model_type = load_resources()
     if driver is None or model is None:
-        print("❌ Errore: impossibile caricare modello o Neo4j")
+        print("! Errore: impossibile caricare modello o Neo4j")
         sys.exit(1)
     
     embedder = SentenceTransformer(MODEL_NAME)
-    print("✅ Risorse caricate. In attesa di edit...")
+    print("- Risorse caricate. In attesa di edit...")
     
     consumer = KafkaConsumer(
         TOPIC_IN,
@@ -258,10 +240,9 @@ def main():
         for message in consumer:
             event = message.value
             
-            # Deduplicazione: salta eventi già processati
             event_id = event.get('id') or event.get('meta', {}).get('id')
             if event_id and event_id in processed_ids:
-                print(f"⏭️ Skip duplicato: {event_id[:8] if isinstance(event_id, str) else event_id}...")
+                print(f"- Skip duplicato: {event_id[:8] if isinstance(event_id, str) else event_id}...")
                 continue
             if event_id:
                 processed_ids.add(event_id)
@@ -270,26 +251,24 @@ def main():
             user = event.get('user', 'Unknown')
             is_vandalism_truth = event.get('is_vandalism', None)
             
-            print(f"\nAnalisi edit di [{user}]:")
+            print(f"\n- Analisi edit di [{user}]:")
             print(f"  Commento: \"{comment}\"")
             
             start_time = time.time()
             
-            # Feature extraction (diverse per neural vs RF)
             if model_type == "neural":
                 feat = get_raw_features(event, embedder, driver)
-            else:  # rf
+            else: 
                 feat = classifier_utils.get_features(event, embedder, driver)
             
             feat_scaled = scaler.transform([feat])
             
-            # Prediction
             if model_type == "neural":
                 with torch.no_grad():
                     feat_tensor = torch.FloatTensor(feat_scaled)
                     pred_prob = model(feat_tensor).item()
                     pred_label = 1 if pred_prob > 0.5 else 0
-            else:  # rf
+            else: 
                 pred_label = model.predict(feat_scaled)[0]
             
             end_time = time.time()
@@ -298,25 +277,23 @@ def main():
             predicted_vandal = (pred_label == 1)
             verdict = "VANDALISMO" if predicted_vandal else "LEGITTIMO"
             
-            # Check correctness
             is_correct = None
             if is_vandalism_truth is not None:
                 is_correct = (predicted_vandal == is_vandalism_truth)
                 
             if predicted_vandal:
                 color = "\033[91m"
-                icon = "🚨"
+                status_text = "VANDALISMO"
             else:
                 color = "\033[92m"
-                icon = "✅"
+                status_text = "LEGITTIMO"
                 
             reset = "\033[0m"
             
-            print(f"  Verdetto: {color}{icon} {verdict}{reset} ({elapsed:.4f}s)")
+            print(f"  Verdetto: {color}{status_text}{reset} ({elapsed:.4f}s)")
             if is_correct is not None:
-                print(f"  Corretto: {'✅' if is_correct else '❌'}")
+                print(f"  Corretto: {'Sì' if is_correct else 'No'}")
                 
-            # Salva risultato
             result_entry = {
                 "user": user,
                 "comment": comment,

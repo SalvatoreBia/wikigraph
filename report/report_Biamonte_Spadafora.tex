@@ -39,28 +39,31 @@
 \thispagestyle{plain}
 \pagestyle{plain}
 
+
 \begin{abstract}
-The rapid growth of user-generated content on Wikipedia poses significant challenges for maintaining information integrity. The high velocity of edits makes manual moderation unfeasible, necessitating automated real-time solutions. This paper presents a microservices-based architecture designed to detect vandalism in Wikipedia streams using a hybrid approach of Graph Mining and Artificial Intelligence. 
-We leverage Graph Data Science techniques (Leiden algorithm) to cluster pages into communities, using edit bursts as triggers for anomaly detection. We implement a Retrieval-Augmented Generation (RAG) pipeline backed by a Neo4j Knowledge Graph to provide factual context to the classifiers.
-Finally, we conduct a comparative analysis and an ablation study between a high-precision Large Language Model (Gemini) acting as an oracle, and lightweight Neural Network classifiers trained on synthetic adversarial data. Our results highlight the trade-offs between the computational cost of LLMs and the speed of neural classifiers enhanced by graph-based RAG features.
+The rapid growth of user-generated content on Wikipedia poses significant challenges for maintaining information integrity. The high velocity of edits makes manual moderation unfeasible, necessitating automated real-time solutions. This paper presents a microservices-based architecture designed to detect vandalism in Wikipedia streams using a hybrid approach of Graph Mining and Artificial Intelligence. We leverage Graph Data Science techniques (specifically the Leiden algorithm) to cluster pages into semantic communities, utilizing edit bursts within these clusters as heuristic triggers to optimize resource allocation. Furthermore, we implement a Retrieval-Augmented Generation (RAG) pipeline backed by a Neo4j Knowledge Graph to provide factual context to the classifiers. We conduct a comparative analysis between a high-precision Large Language Model (GPT-OSS-20B) acting as a reasoning oracle, and lightweight Neural Network classifiers trained on synthetic adversarial data. Our results demonstrate that while Neural Classifiers achieve superior throughput and near-perfect accuracy on synthetic patterns, they lack the semantic reasoning required for subtle, context-dependent vandalism, which remains the domain of LLMs. This study highlights the trade-off between computational cost and semantic depth, proposing a tiered detection strategy.
 \end{abstract}
 
+
 \vspace{1cm}
+
 
 \section{Introduction}
 Wikipedia stands out as one of the most significant sources of crowdsourced knowledge in the digital age. Its open nature allows for the democratization of information, enabling any user to contribute to historical and scientific documentation. However, this accessibility has an obvious downside: the platform is inherently vulnerable to malicious actors. Vandalism, misinformation, and the injection of unverified facts can occur at any moment, potentially compromising the integrity of the encyclopedia.
 
-
-
 A useful tool for monitoring such behaviour is the real-time \texttt{RecentChanges} API, provided by WikiMedia, which broadcasts every modification made across the platform. While this tool offers transparency, the sheer volume and velocity of the incoming data make manual verification impossible. Human moderators cannot keep up with the flood of edits that occur every second. Consequently, there is a critical need for autonomous systems capable of filtering this stream and flagging suspicious activities in real-time.
 
-This project addresses this challenge by leveraging \textbf{Graph Mining} techniques to optimize the detection workflow. We construct a knowledge graph utilizing Neo4j to capture the topological structure of Wikipedia. By applying community detection algorithms (such as Leiden), we segment the graph into topical clusters; detecting a sudden spike of edits within a specific cluster allows the system to prioritize resources on potential coordinated attacks.
+This project addresses this challenge by leveraging \textbf{Graph Mining} techniques to optimize the detection workflow. We construct a Knowledge Graph utilizing Neo4j to capture the topological structure of Wikipedia. By applying community detection algorithms (such as Leiden), we segment the graph into topical clusters. Detecting a sudden spike of edits within a specific cluster allows the system to identify potential coordinated attacks and prioritize computational resources accordingly.
 
-Building upon this structural foundation, this work conducts a comparative analysis between two distinct detection paradigms: \textbf{Feed-Forward Neural Networks (FNN)} and modern \textbf{Large Language Models (LLMs)}. specifically, we perform an \textbf{Ablation Study} on the Neural classifiers to evaluate the impact of Retrieval-Augmented Generation (RAG) features, extracted from the graph, on the model's accuracy. The primary objective is to evaluate the trade-offs between these approaches, determining which methodology offers the most effective solution for real-time vandalism detection.
+Building upon this structural foundation, this work conducts a comparative analysis between two distinct detection paradigms: lightweight \textbf{Feed-Forward Neural Networks (FNN)} and reasoning-based \textbf{Large Language Models (LLMs)}. Specifically, we perform an \textbf{Ablation Study} on the Neural classifiers to evaluate the impact of Retrieval-Augmented Generation (RAG) features—extracted from the graph—on the model's accuracy. 
 
-In the upcoming sections, we will detail the graph construction methodology and the experimental setup. Finally, we will describe the implemented anomaly detection architectures and discuss the analysis of our findings.
+While generating large-scale synthetic datasets enables the training of fast neural classifiers, capturing the nuance of subtle, context-aware vandalism remains a challenge. Therefore, our analysis distinguishes between the statistical pattern recognition of Neural Networks and the semantic understanding of LLMs. The primary objective is to evaluate the trade-offs between these approaches, determining which methodology offers the most effective solution for real-time vandalism detection.
+
+In the upcoming sections, we will detail the graph construction methodology and the experimental setup. Finally, we will describe the implemented anomaly detection architectures and discuss the divergence in performance between synthetic benchmarks and manual adversarial testing.
+
 
 \vspace{0.5cm}
+
 
 \section{Graph Construction Methodology}
 \noindent The construction of the Knowledge Graph is a multi-stage process that transforms a raw Wikipedia dump into a rich, queryable structure within Neo4j. This process involves data cleaning, topological sampling, community detection, and semantic enrichment.
@@ -107,14 +110,17 @@ Finally, specific Vector Indexes are created on both node types using cosine sim
 We implemented two opposing approaches to classification: a resource-intensive "AI Judge" based on Generative AI, and a suite of lightweight Neural Classifiers designed for high-throughput scoring.
 
 \subsection{The LLM Oracle (AI Judge)}
-The first approach utilizes \textbf{GPT OSS 20B} as a zero-shot classifier. The system constructs a prompt containing the user's edit comment, the original text, the modified text, and the "Ground Truth" retrieved via RAG from our Trusted Sources. The LLM is tasked with reasoning whether the edit is legitimate or vandalism based on factual consistency. While highly accurate, this approach introduces significant latency and API costs.
+The first approach utilizes \textbf{GPT-OSS-20B} as a zero-shot classifier. 
+A crucial methodological choice was to employ a distinct architecture for the Judge compared to the Generator (\textit{Gemma-3-27B-it}). This separation is designed to mitigate \textbf{self-preference bias}, preventing the Judge from overfitting on stylistic patterns produced by its own underlying model architecture.
+
+The system constructs a prompt containing the user's edit comment, the original text, the modified text, and the "Ground Truth" retrieved via RAG from our Trusted Sources. The LLM is tasked with reasoning whether the edit is legitimate or vandalism based purely on factual consistency. While highly accurate, this approach introduces significant latency and API costs.
 
 \subsection{Neural Classifiers and Ablation Study}
 To achieve real-time performance, we trained a set of \textbf{Feed-Forward Neural Networks} using PyTorch. The architecture consists of a multi-layer perceptron (MLP) with three hidden layers (256, 128, 64 units), employing Batch Normalization, Dropout (0.5), and ReLU activation functions, culminating in a Sigmoid output for binary classification.
 
 We conducted an \textbf{Ablation Study} to determine the importance of context (RAG). We trained five distinct variations of the model:
 \begin{enumerate}
-    \item \textbf{Neural Complete:} Uses all features: embeddings of the old text, new text, user comment, and—crucially—the cosine similarity scores (RAG scores) retrieved from the Neo4j Vector Index (triangulation between Wikipedia and Trusted Sources).
+    \item \textbf{Neural Complete:} Uses all features: embeddings of the old text, new text, user comment, and, crucially, the cosine similarity scores (RAG scores) retrieved from the Neo4j Vector Index (triangulation between Wikipedia and Trusted Sources).
     \item \textbf{No RAG:} Excludes the similarity scores from the Knowledge Graph, relying only on the text embeddings.
     \item \textbf{No Comment:} Ignores the user's edit summary.
     \item \textbf{Only New:} Analyzes only the embedding of the resulting text.

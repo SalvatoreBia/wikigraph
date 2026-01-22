@@ -8,14 +8,13 @@ from config_loader import load_config
 
 CONFIG = load_config()
 
-# --- CONFIG ---
 KAFKA_BROKER = CONFIG['kafka']['broker']
 TOPIC_IN = CONFIG['kafka']['topic_changes']
 TOPIC_OUT_JUDGE = CONFIG['kafka']['topic_judge']
 NEO4J_URI = CONFIG['neo4j']['uri']
 NEO4J_AUTH = tuple(CONFIG['neo4j']['auth'])
 
-ALERT_THRESHOLD = 2  # Impostalo almeno a 2 per vedere l'effetto buffer
+ALERT_THRESHOLD = 2 
 WINDOW_SECONDS = 30  
 
 def get_community_id(tx, page_title):
@@ -32,8 +31,7 @@ def main():
         TOPIC_IN,
         bootstrap_servers=[KAFKA_BROKER],
         value_deserializer=lambda x: json.loads(x.decode('utf-8')),
-        auto_offset_reset='latest',
-        group_id='analytics_group'
+        auto_offset_reset='latest', group_id='analytics_group'
     )
 
     producer = KafkaProducer(
@@ -46,16 +44,15 @@ def main():
     window_buffer = defaultdict(list)
     last_check = time.time()
 
-    print(f"🎧 In ascolto su '{TOPIC_IN}'... Soglia: {ALERT_THRESHOLD} edit in {WINDOW_SECONDS}s")
+    print(f"- In ascolto su '{TOPIC_IN}'... Soglia: {ALERT_THRESHOLD} edit in {WINDOW_SECONDS}s")
 
     for message in consumer:
         event = message.value
         page_title = event['title']
         
-        # Reset temporale
         if time.time() - last_check > WINDOW_SECONDS:
             if len(window_buffer) > 0:
-                print("\n--- ⏱️ Reset Finestra Temporale (Buffer Svuotato) ---")
+                print("\n- Reset Finestra Temporale (Buffer Svuotato)")
             window_buffer.clear()
             last_check = time.time()
 
@@ -65,30 +62,22 @@ def main():
         window_buffer[comm_id].append(event)
         current_count = len(window_buffer[comm_id])
         
-        print(f"📝 Edit ricevuto (Comm {comm_id}). Conteggio attuale: {current_count}/{ALERT_THRESHOLD}")
+        print(f"- Edit ricevuto (Community {comm_id}). Conteggio attuale: {current_count}/{ALERT_THRESHOLD}")
 
-        # --- LOGICA CORRETTA ---
         if current_count < ALERT_THRESHOLD:
-            # Caso 1: Siamo sotto soglia.
-            # NON inviamo nulla. Tratteniamo l'edit nel buffer in attesa di vedere se è un attacco.
-            print(f"   ⏳ Trattenuto nel buffer in attesa di altri eventi...")
+            print(f"   - Trattenuto nel buffer in attesa di altri eventi...")
 
         elif current_count == ALERT_THRESHOLD:
-            # Caso 2: La soglia è stata appena raggiunta.
-            # SCATTA L'ALLARME: Inviamo TUTTO quello che abbiamo accumulato finora.
-            print(f"🚨 SOGLIA RAGGIUNTA per Community {comm_id}! Rilascio il buffer...")
+            print(f"! SOGLIA RAGGIUNTA per Community {comm_id}! Rilascio il buffer...")
             for old_event in window_buffer[comm_id]:
                 producer.send(TOPIC_OUT_JUDGE, value=old_event)
             producer.flush()
 
         else:
-            # Caso 3: Siamo già OLTRE la soglia (l'allarme è già attivo).
-            # Inviamo direttamente l'evento corrente perché il "rubinetto" è ormai aperto.
-            print(f"🚨 CLUSTER ANCORA ATTIVO (Comm {comm_id}). Inoltro diretto.")
+            print(f"! CLUSTER ANCORA ATTIVO (Community {comm_id}). Inoltro diretto.")
             producer.send(TOPIC_OUT_JUDGE, value=event)
             producer.flush()
         
-
 if __name__ == "__main__":
     try:
         main()

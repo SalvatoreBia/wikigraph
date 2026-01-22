@@ -6,12 +6,10 @@ from config_loader import load_config
 
 CONFIG = load_config()
 
-# Neo4j Config
 URI = CONFIG['neo4j']['uri']
 AUTH = tuple(CONFIG['neo4j']['auth'])
 VECTOR_DIM = CONFIG['embedding']['dimension']
 
-# RAG INDICES
 WIKI_INDEX_NAME = "wiki_chunk_index"
 TRUSTED_INDEX_NAME = "trusted_chunk_index"
 
@@ -21,14 +19,10 @@ def get_neo4j_driver():
         driver.verify_connectivity()
         return driver
     except Exception as e:
-        print(f"❌ Errore connessione Neo4j: {e}")
+        print(f"! Errore connessione Neo4j: {e}")
         return None
 
 def get_best_match(driver, index_name, embedding):
-    """
-    Generic RAG Retrieval: Finds the most similar chunk in the specified index.
-    Returns: (best_embedding, score)
-    """
     if np.all(embedding == 0):
         return np.zeros(VECTOR_DIM), 0.0
 
@@ -45,38 +39,26 @@ def get_best_match(driver, index_name, embedding):
             if record:
                 return np.array(record['embedding']), record['score']
         except Exception as e:
-            # Fallback if index doesn't exist yet
             pass
             
     return np.zeros(VECTOR_DIM), 0.0
 
 def get_features(edit, embedder, driver):
-    """
-    Genera il vettore di feature per il classificatore (Binary Classifier).
-    Include ora la TRIANGOLAZIONE:
-    - Confronto con Wikipedia (Chunk)
-    - Confronto con Trusted Sources (Trusted Chunk)
-    """
-    
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
     comment = edit.get('comment', '')
     
-    # 1. Embeddings
     new_emb = embedder.encode(new_text, convert_to_numpy=True) if new_text else np.zeros(VECTOR_DIM)
     old_emb = embedder.encode(original_text, convert_to_numpy=True) if original_text else np.zeros(VECTOR_DIM)
     comment_emb = embedder.encode(comment, convert_to_numpy=True) if comment else np.zeros(VECTOR_DIM)
         
-    # 2. Semantic Delta
     semantic_delta = new_emb - old_emb
     
-    # 3. Cosine Similarity (Old vs New)
     if np.all(old_emb == 0) or np.all(new_emb == 0):
         text_similarity = 0.0
     else:
         text_similarity = cosine_similarity([old_emb], [new_emb])[0][0]
     
-    # 4. Length ratio
     old_len = len(original_text)
     new_len = len(new_text)
     if old_len > 0:
@@ -84,30 +66,21 @@ def get_features(edit, embedder, driver):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # 5. RAG / Triangulation Scores
-    # NEW TEXT vs WIKI & TRUSTED
     _, score_new_wiki = get_best_match(driver, WIKI_INDEX_NAME, new_emb)
     _, score_new_trusted = get_best_match(driver, TRUSTED_INDEX_NAME, new_emb)
     
-    # OLD TEXT vs WIKI & TRUSTED (Context checking)
     _, score_old_wiki = get_best_match(driver, WIKI_INDEX_NAME, old_emb)
     _, score_old_trusted = get_best_match(driver, TRUSTED_INDEX_NAME, old_emb)
     
-    # 6. Concatenazione Feature
-    # [Semantic Delta (384), Comment Emb (384), 
-    #  Text Sim (1), Length Ratio (1), 
-    #  Score New Wiki (1), Score New Trusted (1),
-    #  Score Old Wiki (1), Score Old Trusted (1)]
-    # Totale: 384 + 384 + 1 + 1 + 4 = 774
     features = np.concatenate([
-        semantic_delta,      # 384
-        comment_emb,         # 384
-        [text_similarity],   # 1
-        [length_ratio],      # 1
-        [score_new_wiki],    # 1
-        [score_new_trusted], # 1
-        [score_old_wiki],    # 1
-        [score_old_trusted]  # 1
+        semantic_delta,      
+        comment_emb,         
+        [text_similarity],   
+        [length_ratio],      
+        [score_new_wiki],    
+        [score_new_trusted], 
+        [score_old_wiki],    
+        [score_old_trusted]  
     ])
     
     return features

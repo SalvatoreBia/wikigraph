@@ -1,11 +1,3 @@
-"""
-17_train_neural_minimal.py
-Training di un classificatore neurale PyTorch per rilevamento vandalismo.
-VERSIONE MINIMAL: Usa solo length_ratio (baseline stupida).
-Features: length_ratio = 1
-Questa versione serve come baseline per mostrare l'importanza degli embedding.
-"""
-
 import json
 import pickle
 from pathlib import Path
@@ -35,7 +27,6 @@ from config_loader import load_config
 
 CONFIG = load_config()
 
-
 TRAIN_SPLIT = CONFIG['dataset']['training'].get('train_split', 0.8)
 EPOCHS = 100
 BATCH_SIZE = 8
@@ -43,16 +34,9 @@ LEARNING_RATE = 0.001
 WEIGHT_DECAY = 0.01 
 PATIENCE = 15  
 
-
 class VandalismClassifierMinimal(nn.Module):
-    """
-    Rete neurale per classificazione vandalismo
-    VERSIONE MINIMAL: input_dim = 1 (solo length_ratio)
-    Rete molto semplice per feature minima
-    """
     def __init__(self, input_dim):
         super(VandalismClassifierMinimal, self).__init__()
-        # Rete minimale
         self.fc1 = nn.Linear(input_dim, 16)
         self.bn1 = nn.BatchNorm1d(16)
         self.dropout1 = nn.Dropout(0.3)
@@ -74,16 +58,7 @@ class VandalismClassifierMinimal(nn.Module):
         x = self.sigmoid(x)
         return x
 
-
 def get_raw_features_minimal(edit):
-    """
-    Estrae feature MINIMALI.
-    
-    Features:
-    - length_ratio (1)
-    
-    Totale: 1 feature
-    """
     new_text = edit.get('new_text', '')
     original_text = edit.get('original_text', '')
     
@@ -94,18 +69,15 @@ def get_raw_features_minimal(edit):
     else:
         length_ratio = 1.0 if new_len == 0 else 10.0
     
-    # SOLO LENGTH RATIO!
     features = np.array([length_ratio])
     
     return features
 
-
 def load_data():
-    """Carica i dati di training dai file JSON"""
-    print("📂 Caricamento dati...")
+    print("- Caricamento dati...")
     
     if not LEGIT_FILE.exists() or not VANDAL_FILE.exists():
-        print("❌ File mock non trovati!")
+        print("! File mock non trovati!")
         return None, None
     
     with open(LEGIT_FILE, 'r', encoding='utf-8') as f:
@@ -114,12 +86,10 @@ def load_data():
     with open(VANDAL_FILE, 'r', encoding='utf-8') as f:
         vandal_edits = json.load(f)
     
-    print(f"   ✅ Legit: {len(legit_edits)}, Vandal: {len(vandal_edits)}")
+    print(f"   - Legit: {len(legit_edits)}, Vandal: {len(vandal_edits)}")
     return legit_edits, vandal_edits
 
-
 def extract_features(edits, label):
-    """Estrae feature per una lista di edit (SENZA embedder)"""
     X = []
     y = []
     
@@ -130,10 +100,7 @@ def extract_features(edits, label):
     
     return X, y
 
-
 def train_model(X_train, y_train, X_val, y_val, input_dim, device):
-    """Training del modello PyTorch con early stopping"""
-    
     train_dataset = TensorDataset(
         torch.FloatTensor(X_train),
         torch.FloatTensor(y_train).unsqueeze(1)
@@ -155,7 +122,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
     patience_counter = 0
     best_model_state = None
     
-    print(f"\n🏋️ Training per {EPOCHS} epochs (early stopping patience={PATIENCE})...")
+    print(f"\n- Training per {EPOCHS} epochs (patience={PATIENCE})...")
     print("-" * 60)
     
     for epoch in range(EPOCHS):
@@ -195,11 +162,11 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
         
         if (epoch + 1) % 10 == 0 or patience_counter == 0:
             current_lr = optimizer.param_groups[0]['lr']
-            status = "⭐" if patience_counter == 0 else ""
+            status = "!" if patience_counter == 0 else ""
             print(f"  Epoch {epoch+1:3d}: train_loss={train_loss:.4f}, val_loss={val_loss:.4f}, lr={current_lr:.6f} {status}")
         
         if patience_counter >= PATIENCE:
-            print(f"\n⏹️ Early stopping at epoch {epoch+1}")
+            print(f"\n- Early stopping alla epoch {epoch+1}")
             break
     
     if best_model_state:
@@ -207,9 +174,7 @@ def train_model(X_train, y_train, X_val, y_val, input_dim, device):
     
     return model
 
-
 def evaluate_model(model, X_test, y_test, device):
-    """Valuta il modello sul test set"""
     model.eval()
     
     with torch.no_grad():
@@ -220,17 +185,17 @@ def evaluate_model(model, X_test, y_test, device):
     y_test_arr = np.array(y_test)
     
     print("\n" + "=" * 60)
-    print("📊 RISULTATI SUL TEST SET (MINIMAL)")
+    print("- RISULTATI TEST (MINIMAL)")
     print("=" * 60)
     
-    print(f"\nAccuracy: {accuracy_score(y_test_arr, predictions)*100:.2f}%")
+    print(f"\nAccuratezza: {accuracy_score(y_test_arr, predictions)*100:.2f}%")
     print(f"F1 Score: {f1_score(y_test_arr, predictions)*100:.2f}%")
     
-    print("\nClassification Report:")
+    print("\nReport Classificazione:")
     print(classification_report(y_test_arr, predictions, 
                                 target_names=['Legit', 'Vandal']))
     
-    print("\nConfusion Matrix:")
+    print("\nMatrice di Confusione:")
     cm = confusion_matrix(y_test_arr, predictions)
     print(f"  {'':>10} Pred_Legit  Pred_Vandal")
     print(f"  {'True_Legit':>10}     {cm[0,0]:4d}        {cm[0,1]:4d}")
@@ -238,17 +203,16 @@ def evaluate_model(model, X_test, y_test, device):
     
     return predictions
 
-
 def main():
     print("=" * 60)
-    print("🧠 NEURAL CLASSIFIER TRAINING (PyTorch) - MINIMAL")
-    print("⚠️  BASELINE STUPIDA: Solo length_ratio, niente embedding!")
+    print("- TRAINING CLASSIFICATORE NEURALE (PyTorch) - MINIMAL")
+    print("- BASELINE: Solo length_ratio, niente embedding!")
     print("=" * 60)
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"\n💻 Device: {device}")
+    print(f"\n- Dispositivo: {device}")
     
-    print("ℹ️  Modo MINIMAL: Non usa SentenceTransformer, solo lunghezza!")
+    print("- Modo MINIMAL: Non usa SentenceTransformer, solo lunghezza!")
     
     legit_edits, vandal_edits = load_data()
     if legit_edits is None:
@@ -258,28 +222,28 @@ def main():
     target_vandal = CONFIG['dataset']['training']['vandal_count']
     
     if len(legit_edits) > target_legit:
-        print(f"✂️  Limito Legit a {target_legit} (da {len(legit_edits)})")
+        print(f"- Limito Legit a {target_legit} (da {len(legit_edits)})")
         legit_edits = legit_edits[:target_legit]
         
     if len(vandal_edits) > target_vandal:
-        print(f"✂️  Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
+        print(f"- Limito Vandal a {target_vandal} (da {len(vandal_edits)})")
         vandal_edits = vandal_edits[:target_vandal]
     
-    print("\n🔄 Estrazione feature (MINIMAL - solo length_ratio)...")
+    print("\n- Estrazione feature (MINIMAL - solo length_ratio)...")
     X_legit, y_legit = extract_features(legit_edits, 0)
     X_vandal, y_vandal = extract_features(vandal_edits, 1)
     
     X = np.array(X_legit + X_vandal)
     y = np.array(y_legit + y_vandal)
     
-    print(f"   Feature shape: {X.shape}")
-    print(f"   Labels: {len(y)} (Legit: {sum(y==0)}, Vandal: {sum(y==1)})")
+    print(f"   - Feature shape: {X.shape}")
+    print(f"   - Labels: {len(y)} (Legit: {sum(y==0)}, Vandal: {sum(y==1)})")
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=(1-TRAIN_SPLIT), random_state=42, stratify=y
     )
     
-    print(f"\n📊 Split: Train={len(X_train)}, Test={len(X_test)}")
+    print(f"\n- Split: Train={len(X_train)}, Test={len(X_test)}")
     
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
@@ -297,12 +261,10 @@ def main():
     with open(SCALER_FILE, 'wb') as f:
         pickle.dump(scaler, f)
     
-    print(f"\n💾 Modello salvato: {MODEL_FILE}")
-    print(f"💾 Scaler salvato: {SCALER_FILE}")
+    print(f"\n- Modello salvato: {MODEL_FILE}")
+    print(f"- Scaler salvato: {SCALER_FILE}")
     
-    print("\n✅ Training completato (MINIMAL)!")
-    print("⚠️  Nota: Se l'accuratezza è ~50%, conferma che gli embedding sono cruciali!")
-
+    print("\n- Training completato (MINIMAL)!")
 
 if __name__ == "__main__":
     main()

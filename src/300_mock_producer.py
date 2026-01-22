@@ -94,8 +94,8 @@ def send_event(producer, edit_data, page_map):
             "partition": 0,
             "offset": 12345
         },
-        "id": str(uuid.uuid4()),  # UUID unico per ogni evento (non page_id!)
-        "page_id": page_id,       # ID pagina Wikipedia in campo separato
+        "id": str(uuid.uuid4()),
+        "page_id": page_id,
         "type": "edit",
         "namespace": 0,
         "title": title,
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     
     for i, edit in enumerate(all_edits):
         send_event(producer, edit, PAGE_MAP)
-        time.sleep(0.2) # Piccolo delay per simulare stream
+        time.sleep(0.2)
         
     print("✅ Stream completato.")
     producer.close()

@@ -151,25 +151,19 @@ def main():
     print(f"   Train/Test Split: {TRAIN_SPLIT*100:.0f}% / {(1-TRAIN_SPLIT)*100:.0f}%")
     print("=" * 60)
     
-    # 0. Setup Directory
     if not TRAINED_BC_DIR.exists():
         TRAINED_BC_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Connect Neo4j
     driver = classifier_utils.get_neo4j_driver()
     if not driver:
         return
     
-    # 2. Load Embedding Model
     print(f"\n🚀 Caricamento Modello Embeddings: {MODEL_NAME}...")
     embedder = SentenceTransformer(MODEL_NAME)
     
-    # 3. Load ALL Data
     legit_edits = load_all_edits(LEGIT_FILE)
     vandal_edits = load_all_edits(VANDAL_FILE)
 
-    # APPLICA IL LIMITE (MODULARITÀ)
-    # Usa i conteggi definiti in config per il training
     target_legit = CONFIG['dataset']['training']['legit_count']
     target_vandal = CONFIG['dataset']['training']['vandal_count']
     

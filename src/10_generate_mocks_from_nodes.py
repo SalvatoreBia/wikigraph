@@ -87,33 +87,48 @@ def check_and_update_rate_limit(key, usage_dict, inputs_tokens=0):
     """
     Controlla se la chiave può essere usata.
     usage_dict: multiprocessing.Manager().dict() -> { key: {'reqs': [ts, ...], 'tokens': [(ts, count), ...]} }
-    Ritorna True se ok, False se limitato.
+    Ritorna (ok, message, wait_time) - wait_time è il tempo da aspettare se ok=False.
     """
-    now = time.time()
-    
-    # Recupera lo stato attuale (deepcopy implicito se proxy)
-    state = usage_dict.get(key, {'reqs': [], 'tokens': []})
-    
-    # Pulisci vecchi timestamp
-    valid_reqs = [t for t in state['reqs'] if now - t < WINDOW_SIZE]
-    valid_tokens = [(t, c) for t, c in state['tokens'] if now - t < WINDOW_SIZE]
-    
-    current_req_count = len(valid_reqs)
-    current_token_count = sum(c for t, c in valid_tokens)
-    
-    # Controlla limiti
-    if current_req_count >= MAX_REQ_PER_MIN:
-        return False, f"Req limit ({current_req_count}/{MAX_REQ_PER_MIN})"
+    try:
+        now = time.time()
         
-    if current_token_count + inputs_tokens >= MAX_TOKENS_PER_MIN:
-        return False, f"Token limit ({current_token_count + inputs_tokens}/{MAX_TOKENS_PER_MIN})"
+        # Recupera lo stato attuale (deepcopy implicito se proxy)
+        state = usage_dict.get(key, {'reqs': [], 'tokens': []})
         
-    # Se ok, aggiorna (bisogna riassegnare per il Manager dict)
-    valid_reqs.append(now)
-    valid_tokens.append((now, inputs_tokens))
-    
-    usage_dict[key] = {'reqs': valid_reqs, 'tokens': valid_tokens}
-    return True, "OK"
+        # Pulisci vecchi timestamp
+        valid_reqs = [t for t in state['reqs'] if now - t < WINDOW_SIZE]
+        valid_tokens = [(t, c) for t, c in state['tokens'] if now - t < WINDOW_SIZE]
+        
+        current_req_count = len(valid_reqs)
+        current_token_count = sum(c for t, c in valid_tokens)
+        
+        # Controlla limiti
+        if current_req_count >= MAX_REQ_PER_MIN:
+            # Calcola quanto aspettare: il timestamp più vecchio + WINDOW_SIZE - now
+            oldest_req = min(valid_reqs) if valid_reqs else now
+            wait_time = max(1, (oldest_req + WINDOW_SIZE) - now)
+            return False, f"Req limit ({current_req_count}/{MAX_REQ_PER_MIN})", wait_time
+            
+        if current_token_count + inputs_tokens >= MAX_TOKENS_PER_MIN:
+            # Calcola quanto aspettare: il timestamp più vecchio dei token + WINDOW_SIZE - now
+            oldest_token = min(t for t, c in valid_tokens) if valid_tokens else now
+            wait_time = max(1, (oldest_token + WINDOW_SIZE) - now)
+            return False, f"Token limit ({current_token_count + inputs_tokens}/{MAX_TOKENS_PER_MIN})", wait_time
+            
+        # Se ok, aggiorna (bisogna riassegnare per il Manager dict)
+        valid_reqs.append(now)
+        valid_tokens.append((now, inputs_tokens))
+        
+        try:
+            usage_dict[key] = {'reqs': valid_reqs, 'tokens': valid_tokens}
+        except (BrokenPipeError, ConnectionResetError, OSError) as e:
+            # Manager dict disconnected, skip update but allow request
+            pass
+            
+        return True, "OK", 0
+    except Exception as e:
+        # In caso di errore di multiprocessing, permetti la richiesta
+        return True, f"OK (error bypass: {e})", 0
 
 def append_to_json_file_safe(filepath, new_items, lock):
     """Scrittura thread/process-safe su file JSON."""
@@ -160,7 +175,7 @@ def clean_json_text(text):
 # --- WORKER FUNCTIONS ---
 
 def generate_html_worker(key, title, context_content, usage_dict):
-    """Worker per generare HTML."""
+    """Worker per generare HTML con retry su errore 429."""
     # Configura API Key locale al processo
     
     provider = CONFIG['llm'].get('provider', 'gemini')
@@ -181,10 +196,11 @@ def generate_html_worker(key, title, context_content, usage_dict):
     prompt_len = len(title) + len(context_content) + 500 # Istruzioni
     est_tokens = estimate_tokens("x" * prompt_len)
     
-    ok, msg = check_and_update_rate_limit(key, usage_dict, est_tokens)
+    ok, msg, wait_time = check_and_update_rate_limit(key, usage_dict, est_tokens)
     if not ok:
-        time.sleep(5) # Backoff semplice
-        return None # Riproveremo o skip
+        print(f"⏳ Rate Limit HTML ({key[-4:]}): {msg}. Wait {wait_time:.1f}s...")
+        time.sleep(wait_time)
+        # Continua comunque dopo l'attesa
         
     print(f"📄 [Start] HTML per: {title} (Key: ...{key[-4:]})")
     
@@ -205,37 +221,56 @@ def generate_html_worker(key, title, context_content, usage_dict):
     2. Stile enciclopedico.
     """
     
-    try:
-        html_content = ""
-        if provider == 'gemini':
-            resp = model.generate_content(prompt)
-            # HTML non è JSON, quindi prendiamo text raw e puliamo markdown se c'è
-            html_content = resp.text
-        else:
-            resp = client.chat.completions.create(
-                model=model_name,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.7
-            )
-            html_content = resp.choices[0].message.content
+    MAX_RETRIES = 5
+    RETRY_WAIT = 60  # secondi da aspettare dopo un 429
+    
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            html_content = ""
+            if provider == 'gemini':
+                resp = model.generate_content(prompt)
+                # HTML non è JSON, quindi prendiamo text raw e puliamo markdown se c'è
+                html_content = resp.text
+            else:
+                resp = client.chat.completions.create(
+                    model=model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.7
+                )
+                html_content = resp.choices[0].message.content
 
-        html_content = html_content.replace("```html", "").replace("```", "").strip()
-        
-        clean_title = re.sub(r'[^\w]', '_', title)
-        filename = f"trusted_{clean_title}.html"
-        path = HTML_DIR / filename
-        
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(html_content)
+            html_content = html_content.replace("```html", "").replace("```", "").strip()
             
-        print(f"✅ [Done] HTML salvato: {filename}")
-        return {"title": title, "path": str(path), "content_snippet": html_content[:500]}
-    except Exception as e:
-        print(f"⚠️ Errore Gen HTML {title}: {e}")
-        return None
+            clean_title = re.sub(r'[^\w]', '_', title)
+            filename = f"trusted_{clean_title}.html"
+            path = HTML_DIR / filename
+            
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(html_content)
+                
+            print(f"✅ [Done] HTML salvato: {filename}")
+            return {"title": title, "path": str(path), "content_snippet": html_content[:500]}
+            
+        except Exception as e:
+            error_str = str(e)
+            is_rate_limit = "429" in error_str or "quota" in error_str.lower() or "exhausted" in error_str.lower()
+            
+            if is_rate_limit:
+                if attempt < MAX_RETRIES:
+                    print(f"⏳ 429 Error ({key[-4:]}): HTML {title}. Aspetto {RETRY_WAIT}s e riprovo (tentativo {attempt}/{MAX_RETRIES})...")
+                    time.sleep(RETRY_WAIT)
+                    continue  # Riprova
+                else:
+                    print(f"🚫 QUOTA ESAURITA dopo {MAX_RETRIES} tentativi per KEY ...{key[-4:]} (HTML {title}): {e}")
+                    print(f"   ➡️  Rimuovi questa key dal .env: GEMINI_API_KEY_*=...{key[-8:]}")
+            else:
+                print(f"⚠️ Errore Gen HTML {title} (Key: ...{key[-4:]}): {e}")
+            return None
+    
+    return None  # Fallback
 
 def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, real_text_window, usage_dict, file_lock, output_file):
-    """Worker per generare Edits."""
+    """Worker per generare Edits con retry su errore 429."""
     provider = CONFIG['llm'].get('provider', 'gemini')
     
     if provider == 'gemini':
@@ -252,15 +287,16 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
     input_text = f"{context_snippet} {real_text_window} {topic_title} {edit_type}"
     est_tokens = estimate_tokens(input_text) + 500 # Instructions
     
-    # Rate Limit Check
-    backoff = 1
+    # Rate Limit Check - aspetta il tempo calcolato per il reset della finestra
     while True:
-        ok, msg = check_and_update_rate_limit(key, usage_dict, est_tokens)
+        ok, msg, wait_time = check_and_update_rate_limit(key, usage_dict, est_tokens)
         if ok:
             break
-        print(f"⏳ Rate Limit ({key[-4:]}): {msg}. Wait {backoff}s...")
-        time.sleep(backoff)
-        backoff = min(backoff * 1.5, 30)
+        print(f"⏳ Rate Limit ({key[-4:]}): {msg}. Wait {wait_time:.1f}s...")
+        time.sleep(wait_time)
+    
+    MAX_RETRIES = 5
+    RETRY_WAIT = 60  # secondi da aspettare dopo un 429
     
     print(f"✍️  [Start] {count} Edits {edit_type} per {topic_title} (Key: ...{key[-4:]})")
     
@@ -339,51 +375,67 @@ def generate_edits_worker(key, topic_title, edit_type, count, context_snippet, r
     Assicurati che il JSON sia valido e che le virgolette interne ai testi siano escapate correttamente.
     """
     
-    try:
-        # RIMOSSO generation_config={"response_mime_type": "application/json"} per evitare errore 400
-        text_resp = ""
-        if provider == 'gemini':
-            resp = model.generate_content(prompt)
-            text_resp = resp.text
-        else:
-            resp = client.chat.completions.create(
-                model=model_name,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.7
-            )
-            text_resp = resp.choices[0].message.content
-        
-        edits = clean_json_text(text_resp)
-        if not edits or not isinstance(edits, list):
-            print(f"⚠️ Errore parsing JSON per {topic_title}: Non è una lista.")
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            # RIMOSSO generation_config={"response_mime_type": "application/json"} per evitare errore 400
+            text_resp = ""
+            if provider == 'gemini':
+                resp = model.generate_content(prompt)
+                text_resp = resp.text
+            else:
+                resp = client.chat.completions.create(
+                    model=model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.7
+                )
+                text_resp = resp.choices[0].message.content
+            
+            edits = clean_json_text(text_resp)
+            if not edits or not isinstance(edits, list):
+                print(f"⚠️ Errore parsing JSON per {topic_title}: Non è una lista.")
+                return []
+                
+            clean_title = re.sub(r'[^\w]', '_', topic_title)
+            final_edits = []
+            for edit in edits:
+                enriched = {
+                    "title": topic_title,
+                    "user": edit.get("user", "Anon"),
+                    "comment": edit.get("comment", "Edit"),
+                    "timestamp": int(time.time()),
+                    "is_vandalism": edit.get("is_vandalism", False),
+                    "diff_url": f"https://it.wikipedia.org/w/index.php?title={clean_title}&diff=prev&oldid=000000",
+                    "server_name": "it.wikipedia.org",
+                    "wiki": "itwiki",
+                    "original_text": edit.get("original_text", ""),
+                    "new_text": edit.get("new_text", "")
+                }
+                final_edits.append(enriched)
+                
+            target_file = output_file
+            
+            # Scrittura Safe con Lock
+            append_to_json_file_safe(target_file, final_edits, file_lock)
+            
+            return final_edits
+            
+        except Exception as e:
+            error_str = str(e)
+            is_rate_limit = "429" in error_str or "quota" in error_str.lower() or "exhausted" in error_str.lower()
+            
+            if is_rate_limit:
+                if attempt < MAX_RETRIES:
+                    print(f"⏳ 429 Error ({key[-4:]}): {topic_title}. Aspetto {RETRY_WAIT}s e riprovo (tentativo {attempt}/{MAX_RETRIES})...")
+                    time.sleep(RETRY_WAIT)
+                    continue  # Riprova
+                else:
+                    print(f"🚫 QUOTA ESAURITA dopo {MAX_RETRIES} tentativi per KEY ...{key[-4:]} (Edit {topic_title}): {e}")
+                    print(f"   ➡️  Rimuovi questa key dal .env: GEMINI_API_KEY_*=...{key[-8:]}")
+            else:
+                print(f"⚠️ Errore Gen Edits {topic_title} (Key: ...{key[-4:]}): {e}")
             return []
-            
-        clean_title = re.sub(r'[^\w]', '_', topic_title)
-        final_edits = []
-        for edit in edits:
-            enriched = {
-                "title": topic_title,
-                "user": edit.get("user", "Anon"),
-                "comment": edit.get("comment", "Edit"),
-                "timestamp": int(time.time()),
-                "is_vandalism": edit.get("is_vandalism", False),
-                "diff_url": f"https://it.wikipedia.org/w/index.php?title={clean_title}&diff=prev&oldid=000000",
-                "server_name": "it.wikipedia.org",
-                "wiki": "itwiki",
-                "original_text": edit.get("original_text", ""),
-                "new_text": edit.get("new_text", "")
-            }
-            final_edits.append(enriched)
-            
-        target_file = output_file
-        
-        # Scrittura Safe con Lock
-        append_to_json_file_safe(target_file, final_edits, file_lock)
-        
-        return final_edits
-    except Exception as e:
-        print(f"⚠️ Errore Gen Edits {topic_title}: {e}")
-        return []
+    
+    return []  # Fallback se esce dal loop senza return
 
 # --- MAIN CONTROLLER ---
 
@@ -507,11 +559,15 @@ def generate_dataset():
                     completed_count = 0
                     total_gen = len(topics_to_generate)
                     for future in as_completed(futures):
-                        res = future.result()
-                        completed_count += 1
-                        if res:
-                            generated_pages[res['title']] = res
-                            print(f"[{completed_count}/{total_gen}] Completato {res['title']}")
+                        try:
+                            res = future.result()
+                            completed_count += 1
+                            if res:
+                                generated_pages[res['title']] = res
+                                print(f"[{completed_count}/{total_gen}] Completato {res['title']}")
+                        except Exception as e:
+                            completed_count += 1
+                            print(f"⚠️ Worker error (ignorato): {type(e).__name__}: {e}")
         else:
             print("⏭️  Skipping HTML Generation (User Choice)")
                     
@@ -595,7 +651,11 @@ def generate_dataset():
                     
                     # Attendi fine batch
                     for future in as_completed(futures):
-                        future.result() # Errori già loggati
+                        try:
+                            future.result()
+                        except Exception as e:
+                            # Cattura errori di multiprocessing (connessione manager interrotta)
+                            print(f"⚠️ Worker error (ignorato): {type(e).__name__}: {e}")
                         
                 # Safe reset negative counters
                 missing_legit_train = max(0, missing_legit_train)

@@ -1,430 +1,262 @@
 {
     "results": [
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 3.1419291496276855
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 2.7457873821258545
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e i collegamenti interni.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 2.636817216873169
+            "time_sec": 6.349900484085083
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 2.3334100246429443
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.099843978881836
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di formattazione per una migliore presentazione.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 2.6738250255584717
+            "time_sec": 4.158537149429321
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 2.652761697769165
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno a rifrattometro di Abbe.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 3.4233131408691406
+            "time_sec": 6.933936834335327
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 2.959747552871704
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 5.381436347961426
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 3.5395686626434326
+            "time_sec": 10.769162893295288
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.0953285694122314
+            "time_sec": 6.923099756240845
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.937442302703857
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 4.75054407119751
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 4.627192497253418
+            "time_sec": 7.470982789993286
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 4.8271307945251465
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 5.083834648132324
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.371978044509888
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.2811665534973145
+            "time_sec": 5.665741920471191
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 6.397773027420044
+            "time_sec": 10.903307437896729
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.81430721282959
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 12.054187536239624
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 8.156018018722534
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 9.7474684715271
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 9.239249229431152
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "VANDALISMO",
-            "correct": false,
-            "time_sec": 6.243640184402466
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 7.7392308712005615
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 11.251679420471191
+            "time_sec": 4.791728496551514
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 9.31334662437439
+            "time_sec": 5.936951398849487
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.652310609817505
+            "time_sec": 7.76244592666626
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 8.227128744125366
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.209782838821411
+            "time_sec": 6.21216082572937
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 6.202129602432251
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 5.355746030807495
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase introduttiva.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.574658155441284
+            "time_sec": 8.494203567504883
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 8.951680898666382
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 20.037195682525635
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 6.587725400924683
+            "time_sec": 8.648762464523315
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 4.833126068115234
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 3.5179784297943115
+            "time_sec": 9.62125539779663
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.060087203979492
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 5.465390920639038
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.430032968521118
+            "time_sec": 10.18324613571167
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore leggibilità.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.307093620300293
+            "time_sec": 7.056131362915039
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 14.333460330963135
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 6.306206226348877
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 6.323265314102173
+            "time_sec": 10.022602796554565
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "time_sec": 7.596145153045654
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 5.721330881118774
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "time_sec": 3.829145908355713
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 3.171635627746582
+            "time_sec": 7.55822229385376
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 5.171372890472412
+            "time_sec": 15.818592309951782
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
             "correct": true,
-            "time_sec": 4.094804048538208
+            "time_sec": 10.82404351234436
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.202094554901123
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 14.068838119506836
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.425255060195923
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e i collegamenti interni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.617091178894043
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di formattazione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 7.3196916580200195
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 8.981289863586426
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un piccolo errore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 9.51754355430603
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.070401906967163
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 6.730825424194336
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 15.429621696472168
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "time_sec": 5.347577333450317
         }
     ],
-    "accuracy": 84.26966292134831,
-    "avg_time": 6.357056128844786
+    "accuracy": 100.0,
+    "avg_time": 8.337976440787315
 }

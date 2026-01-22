@@ -1,483 +1,1770 @@
 {
     "results": [
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.9613515138626099,
-            "time_sec": 0.7452085018157959
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.6240113377571106,
-            "time_sec": 0.07123899459838867
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.9953407049179077,
-            "time_sec": 0.1121985912322998
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e i collegamenti interni.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.056244127452373505,
-            "time_sec": 0.264798641204834
+            "confidence": 0.09557338804006577,
+            "time_sec": 0.3242943286895752
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.6452875137329102,
-            "time_sec": 0.26030778884887695
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.7987366914749146,
-            "time_sec": 0.18233585357666016
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.7620270848274231,
-            "time_sec": 0.16133952140808105
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.7622050642967224,
-            "time_sec": 0.2037956714630127
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.8903309106826782,
-            "time_sec": 0.19207978248596191
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.7776747345924377,
-            "time_sec": 0.1317610740661621
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di formattazione per una migliore presentazione.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.28712210059165955,
-            "time_sec": 0.1952073574066162
+            "confidence": 0.3140515387058258,
+            "time_sec": 0.10071516036987305
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.6104695200920105,
-            "time_sec": 0.20877504348754883
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.6861767172813416,
-            "time_sec": 0.14962267875671387
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.5068384408950806,
-            "time_sec": 0.1810762882232666
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno a rifrattometro di Abbe.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.38561341166496277,
-            "time_sec": 0.1518268585205078
+            "confidence": 0.4974084198474884,
+            "time_sec": 0.31011343002319336
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.47845762968063354,
-            "time_sec": 0.1508638858795166
+            "confidence": 0.46469390392303467,
+            "time_sec": 0.22478985786437988
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.8115500211715698,
-            "time_sec": 0.2757227420806885
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.8578433394432068,
-            "time_sec": 0.19276952743530273
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.8760347962379456,
-            "time_sec": 0.26921629905700684
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.8892561793327332,
-            "time_sec": 0.24466848373413086
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "VANDALISMO",
-            "correct": false,
-            "confidence": 0.18036861717700958,
-            "time_sec": 0.09984636306762695
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.6307341456413269,
-            "time_sec": 0.227708101272583
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.6675616502761841,
-            "time_sec": 0.13362336158752441
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.9089535474777222,
-            "time_sec": 0.2502589225769043
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "VANDALISMO",
-            "correct": false,
-            "confidence": 0.30635496973991394,
-            "time_sec": 0.22767233848571777
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.7168958187103271,
-            "time_sec": 0.3010227680206299
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.5988636016845703,
-            "time_sec": 0.16481304168701172
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.14594341814517975,
-            "time_sec": 0.10267138481140137
+            "confidence": 0.12683244049549103,
+            "time_sec": 0.22140002250671387
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.45357173681259155,
-            "time_sec": 0.21746206283569336
+            "confidence": 0.21231241524219513,
+            "time_sec": 0.27083539962768555
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
             "predicted": "LEGITTIMO",
             "expected": "LEGITTIMO",
             "correct": true,
-            "confidence": 0.07834503799676895,
-            "time_sec": 0.17948246002197266
+            "confidence": 0.05739159509539604,
+            "time_sec": 0.12049269676208496
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.11195027828216553,
+            "time_sec": 0.14477181434631348
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10819164663553238,
+            "time_sec": 0.3146984577178955
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.41493067145347595,
+            "time_sec": 0.14256000518798828
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.40164056420326233,
+            "time_sec": 0.14716553688049316
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5271767377853394,
+            "time_sec": 0.25585055351257324
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase introduttiva.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.1472650021314621,
+            "time_sec": 0.12348794937133789
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.3140515387058258,
+            "time_sec": 0.08330035209655762
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.4952003061771393,
+            "time_sec": 0.30199694633483887
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5702449679374695,
+            "time_sec": 0.08354401588439941
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore leggibilità.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.06601107865571976,
+            "time_sec": 0.2715725898742676
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.4034300446510315,
+            "time_sec": 0.14036798477172852
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.05739159509539604,
+            "time_sec": 0.15025734901428223
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.11195027828216553,
+            "time_sec": 0.12714910507202148
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10819164663553238,
+            "time_sec": 0.2724268436431885
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.41493067145347595,
+            "time_sec": 0.1791982650756836
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.47134169936180115,
+            "time_sec": 0.14785170555114746
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5818275213241577,
+            "time_sec": 0.20199251174926758
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e i collegamenti interni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.09557338804006577,
+            "time_sec": 0.14996051788330078
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di formattazione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.3140515387058258,
+            "time_sec": 0.09975600242614746
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5089827179908752,
+            "time_sec": 0.16326260566711426
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un piccolo errore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.4159151613712311,
+            "time_sec": 0.1603076457977295
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.05739159509539604,
+            "time_sec": 0.12368059158325195
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.11195027828216553,
+            "time_sec": 0.07703423500061035
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.12209559231996536,
+            "time_sec": 0.18378162384033203
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.590608537197113,
+            "time_sec": 0.3186028003692627
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.44886133074760437,
+            "time_sec": 0.1572127342224121
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5880235433578491,
+            "time_sec": 0.1768636703491211
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.15363021194934845,
+            "time_sec": 0.16800403594970703
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5978509187698364,
+            "time_sec": 0.1303408145904541
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.45915165543556213,
+            "time_sec": 0.21707391738891602
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione di un errore di battitura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.605862021446228,
+            "time_sec": 0.21448493003845215
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e i collegamenti interni.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.03173400089144707,
+            "time_sec": 0.18289947509765625
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di formattazione per una migliore presentazione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.3140515387058258,
+            "time_sec": 0.10512948036193848
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5049116015434265,
+            "time_sec": 0.179931640625
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un piccolo errore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.4159151613712311,
+            "time_sec": 0.3053758144378662
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore leggibilità.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10124476253986359,
+            "time_sec": 0.26620960235595703
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.33805546164512634,
+            "time_sec": 0.18707919120788574
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.05739159509539604,
+            "time_sec": 0.12753748893737793
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione di un piccolo errore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.11195027828216553,
+            "time_sec": 0.11481451988220215
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.39605244994163513,
+            "time_sec": 0.3065357208251953
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione di un errore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.44107598066329956,
+            "time_sec": 0.2755308151245117
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10819164663553238,
+            "time_sec": 0.19553136825561523
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.41493067145347595,
+            "time_sec": 0.19964337348937988
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità all'interno di Wikipedia.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.16042526066303253,
+            "time_sec": 0.0834050178527832
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di spaziatura per una migliore presentazione.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5039092302322388,
+            "time_sec": 0.09305405616760254
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della prima frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.0652373656630516,
+            "time_sec": 0.15326547622680664
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.6143171191215515,
+            "time_sec": 0.1936492919921875
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Leggera riformulazione per migliorare la fluidità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.2897796630859375,
+            "time_sec": 0.28857421875
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.523995578289032,
+            "time_sec": 0.20379948616027832
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della prima frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.045945584774017334,
+            "time_sec": 0.17342710494995117
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di spaziatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.13861827552318573,
+            "time_sec": 0.22285938262939453
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.005279545672237873,
+            "time_sec": 0.1069190502166748
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.39237380027770996,
+            "time_sec": 0.09752535820007324
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità. Aggiunto link interno a Premio Pulitzer.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.370757132768631,
+            "time_sec": 0.3915133476257324
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.44247740507125854,
+            "time_sec": 0.1848442554473877
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.14074431359767914,
+            "time_sec": 0.1910257339477539
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.6780198216438293,
+            "time_sec": 0.20277166366577148
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "wikificazione: Aggiunti link interni per migliorare la navigabilità e la comprensione del testo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.47470328211784363,
+            "time_sec": 0.19742584228515625
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "fix: Correzione di un errore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.737433910369873,
+            "time_sec": 0.2393660545349121
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità della pagina.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.013678929768502712,
+            "time_sec": 0.3285868167877197
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.478386253118515,
+            "time_sec": 0.1165153980255127
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase introduttiva.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.05702362209558487,
+            "time_sec": 0.10733747482299805
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5018013715744019,
+            "time_sec": 0.08596682548522949
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.3176109194755554,
+            "time_sec": 0.1409463882446289
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.27506181597709656,
+            "time_sec": 0.26821017265319824
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore chiarezza.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.48636654019355774,
+            "time_sec": 0.19482660293579102
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.27165350317955017,
+            "time_sec": 0.2697930335998535
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo. Aggiunto link interno alla pagina della Federazione Italiana Pallacanestro.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.17693528532981873,
+            "time_sec": 0.17140579223632812
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.4011087119579315,
+            "time_sec": 0.21852517127990723
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase riguardante i campionati europei.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.29935649037361145,
+            "time_sec": 0.31721973419189453
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.47186487913131714,
+            "time_sec": 0.13900375366210938
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della prima frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.03839321434497833,
+            "time_sec": 0.12962603569030762
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10905297845602036,
+            "time_sec": 0.07325625419616699
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione per migliorare la leggibilità e aggiungere un link interno rilevante.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.3431827425956726,
+            "time_sec": 0.2271418571472168
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.37770816683769226,
+            "time_sec": 0.20926475524902344
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità di alcune frasi per una maggiore leggibilità.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.1242971196770668,
+            "time_sec": 0.19347691535949707
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5348770022392273,
+            "time_sec": 0.18681931495666504
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione per migliorare la leggibilità e la navigabilità all'interno di Wikipedia.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.07871246337890625,
+            "time_sec": 0.11493659019470215
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di spaziatura per una migliore presentazione.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.23473751544952393,
+            "time_sec": 0.12990331649780273
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase introduttiva.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.08474615216255188,
+            "time_sec": 0.10442948341369629
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.30623945593833923,
+            "time_sec": 0.07329154014587402
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della prima frase.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.18533216416835785,
+            "time_sec": 0.1452805995941162
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5960260629653931,
+            "time_sec": 0.2490248680114746
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "wikificazione: Aggiunti link interni per migliorare la navigabilità e la completezza dell'articolo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.2773149609565735,
+            "time_sec": 0.11685419082641602
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "fix: Corretta una lieve imprecisione nella punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.49023059010505676,
+            "time_sec": 0.19905900955200195
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Piccola wikificazione e miglioramento della fluidità del testo.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.24698597192764282,
+            "time_sec": 0.1361370086669922
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.5471286177635193,
+            "time_sec": 0.22780632972717285
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della sezione 'Carriera'.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.03715882822871208,
+            "time_sec": 0.2166903018951416
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "Correzione minore di punteggiatura.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.20382839441299438,
+            "time_sec": 0.34960055351257324
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Aggiunta wikificazione e migliorata la fluidità della frase introduttiva.",
+            "predicted": "LEGITTIMO",
+            "expected": "LEGITTIMO",
+            "correct": true,
+            "confidence": 0.10876411199569702,
+            "time_sec": 0.07263374328613281
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "Correzione minore di punteggiatura per maggiore chiarezza.",
+            "predicted": "VANDALISMO",
+            "expected": "LEGITTIMO",
+            "correct": false,
+            "confidence": 0.6001768112182617,
+            "time_sec": 0.16341280937194824
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei campionati europei.",
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "confidence": 0.5732460021972656,
-            "time_sec": 0.16639995574951172
+            "confidence": 0.6993215084075928,
+            "time_sec": 0.16509437561035156
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.968888521194458,
-            "time_sec": 0.13756966590881348
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.2910991311073303,
-            "time_sec": 0.19604015350341797
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.8479992747306824,
-            "time_sec": 0.21536850929260254
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.0377434566617012,
-            "time_sec": 0.15070867538452148
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.188.42",
+            "comment": "...",
             "predicted": "VANDALISMO",
             "expected": "VANDALISMO",
             "correct": true,
-            "confidence": 0.5005764961242676,
-            "time_sec": 0.11268758773803711
+            "confidence": 0.7530038952827454,
+            "time_sec": 0.09617805480957031
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato il procedimento con informazioni più recenti.",
             "predicted": "LEGITTIMO",
             "expected": "VANDALISMO",
             "correct": false,
-            "confidence": 0.031644824892282486,
-            "time_sec": 0.2351839542388916
+            "confidence": 0.4708881080150604,
+            "time_sec": 0.15724611282348633
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.8720307350158691,
-            "time_sec": 0.10618901252746582
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.178.42",
+            "comment": "...",
             "predicted": "LEGITTIMO",
             "expected": "VANDALISMO",
             "correct": false,
-            "confidence": 0.45296522974967957,
-            "time_sec": 0.12628436088562012
+            "confidence": 0.49069342017173767,
+            "time_sec": 0.18003559112548828
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.7789221405982971,
-            "time_sec": 0.12625598907470703
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.6149500012397766,
-            "time_sec": 0.12424945831298828
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.42066261172294617,
-            "time_sec": 0.2856566905975342
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.14343735575675964,
-            "time_sec": 0.1459178924560547
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.5999211668968201,
-            "time_sec": 0.15037322044372559
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.25052371621131897,
-            "time_sec": 0.1292569637298584
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.6561078429222107,
-            "time_sec": 0.24703311920166016
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
-            "correct": false,
-            "confidence": 0.5622700452804565,
-            "time_sec": 0.17083001136779785
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.654683530330658,
-            "time_sec": 0.13478589057922363
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.8892000913619995,
-            "time_sec": 0.12030434608459473
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "LEGITTIMO",
-            "expected": "LEGITTIMO",
-            "correct": true,
-            "confidence": 0.4681730568408966,
-            "time_sec": 0.23783373832702637
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
-            "predicted": "VANDALISMO",
-            "expected": "VANDALISMO",
-            "correct": true,
-            "confidence": 0.9997671246528625,
-            "time_sec": 0.13177180290222168
-        },
-        {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di selezione al draft NBA.",
             "predicted": "LEGITTIMO",
             "expected": "VANDALISMO",
             "correct": false,
-            "confidence": 0.21823060512542725,
-            "time_sec": 0.08504271507263184
+            "confidence": 0.35269099473953247,
+            "time_sec": 0.21460604667663574
         },
         {
-            "user": "AlessandroBarbero",
-            "comment": "correzione imprecisione",
+            "user": "151.23.145.87",
+            "comment": "...",
             "predicted": "VANDALISMO",
-            "expected": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9024630784988403,
+            "time_sec": 0.17569732666015625
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data delle Olimpiadi.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9192461967468262,
+            "time_sec": 0.055573463439941406
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9442052245140076,
+            "time_sec": 0.14457416534423828
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella classifica, ho verificato su diversi siti di statistiche sportive.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
             "correct": false,
-            "confidence": 0.8963743448257446,
-            "time_sec": 0.14535188674926758
+            "confidence": 0.4018805921077728,
+            "time_sec": 0.22839593887329102
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6682298183441162,
+            "time_sec": 0.17829036712646484
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio alla Bradley University, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5257349014282227,
+            "time_sec": 0.3335726261138916
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7653512358665466,
+            "time_sec": 0.2535667419433594
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei campionati europei, verificato su fonti sportive.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6081573367118835,
+            "time_sec": 0.12836003303527832
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.734754204750061,
+            "time_sec": 0.17919611930847168
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato il procedimento con informazioni più recenti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.573233962059021,
+            "time_sec": 0.392103910446167
+        },
+        {
+            "user": "151.23.178.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5990952849388123,
+            "time_sec": 0.23839378356933594
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato anno di draft.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7841090559959412,
+            "time_sec": 0.31592893600463867
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.942197322845459,
+            "time_sec": 0.3245120048522949
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data delle Olimpiadi.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9192461967468262,
+            "time_sec": 0.04933905601501465
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9442052245140076,
+            "time_sec": 0.08975958824157715
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella classifica, ho verificato su diversi siti di statistiche.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.49166175723075867,
+            "time_sec": 0.1892390251159668
+        },
+        {
+            "user": "151.23.145.22",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6655198931694031,
+            "time_sec": 0.1771717071533203
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio alla Bradley University, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5257349014282227,
+            "time_sec": 0.18976259231567383
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7653512358665466,
+            "time_sec": 0.15762543678283691
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei campionati europei, verificato su fonti sportive.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6081573367118835,
+            "time_sec": 0.07355713844299316
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.734754204750061,
+            "time_sec": 0.11147141456604004
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato il procedimento con informazioni più recenti.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.43185895681381226,
+            "time_sec": 0.23049163818359375
+        },
+        {
+            "user": "151.23.178.42",
+            "comment": "...",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.48644986748695374,
+            "time_sec": 0.18194842338562012
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di selezione al draft NBA.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5965626239776611,
+            "time_sec": 0.1241157054901123
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6353963613510132,
+            "time_sec": 0.3597273826599121
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data delle Olimpiadi.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9192461967468262,
+            "time_sec": 0.1257619857788086
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9442052245140076,
+            "time_sec": 0.13105273246765137
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio delle Olimpiadi, verificato su fonti ufficiali.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.4445047676563263,
+            "time_sec": 0.2572295665740967
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5229104161262512,
+            "time_sec": 0.15372824668884277
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio alla Bradley University, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5511797666549683,
+            "time_sec": 0.13848161697387695
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7394590973854065,
+            "time_sec": 0.1529245376586914
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nel nome di una squadra.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6050480604171753,
+            "time_sec": 0.17582106590270996
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6306390762329102,
+            "time_sec": 0.19368386268615723
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei Campionati Europei.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5223442316055298,
+            "time_sec": 0.13610339164733887
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9428384304046631,
+            "time_sec": 0.050384521484375
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato il procedimento con informazioni più recenti.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.43185895681381226,
+            "time_sec": 0.16569161415100098
+        },
+        {
+            "user": "151.23.178.42",
+            "comment": "...",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.48644986748695374,
+            "time_sec": 0.42462801933288574
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di selezione al draft NBA.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5054662823677063,
+            "time_sec": 0.22644376754760742
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9357374906539917,
+            "time_sec": 0.15735459327697754
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei campionati europei.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6993215084075928,
+            "time_sec": 0.15163588523864746
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8810170292854309,
+            "time_sec": 0.1322183609008789
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data delle Olimpiadi.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9192461967468262,
+            "time_sec": 0.13119029998779297
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9442052245140076,
+            "time_sec": 0.09228181838989258
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella classifica, ho verificato su diversi siti di statistiche sportive.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.44129329919815063,
+            "time_sec": 0.22140097618103027
+        },
+        {
+            "user": "151.23.14.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6369497776031494,
+            "time_sec": 0.21060466766357422
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio alla Bradley University, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5257349014282227,
+            "time_sec": 0.11126279830932617
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7653512358665466,
+            "time_sec": 0.3126096725463867
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei Campionati Europei.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5223442316055298,
+            "time_sec": 0.1677391529083252
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9428384304046631,
+            "time_sec": 0.10488247871398926
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5997301340103149,
+            "time_sec": 0.2131636142730713
+        },
+        {
+            "user": "151.23.145.78",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.993061363697052,
+            "time_sec": 0.28014159202575684
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data del torneo, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8336427807807922,
+            "time_sec": 0.26914072036743164
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8670936226844788,
+            "time_sec": 0.16568899154663086
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio della stagione. Ho verificato su Basketball-Reference.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7005274891853333,
+            "time_sec": 0.1337747573852539
+        },
+        {
+            "user": "151.23.188.5",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8763771653175354,
+            "time_sec": 0.20380306243896484
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornata data di uscita secondo fonti più recenti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.679922878742218,
+            "time_sec": 0.20683574676513672
+        },
+        {
+            "user": "151.23.178.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.680668294429779,
+            "time_sec": 0.2205958366394043
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data della finale di Stanley Cup, verificato su HockeyDB.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5361579060554504,
+            "time_sec": 0.2308180332183838
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7942485213279724,
+            "time_sec": 0.23306012153625488
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei Campionati Oceaniani.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5946540236473083,
+            "time_sec": 0.09309101104736328
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8270708918571472,
+            "time_sec": 0.09787154197692871
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di nascita, verificato su diverse fonti biografiche.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6977638006210327,
+            "time_sec": 0.1181192398071289
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.963616669178009,
+            "time_sec": 0.2890174388885498
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei giochi olimpici, verificato su fonte ufficiale.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7873379588127136,
+            "time_sec": 0.15840864181518555
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9567482471466064,
+            "time_sec": 0.13597893714904785
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di inizio della carriera in Eurolega.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.737433910369873,
+            "time_sec": 0.3192129135131836
+        },
+        {
+            "user": "151.23.187.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9394305944442749,
+            "time_sec": 0.12421989440917969
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei giochi olimpici. Fonte: archivio CONI.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6608955264091492,
+            "time_sec": 0.10471796989440918
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8763650059700012,
+            "time_sec": 0.3275418281555176
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di pubblicazione, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6330282688140869,
+            "time_sec": 0.20558452606201172
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9490483403205872,
+            "time_sec": 0.198164701461792
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di morte della moglie, verificato su diverse fonti biografiche.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.2695145010948181,
+            "time_sec": 0.20230460166931152
+        },
+        {
+            "user": "151.23.145.78",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9590992331504822,
+            "time_sec": 0.1536731719970703
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di fondazione della squadra.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.3887614607810974,
+            "time_sec": 0.13271641731262207
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.953978419303894,
+            "time_sec": 0.17322134971618652
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato anno di trasferimento.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5349627733230591,
+            "time_sec": 0.08632135391235352
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9301310181617737,
+            "time_sec": 0.06686139106750488
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso e aggiornato con informazioni più recenti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8408210873603821,
+            "time_sec": 0.17653155326843262
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9219334721565247,
+            "time_sec": 0.0786600112915039
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di firma con gli Spurs.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5763925909996033,
+            "time_sec": 0.18547987937927246
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8765080571174622,
+            "time_sec": 0.13816380500793457
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei campionati europei.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9545521140098572,
+            "time_sec": 0.17095279693603516
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.8980177044868469,
+            "time_sec": 0.045417070388793945
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di partecipazione della Cina.",
+            "predicted": "LEGITTIMO",
+            "expected": "VANDALISMO",
+            "correct": false,
+            "confidence": 0.49683713912963867,
+            "time_sec": 0.17476463317871094
+        },
+        {
+            "user": "151.23.100.5",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5175489187240601,
+            "time_sec": 0.3996150493621826
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data dei giochi panamericani.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6234710812568665,
+            "time_sec": 0.14001035690307617
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9243829250335693,
+            "time_sec": 0.08224987983703613
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data della vittoria al Rookie Challenge.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6793692708015442,
+            "time_sec": 0.2692563533782959
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.9249906539916992,
+            "time_sec": 0.16531872749328613
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nella data di nascita di Angela Piskernik, verificato su diverse fonti.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6310945153236389,
+            "time_sec": 0.23095417022705078
+        },
+        {
+            "user": "151.23.145.87",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.5824128985404968,
+            "time_sec": 0.15511631965637207
+        },
+        {
+            "user": "WikiFan99",
+            "comment": "Corretto refuso nel nome della madre, verificato su diverse fonti genealogiche.",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.6194372773170471,
+            "time_sec": 0.24851655960083008
+        },
+        {
+            "user": "151.23.188.42",
+            "comment": "...",
+            "predicted": "VANDALISMO",
+            "expected": "VANDALISMO",
+            "correct": true,
+            "confidence": 0.7522602677345276,
+            "time_sec": 0.11487579345703125
         }
     ],
-    "accuracy": 56.60377358490566,
-    "avg_time": 0.1873673582976719
+    "accuracy": 83.16326530612244,
+    "avg_time": 0.18310412338801793
 }

@@ -172,7 +172,7 @@
     "user": "AlessandroBarbero",
     "comment": "correzione imprecisione",
     "timestamp": 1769095646,
-    "is_vandalism": false,
+    "is_vandalism": true,
     "diff_url": "https://it.wikipedia.org/w/index.php?title=Zagorka Simić&diff=prev&oldid=000000",
     "server_name": "it.wikipedia.org",
     "wiki": "itwiki",
@@ -220,7 +220,7 @@
     "user": "AlessandroBarbero",
     "comment": "correzione imprecisione",
     "timestamp": 1769096873,
-    "is_vandalism": false,
+    "is_vandalism": true,
     "diff_url": "https://it.wikipedia.org/w/index.php?title=Oleksandra Prystupa&diff=prev&oldid=000000",
     "server_name": "it.wikipedia.org",
     "wiki": "itwiki",
@@ -232,7 +232,7 @@
     "user": "AlessandroBarbero",
     "comment": "correzione imprecisione",
     "timestamp": 1769096888,
-    "is_vandalism": false,
+    "is_vandalism": true,
     "diff_url": "https://it.wikipedia.org/w/index.php?title=Angie Radanovich&diff=prev&oldid=000000",
     "server_name": "it.wikipedia.org",
     "wiki": "itwiki",
@@ -256,7 +256,7 @@
     "user": "AlessandroBarbero",
     "comment": "correzione imprecisione",
     "timestamp": 1769096907,
-    "is_vandalism": false,
+    "is_vandalism": true,
     "diff_url": "https://it.wikipedia.org/w/index.php?title=Taccjana Lichtarovič&diff=prev&oldid=000000",
     "server_name": "it.wikipedia.org",
     "wiki": "itwiki",
@@ -622,17 +622,5 @@
     "wiki": "itwiki",
     "original_text": " = {{USA}}\n|Disciplina = Pallacanestro\n|Ruolo = [[Ala (pallacanestro)|Ala]], [[Centro (pallacanestro)|centro]]\n|TermineCarriera = 2018\n|SquadreGiovanili =\n{{Carriera sportivo\n |sport = basket |pos = G\n ||Cordova High School|\n |2003-2005|Yuba Community College|\n |2005-2007|Bradley University|\n}}\n|Squadre =\n{{Carriera sportivo\n |sport = basket |pos = G\n |2007-2008|CB Santa Pola|\n |2008-2009|Guadalajara|\n |2009-2010|Huesca|\n |2010|Niigata Albirex BB|\n |2011-2012|Los Angeles D-Fenders|44 (409)\n |2012|Santa Barbara Breakers|\n |2012-2013|Montegranaro|2 (6)\n |2013|Los Angeles D-Fenders|32 (223)\n |201",
     "new_text": " = {{USA}}\n|Disciplina = Pallacanestro\n|Ruolo = [[Ala (pallacanestro)|Ala]], [[Centro (pallacanestro)|centro]]\n|TermineCarriera = 2018\n|SquadreGiovanili =\n{{Carriera sportivo\n |sport = basket |pos = G\n ||Cordova High School|\n |2003-2005|Yuba Community College|\n |2005-2007|Bradley University|\n}}\n|Squadre =\n{{Carriera sportivo\n |sport =  |pos = G\n |2007-2008|CB Santa Pola|\n |2008-2009|Guadalajara|\n |2009-2010|Huesca|\n |2010|Niigata Albirex BB|\n |2011-2012|Los Angeles D-Fenders|44 (409)\n |2012|Santa Barbara Breakers|\n |2012-2013|Montegranaro|2 (6)\n |2013|Los Angeles D-Fenders|32 (223)\n |201"
-  },
-  {
-    "title": "Zagorka Simić",
-    "user": "AlessandroBarbero",
-    "comment": "correzione imprecisione",
-    "timestamp": 1769098579,
-    "is_vandalism": false,
-    "diff_url": "https://it.wikipedia.org/w/index.php?title=Zagorka Simić&diff=prev&oldid=000000",
-    "server_name": "it.wikipedia.org",
-    "wiki": "itwiki",
-    "original_text": " =\n|SquadreNazionali =\n{{Carriera sportivo\n |1962-1966|{{Naz|PC|YUG 1943-1992|F}}|\n}}\n|Aggiornato =\n}}\n{{Bio\n|Nome = Zagorka\n|Cognome = Simić\n|PostCognomeVirgola = coniugata '''Žeravica'''\n|PreData = {{serbo|Загорка Симић-Жеравица}}\n|Sesso = F\n|LuogoNascita = Belgrado\n|GiornoMeseNascita = \n|AnnoNascita = 1940\n|NoteNascita = <ref>[https://ekspres.net/scena/zagorka-zaga-simic-zeravica-intervju-kosarkasica-7-4-2024 Zagorka Žeravica: \"Naša kuća bila je bunker za buduće igrače Partizana\"] ''ekspres.net'', ''7 aprile 2024''</ref>\n|LuogoMorte = \n|GiornoMeseMorte = \n|AnnoMorte = \n|Epoca = 1900\n|Attivi",
-    "new_text": " =\n|SquadreNazionali =\n{{Carriera sportivo\n |1962-1966|{{Naz|PC|YUG 1943-1992|F}}|\n}}\n|Aggiornato =\n}}\n{{Bio\n|Nome = Zagorka\n|Cognome = Simić\n|PostCognomeVirgola = coniugata '''Žeravica'''\n|PreData = {{serbo|Загорка Симић-Жеравица}}\n|Sesso = F\n|LuogoNascita = Belgrado\n|GiornoMeseNascita = \n|AnnoNascita = 1940\n|NoteNascita = <ref>[https://ekspres.net/scena/zagorka-zaga-simic-zeravica-intervju-kosarkasica-7-4-2024 Zagorka Žeravica: \"Naša kuća bila je bunker za buduće igrače Partizana\"] ''ekspres.net'', ''7 aprile 2024''</ref>\n|LuogoMorte = \n|GiornoMeseMorte = \n|AnnoMorte = \n|Epoca = 1900\n|Attivi"
   }
 ]

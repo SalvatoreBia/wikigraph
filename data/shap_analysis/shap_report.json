@@ -1,0 +1,39 @@
+{
+    "model": "neural_classifier (VandalismClassifier)",
+    "dataset": {
+        "legit_samples": 98,
+        "vandal_samples": 100,
+        "total": 198
+    },
+    "metrics": {
+        "accuracy": 1.0,
+        "f1_score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+    },
+    "confusion_matrix": {
+        "true_legit_pred_legit": 98,
+        "true_legit_pred_vandal": 0,
+        "true_vandal_pred_legit": 0,
+        "true_vandal_pred_vandal": 100
+    },
+    "feature_group_importance": {
+        "RAG: Old→Trusted": 0.0013913040786528606,
+        "Comment Embedding": 0.0007183811133776083,
+        "New Text Embedding": 0.00034341833367066544,
+        "Old Text Embedding": 0.00025907776212372993,
+        "Semantic Similarity": 0.0,
+        "Length Ratio": 0.0,
+        "RAG: New→Wiki": 0.0,
+        "RAG: New→Trusted": 0.0,
+        "RAG: Old→Wiki": 0.0
+    },
+    "engineered_features_impact": {
+        "Semantic Similarity": 0.0,
+        "Length Ratio": 0.0,
+        "RAG: New→Wiki": 0.0,
+        "RAG: New→Trusted": 0.0,
+        "RAG: Old→Wiki": 0.0,
+        "RAG: Old→Trusted": -0.0013913040786528606
+    }
+}

@@ -1,11 +1,29 @@
 import json
 import random
 import time
+
 import requests
 from kafka import KafkaProducer
 
 KAFKA_BROKER = 'localhost:9094'
 TOPIC_OUT = 'to-be-judged'
+HISTORY_FILE = '501_manual_edits_history.json'
+
+def load_history():
+    """Carica lo storico degli edit manuali."""
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+def save_to_history(event):
+    """Aggiunge un evento allo storico degli edit manuali."""
+    history = load_history()
+    history.append(event)
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+    print(f"- Evento aggiunto allo storico ({len(history)} totali in '{HISTORY_FILE}').")
 
 def download_wikipedia_page(page_title, lang="it"):
     print(f"- Scaricamento pagina: {page_title} ({lang})...")
@@ -135,6 +153,9 @@ def main():
 
     with open("500_manual_edit.json", "w", encoding="utf-8") as f:
         json.dump(event, f, indent=2, ensure_ascii=False)
+    
+    # Salva anche nello storico completo
+    save_to_history(event)
     
     try:
         producer = KafkaProducer(

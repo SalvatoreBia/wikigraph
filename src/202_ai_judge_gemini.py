@@ -1,21 +1,22 @@
 import json
 import os
-import time
-from pathlib import Path
-from itertools import cycle
 import threading
+import time
 from collections import defaultdict
+from itertools import cycle
+from pathlib import Path
 
 import google.generativeai as genai
-from openai import OpenAI
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from kafka import KafkaConsumer
+from openai import OpenAI
 
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
 from config_loader import load_config
+
 CONFIG = load_config()
 GEMINI_MODEL = CONFIG['llm']['judge_model']
 

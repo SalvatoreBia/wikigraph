@@ -85,3 +85,6 @@ src/data/databases/
 src/data/transactions/
 *.db
 report/report_Biamonte_Spadafora.synctex.gz
+report/report_Biamonte_Spadafora.fls
+report/report_Biamonte_Spadafora.fdb_latexmk
+report/report_Biamonte_Spadafora.aux
